@@ -6,7 +6,7 @@ const ext = globalThis.browser ?? globalThis.chrome;
 const HELP = "https://misterdownloadmanager.com/help/browser-help.html";
 // The creator's GitHub Sponsors page (the app's Help → Support MDM): a plain link, in a new tab.
 const SPONSORS = "https://github.com/sponsors/anefzaoui";
-const t = (key, ...subs) => ext.i18n.getMessage(key, subs) || key;
+const t = (key, ...subs) => (ext.i18n.getMessage(key, subs) || key).replaceAll("Mister Download Manager", "Rakib Download Manager");
 const $ = (id) => document.getElementById(id);
 const ask = (m) => ext.runtime.sendMessage(m).catch(() => ({ ok: false }));
 const lang = ext.i18n.getUILanguage();
