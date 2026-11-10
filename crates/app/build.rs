@@ -71,29 +71,9 @@ fn catalogs() {
             }
             println!("cargo:rerun-if-changed={}", path.display());
             let text = std::fs::read_to_string(&path).expect("a translation catalog");
-            // Keep the upstream source keys so every catalog remains compatible with the
-            // translation tooling, but rebrand the translated app text at build time. Browser
-            // extension rows deliberately retain the upstream name: this fork still uses the
-            // upstream extension identity and native-messaging protocol.
-            let rows_only: Vec<String> = text
+            let rows_only: Vec<&str> = text
                 .split('\n')
-                .map(|line| {
-                    if line.starts_with('#') {
-                        String::new()
-                    } else if line.starts_with("extension\t") {
-                        line.to_owned()
-                    } else if let Some((source, translation)) = line.rsplit_once('\t') {
-                        format!(
-                            "{source}\t{}",
-                            translation.replace(
-                                "Mister Download Manager",
-                                "Rakib Download Manager",
-                            )
-                        )
-                    } else {
-                        line.to_owned()
-                    }
-                })
+                .map(|line| if line.starts_with('#') { "" } else { line })
                 .collect();
             let start = text_all.len();
             text_all.push_str(&rows_only.join("\n"));
