@@ -13,8 +13,7 @@ use crate::winui::{self, ButtonKind, r};
 
 /// The repository: problem reports, releases, source, licences.
 pub const REPO: &str = "https://github.com/mdrakibhossainkst/rakibdownloadmanager";
-/// The creator's GitHub Sponsors page: Help → Support MDM, About's last line. The website, the
-/// extension's popup and the repository's Sponsor button (.github/FUNDING.yml) point there too.
+/// The Rakib Download Manager project page shown from Help and About.
 pub const SPONSORS: &str = REPO;
 const LATEST: &str = "https://api.github.com/repos/mdrakibhossainkst/rakibdownloadmanager/releases/latest";
 pub const VERSION: &str = env!("CARGO_PKG_VERSION");
