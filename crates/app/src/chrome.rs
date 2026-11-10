@@ -1615,7 +1615,7 @@ pub fn toolbar(
         } else {
             c.field
         };
-        p.rect_filled(rect, 8.0, if enabled || primary { face } else { c.field });
+        p.rect_filled(rect, 8.0, if *enabled || primary { face } else { c.field });
         p.rect_stroke(
             rect,
             8.0,
