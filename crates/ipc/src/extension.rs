@@ -132,14 +132,15 @@ mod tests {
     /// The store's copy and the app folder's (unpacked) both reach the host: the manifests'
     /// allowed_origins and the host's own caller check are this list.
     #[test]
-    fn store_and_unpacked_both_served() {
+    fn own_and_legacy_chromium_ids_are_served() {
         assert_eq!(STORE_ID, "RAKIB_CHROME_STORE_ID_PENDING");
+        assert!(!valid_id(STORE_ID));
         assert_eq!(UNPACKED_ID, "eblepmieneaadcepbdgbihioeklhcifc");
         assert_eq!(LEGACY_UNPACKED_ID, "oogbclbbninliongijffeeggalppliok");
         assert_eq!(LEGACY_STORE_ID, "ejoleppdfgjdndddcjoehopknmlglojp");
         let ids = chromium_ids();
         assert!(
-            ids.contains(&UNPACKED_ID) && ids.contains(&STORE_ID),
+            ids.contains(&UNPACKED_ID) && ids.contains(&LEGACY_UNPACKED_ID) && ids.contains(&LEGACY_STORE_ID),
             "{ids:?}"
         );
         assert_eq!(store_page(), None);
