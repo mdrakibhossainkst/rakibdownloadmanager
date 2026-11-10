@@ -5608,6 +5608,7 @@ extension	Button settings...	বোতামের সেটিংস...
 extension	Can't tell which video this is: open its own page and try there	এটি কোন ভিডিও তা বোঝা যাচ্ছে না: ভিডিওটির নিজের পৃষ্ঠা খুলে সেখানে চেষ্টা করুন
 #. text in the browser extension
 #. heading for the capture switch in Rakib's browser extension popup
+#, machine
 extension	Capture downloads	ডাউনলোড গ্রহণ করুন
 #. text in the browser extension
 #. the toolbar button's status when the browser reaches the app; keep the name Mister Download Manager as it is
@@ -5796,6 +5797,11 @@ extension	Paused: downloads stay with the browser	বিরত আছে: ডা
 #, machine
 extension	Prefix media file names with the page title	মিডিয়া ফাইলের নামের আগে পৃষ্ঠার শিরোনাম যোগ করুন
 #. text in the browser extension
+#. link at the foot of the toolbar button's popup to the Rakib Download Manager project repository
+#, machine
+extension	Project	প্রকল্প
+
+#. text in the browser extension
 #. shown instead of the Download button beside a copy-protected (DRM) stream in the toolbar button's popup: it can't be downloaded; short
 #, machine
 extension	Protected	সুরক্ষিত
@@ -5803,6 +5809,11 @@ extension	Protected	সুরক্ষিত
 #. shown briefly on the download button when the video is copy-protected (DRM) and no tool can download it
 #, machine
 extension	Protected video: it can't be saved	সুরক্ষিত ভিডিও: এটি সংরক্ষণ করা যাবে না
+#. text in the browser extension
+#. heading for the browser proxy switch in the extension popup
+#, machine
+extension	Proxy integration	প্রক্সি ইন্টিগ্রেশন
+
 #. text in the browser extension
 #. switch in the toolbar button's popup: on, the app downloads through the same proxy the browser uses (one a VPN or proxy extension sets); the browser then asks once to allow reading it
 #, machine
@@ -5813,15 +5824,12 @@ extension	Send downloads through this browser's proxy or VPN extension	এই �
 extension	Send downloads to	ডাউনলোডগুলি এখানে পাঠান
 #. text in the browser extension
 #. short explanation below the capture switch in the browser extension popup
+#, machine
 extension	Send supported downloads to Rakib	সমর্থিত ডাউনলোড Rakib-এ পাঠান
 #. text in the browser extension
 #. shown briefly on the download button after it was clicked; keep the name Mister Download Manager as it is
 #, machine
 extension	Sent to Mister Download Manager	Mister Download Manager-এ পাঠানো হয়েছে
-#. text in the browser extension
-#. link at the foot of the toolbar button's popup to the creator's GitHub Sponsors page (MDM is free; this is an optional donation)
-#, machine
-extension	Project	প্রকল্প
 #. text in the browser extension
 #. heading for the browser proxy switch in the extension popup
 extension	Proxy integration	প্রক্সি ইন্টিগ্রেশন
@@ -5875,9 +5883,11 @@ extension	Update Mister Download Manager to use everything this extension offers
 extension	Use advanced browser integration is off in Options → General.	বিকল্প → সাধারণে উন্নত ব্রাউজার ইন্টিগ্রেশন ব্যবহার করুন বন্ধ আছে।
 #. text in the browser extension
 #. checkbox in the browser extension popup: prefix a downloaded media file with its page title
+#, machine
 extension	Use media title as filename	মিডিয়ার শিরোনাম ফাইলের নামে ব্যবহার করুন
 #. text in the browser extension
 #. short explanation below the proxy switch in the extension popup
+#, machine
 extension	Use the app network proxy	অ্যাপের নেটওয়ার্ক প্রক্সি ব্যবহার করুন
 #. text in the browser extension
 #. pairing failed: codes tried too fast
