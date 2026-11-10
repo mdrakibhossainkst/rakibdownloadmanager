@@ -5592,7 +5592,7 @@ column	Transfer rate	স্থানান্তর হার
 #. text in the browser extension
 #. choice under Send downloads to: an MDM running on another computer of the network, such as a home server; keep the name Mister Download Manager as it is
 #, machine
-extension	Another Mister Download Manager (a server)	অন্য একটি Mister Download Manager (একটি সার্ভার)
+extension	Another Rakib Download Manager (a server)	অন্য একটি Rakib Download Manager (একটি সার্ভার)
 #. text in the browser extension
 #. the name this browser gets in the other MDM's list of paired devices
 #, machine
@@ -5613,12 +5613,12 @@ extension	Capture downloads	ডাউনলোড গ্রহণ করুন
 #. text in the browser extension
 #. the toolbar button's status when the browser reaches the app; keep the name Mister Download Manager as it is
 #, machine
-extension	Connected to Mister Download Manager	Mister Download Manager-এর সাথে সংযুক্ত
+extension	Connected to Rakib Download Manager	Rakib Download Manager-এর সাথে সংযুক্ত
 #. text in the browser extension
 #. the toolbar button's status when the browser reaches the app, with the app's version number; keep the name Mister Download Manager as it is
 #. {version} = a version number (keep the braces as they are)
 #, machine
-extension	Connected to Mister Download Manager {version}	Mister Download Manager {version}-এর সাথে সংযুক্ত
+extension	Connected to Rakib Download Manager {version}	Rakib Download Manager {version}-এর সাথে সংযুক্ত
 #. text in the browser extension
 #. button beside a video, sound or stream in the toolbar button's popup: download it with the app; verb; short
 #, machine
@@ -5626,11 +5626,11 @@ extension	Download	ডাউনলোড করুন
 #. text in the browser extension
 #. command in the browser's right-click menu on a page: download the links of the whole page; keep the name Mister Download Manager as it is
 #, machine
-extension	Download all links with Mister Download Manager	Mister Download Manager দিয়ে সমস্ত লিঙ্ক ডাউনলোড করুন
+extension	Download all links with Rakib Download Manager	Rakib Download Manager দিয়ে সমস্ত লিঙ্ক ডাউনলোড করুন
 #. text in the browser extension
 #. command in the browser's right-click menu on selected text: download the links in the selection; keep the name Mister Download Manager as it is
 #, machine
-extension	Download selected links with Mister Download Manager	Mister Download Manager দিয়ে নির্বাচিত লিঙ্কগুলি ডাউনলোড করুন
+extension	Download selected links with Rakib Download Manager	Rakib Download Manager দিয়ে নির্বাচিত লিঙ্কগুলি ডাউনলোড করুন
 #. text in the browser extension
 #. the button over a video on a web page that downloads it; verb; short (it sits on the video)
 #, machine
@@ -5638,7 +5638,7 @@ extension	Download video	ভিডিও ডাউনলোড করুন
 #. text in the browser extension
 #. command in the browser's right-click menu on a link, picture, video or sound; keep the name Mister Download Manager as it is
 #, machine
-extension	Download with Mister Download Manager	Mister Download Manager দিয়ে ডাউনলোড করুন
+extension	Download with Rakib Download Manager	Rakib Download Manager দিয়ে ডাউনলোড করুন
 #. text in the browser extension
 #. shown in the toolbar button's popup after the site was excluded
 #. {site} = a web site's name such as "example.com" (keep the braces as they are)
@@ -5659,7 +5659,7 @@ extension	Enter its https:// address.	এর https:// ঠিকানা লি�
 #. text in the browser extension
 #. the extension's description in the browser's list of extensions; keep the name Mister Download Manager as it is
 #, machine
-extension	Hands downloads from the browser to Mister Download Manager.	ব্রাউজার থেকে Mister Download Manager-এ ডাউনলোড হস্তান্তর করে।
+extension	Hands downloads from the browser to Rakib Download Manager.	ব্রাউজার থেকে Rakib Download Manager-এ ডাউনলোড হস্তান্তর করে।
 #. text in the browser extension
 #. link in the toolbar button's popup to the help page
 #, machine
@@ -5716,31 +5716,31 @@ extension	Media on this page	এই পৃষ্ঠার মিডিয়া
 #. text in the browser extension
 #. the extension's name in the browser's list of extensions and on its toolbar button; keep the name Mister Download Manager as it is
 #, machine
-extension	Mister Download Manager	Mister Download Manager
+extension	Rakib Download Manager	Rakib Download Manager
 #. text in the browser extension
 #. status when the app was started for a download but didn't answer in time; keep the name Mister Download Manager as it is
 #, machine
-extension	Mister Download Manager didn't start in time	Mister Download Manager সময়মতো চালু হয়নি
+extension	Rakib Download Manager didn't start in time	Rakib Download Manager সময়মতো চালু হয়নি
 #. text in the browser extension
 #. status when the app refuses this copy of the extension (another copy is installed, or it came from another store); keep the name Mister Download Manager as it is
 #, machine
-extension	Mister Download Manager doesn't accept this copy of the extension	Mister Download Manager এক্সটেনশনের এই কপি গ্রহণ করে না
+extension	Rakib Download Manager doesn't accept this copy of the extension	Rakib Download Manager এক্সটেনশনের এই কপি গ্রহণ করে না
 #. text in the browser extension
 #. shown briefly on the download button when the app could not be reached; keep the name Mister Download Manager as it is
 #, machine
-extension	Mister Download Manager isn't installed or didn't start	Mister Download Manager ইনস্টল করা নেই বা চালু হয়নি
+extension	Rakib Download Manager isn't installed or didn't start	Rakib Download Manager ইনস্টল করা নেই বা চালু হয়নি
 #. text in the browser extension
 #. status when the browser can't find the app's connection; keep the name Mister Download Manager as it is
 #, machine
-extension	Mister Download Manager isn't installed, or its browser integration isn't set up	Mister Download Manager ইনস্টল করা নেই, অথবা এর ব্রাউজার ইন্টিগ্রেশন সেট আপ করা নেই
+extension	Rakib Download Manager isn't installed, or its browser integration isn't set up	Rakib Download Manager ইনস্টল করা নেই, অথবা এর ব্রাউজার ইন্টিগ্রেশন সেট আপ করা নেই
 #. text in the browser extension
 #. tooltip of the switch Send downloads through this browser's proxy or VPN extension; keep the name Mister Download Manager as it is
 #, machine
-extension	Mister Download Manager then downloads through the same proxy as this browser. The browser asks you once to allow it; turning this off takes that back.	Mister Download Manager তারপর এই ব্রাউজারের মতো একই প্রক্সির মাধ্যমে ডাউনলোড করে। ব্রাউজার আপনাকে একবার এটি অনুমতি দিতে বলবে; এটি বন্ধ করলে সেই অনুমতি বাতিল হয়ে যাবে।
+extension	Rakib Download Manager then downloads through the same proxy as this browser. The browser asks you once to allow it; turning this off takes that back.	Rakib Download Manager তারপর এই ব্রাউজারের মতো একই প্রক্সির মাধ্যমে ডাউনলোড করে। ব্রাউজার আপনাকে একবার এটি অনুমতি দিতে বলবে; এটি বন্ধ করলে সেই অনুমতি বাতিল হয়ে যাবে।
 #. text in the browser extension
 #. tooltip of the switch Send downloads through this browser's proxy or VPN extension in Chrome, Edge and the other Chromium browsers (they ask for no permission at the switch); keep the name Mister Download Manager as it is
 #, machine
-extension	Mister Download Manager then downloads through the same proxy as this browser. While this is off, the extension doesn't read the browser's proxy.	Mister Download Manager এই ব্রাউজারের মতো একই প্রক্সির মাধ্যমে ডাউনলোড করে। এটি বন্ধ থাকলে, এক্সটেনশনটি ব্রাউজারের প্রক্সি পড়ে না।
+extension	Rakib Download Manager then downloads through the same proxy as this browser. While this is off, the extension doesn't read the browser's proxy.	Rakib Download Manager এই ব্রাউজারের মতো একই প্রক্সির মাধ্যমে ডাউনলোড করে। এটি বন্ধ থাকলে, এক্সটেনশনটি ব্রাউজারের প্রক্সি পড়ে না।
 #. text in the browser extension
 #. the small arrow next to the Download video button that opens its menu (read aloud by screen readers)
 #, machine
@@ -5774,7 +5774,7 @@ extension	Open its address once and accept its certificate, then enter a code fr
 #. text in the browser extension
 #. button in the toolbar button's popup; keep the name Mister Download Manager as it is
 #, machine
-extension	Open Mister Download Manager	Mister Download Manager খুলুন
+extension	Open Rakib Download Manager	Rakib Download Manager খুলুন
 #. text in the browser extension
 #. button in the toolbar button's popup: open the app's Options
 #. the trailing ... means it is still going on: keep it
@@ -5829,7 +5829,7 @@ extension	Send supported downloads to Rakib	সমর্থিত ডাউন�
 #. text in the browser extension
 #. shown briefly on the download button after it was clicked; keep the name Mister Download Manager as it is
 #, machine
-extension	Sent to Mister Download Manager	Mister Download Manager-এ পাঠানো হয়েছে
+extension	Sent to Rakib Download Manager	Rakib Download Manager-এ পাঠানো হয়েছে
 #. text in the browser extension
 #. check box in the toolbar button's popup: on, downloads go to the app; off, the browser keeps them
 #, machine
@@ -5841,7 +5841,7 @@ extension	The Chrome Web Store's rules keep this copy of the add-on away from th
 #. text in the browser extension
 #. status when the connection to the app broke off (often security software blocking it); keep the name Mister Download Manager as it is
 #, machine
-extension	The connection to Mister Download Manager failed	Mister Download Manager-এর সঙ্গে সংযোগ ব্যর্থ হয়েছে
+extension	The connection to Rakib Download Manager failed	Rakib Download Manager-এর সঙ্গে সংযোগ ব্যর্থ হয়েছে
 #. text in the browser extension
 #. shown briefly on the download button over a video when the app's settings keep the button off on this web site
 #, machine
@@ -5873,7 +5873,7 @@ extension	This page's player streams its video in pieces, so there's no file to 
 #. text in the browser extension
 #. status when the app is older than the extension; keep the name Mister Download Manager as it is
 #, machine
-extension	Update Mister Download Manager to use everything this extension offers	এই এক্সটেনশনের সব সুবিধা ব্যবহার করতে Mister Download Manager আপডেট করুন
+extension	Update Rakib Download Manager to use everything this extension offers	এই এক্সটেনশনের সব সুবিধা ব্যবহার করতে Rakib Download Manager আপডেট করুন
 #. text in the browser extension
 #. why a download stayed with the browser: the app's setting 'Use advanced browser integration' is off; keep the setting's name as the app shows it
 #, machine
