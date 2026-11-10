@@ -38,6 +38,9 @@ foreach ($kind in "chromium", "firefox", "safari") {
   if ($kind -eq "firefox" -and (Test-Path (Join-Path $dir "_locales/no"))) {
     Copy-Item (Join-Path $dir "_locales/no") (Join-Path $dir "_locales/nb") -Recurse
   }
+  # Manifest names are resolved by the browser itself, before extension JavaScript runs.
+  python (Join-Path $root "tools/extension/brand_locales.py") (Join-Path $dir "_locales")
+  if ($LASTEXITCODE -ne 0) { throw "could not brand browser locale messages for $kind" }
   $manifest = switch ($kind) { "firefox" { "manifest.firefox.json" } "safari" { "manifest.safari.json" } default { "manifest.json" } }
   $json = Get-Content (Join-Path $src $manifest) -Raw
   # The first "version" only (the manifest's own).
