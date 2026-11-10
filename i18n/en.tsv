@@ -4168,6 +4168,9 @@ column	Transfer rate	Transfer rate
 #. choice under Send downloads to: an MDM running on another computer of the network, such as a home server; keep the name Rakib Download Manager as it is
 extension	Another Rakib Download Manager (a server)	Another Rakib Download Manager (a server)
 #. text in the browser extension
+#. section label above the browser capture settings in the Rakib extension popup
+extension	BROWSER CAPTURE	BROWSER CAPTURE
+#. text in the browser extension
 #. the name this browser gets in the other MDM's list of paired devices
 extension	Browser extension	Browser extension
 #. text in the browser extension
@@ -4193,6 +4196,9 @@ extension	Download	Download
 #. text in the browser extension
 #. command in the browser's right-click menu on a page: download the links of the whole page; keep the name Rakib Download Manager as it is
 extension	Download all links with Rakib Download Manager	Download all links with Rakib Download Manager
+#. text in the browser extension
+#. section label above the local or remote download destination choices
+extension	DOWNLOAD DESTINATION	DOWNLOAD DESTINATION
 #. text in the browser extension
 #. command in the browser's right-click menu on selected text: download the links in the selection; keep the name Rakib Download Manager as it is
 extension	Download selected links with Rakib Download Manager	Download selected links with Rakib Download Manager
@@ -4255,6 +4261,9 @@ extension	Left to the browser: {name}	Left to the browser: {name}
 #. text in the browser extension
 #. beside a stream in the toolbar button's popup: it is a live broadcast (no fixed length); short
 extension	Live	Live
+#. text in the browser extension
+#. section label above media detected on the current browser page
+extension	MEDIA FOUND ON THIS PAGE	MEDIA FOUND ON THIS PAGE
 #. text in the browser extension
 #. heading in the toolbar button's popup over the list of the videos, sounds and streams the current web page has loaded
 extension	Media on this page	Media on this page
@@ -4945,12 +4954,3 @@ unit	{n} MB	{n} MB
 #. unit after a number in the download list (sizes, speeds, status)
 #. {n} = a number (keep the braces as they are)
 unit	{n} MB/sec	{n} MB/sec
-#. text in the browser extension
-#. section label above the browser capture settings in the Rakib extension popup
-extension	BROWSER CAPTURE	BROWSER CAPTURE
-#. text in the browser extension
-#. section label above the local or remote download destination choices
-extension	DOWNLOAD DESTINATION	DOWNLOAD DESTINATION
-#. text in the browser extension
-#. section label above media detected on the current browser page
-extension	MEDIA FOUND ON THIS PAGE	MEDIA FOUND ON THIS PAGE
