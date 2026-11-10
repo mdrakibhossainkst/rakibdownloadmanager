@@ -7,6 +7,7 @@ name: CI
 # A change to the website or the docs alone builds nothing here (the app embeds none of it; the
 # Website workflow builds the site). The app's own catalogs, i18n/*.tsv, still run everything.
 on:
+  workflow_dispatch:
   push:
     branches: [main]
     paths-ignore:
