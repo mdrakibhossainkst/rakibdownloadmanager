@@ -12,6 +12,9 @@ const englishFallback = {
   popup_proxy_heading: "Proxy integration",
   popup_proxy_desc: "Use the app network proxy",
   popup_media_title_filename: "Use media title as filename",
+  popup_section_capture: "BROWSER CAPTURE",
+  popup_section_destination: "DOWNLOAD DESTINATION",
+  popup_section_media: "MEDIA FOUND ON THIS PAGE",
 };
 const t = (key, ...subs) => (ext.i18n.getMessage(key, subs) || englishFallback[key] || key).replaceAll("Mister Download Manager", "Rakib Download Manager");
 const $ = (id) => document.getElementById(id);
