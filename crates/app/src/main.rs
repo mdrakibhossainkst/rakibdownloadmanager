@@ -87,8 +87,7 @@ pub fn app_icon() -> std::sync::Arc<egui::IconData> {
             let qy = cy.abs() - 91.0;
             let ox = qx.max(0.0);
             let oy = qy.max(0.0);
-            ox * ox + oy * oy <= 28.0 * 28.0
-                || (qx.max(qy) <= 0.0)
+            ox * ox + oy * oy <= 28.0 * 28.0 || qx.max(qy) <= 0.0
         };
         for y in 0..N {
             for x in 0..N {
@@ -105,7 +104,8 @@ pub fn app_icon() -> std::sync::Arc<egui::IconData> {
                 }
                 // White download shaft and arrow head.
                 let shaft = (116.0..140.0).contains(&px) && (72.0..151.0).contains(&py);
-                let head = py >= 132.0 && py <= 183.0
+                let head = py >= 132.0
+                    && py <= 183.0
                     && (px - 128.0).abs() <= (py - 132.0) * 0.82;
                 // The receiving tray: a rounded horizontal slot.
                 let tray = (px >= 82.0 && px <= 174.0 && py >= 174.0 && py <= 188.0)
