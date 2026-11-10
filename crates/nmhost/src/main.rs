@@ -36,7 +36,7 @@ use serde::{Deserialize, Serialize};
 mod win32;
 
 const HOST_NAME: &str = "com.misterdownloadmanager.host";
-use mdm_ipc::extension::{FIREFOX_ID, STORE_ID, STORE_UPDATE_URL, chromium_ids, store_id};
+use mdm_ipc::extension::{FIREFOX_ID, LEGACY_FIREFOX_ID, LEGACY_STORE_ID, STORE_ID, STORE_UPDATE_URL, chromium_ids, store_id};
 /// Where each Chromium browser looks for native messaging hosts on Windows, under HKCU (one
 /// user) or HKLM (everyone). Chromium-branded builds (Chromium, Helium, Thorium, and Brave and
 /// Brave Origin with every channel) read Chromium's first, then Chrome's, as most other forks do
@@ -731,7 +731,7 @@ fn this_program() -> Result<PathBuf, String> {
 fn chromium_manifest(program: &std::path::Path) -> serde_json::Value {
     serde_json::json!({
         "name": HOST_NAME,
-        "description": "Mister Download Manager",
+        "description": "Rakib Download Manager",
         "path": program,
         "type": "stdio",
         "allowed_origins": chromium_ids().into_iter().map(origin).collect::<Vec<_>>(),
@@ -745,7 +745,7 @@ fn firefox_manifest(program: &std::path::Path) -> serde_json::Value {
         "description": "Mister Download Manager",
         "path": program,
         "type": "stdio",
-        "allowed_extensions": [FIREFOX_ID],
+        "allowed_extensions": [FIREFOX_ID, LEGACY_FIREFOX_ID],
     })
 }
 
@@ -778,7 +778,7 @@ fn origin(id: &str) -> String {
 fn our_caller(args: &[String]) -> bool {
     args.first()
         .is_some_and(|a| chromium_ids().iter().any(|id| *a == origin(id)))
-        || args.get(1).is_some_and(|a| a == FIREFOX_ID)
+        || args.get(1).is_some_and(|a| a == FIREFOX_ID || a == LEGACY_FIREFOX_ID)
 }
 
 /// Windows: the manifests beside this exe, and the registry entries naming them, per user
@@ -845,7 +845,7 @@ fn unregister(all_users: bool) -> Result<(), String> {
     }
     let _ = reg(&[
         "delete",
-        &format!(r"{root}\{CHROME_EXTERNAL_KEY}\{STORE_ID}"),
+        &format!(r"{root}\{CHROME_EXTERNAL_KEY}\{LEGACY_STORE_ID}"),
         "/f",
         "/reg:32",
     ]);
@@ -998,7 +998,7 @@ fn unregister(all_users: bool) -> Result<(), String> {
         let _ = std::fs::remove_file(dir.join(format!("{HOST_NAME}.json")));
     }
     if let Some(dir) = chrome_external_dir(all_users) {
-        let _ = std::fs::remove_file(dir.join(format!("{STORE_ID}.json")));
+        let _ = std::fs::remove_file(dir.join(format!("{LEGACY_STORE_ID}.json")));
     }
     println!("unregistered {HOST_NAME}");
     Ok(())
@@ -1095,8 +1095,9 @@ mod tests {
     fn store_and_unpacked_extensions_both_allowed() {
         let manifest = chromium_manifest(&this_program().unwrap());
         for id in [
-            "ejoleppdfgjdndddcjoehopknmlglojp",
+            "eblepmieneaadcepbdgbihioeklhcifc",
             "oogbclbbninliongijffeeggalppliok",
+            "ejoleppdfgjdndddcjoehopknmlglojp",
         ] {
             let o = format!("chrome-extension://{id}/");
             assert!(
@@ -1127,6 +1128,7 @@ mod tests {
             assert!(our_caller(&s(&[&format!("chrome-extension://{id}/")])));
         }
         assert!(our_caller(&s(&[r"C:\x\host.firefox.json", FIREFOX_ID])));
+        assert!(our_caller(&s(&[r"C:\x\host.firefox.json", LEGACY_FIREFOX_ID])));
         assert!(!our_caller(&s(&["chrome-extension://someoneelse/"])));
         assert!(!our_caller(&s(&[r"C:\x\host.json", "evil@example.com"])));
         assert!(!our_caller(&[]));
