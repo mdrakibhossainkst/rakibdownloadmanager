@@ -80,11 +80,11 @@ fn catalogs() {
                 .map(|line| {
                     if line.starts_with('#') {
                         String::new()
-                    } else if line.starts_with("extension\\t") {
+                    } else if line.starts_with("extension\t") {
                         line.to_owned()
-                    } else if let Some((source, translation)) = line.rsplit_once('\\t') {
+                    } else if let Some((source, translation)) = line.rsplit_once('\t') {
                         format!(
-                            "{source}\\t{}",
+                            "{source}\t{}",
                             translation.replace("Mister Download Manager", "Rakib Download Manager")
                         )
                     } else {
@@ -93,7 +93,7 @@ fn catalogs() {
                 })
                 .collect();
             let start = text_all.len();
-            text_all.push_str(&rows_only.join("\\n"));
+            text_all.push_str(&rows_only.join("\n"));
             rows.push(format!("    ({stem:?}, {start}, {}),", text_all.len()));
         }
     }
