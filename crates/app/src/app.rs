@@ -1001,10 +1001,12 @@ impl App {
         }
         #[cfg(target_os = "macos")]
         {
-            // Rakib Download Manager is designed to stay available from the menu bar.
-            // Register a LaunchAgent on first launch of an installed (non-portable) copy.
-            // The user can turn this off later in Options → General.
-            if mdm_ipc::portable_dir().is_none() && !crate::unix::run_at_startup() {
+            // Rakib Download Manager starts in the menu bar by default on macOS.
+            // Honour the saved preference: a user who disables login launch must stay opted out.
+            if mdm_ipc::portable_dir().is_none()
+                && settings.launch_on_startup
+                && !crate::unix::run_at_startup()
+            {
                 crate::unix::set_run_at_startup(true);
             }
             settings.launch_on_startup = crate::unix::run_at_startup();
