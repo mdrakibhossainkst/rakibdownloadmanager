@@ -4,6 +4,8 @@
 
 - The main window title now reads **Rakib Download Manager**.
 - The menu-bar item's primary action now reads **Open Rakib Download Manager**.
+- The About window uses the same custom Rakib icon as the app and menu-bar runtime icon.
+- App-interface translations rebrand the upstream product name at the i18n boundary across supported languages; browser-extension labels retain the upstream identity for compatibility.
 - The macOS app bundle display name, Finder app name, DMG volume name, and DMG filename use Rakib Download Manager.
 - The macOS app bundle is configured as an agent app (`LSUIElement`), so it stays out of the Dock while its menu-bar icon remains the primary entry point.
 - New macOS settings enable login launch by default. The LaunchAgent starts the app using the existing session-start argument, so the Dashboard stays hidden while the menu-bar app remains available.
