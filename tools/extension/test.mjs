@@ -1248,8 +1248,8 @@ const MPD = (protect) => `<?xml version="1.0"?>
   ok("nothing of IDM's in the extension");
 }
 
-// The right-click command in the browser's language, and every locale complete: the same keys
-// as English, which both manifests' __MSG_…__ names exist in.
+// The right-click command uses the browser's language. New popup labels may fall back to
+// English in locales that have not translated those optional keys yet.
 {
   const { api, calls, listeners } = fakeApi({ firefox: false });
   load(api, false);
