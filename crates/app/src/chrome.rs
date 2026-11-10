@@ -1510,7 +1510,7 @@ pub fn dashboard_header(
         (crate::i18n::t("Downloads"), total, c.accent),
         (crate::i18n::t("Downloading"), active, c.reach_near),
         (crate::i18n::t("Complete"), complete, c.success),
-        (crate::i18n::t("Error"), errors, c.danger),
+        (crate::i18n::t("Error"), errors, c.error),
     ];
     let mut x = logical_panel.right() - 12.0 - card_w;
     for (label, value, ink) in stats {
