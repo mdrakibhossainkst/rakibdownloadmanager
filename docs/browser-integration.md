@@ -2,7 +2,7 @@
 
 [← Back to docs index](README.md)
 
-With the MDM extension, clicking a download link in your browser hands the download to MDM. MDM gets the address together with the page it came from (the referrer), your cookies for the site and the browser's User-Agent, so downloads that need you to be signed in still work.
+With the Rakib Download Manager extension, clicking a supported download link in your browser hands the download to the desktop app. It passes the address together with the page it came from (the referrer), your cookies for the site and the browser's User-Agent, so downloads that need you to be signed in can still work.
 
 The extension works in **Google Chrome**, **Microsoft Edge**, **Brave**, **Opera** and **Vivaldi**, in **Firefox** 140 or later, and in **Safari** 17 or later on a Mac (see [Safari](#safari-macos)).
 
@@ -12,27 +12,27 @@ Browsers built on them work too: Chromium and Helium take the extension as Chrom
 
 Browser integration has two parts: a small helper program that the browser talks to, and the extension itself.
 
-1. Install MDM with the setup and keep **Set up browser integration (Chrome, Edge, Brave, Firefox)** ticked. This registers the helper. (The portable copy can't do this; see [Portable mode](portable.md).) On Linux and macOS MDM registers it itself, each time it starts, for the browsers installed then.
-2. Add the extension to each browser you use, as below: Firefox from its add-ons store, the others from the Chrome Web Store. Until a browser's extension has reached MDM, MDM's **Add Mister Download Manager to your browser** window opens at each start: it lists the browsers it found, and **Add the extension** opens the store's page in that browser. **Install it by hand** opens the steps for loading it without the store; **Don't ask again** stops the window.
+1. Install Rakib Download Manager. On Windows, keep **Set up browser integration** enabled in the installer. On macOS and Linux, launch the app once so it can register its native messaging host.
+2. Install the matching Rakib extension package manually using [the browser installation guide](guide-catch-browser-downloads.md). Rakib's Chrome Web Store and Mozilla Add-ons listings are not published yet; do not install the upstream Mister Download Manager add-on for this fork.
 
 ![Add Mister Download Manager to your browser: each browser found, with a button to its store page](images/help/browser-offer.webp)
-*MDM's own window opens each browser's store page for you.*
+*The app's browser integration helper identifies supported browsers; install the Rakib extension from the package described in the guide.*
 
 ### Firefox
 
-Firefox 140 or later is needed. Install the add-on from its page on addons.mozilla.org, [Mister Download Manager](https://addons.mozilla.org/firefox/addon/mister-download-manager/): click **Add to Firefox**. Firefox keeps it updated. Zen and LibreWolf install it from the same page. (MDM's **Add Mister Download Manager to your browser** window opens that page for you.)
+Firefox 140 or later is needed. Until the Rakib add-on is signed and listed by Mozilla, install it temporarily: open `about:debugging#/runtime/this-firefox`, click **Load Temporary Add-on…**, and select `manifest.json` inside the extracted `firefox` folder. Zen and LibreWolf use the same Firefox-compatible package. Temporary add-ons are removed when Firefox closes.
 
 ### Chrome, Edge, Brave, Opera and Vivaldi
 
-Install the extension from its page in the Chrome Web Store, [Mister Download Manager](https://chromewebstore.google.com/detail/mister-download-manager/ejoleppdfgjdndddcjoehopknmlglojp): click **Add to Chrome**. In Edge the button is **Get**: Edge first asks to **Allow extensions from other stores** (click **Allow**), then **Add extension**. The browser keeps it updated. MDM's **Add Mister Download Manager to your browser** window opens that page in each browser for you, and Chrome may offer it by itself at its next start once MDM is installed.
+Download and extract the Rakib Chromium extension package. Open `chrome://extensions`, `edge://extensions`, `brave://extensions`, `opera://extensions` or `vivaldi://extensions`, turn on **Developer mode**, click **Load unpacked**, and choose the extracted `chromium` folder. The extension keeps its own Rakib ID and branding; update it by replacing the unpacked folder with a newer package.
 
-To load it by hand instead (a browser that can't use the store, or a build of your own): its files are in the `extension` folder where MDM is installed: `%LOCALAPPDATA%\Programs\Mister Download Manager\extension` if you installed it for yourself, or `Program Files\Mister Download Manager\extension` if you installed it for everyone. Every release also has them as their own download, `...-extension-chromium.zip` (unzip it first).
+To load the extension manually, use the `chromium` folder from the CI artifact or from `target/extension/chromium` in a source build. Extract the package to a permanent location before loading it.
 
 1. Open the extensions page: `chrome://extensions`, `edge://extensions` or `brave://extensions`.
 2. Turn on **Developer mode**.
 3. Click **Load unpacked** and choose the `extension\chromium` folder.
 
-**Mister Download Manager** appears in the list. Leave it turned on. Pin its button to the toolbar to see at a glance whether the browser reaches MDM.
+**Rakib Download Manager** appears in the list. Leave it turned on. Pin its button to the toolbar to see whether the browser reaches the desktop app.
 
 ### Safari (macOS)
 
