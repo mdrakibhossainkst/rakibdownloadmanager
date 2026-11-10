@@ -1,5 +1,5 @@
-# Build, lint and test main and every pull request: Windows and Linux, which must pass, and the
-# experimental macOS build (its failures are reported but don't fail the run).
+# Build, lint and test main and every pull request on Windows, Linux and Intel macOS. Apple Silicon
+# macOS remains experimental because the target release machine is an older Intel Mac.
 name: CI
 
 # Pushes to main only: a pull request's branch is tested once as the pull request (a bare push:
@@ -46,10 +46,9 @@ jobs:
           - os: ubuntu-latest
           - os: macos-latest
             experimental: true
-          # Intel compile/test coverage for the user's x86_64 Mac. Keep macOS experimental
-          # until GUI lifecycle behaviour is verified on a real Ventura installation.
+          # Required x86_64 compile/test coverage for the target Intel Mac. Hosted macOS 15 is
+          # newer than Ventura, so this proves architecture compatibility, not the full GUI lifecycle.
           - os: macos-15-intel
-            experimental: true
     runs-on: ${{ matrix.os }}
     continue-on-error: ${{ matrix.experimental == true }}
     # A cold build takes about 10 minutes; a hung runner (apt-get once hung for hours) is cut off
