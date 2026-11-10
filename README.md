@@ -13,13 +13,10 @@
 </p>
 
 <p align="center">
-  🧩 <b>Browser extension (upstream Mister Download Manager integration):</b><br>
-  <a href="https://addons.mozilla.org/firefox/addon/mister-download-manager/"><img src="https://img.shields.io/badge/Add%20to-Firefox-2a78d6?style=flat-square&logo=firefoxbrowser&logoColor=white" alt="Add to Firefox" height="34"></a>
-  <a href="https://chromewebstore.google.com/detail/mister-download-manager/ejoleppdfgjdndddcjoehopknmlglojp"><img src="https://img.shields.io/badge/Add%20to-Chrome-2a78d6?style=flat-square&logo=googlechrome&logoColor=white" alt="Add to Chrome" height="34"></a><br>
-  <sub>The Chrome Web Store's is for
-  <img src="docs/images/browsers/edge.png" width="16" height="16" alt=""> Edge,
-  <img src="docs/images/browsers/brave.png" width="16" height="16" alt=""> Brave,
-  <img src="docs/images/browsers/opera.png" width="16" height="16" alt=""> Opera and Vivaldi too (<a href="docs/browser-integration.md">how</a>).</sub>
+  🧩 <b>Rakib browser extension:</b> Chrome, Edge, Brave, Opera, Vivaldi and Firefox<br>
+  <a href="https://github.com/mdrakibhossainkst/rakibdownloadmanager/actions/workflows/ci.yml"><img src="https://img.shields.io/badge/Get%20extension-GitHub%20Actions-2a78d6?style=flat-square&logo=github" alt="Get Rakib browser extension" height="34"></a>
+  <a href="docs/guide-catch-browser-downloads.md">Installation guide</a><br>
+  <sub>Own Rakib branding and extension IDs. Browser-store publication is not yet available; install the verified package manually.</sub>
 </p>
 
 <p align="center">
@@ -53,8 +50,6 @@
   <a href="https://github.com/mdrakibhossainkst/rakibdownloadmanager/releases"><img src="https://img.shields.io/github/downloads/mdrakibhossainkst/rakibdownloadmanager/total?logo=github" alt="Downloads"></a>
   <a href="https://github.com/mdrakibhossainkst/rakibdownloadmanager/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/mdrakibhossainkst/rakibdownloadmanager/ci.yml?logo=github&label=ci" alt="CI"></a>
   <a href="https://github.com/mdrakibhossainkst/rakibdownloadmanager/stargazers"><img src="https://img.shields.io/github/stars/mdrakibhossainkst/rakibdownloadmanager?logo=github" alt="GitHub stars"></a>
-  <a href="https://addons.mozilla.org/firefox/addon/mister-download-manager/"><img src="https://img.shields.io/amo/v/mister-download-manager?logo=firefoxbrowser&label=Firefox%20add-on" alt="Firefox add-on"></a>
-  <a href="https://chromewebstore.google.com/detail/mister-download-manager/ejoleppdfgjdndddcjoehopknmlglojp"><img src="https://img.shields.io/chrome-web-store/v/ejoleppdfgjdndddcjoehopknmlglojp?logo=googlechrome&label=Chrome%20Web%20Store" alt="Chrome Web Store"></a>
   <a href="LICENSE"><img src="https://img.shields.io/github/license/mdrakibhossainkst/rakibdownloadmanager" alt="GPL-3.0 license"></a>
 </p>
 
@@ -370,7 +365,7 @@ Actions and publishes the release.
 Browser integration from a build: register the native messaging host with
 `target\release\misterdownloadmanager-nmhost.exe --register` (undo with `--unregister`), then in
 `chrome://extensions` or `edge://extensions` turn on Developer mode, **Load unpacked** and pick
-the `extension/` folder (its ID is always `oogbclbbninliongijffeeggalppliok`).
+the `target/extension/chromium` folder (its Rakib extension ID is `eblepmieneaadcepbdgbihioeklhcifc`).
 
 </details>
 
