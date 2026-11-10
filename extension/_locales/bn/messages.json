@@ -261,5 +261,17 @@
   },
   "popup_media_title_name": {
     "message": "মিডিয়া ফাইলের নামের আগে পৃষ্ঠার শিরোনাম যোগ করুন"
+  },
+  "popup_section_capture": {
+    "message": "ব্রাউজার ক্যাপচার",
+    "description": "section label above the browser capture settings in the Rakib extension popup"
+  },
+  "popup_section_destination": {
+    "message": "ডাউনলোডের গন্তব্য",
+    "description": "section label above the local or remote download destination choices"
+  },
+  "popup_section_media": {
+    "message": "এই পৃষ্ঠায় পাওয়া মিডিয়া",
+    "description": "section label above media detected on the current browser page"
   }
 }
