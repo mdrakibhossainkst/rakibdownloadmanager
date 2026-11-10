@@ -6,7 +6,14 @@ const ext = globalThis.browser ?? globalThis.chrome;
 const HELP = "https://github.com/mdrakibhossainkst/rakibdownloadmanager/blob/rakib/phase-01-macos-audit/docs/guide-catch-browser-downloads.md";
 // The creator's GitHub Sponsors page (the app's Help → Support MDM): a plain link, in a new tab.
 const PROJECT = "https://github.com/mdrakibhossainkst/rakibdownloadmanager";
-const t = (key, ...subs) => (ext.i18n.getMessage(key, subs) || key).replaceAll("Mister Download Manager", "Rakib Download Manager");
+const englishFallback = {
+  popup_capture: "Capture downloads",
+  popup_capture_desc: "Send supported downloads to Rakib",
+  popup_proxy_heading: "Proxy integration",
+  popup_proxy_desc: "Use the app network proxy",
+  popup_media_title_filename: "Use media title as filename",
+};
+const t = (key, ...subs) => (ext.i18n.getMessage(key, subs) || englishFallback[key] || key).replaceAll("Mister Download Manager", "Rakib Download Manager");
 const $ = (id) => document.getElementById(id);
 const ask = (m) => ext.runtime.sendMessage(m).catch(() => ({ ok: false }));
 const lang = ext.i18n.getUILanguage();
