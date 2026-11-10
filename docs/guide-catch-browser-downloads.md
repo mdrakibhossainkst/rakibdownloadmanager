@@ -60,6 +60,9 @@ If the browser downloads the file itself, first confirm the extension is enabled
 - **Per-browser capture:** use **Options → General → Capture downloads from the following browsers**.
 - **One-off download:** right-click a link and choose **Download with Rakib Download Manager**.
 
+![Options, File types: the file types Rakib Download Manager takes from the browser, and the sites it leaves alone](images/help/catch-file-types.webp)
+*1 the file types Rakib Download Manager takes, 2 the sites it leaves to the browser.*
+
 Downloads the app does not capture remain with the browser.
 
 ## Next steps
