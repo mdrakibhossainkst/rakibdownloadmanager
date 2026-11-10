@@ -4304,14 +4304,15 @@ extension	Prefix media file names with the page title	Prefix media file names wi
 #. link at the foot of the toolbar button's popup to the Rakib Download Manager project repository
 extension	Project	Project
 #. text in the browser extension
-#. heading for the browser proxy switch in the extension popup
-extension	Proxy integration	Proxy integration
-#. text in the browser extension
 #. shown instead of the Download button beside a copy-protected (DRM) stream in the toolbar button's popup: it can't be downloaded; short
 extension	Protected	Protected
 #. text in the browser extension
 #. shown briefly on the download button when the video is copy-protected (DRM) and no tool can download it
 extension	Protected video: it can't be saved	Protected video: it can't be saved
+#. text in the browser extension
+#. heading for the browser proxy switch in the extension popup
+extension	Proxy integration	Proxy integration
+
 #. text in the browser extension
 #. the extension's name in the browser's list of extensions and on its toolbar button; keep the name Rakib Download Manager as it is
 extension	Rakib Download Manager	Rakib Download Manager
