@@ -6720,6 +6720,15 @@ impl App {
             None => {}
         }
 
+        chrome::dashboard_header(
+            ui,
+            o,
+            w,
+            self.items.len(),
+            self.items.iter().filter(|item| item.live.is_some()).count(),
+            self.items.iter().filter(|item| item.status == Status::Complete).count(),
+        );
+
         // Categories pane.
         let list_left = if self.show_categories {
             let rows = self.tree_rows();
