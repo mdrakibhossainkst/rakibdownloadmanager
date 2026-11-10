@@ -1423,10 +1423,11 @@ pub fn dashboard_header(
     let p = ui.painter();
     let c = crate::theme::colors();
     let top = o.y + MENU_H + 72.0;
-    let panel = winui::rect(Rect::from_min_max(
+    let logical_panel = Rect::from_min_max(
         pos2(o.x + 7.0, top),
         pos2(o.x + width - 8.0, top + 58.0),
-    ));
+    );
+    let panel = winui::rect(logical_panel);
     p.rect_filled(panel, 11.0, c.tab_page);
     p.rect_stroke(
         panel,
@@ -1434,18 +1435,17 @@ pub fn dashboard_header(
         egui::Stroke::new(1.0, c.group_line),
         egui::StrokeKind::Inside,
     );
+
+    // The brand rail and title follow the reading direction; all geometry stays logical
+    // until it is converted once for painting.
+    let rtl = winui::rtl();
     let accent = winui::rect(Rect::from_min_size(
-        pos2(panel.left() + 1.0, panel.top() + 10.0),
-        vec2(3.0, panel.height() - 20.0),
+        pos2(logical_panel.left() + 1.0, top + 10.0),
+        vec2(3.0, logical_panel.height() - 20.0),
     ));
     p.rect_filled(accent, 2.0, c.accent);
 
-    let rtl = winui::rtl();
-    let brand_x = winui::mx(if rtl {
-        panel.right() - 18.0
-    } else {
-        panel.left() + 18.0
-    });
+    let brand_x = winui::mx(logical_panel.left() + 18.0);
     let brand_align = if rtl {
         egui::Align2::RIGHT_CENTER
     } else {
@@ -1466,7 +1466,7 @@ pub fn dashboard_header(
         c.muted,
     );
 
-    let stats_width = (panel.width() - 190.0).clamp(210.0, 300.0);
+    let stats_width = (logical_panel.width() - 190.0).clamp(210.0, 300.0);
     let card_gap = 6.0;
     let card_w = ((stats_width - 2.0 * card_gap) / 3.0).clamp(62.0, 96.0);
     let card_h = 40.0;
@@ -1475,11 +1475,7 @@ pub fn dashboard_header(
         (crate::i18n::t("Downloading"), active, c.reach_near),
         (crate::i18n::t("Complete"), complete, c.success),
     ];
-    let mut x = if rtl {
-        panel.left() + 12.0
-    } else {
-        panel.right() - 12.0 - card_w
-    };
+    let mut x = logical_panel.right() - 12.0 - card_w;
     for (label, value, ink) in stats {
         let logical = Rect::from_min_size(
             pos2(x, panel.center().y - card_h / 2.0),
@@ -1493,13 +1489,10 @@ pub fn dashboard_header(
             egui::Stroke::new(1.0, c.group_line),
             egui::StrokeKind::Inside,
         );
-        let lx = winui::mx(if rtl {
-            logical.right() - 8.0
-        } else {
-            logical.left() + 8.0
-        });
+
+        let label_x = winui::mx(logical.left() + 8.0);
         p.text(
-            pos2(lx, rect.center().y - 7.0),
+            pos2(label_x, rect.center().y - 7.0),
             if rtl {
                 egui::Align2::RIGHT_CENTER
             } else {
@@ -1509,13 +1502,9 @@ pub fn dashboard_header(
             egui::FontId::proportional(8.0),
             c.muted,
         );
-        let vx = winui::mx(if rtl {
-            logical.left() + 8.0
-        } else {
-            logical.right() - 8.0
-        });
+        let value_x = winui::mx(logical.right() - 8.0);
         p.text(
-            pos2(vx, rect.center().y + 8.0),
+            pos2(value_x, rect.center().y + 8.0),
             if rtl {
                 egui::Align2::LEFT_CENTER
             } else {
@@ -1525,11 +1514,7 @@ pub fn dashboard_header(
             egui::FontId::proportional(13.0),
             ink,
         );
-        x += if rtl {
-            card_w + card_gap
-        } else {
-            -(card_w + card_gap)
-        };
+        x -= card_w + card_gap;
     }
 }
 
@@ -1959,11 +1944,16 @@ pub fn categories(
                     .intersect(area),
             );
             tp.rect_filled(selected, 5.0, crate::theme::colors().field);
+            let stripe_x = if winui::rtl() {
+                selected.right() - 4.0
+            } else {
+                selected.left() + 1.0
+            };
             tp.rect_filled(
-                winui::rect(Rect::from_min_size(
-                    pos2(selected.left() + 1.0, selected.top() + 3.0),
+                Rect::from_min_size(
+                    pos2(stripe_x, selected.top() + 3.0),
                     vec2(3.0, 10.0),
-                )),
+                ),
                 2.0,
                 crate::theme::colors().accent,
             );
