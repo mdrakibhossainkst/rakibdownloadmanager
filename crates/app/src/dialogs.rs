@@ -2272,8 +2272,8 @@ it from Rakib Download Manager list of downloads?",
                         // i18n: never shown for a single download
                         &crate::i18n::tn(
                             n,
-                            "Are you sure you want to delete {n} download from Mister Download Manager list of downloads?",
-                            "Are you sure you want to delete these {n} downloads from Mister Download Manager list of downloads?",
+                            "Are you sure you want to delete {n} download from Rakib Download Manager list of downloads?",
+                            "Are you sure you want to delete these {n} downloads from Rakib Download Manager list of downloads?",
                         ),
                         &[("n", &crate::i18n::integer(n))],
                     )
@@ -3241,7 +3241,7 @@ mod tests {
                         ui.painter().text(
                             origin + vec2(10.0, 10.0),
                             egui::Align2::LEFT_TOP,
-                            "Mister Download Manager",
+                            "Rakib Download Manager",
                             egui::FontId::proportional(12.0),
                             egui::Color32::BLACK,
                         );
