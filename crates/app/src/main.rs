@@ -110,7 +110,9 @@ pub fn app_icon() -> std::sync::Arc<egui::IconData> {
                 // The receiving tray: a rounded horizontal slot.
                 let tray = (px >= 82.0 && px <= 174.0 && py >= 174.0 && py <= 188.0)
                     && (py <= 181.0 || (px >= 91.0 && px <= 165.0));
-                if shaft || head || tray { color = [242, 250, 255, 255]; }
+                if shaft || head || tray {
+                    color = [242, 250, 255, 255];
+                }
                 let i = (y * N + x) * 4;
                 rgba[i..i + 4].copy_from_slice(&color);
             }
@@ -120,7 +122,8 @@ pub fn app_icon() -> std::sync::Arc<egui::IconData> {
             width: N as u32,
             height: N as u32,
         })
-    }).clone()
+    })
+    .clone()
 }
 
 /// MDM_OFFSCREEN=1, for screenshots and checks (tools/lab/docs-shots.ps1): every window opens
