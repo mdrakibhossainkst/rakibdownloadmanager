@@ -158,8 +158,8 @@ jobs:
       - name: Logic against fake Firefox and Chrome APIs
         run: node tools/extension/test.mjs
 
-      # Chrome, Edge, Brave, Opera, Vivaldi (mdm-chromium.zip), Firefox (mdm-firefox.xpi) and
-      # the Chrome Web Store's copy (mdm-chrome-store.zip).
+      # Chrome, Edge, Brave, Opera, Vivaldi (rakib-chromium.zip), Firefox (rakib-firefox.xpi) and
+      # the Chrome Web Store's copy (rakib-chrome-store.zip).
       - name: Pack for every browser
         shell: pwsh
         run: ./tools/extension/pack.ps1
