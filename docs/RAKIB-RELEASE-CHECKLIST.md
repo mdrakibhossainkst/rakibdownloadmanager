@@ -15,6 +15,7 @@ This checklist distinguishes repository work from checks that require a real mac
 ## Required before a public release
 
 - [ ] Enable GitHub Actions for this repository if GitHub has them disabled
+- [ ] Enable the repository Issues feature so the in-app bug-report link can create reports in this fork
 - [ ] Run CI and fix all blocking failures; record Intel macOS build/test result
 - [ ] Run the Release workflow manually and inspect both DMG artifacts
 - [ ] Test the Intel DMG on macOS Ventura: first launch, menu-bar visibility, dashboard open/close, active downloads, progress windows, pause/resume, history, restart/login launch, and clean uninstall/reinstall
