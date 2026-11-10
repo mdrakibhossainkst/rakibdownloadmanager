@@ -6726,7 +6726,10 @@ impl App {
             w,
             self.items.len(),
             self.items.iter().filter(|item| item.live.is_some()).count(),
-            self.items.iter().filter(|item| item.status == Status::Complete).count(),
+            self.items
+                .iter()
+                .filter(|item| item.status == Status::Complete)
+                .count(),
         );
 
         // Categories pane.
