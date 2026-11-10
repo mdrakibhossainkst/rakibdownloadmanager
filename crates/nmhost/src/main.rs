@@ -36,7 +36,9 @@ use serde::{Deserialize, Serialize};
 mod win32;
 
 const HOST_NAME: &str = "com.misterdownloadmanager.host";
-use mdm_ipc::extension::{FIREFOX_ID, LEGACY_FIREFOX_ID, LEGACY_STORE_ID, STORE_ID, STORE_UPDATE_URL, chromium_ids, store_id};
+use mdm_ipc::extension::{
+    FIREFOX_ID, LEGACY_FIREFOX_ID, LEGACY_STORE_ID, STORE_UPDATE_URL, chromium_ids, store_id,
+};
 /// Where each Chromium browser looks for native messaging hosts on Windows, under HKCU (one
 /// user) or HKLM (everyone). Chromium-branded builds (Chromium, Helium, Thorium, and Brave and
 /// Brave Origin with every channel) read Chromium's first, then Chrome's, as most other forks do
@@ -778,7 +780,9 @@ fn origin(id: &str) -> String {
 fn our_caller(args: &[String]) -> bool {
     args.first()
         .is_some_and(|a| chromium_ids().iter().any(|id| *a == origin(id)))
-        || args.get(1).is_some_and(|a| a == FIREFOX_ID || a == LEGACY_FIREFOX_ID)
+        || args
+            .get(1)
+            .is_some_and(|a| a == FIREFOX_ID || a == LEGACY_FIREFOX_ID)
 }
 
 /// Windows: the manifests beside this exe, and the registry entries naming them, per user
@@ -1128,7 +1132,10 @@ mod tests {
             assert!(our_caller(&s(&[&format!("chrome-extension://{id}/")])));
         }
         assert!(our_caller(&s(&[r"C:\x\host.firefox.json", FIREFOX_ID])));
-        assert!(our_caller(&s(&[r"C:\x\host.firefox.json", LEGACY_FIREFOX_ID])));
+        assert!(our_caller(&s(&[
+            r"C:\x\host.firefox.json",
+            LEGACY_FIREFOX_ID
+        ])));
         assert!(!our_caller(&s(&["chrome-extension://someoneelse/"])));
         assert!(!our_caller(&s(&[r"C:\x\host.json", "evil@example.com"])));
         assert!(!our_caller(&[]));
