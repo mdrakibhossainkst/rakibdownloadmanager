@@ -2000,8 +2000,8 @@ assert.deepEqual(complaints, [], "nothing written to the console as an error or 
   const html = read("popup.html");
   const js = read("popup.js");
   const css = read("popup.css");
-  const ids = new Set([...html.matchAll(/\\bid="([^"]+)"/g)].map((m) => m[1]));
-  const used = [...js.matchAll(/\\$\\("([^"]+)"\\)/g)].map((m) => m[1]);
+  const ids = new Set([...html.matchAll(/\bid="([^"]+)"/g)].map((m) => m[1]));
+  const used = [...js.matchAll(/\$\("([^"]+)"\)/g)].map((m) => m[1]);
   assert.ok(used.length > 0, "popup has wired controls");
   for (const id of used) assert.ok(ids.has(id), `popup.js expects #${id} to exist`);
   assert.ok(html.includes("Rakib Download Manager"), "popup shows the Rakib product name");
