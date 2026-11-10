@@ -53,15 +53,15 @@ Firefox removes temporary add-ons when the browser closes. A permanent signed Ra
 
 If the browser downloads the file itself, first confirm the extension is enabled and the desktop app was launched once. Then see [browser troubleshooting](browser-help.md) and [browser integration details](browser-integration.md).
 
-## 6. Control what the extension captures
+## Choose what MDM takes
 
 - **File types:** configure **Options → File types** in the desktop app.
 - **Excluded sites:** add a site under **Options → File types** to leave its downloads in the browser.
 - **Per-browser capture:** use **Options → General → Capture downloads from the following browsers**.
 - **One-off download:** right-click a link and choose **Download with Rakib Download Manager**.
 
-![Options, File types: the file types Rakib Download Manager takes from the browser, and the sites it leaves alone](images/help/catch-file-types.webp)
-*1 the file types Rakib Download Manager takes, 2 the sites it leaves to the browser.*
+![Options, File types: the file types MDM takes from the browser, and the sites it leaves alone](images/help/catch-file-types.webp)
+*1 the file types MDM takes, 2 the sites it leaves to the browser.*
 
 Downloads the app does not capture remain with the browser.
 
