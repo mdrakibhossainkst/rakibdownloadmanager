@@ -91,6 +91,7 @@ for pair in "${targets[@]}"; do
   <key>CFBundlePackageType</key><string>APPL</string>
   <key>CFBundleExecutable</key><string>misterdownloadmanager</string>
   <key>CFBundleIconFile</key><string>AppIcon</string>
+  <key>LSUIElement</key><true/>
   <key>LSMinimumSystemVersion</key><string>11.0</string>
   <key>NSHighResolutionCapable</key><true/>
 </dict>
