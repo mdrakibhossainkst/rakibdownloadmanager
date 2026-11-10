@@ -62,7 +62,7 @@ for (const kind of ["chromium", "chrome-store", "firefox", "safari"]) {
     assert.ok(m.permissions.includes("nativeMessaging"), "Safari: the app extension is reached by native messaging");
   }
 }
-for (const zip of ["mdm-chromium.zip", "mdm-firefox.xpi", "mdm-chrome-store.zip"]) {
+for (const zip of ["rakib-chromium.zip", "rakib-firefox.xpi", "rakib-chrome-store.zip"]) {
   assert.ok(existsSync(new URL(zip, out)), zip);
 }
 console.log(`packages ok (version ${version}, unpacked ID ${unpackedId})`);
