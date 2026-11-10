@@ -1247,19 +1247,19 @@ fn chip(
     };
     // The cell holds the English key (filters match on it); the chip shows it translated.
     let full = crate::i18n::t(label);
-    // Room: the pill starts 5 px in, pads its text 6 px each side, and ends 3 px before the cell.
+    // Room: the pill starts 5 px in, pads its text 6 px each side, and stays vertically centred.
     let label = &winui::ellipsize(p, font, full, (x1 - x0 - 5.0 - 12.0 - 3.0).max(0.0));
     let w = winui::text_width_font(p, font.clone(), label).round();
     let pill = Rect::from_min_size(
-        pos2(x0 + 5.0, top + 2.0),
-        egui::vec2(w + 12.0, row_h() - 4.0),
+        pos2(x0 + 5.0, top + 4.0),
+        egui::vec2(w + 12.0, row_h() - 8.0),
     );
     p.rect_filled(winui::rect(pill), (row_h() - 8.0) / 2.0, fill);
     text_font(
         p,
         font.clone(),
         pill.left() + 6.0,
-        top + 12.0,
+        top + 18.0,
         label,
         crate::theme::colors().chip_text,
     );
