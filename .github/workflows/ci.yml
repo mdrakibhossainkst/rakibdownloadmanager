@@ -45,6 +45,10 @@ jobs:
           - os: ubuntu-latest
           - os: macos-latest
             experimental: true
+          # Intel compile/test coverage for the user's x86_64 Mac. Keep macOS experimental
+          # until GUI lifecycle behaviour is verified on a real Ventura installation.
+          - os: macos-15-intel
+            experimental: true
     runs-on: ${{ matrix.os }}
     continue-on-error: ${{ matrix.experimental == true }}
     # A cold build takes about 10 minutes; a hung runner (apt-get once hung for hours) is cut off
