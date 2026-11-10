@@ -311,7 +311,7 @@ jobs:
             gpg --batch --verify dist/SHA256SUMS.txt.sig dist/SHA256SUMS.txt
             if ($LASTEXITCODE) { throw "the signature of SHA256SUMS.txt doesn't verify" }
           } else {
-            Write-Warning "MDM_RELEASE_KEY isn't set: this release is unsigned, and MDM won't update to it by itself."
+            Write-Warning "RAKIB_RELEASE_KEY isn't set: this release is unsigned, and Rakib Download Manager will not self-update to it."
           }
           # Notes: the version's section of CHANGELOG.md ("## [X.Y.Z]" up to the next "## "),
           # else GitHub's list of changes since the last tag; first, the invitation to try the
