@@ -381,8 +381,8 @@ metrics! {
     font_small: "font.small", "egui's small text" = 11.0;
     font_body: "font.body", "egui's body text: tooltips, multi-line boxes" = 12.0;
     font_heading: "font.heading", "egui's headings" = 16.0;
-    list_row: "list.row", "Height of a row in the download list" = 17.0;
-    list_header: "list.header", "Height of the download list's column headers" = 24.0;
+    list_row: "list.row", "Height of a row in the download list" = 28.0;
+    list_header: "list.header", "Height of the download list's column headers" = 34.0;
     tooltip_width: "tooltip.width", "Where a tooltip's text wraps" = 320.0;
     tooltip_margin_x: "tooltip.margin-x", "A tooltip's left and right padding" = 9.0;
     tooltip_margin_top: "tooltip.margin-top", "A tooltip's top padding" = 6.0;
