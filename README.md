@@ -13,7 +13,7 @@
 </p>
 
 <p align="center">
-  🧩 <b>Browser extension:</b><br>
+  🧩 <b>Browser extension (upstream Mister Download Manager integration):</b><br>
   <a href="https://addons.mozilla.org/firefox/addon/mister-download-manager/"><img src="https://img.shields.io/badge/Add%20to-Firefox-2a78d6?style=flat-square&logo=firefoxbrowser&logoColor=white" alt="Add to Firefox" height="34"></a>
   <a href="https://chromewebstore.google.com/detail/mister-download-manager/ejoleppdfgjdndddcjoehopknmlglojp"><img src="https://img.shields.io/badge/Add%20to-Chrome-2a78d6?style=flat-square&logo=googlechrome&logoColor=white" alt="Add to Chrome" height="34"></a><br>
   <sub>The Chrome Web Store's is for
