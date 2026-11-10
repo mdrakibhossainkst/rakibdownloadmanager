@@ -1428,7 +1428,12 @@ pub fn dashboard_header(
         pos2(o.x + width - 8.0, top + 58.0),
     ));
     p.rect_filled(panel, 11.0, c.tab_page);
-    p.rect_stroke(panel, 11.0, egui::Stroke::new(1.0, c.group_line), egui::StrokeKind::Inside);
+    p.rect_stroke(
+        panel,
+        11.0,
+        egui::Stroke::new(1.0, c.group_line),
+        egui::StrokeKind::Inside,
+    );
     let accent = winui::rect(Rect::from_min_size(
         pos2(panel.left() + 1.0, panel.top() + 10.0),
         vec2(3.0, panel.height() - 20.0),
@@ -1436,12 +1441,30 @@ pub fn dashboard_header(
     p.rect_filled(accent, 2.0, c.accent);
 
     let rtl = winui::rtl();
-    let brand_x = winui::mx(if rtl { panel.right() - 18.0 } else { panel.left() + 18.0 });
-    let brand_align = if rtl { egui::Align2::RIGHT_CENTER } else { egui::Align2::LEFT_CENTER };
-    p.text(pos2(brand_x, panel.center().y - 7.0), brand_align,
-        "RAKIB DOWNLOAD MANAGER", egui::FontId::proportional(12.5), c.text);
-    p.text(pos2(brand_x, panel.center().y + 10.0), brand_align,
-        crate::i18n::t("Download workspace"), egui::FontId::proportional(9.0), c.muted);
+    let brand_x = winui::mx(if rtl {
+        panel.right() - 18.0
+    } else {
+        panel.left() + 18.0
+    });
+    let brand_align = if rtl {
+        egui::Align2::RIGHT_CENTER
+    } else {
+        egui::Align2::LEFT_CENTER
+    };
+    p.text(
+        pos2(brand_x, panel.center().y - 7.0),
+        brand_align,
+        "RAKIB DOWNLOAD MANAGER",
+        egui::FontId::proportional(12.5),
+        c.text,
+    );
+    p.text(
+        pos2(brand_x, panel.center().y + 10.0),
+        brand_align,
+        crate::i18n::t("Download workspace"),
+        egui::FontId::proportional(9.0),
+        c.muted,
+    );
 
     let stats_width = (panel.width() - 190.0).clamp(210.0, 300.0);
     let card_gap = 6.0;
@@ -1452,21 +1475,61 @@ pub fn dashboard_header(
         (crate::i18n::t("Downloading"), active, c.reach_near),
         (crate::i18n::t("Complete"), complete, c.success),
     ];
-    let mut x = if rtl { panel.left() + 12.0 } else { panel.right() - 12.0 - card_w };
+    let mut x = if rtl {
+        panel.left() + 12.0
+    } else {
+        panel.right() - 12.0 - card_w
+    };
     for (label, value, ink) in stats {
-        let logical = Rect::from_min_size(pos2(x, panel.center().y - card_h / 2.0), vec2(card_w, card_h));
+        let logical = Rect::from_min_size(
+            pos2(x, panel.center().y - card_h / 2.0),
+            vec2(card_w, card_h),
+        );
         let rect = winui::rect(logical);
         p.rect_filled(rect, 8.0, c.field);
-        p.rect_stroke(rect, 8.0, egui::Stroke::new(1.0, c.group_line), egui::StrokeKind::Inside);
-        let lx = winui::mx(if rtl { logical.right() - 8.0 } else { logical.left() + 8.0 });
-        p.text(pos2(lx, rect.center().y - 7.0),
-            if rtl { egui::Align2::RIGHT_CENTER } else { egui::Align2::LEFT_CENTER },
-            label, egui::FontId::proportional(8.0), c.muted);
-        let vx = winui::mx(if rtl { logical.left() + 8.0 } else { logical.right() - 8.0 });
-        p.text(pos2(vx, rect.center().y + 8.0),
-            if rtl { egui::Align2::LEFT_CENTER } else { egui::Align2::RIGHT_CENTER },
-            crate::i18n::integer(value as u64), egui::FontId::proportional(13.0), ink);
-        x += if rtl { card_w + card_gap } else { -(card_w + card_gap) };
+        p.rect_stroke(
+            rect,
+            8.0,
+            egui::Stroke::new(1.0, c.group_line),
+            egui::StrokeKind::Inside,
+        );
+        let lx = winui::mx(if rtl {
+            logical.right() - 8.0
+        } else {
+            logical.left() + 8.0
+        });
+        p.text(
+            pos2(lx, rect.center().y - 7.0),
+            if rtl {
+                egui::Align2::RIGHT_CENTER
+            } else {
+                egui::Align2::LEFT_CENTER
+            },
+            label,
+            egui::FontId::proportional(8.0),
+            c.muted,
+        );
+        let vx = winui::mx(if rtl {
+            logical.left() + 8.0
+        } else {
+            logical.right() - 8.0
+        });
+        p.text(
+            pos2(vx, rect.center().y + 8.0),
+            if rtl {
+                egui::Align2::LEFT_CENTER
+            } else {
+                egui::Align2::RIGHT_CENTER
+            },
+            crate::i18n::integer(value as u64),
+            egui::FontId::proportional(13.0),
+            ink,
+        );
+        x += if rtl {
+            card_w + card_gap
+        } else {
+            -(card_w + card_gap)
+        };
     }
 }
 
@@ -1897,7 +1960,10 @@ pub fn categories(
             );
             tp.rect_filled(selected, 5.0, crate::theme::colors().field);
             tp.rect_filled(
-                winui::rect(Rect::from_min_size(pos2(selected.left() + 1.0, selected.top() + 3.0), vec2(3.0, 10.0))),
+                winui::rect(Rect::from_min_size(
+                    pos2(selected.left() + 1.0, selected.top() + 3.0),
+                    vec2(3.0, 10.0),
+                )),
                 2.0,
                 crate::theme::colors().accent,
             );
