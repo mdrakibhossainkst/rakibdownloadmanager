@@ -99,7 +99,7 @@ one:
 | **`...-setup.exe`** | **Not sure? Take this one.** It installs MDM, connects it to your browser and asks your language. |
 | `...-portable.zip` | You want MDM on a USB stick or without installing: unzip and run. Everything stays in its folder. |
 | `...-x64.zip` | You want the plain programs without an installer. |
-| `...-extension-chromium.zip` | You want to add the browser extension by hand (Chrome, Edge, Brave, Opera, Vivaldi). From the stores is easier: [Add to Chrome](https://chromewebstore.google.com/detail/mister-download-manager/ejoleppdfgjdndddcjoehopknmlglojp), [Add to Firefox](https://addons.mozilla.org/firefox/addon/mister-download-manager/). |
+| `RakibDownloadManager-...-extension-chromium.zip` | You want to install the Rakib browser extension manually (Chrome, Edge, Brave, Opera, Vivaldi). Firefox has a temporary `.xpi` for testing until its signed listing is published. [Installation guide](docs/guide-catch-browser-downloads.md). |
 
 > [!NOTE]
 > Windows may say *"Windows protected your PC"* the first time, because this early version isn't
