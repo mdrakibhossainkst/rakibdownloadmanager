@@ -1419,6 +1419,8 @@ pub fn dashboard_header(
     total: usize,
     active: usize,
     complete: usize,
+    errors: usize,
+    speed: f64,
 ) {
     let p = ui.painter();
     let c = crate::theme::colors();
@@ -1434,8 +1436,6 @@ pub fn dashboard_header(
         egui::StrokeKind::Inside,
     );
 
-    // The brand rail and title follow the reading direction; all geometry stays logical
-    // until it is converted once for painting.
     let rtl = winui::rtl();
     let accent = winui::rect(Rect::from_min_size(
         pos2(logical_panel.left() + 1.0, top + 10.0),
@@ -1443,7 +1443,43 @@ pub fn dashboard_header(
     ));
     p.rect_filled(accent, 2.0, c.accent);
 
-    let brand_x = winui::mx(logical_panel.left() + 18.0);
+    // A compact, original brand glyph: download arrow landing in a tray.
+    let mark = winui::rect(Rect::from_min_size(
+        pos2(logical_panel.left() + 12.0, top + 11.0),
+        vec2(36.0, 36.0),
+    ));
+    p.rect_filled(mark, 9.0, c.field);
+    p.rect_stroke(
+        mark,
+        9.0,
+        egui::Stroke::new(1.0, c.group_line),
+        egui::StrokeKind::Inside,
+    );
+    let cx = mark.center().x;
+    let cy = mark.center().y;
+    p.circle_stroke(
+        pos2(cx, cy - 1.0),
+        11.0,
+        egui::Stroke::new(1.6, c.accent),
+    );
+    p.line_segment(
+        [pos2(cx, cy - 10.0), pos2(cx, cy + 3.0)],
+        egui::Stroke::new(2.2, c.text),
+    );
+    p.line_segment(
+        [pos2(cx - 5.0, cy - 2.0), pos2(cx, cy + 3.0)],
+        egui::Stroke::new(2.2, c.text),
+    );
+    p.line_segment(
+        [pos2(cx + 5.0, cy - 2.0), pos2(cx, cy + 3.0)],
+        egui::Stroke::new(2.2, c.text),
+    );
+    p.line_segment(
+        [pos2(cx - 7.0, cy + 8.0), pos2(cx + 7.0, cy + 8.0)],
+        egui::Stroke::new(2.0, c.accent),
+    );
+
+    let brand_x = winui::mx(logical_panel.left() + 58.0);
     let brand_align = if rtl {
         egui::Align2::RIGHT_CENTER
     } else {
@@ -1456,22 +1492,25 @@ pub fn dashboard_header(
         egui::FontId::proportional(12.5),
         c.text,
     );
+    let rate = crate::i18n::decimal(speed.max(0.0) / 1_048_576.0, 1);
+    let subtitle = format!("{}  ·  {rate} MB/s", crate::i18n::t("Download workspace"));
     p.text(
         pos2(brand_x, panel.center().y + 10.0),
         brand_align,
-        crate::i18n::t("Download workspace"),
+        subtitle,
         egui::FontId::proportional(9.0),
         c.muted,
     );
 
-    let stats_width = (logical_panel.width() - 190.0).clamp(210.0, 300.0);
-    let card_gap = 6.0;
-    let card_w = ((stats_width - 2.0 * card_gap) / 3.0).clamp(62.0, 96.0);
+    let stats_width = (logical_panel.width() - 205.0).clamp(270.0, 350.0);
+    let card_gap = 5.0;
+    let card_w = ((stats_width - 3.0 * card_gap) / 4.0).clamp(62.0, 84.0);
     let card_h = 40.0;
     let stats = [
         (crate::i18n::t("Downloads"), total, c.accent),
         (crate::i18n::t("Downloading"), active, c.reach_near),
         (crate::i18n::t("Complete"), complete, c.success),
+        (crate::i18n::t("Error"), errors, c.danger),
     ];
     let mut x = logical_panel.right() - 12.0 - card_w;
     for (label, value, ink) in stats {
@@ -1487,27 +1526,18 @@ pub fn dashboard_header(
             egui::Stroke::new(1.0, c.group_line),
             egui::StrokeKind::Inside,
         );
-
-        let label_x = winui::mx(logical.left() + 8.0);
+        let label_x = winui::mx(logical.left() + 7.0);
         p.text(
             pos2(label_x, rect.center().y - 7.0),
-            if rtl {
-                egui::Align2::RIGHT_CENTER
-            } else {
-                egui::Align2::LEFT_CENTER
-            },
+            if rtl { egui::Align2::RIGHT_CENTER } else { egui::Align2::LEFT_CENTER },
             label,
-            egui::FontId::proportional(8.0),
+            egui::FontId::proportional(7.5),
             c.muted,
         );
-        let value_x = winui::mx(logical.right() - 8.0);
+        let value_x = winui::mx(logical.right() - 7.0);
         p.text(
             pos2(value_x, rect.center().y + 8.0),
-            if rtl {
-                egui::Align2::LEFT_CENTER
-            } else {
-                egui::Align2::RIGHT_CENTER
-            },
+            if rtl { egui::Align2::LEFT_CENTER } else { egui::Align2::RIGHT_CENTER },
             crate::i18n::integer(value as u64),
             egui::FontId::proportional(13.0),
             ink,
