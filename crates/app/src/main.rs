@@ -75,21 +75,47 @@ mod xdgicons;
 pub const MAIN_TITLE: &str = concat!("Rakib Download Manager ", env!("CARGO_PKG_VERSION"));
 
 /// The app icon (art/, made with ChatGPT; sizes by tools/icon/build_icon.py), for windows that
-/// show one as IDM's do: the 256 px size, which the system scales down for the title bar, the
-/// taskbar and Alt+Tab at any display scaling. On macOS none: the Dock keeps the app bundle's own
-/// icon (AppIcon.icns, every size, tools/installer/build-macos.sh), which an icon set at run
-/// time would replace.
+/// Rakib Download Manager's compact download-arrow mark. Drawing it here keeps the
+/// notification-area icon available on macOS as well as Windows and Linux.
 pub fn app_icon() -> std::sync::Arc<egui::IconData> {
     static ICON: std::sync::OnceLock<std::sync::Arc<egui::IconData>> = std::sync::OnceLock::new();
     ICON.get_or_init(|| {
-        if cfg!(target_os = "macos") {
-            // eframe takes an empty icon as "none" (AppTitleIconSetter).
-            return std::sync::Arc::new(egui::IconData::default());
+        const N: usize = 256;
+        let mut rgba = vec![0_u8; N * N * 4];
+        let inside_round = |x: f32, y: f32| {
+            let (cx, cy) = (x - 128.0, y - 128.0);
+            let qx = cx.abs() - 91.0;
+            let qy = cy.abs() - 91.0;
+            let ox = qx.max(0.0);
+            let oy = qy.max(0.0);
+            ox * ox + oy * oy <= 28.0 * 28.0
+                || (qx.max(qy) <= 0.0)
+        };
+        for y in 0..N {
+            for x in 0..N {
+                let (px, py) = (x as f32 + 0.5, y as f32 + 0.5);
+                if !inside_round(px, py) { continue; }
+                let mut color = [13_u8, 23, 43, 255];
+                let dx = px - 128.0;
+                let dy = py - 126.0;
+                let radius = (dx * dx + dy * dy).sqrt();
+                if (radius - 76.0).abs() < 7.0 {
+                    color = [35, 207, 190, 255];
+                }
+                // White download shaft and arrow head.
+                let shaft = (116.0..140.0).contains(&px) && (72.0..151.0).contains(&py);
+                let head = py >= 132.0 && py <= 183.0
+                    && (px - 128.0).abs() <= (py - 132.0) * 0.82;
+                // The receiving tray: a rounded horizontal slot.
+                let tray = (px >= 82.0 && px <= 174.0 && py >= 174.0 && py <= 188.0)
+                    && (py <= 181.0 || (px >= 91.0 && px <= 165.0));
+                if shaft || head || tray { color = [242, 250, 255, 255]; }
+                let i = (y * N + x) * 4;
+                rgba[i..i + 4].copy_from_slice(&color);
+            }
         }
-        let png = include_bytes!("../assets/icons/app/mdm-256.png");
-        std::sync::Arc::new(eframe::icon_data::from_png_bytes(png).unwrap_or_default())
-    })
-    .clone()
+        std::sync::Arc::new(egui::IconData { rgba, width: N as u32, height: N as u32 })
+    }).clone()
 }
 
 /// MDM_OFFSCREEN=1, for screenshots and checks (tools/lab/docs-shots.ps1): every window opens
