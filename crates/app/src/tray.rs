@@ -119,7 +119,7 @@ impl Tray {
         };
         add(
             &menu,
-            crate::i18n::mark("Open Rakib Download Manager"),
+            crate::i18n::mark("Open Mister Download Manager"),
             TrayCmd::Show,
         );
         menu.append(&PredefinedMenuItem::separator()).ok();
