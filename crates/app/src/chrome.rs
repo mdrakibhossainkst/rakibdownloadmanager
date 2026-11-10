@@ -1412,19 +1412,54 @@ pub fn pane_top() -> f32 {
 }
 
 /// The compact summary band below the action toolbar.
-pub fn dashboard_header(ui: &Ui, o: Pos2, width: f32, total: usize, active: usize, complete: usize) {
+pub fn dashboard_header(
+    ui: &Ui,
+    o: Pos2,
+    width: f32,
+    total: usize,
+    active: usize,
+    complete: usize,
+) {
     let p = ui.painter();
     let c = crate::theme::colors();
     let top = o.y + MENU_H + 72.0;
-    let panel = winui::rect(Rect::from_min_max(pos2(o.x + 7.0, top), pos2(o.x + width - 8.0, top + 46.0)));
+    let panel = winui::rect(Rect::from_min_max(
+        pos2(o.x + 7.0, top),
+        pos2(o.x + width - 8.0, top + 46.0),
+    ));
     p.rect_filled(panel, 9.0, c.tab_page);
-    p.rect_stroke(panel, 9.0, egui::Stroke::new(1.0, c.group_line), egui::StrokeKind::Inside);
+    p.rect_stroke(
+        panel,
+        9.0,
+        egui::Stroke::new(1.0, c.group_line),
+        egui::StrokeKind::Inside,
+    );
 
     let rtl = winui::rtl();
-    let brand_x = winui::mx(if rtl { panel.right() - 18.0 } else { panel.left() + 18.0 });
-    let brand_align = if rtl { egui::Align2::RIGHT_CENTER } else { egui::Align2::LEFT_CENTER };
-    p.text(pos2(brand_x, panel.center().y - 6.0), brand_align, "RAKIB DOWNLOAD MANAGER", egui::FontId::proportional(12.0), c.text);
-    p.text(pos2(brand_x, panel.center().y + 10.0), brand_align, crate::i18n::t("Download workspace"), egui::FontId::proportional(9.0), c.muted);
+    let brand_x = winui::mx(if rtl {
+        panel.right() - 18.0
+    } else {
+        panel.left() + 18.0
+    });
+    let brand_align = if rtl {
+        egui::Align2::RIGHT_CENTER
+    } else {
+        egui::Align2::LEFT_CENTER
+    };
+    p.text(
+        pos2(brand_x, panel.center().y - 6.0),
+        brand_align,
+        "RAKIB DOWNLOAD MANAGER",
+        egui::FontId::proportional(12.0),
+        c.text,
+    );
+    p.text(
+        pos2(brand_x, panel.center().y + 10.0),
+        brand_align,
+        crate::i18n::t("Download workspace"),
+        egui::FontId::proportional(9.0),
+        c.muted,
+    );
 
     let stats = [
         (crate::i18n::t("Downloads"), total, c.accent),
@@ -1434,37 +1469,98 @@ pub fn dashboard_header(ui: &Ui, o: Pos2, width: f32, total: usize, active: usiz
     let card_w = 104.0;
     let card_h = 32.0;
     let gap = 7.0;
-    let mut x = if rtl { panel.left() + 14.0 } else { panel.right() - 14.0 - card_w };
+    let mut x = if rtl {
+        panel.left() + 14.0
+    } else {
+        panel.right() - 14.0 - card_w
+    };
     for (label, value, ink) in stats {
-        let logical = Rect::from_min_size(pos2(x, panel.center().y - card_h / 2.0), vec2(card_w, card_h));
+        let logical = Rect::from_min_size(
+            pos2(x, panel.center().y - card_h / 2.0),
+            vec2(card_w, card_h),
+        );
         let rect = winui::rect(logical);
         p.rect_filled(rect, 7.0, c.field);
-        p.rect_stroke(rect, 7.0, egui::Stroke::new(1.0, c.group_line), egui::StrokeKind::Inside);
-        let label_x = winui::mx(if rtl { logical.right() - 9.0 } else { logical.left() + 9.0 });
-        p.text(pos2(label_x, rect.center().y - 6.0), if rtl { egui::Align2::RIGHT_CENTER } else { egui::Align2::LEFT_CENTER }, label, egui::FontId::proportional(8.5), c.muted);
-        let value_x = winui::mx(if rtl { logical.left() + 9.0 } else { logical.right() - 9.0 });
-        p.text(pos2(value_x, rect.center().y + 5.0), if rtl { egui::Align2::LEFT_CENTER } else { egui::Align2::RIGHT_CENTER }, crate::i18n::integer(value as u64), egui::FontId::proportional(12.0), ink);
-        x += if rtl { card_w + gap } else { -(card_w + gap) };
+        p.rect_stroke(
+            rect,
+            7.0,
+            egui::Stroke::new(1.0, c.group_line),
+            egui::StrokeKind::Inside,
+        );
+        let label_x = winui::mx(if rtl {
+            logical.right() - 9.0
+        } else {
+            logical.left() + 9.0
+        });
+        p.text(
+            pos2(label_x, rect.center().y - 6.0),
+            if rtl {
+                egui::Align2::RIGHT_CENTER
+            } else {
+                egui::Align2::LEFT_CENTER
+            },
+            label,
+            egui::FontId::proportional(8.5),
+            c.muted,
+        );
+        let value_x = winui::mx(if rtl {
+            logical.left() + 9.0
+        } else {
+            logical.right() - 9.0
+        });
+        p.text(
+            pos2(value_x, rect.center().y + 5.0),
+            if rtl {
+                egui::Align2::LEFT_CENTER
+            } else {
+                egui::Align2::RIGHT_CENTER
+            },
+            crate::i18n::integer(value as u64),
+            egui::FontId::proportional(12.0),
+            ink,
+        );
+        x += if rtl {
+            card_w + gap
+        } else {
+            -(card_w + gap)
+        };
     }
 }
 
 /// A branded card-based action toolbar. Commands and split-button behaviour remain unchanged.
-pub fn toolbar(ui: &mut Ui, o: Pos2, width: f32, buttons: &[(Icon, &str, bool)]) -> Option<ToolbarEvent> {
+pub fn toolbar(
+    ui: &mut Ui,
+    o: Pos2,
+    width: f32,
+    buttons: &[(Icon, &str, bool)],
+) -> Option<ToolbarEvent> {
     let p = ui.painter().clone();
     let top = o.y + MENU_H;
     let c = crate::theme::colors();
     fill(&p, o.x, top, o.x + width - 1.0, top, c.toolbar_line);
-    fill(&p, o.x, top + 1.0, o.x + width - 1.0, top + 1.0, c.toolbar_line_light);
+    fill(
+        &p,
+        o.x,
+        top + 1.0,
+        o.x + width - 1.0,
+        top + 1.0,
+        c.toolbar_line_light,
+    );
     let band = Rect::from_min_size(pos2(o.x, top + 2.0), vec2(width, 68.0));
     p.rect_filled(band, 0.0, c.window);
 
     let mut x = o.x + 7.0;
     let mut event = None;
-    let is_dropdown = |icon: &Icon| matches!(icon, Icon::StartQueue | Icon::StopQueue | Icon::AddTorrent);
-    let natural: Vec<(f32, f32)> = buttons.iter().map(|(icon, label, _)| {
-        let ext = text_width_font(&p, winui::tahoma(), crate::i18n::tc("toolbar", label)).round();
-        (ext, if is_dropdown(icon) { 13.0 } else { 0.0 })
-    }).collect();
+    let is_dropdown =
+        |icon: &Icon| matches!(icon, Icon::StartQueue | Icon::StopQueue | Icon::AddTorrent);
+    let natural: Vec<(f32, f32)> = buttons
+        .iter()
+        .map(|(icon, label, _)| {
+            let ext =
+                text_width_font(&p, winui::tahoma(), crate::i18n::tc("toolbar", label)).round();
+            (ext, if is_dropdown(icon) { 13.0 } else { 0.0 })
+        })
+        .collect();
     let cap = label_cap(&natural, 62.0, width - 14.0);
 
     for (i, (icon, label, enabled)) in buttons.iter().enumerate() {
@@ -1473,13 +1569,26 @@ pub fn toolbar(ui: &mut Ui, o: Pos2, width: f32, buttons: &[(Icon, &str, bool)])
         let ext = text_width_font(&p, winui::tahoma(), full).round();
         let bw = 62.0f32.max((ext + 10.0).min(cap));
         let total = bw + if dropdown { 13.0 } else { 0.0 };
-        let rect = winui::rect(Rect::from_min_size(pos2(x, band.top() + 5.0), vec2(total, 56.0)));
-        let hit = ui.interact(rect, egui::Id::unique(("rakib-toolbar", i)), winui::pointer_only());
+        let rect = winui::rect(Rect::from_min_size(
+            pos2(x, band.top() + 5.0),
+            vec2(total, 56.0),
+        ));
+        let hit = ui.interact(
+            rect,
+            egui::Id::unique(("rakib-toolbar", i)),
+            winui::pointer_only(),
+        );
         let on_arrow = |q: Pos2| dropdown && winui::mx(q.x) >= x + bw;
         let arrow_hover = hit.hover_pos().is_some_and(on_arrow);
         let primary = i == 0;
         let face = if primary {
-            if hit.is_pointer_button_down_on() { c.button_accent_pressed } else if hit.hovered() { c.button_accent_hot } else { c.button_accent }
+            if hit.is_pointer_button_down_on() {
+                c.button_accent_pressed
+            } else if hit.hovered() {
+                c.button_accent_hot
+            } else {
+                c.button_accent
+            }
         } else if hit.is_pointer_button_down_on() {
             c.button_pressed
         } else if hit.hovered() {
@@ -1488,27 +1597,84 @@ pub fn toolbar(ui: &mut Ui, o: Pos2, width: f32, buttons: &[(Icon, &str, bool)])
             c.field
         };
         p.rect_filled(rect, 8.0, if enabled || primary { face } else { c.field });
-        p.rect_stroke(rect, 8.0, egui::Stroke::new(1.0, if primary { c.button_accent_bottom } else { c.group_line }), egui::StrokeKind::Inside);
+        p.rect_stroke(
+            rect,
+            8.0,
+            egui::Stroke::new(
+                1.0,
+                if primary {
+                    c.button_accent_bottom
+                } else {
+                    c.group_line
+                },
+            ),
+            egui::StrokeKind::Inside,
+        );
         if dropdown {
             let divider_x = winui::mx(x + bw);
-            winui::fill_l(&p, divider_x, rect.top() + 9.0, divider_x, rect.bottom() - 9.0, c.group_line);
+            winui::fill_l(
+                &p,
+                divider_x,
+                rect.top() + 9.0,
+                divider_x,
+                rect.bottom() - 9.0,
+                c.group_line,
+            );
         }
 
-        let icon_center = pos2(rect.center().x - if dropdown { 4.0 } else { 0.0 }, rect.top() + 19.0);
-        icon.image(*enabled).paint_at(ui, winui::rect(Rect::from_center_size(icon_center, vec2(25.0, 25.0))));
-        let shown = if ext + 10.0 > bw { winui::ellipsize(&p, &winui::tahoma(), full, bw - 8.0) } else { full.to_owned() };
-        p.text(pos2(rect.center().x - if dropdown { 4.0 } else { 0.0 }, rect.bottom() - 8.0), egui::Align2::CENTER_CENTER, shown, egui::FontId::proportional(9.0), if !enabled { c.text_disabled } else if primary { c.button_accent_text } else { c.text });
+        let icon_center = pos2(
+            rect.center().x - if dropdown { 4.0 } else { 0.0 },
+            rect.top() + 19.0,
+        );
+        icon.image(*enabled).paint_at(
+            ui,
+            winui::rect(Rect::from_center_size(icon_center, vec2(25.0, 25.0))),
+        );
+        let shown = if ext + 10.0 > bw {
+            winui::ellipsize(&p, &winui::tahoma(), full, bw - 8.0)
+        } else {
+            full.to_owned()
+        };
+        p.text(
+            pos2(
+                rect.center().x - if dropdown { 4.0 } else { 0.0 },
+                rect.bottom() - 8.0,
+            ),
+            egui::Align2::CENTER_CENTER,
+            shown,
+            egui::FontId::proportional(9.0),
+            if !enabled {
+                c.text_disabled
+            } else if primary {
+                c.button_accent_text
+            } else {
+                c.text
+            },
+        );
 
         if dropdown {
             let arrow_x = winui::mx(x + bw + 6.0);
             let arrow_y = rect.center().y;
             for (row, half) in [3.0f32, 2.0, 1.0, 0.0].iter().enumerate() {
-                winui::fill_l(&p, arrow_x - half, arrow_y + row as f32 - 1.0, arrow_x + half, arrow_y + row as f32 - 1.0, if arrow_hover { c.text } else { c.muted });
+                winui::fill_l(
+                    &p,
+                    arrow_x - half,
+                    arrow_y + row as f32 - 1.0,
+                    arrow_x + half,
+                    arrow_y + row as f32 - 1.0,
+                    if arrow_hover { c.text } else { c.muted },
+                );
             }
         }
-        if hit.clicked() && (*enabled || (dropdown && hit.interact_pointer_pos().is_some_and(on_arrow))) {
+        if hit.clicked()
+            && (*enabled || (dropdown && hit.interact_pointer_pos().is_some_and(on_arrow)))
+        {
             let arrow = hit.interact_pointer_pos().is_some_and(on_arrow);
-            event = Some(if arrow { ToolbarEvent::Drop(i, pos2(winui::mx(x), o.y + 85.0)) } else { ToolbarEvent::Click(i) });
+            event = Some(if arrow {
+                ToolbarEvent::Drop(i, pos2(winui::mx(x), o.y + 85.0))
+            } else {
+                ToolbarEvent::Click(i)
+            });
         }
         x += total + 4.0;
     }
