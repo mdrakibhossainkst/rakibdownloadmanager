@@ -167,10 +167,16 @@ jobs:
       - name: Check the packages
         run: node tools/extension/check-pack.mjs
 
+      - name: Name versioned Rakib extension downloads
+        shell: pwsh
+        run: |
+          $v = [regex]::Match((Get-Content Cargo.toml -Raw), '(?m)^version\s*=\s*"([^"]+)"').Groups[1].Value
+          New-Item -ItemType Directory -Force target/dist | Out-Null
+          Copy-Item target/extension/rakib-chromium.zip "target/dist/RakibDownloadManager-$v-extension-chromium.zip"
+          Copy-Item target/extension/rakib-firefox.xpi "target/dist/RakibDownloadManager-$v-extension-firefox.xpi"
+          Copy-Item target/extension/rakib-chrome-store.zip "target/dist/RakibDownloadManager-$v-chrome-web-store.zip"
+
       - uses: actions/upload-artifact@v4
         with:
           name: rakib-browser-extensions
-          path: |
-            target/extension/rakib-chromium.zip
-            target/extension/rakib-firefox.xpi
-            target/extension/rakib-chrome-store.zip
+          path: target/dist/*
