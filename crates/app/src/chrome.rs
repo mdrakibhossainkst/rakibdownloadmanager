@@ -1457,11 +1457,7 @@ pub fn dashboard_header(
     );
     let cx = mark.center().x;
     let cy = mark.center().y;
-    p.circle_stroke(
-        pos2(cx, cy - 1.0),
-        11.0,
-        egui::Stroke::new(1.6, c.accent),
-    );
+    p.circle_stroke(pos2(cx, cy - 1.0), 11.0, egui::Stroke::new(1.6, c.accent));
     p.line_segment(
         [pos2(cx, cy - 10.0), pos2(cx, cy + 3.0)],
         egui::Stroke::new(2.2, c.text),
@@ -1529,7 +1525,11 @@ pub fn dashboard_header(
         let label_x = winui::mx(logical.left() + 7.0);
         p.text(
             pos2(label_x, rect.center().y - 7.0),
-            if rtl { egui::Align2::RIGHT_CENTER } else { egui::Align2::LEFT_CENTER },
+            if rtl {
+                egui::Align2::RIGHT_CENTER
+            } else {
+                egui::Align2::LEFT_CENTER
+            },
             label,
             egui::FontId::proportional(7.5),
             c.muted,
@@ -1537,7 +1537,11 @@ pub fn dashboard_header(
         let value_x = winui::mx(logical.right() - 7.0);
         p.text(
             pos2(value_x, rect.center().y + 8.0),
-            if rtl { egui::Align2::LEFT_CENTER } else { egui::Align2::RIGHT_CENTER },
+            if rtl {
+                egui::Align2::LEFT_CENTER
+            } else {
+                egui::Align2::RIGHT_CENTER
+            },
             crate::i18n::integer(value as u64),
             egui::FontId::proportional(13.0),
             ink,
