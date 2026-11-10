@@ -96,7 +96,7 @@ fn startup_entry(exe: &Path, macos: bool) -> String {
             })
             .collect();
         format!(
-            "[Desktop Entry]\nType=Application\nName=Mister Download Manager\n\
+            "[Desktop Entry]\nType=Application\nName=Rakib Download Manager\n\
              Exec=\"{quoted}\" {arg}\nIcon=misterdownloadmanager\nTerminal=false\n\
              X-GNOME-Autostart-enabled=true\n"
         )
