@@ -48,7 +48,7 @@ mkdir -p "$set_dir"
 for s in 16 32 128 256 512; do
   sips -z "$s" "$s" "$rakib_icon" --out "$set_dir/icon_${s}x${s}.png" >/dev/null
   d=$((s * 2))
-  sips -z "$d" "$d" "$root/art/Mister Download Manager.png" --out "$set_dir/icon_${s}x${s}@2x.png" >/dev/null
+  sips -z "$d" "$d" "$rakib_icon" --out "$set_dir/icon_${s}x${s}@2x.png" >/dev/null
 done
 iconutil -c icns "$set_dir" -o "$stage/AppIcon.icns"
 
