@@ -97,6 +97,23 @@ jobs:
       - name: Tests
         run: cargo test --workspace
 
+      # The app bundle's custom SVG icon must rasterize and pack on both Intel and Apple Silicon.
+      - name: Rakib app icon renders and packs as ICNS
+        if: runner.os == 'macOS'
+        run: |
+          tmp="$(mktemp -d)"
+          swift tools/installer/render-svg-icon.swift "art/Rakib Download Manager.svg" "$tmp/RakibIcon.png"
+          sips -g pixelWidth -g pixelHeight "$tmp/RakibIcon.png"
+          mkdir "$tmp/AppIcon.iconset"
+          for size in 16 32 128 256 512; do
+            sips -z "$size" "$size" "$tmp/RakibIcon.png" --out "$tmp/AppIcon.iconset/icon_${size}x${size}.png" >/dev/null
+            double=$((size * 2))
+            sips -z "$double" "$double" "$tmp/RakibIcon.png" --out "$tmp/AppIcon.iconset/icon_${size}x${size}@2x.png" >/dev/null
+          done
+          iconutil -c icns "$tmp/AppIcon.iconset" -o "$tmp/RakibAppIcon.icns"
+          test -s "$tmp/RakibAppIcon.icns"
+          rm -rf "$tmp"
+
       # Safari's extension (macOS): its native half relays to the helper from inside the
       # sandbox Safari makes it run in. Safari itself isn't needed.
       - name: Safari extension's relay and helper, sandboxed
