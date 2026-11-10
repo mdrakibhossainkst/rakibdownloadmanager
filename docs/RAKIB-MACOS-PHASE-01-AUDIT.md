@@ -23,13 +23,22 @@ Date: 2026-11-10
 4. `crates/app/src/app.rs` handles a close request by cancelling the close and hiding to tray when the tray is available and `settings.close_to_tray` is enabled. If no visible tray is detected on macOS, it falls back to minimizing rather than hiding an unreachable window.
 5. The app's downloads run on a Tokio runtime; the UI reads snapshots. This is a useful separation, but it is not yet proof that all shutdown/termination paths preserve downloads.
 6. Active downloads are represented in the tray menu and can reopen their progress window.
+7. `crates/app/src/settings.rs` documents both `minimize_to_tray` and `close_to_tray` as enabled by default. Startup registration (`launch_on_startup`) is deliberately disabled by default until the user enables it.
+8. The existing app already has a theme setting and theme-file support. Preserve the current dashboard structure; use theme assets and app identity for initial visual customization.
 
-## Compatibility and build observations
+## macOS app bundle findings
+
+- `tools/installer/build-macos.sh` already builds both `aarch64-apple-darwin` and `x86_64-apple-darwin` release binaries and packages separate DMGs.
+- The generated app bundle currently identifies itself as “Mister Download Manager” and uses bundle ID `io.github.anefzaoui.misterdownloadmanager`. Both need a carefully planned Rakib identity migration, including update/install paths and data-directory compatibility; do not change only the display name.
+- The bundle declares `LSMinimumSystemVersion` as `11.0`, so Ventura 13.7.8 is above the declared minimum. This is not by itself proof that all dependencies or runtime behaviour work on Ventura.
+
+## Compatibility and CI observations
 
 - The project declares Rust 1.95 as its minimum; the build workflow uses the repository's stable toolchain file.
-- The existing CI workflow labels macOS as experimental and uses `macos-latest`, which currently means Apple Silicon. That does not validate an Intel x86_64 build.
-- For this Intel Mac target, add a dedicated x86_64 macOS CI job (for example, `macos-15-intel`) and explicitly test the minimum macOS deployment target before treating the build as compatible with Ventura 13.7.8.
-- GitHub-hosted macOS runners are suitable for automated compile checks, but GUI lifecycle behaviour still needs a real Mac test.
+- The existing CI workflow labels macOS as experimental and uses `macos-latest`, an Apple Silicon runner. That does not validate an Intel x86_64 build.
+- GitHub's current standard Intel macOS runner label is `macos-15-intel`; add a dedicated x86_64 compile/package check using that runner. Public repositories can use standard GitHub-hosted runners without charge, subject to GitHub's current runner policy.
+- GitHub has retired the macOS 13 hosted image. A GitHub-hosted runner therefore cannot exactly reproduce Ventura 13.7.8. Use CI for Intel architecture/build checks and the user's actual Ventura Mac for final compatibility testing.
+- GUI lifecycle behaviour still needs a real Mac test; a successful CI compile does not prove that closing the dashboard leaves the process and active downloads alive.
 
 ## Design constraint
 
@@ -37,6 +46,6 @@ Preserve the existing MDM dashboard layout and interaction model. Customization 
 
 ## Phase 01 conclusion
 
-The repository already contains a tray icon, close-to-tray handling, session-start handling and independent Tokio download execution. The next phase should be a targeted audit of settings defaults, startup registration, progress-window ownership, macOS app-bundle behaviour and process-exit paths. Avoid duplicating existing functionality until those paths are verified.
+The repository already contains a tray icon, close-to-tray handling, session-start handling, independent Tokio download execution, default-on close/minimize-to-tray settings, and Intel macOS packaging. The next phase should verify startup registration, progress-window ownership, actual macOS process lifecycle and identity migration. Avoid duplicating existing functionality until those paths are tested.
 
-No application source code has been changed in this audit phase.
+No application source code has been changed in this audit phase. This branch contains only this audit document.
