@@ -5,6 +5,26 @@
   "description": {
     "message": "ব্রাউজার থেকে Mister Download Manager-এ ডাউনলোড হস্তান্তর করে।"
   },
+  "popup_capture": {
+    "message": "ডাউনলোড গ্রহণ করুন",
+    "description": "heading for the capture switch in Rakib's browser extension popup"
+  },
+  "popup_capture_desc": {
+    "message": "সমর্থিত ডাউনলোড Rakib-এ পাঠান",
+    "description": "short explanation below the capture switch in the browser extension popup"
+  },
+  "popup_proxy_heading": {
+    "message": "প্রক্সি ইন্টিগ্রেশন",
+    "description": "heading for the browser proxy switch in the extension popup"
+  },
+  "popup_proxy_desc": {
+    "message": "অ্যাপের নেটওয়ার্ক প্রক্সি ব্যবহার করুন",
+    "description": "short explanation below the proxy switch in the extension popup"
+  },
+  "popup_media_title_filename": {
+    "message": "মিডিয়ার শিরোনাম ফাইলের নামে ব্যবহার করুন",
+    "description": "checkbox in the browser extension popup: prefix a downloaded media file with its page title"
+  },
   "menu": {
     "message": "Mister Download Manager দিয়ে ডাউনলোড করুন"
   },
