@@ -12,11 +12,11 @@ use crate::dialogs::{Outcome, window};
 use crate::winui::{self, ButtonKind, r};
 
 /// The repository: problem reports, releases, source, licences.
-pub const REPO: &str = "https://github.com/anefzaoui/misterdownloadmanager";
+pub const REPO: &str = "https://github.com/mdrakibhossainkst/rakibdownloadmanager";
 /// The creator's GitHub Sponsors page: Help → Support MDM, About's last line. The website, the
 /// extension's popup and the repository's Sponsor button (.github/FUNDING.yml) point there too.
-pub const SPONSORS: &str = "https://github.com/sponsors/anefzaoui";
-const LATEST: &str = "https://api.github.com/repos/anefzaoui/misterdownloadmanager/releases/latest";
+pub const SPONSORS: &str = REPO;
+const LATEST: &str = "https://api.github.com/repos/mdrakibhossainkst/rakibdownloadmanager/releases/latest";
 pub const VERSION: &str = env!("CARGO_PKG_VERSION");
 pub const COMMIT: &str = env!("MDM_COMMIT");
 /// While MDM runs, the automatic check comes again this often (it also checks at every start).
@@ -371,7 +371,7 @@ impl Updates {
                     Some(Ok(Found::Latest)) => {
                         let line = crate::i18n::fmt(
                             crate::i18n::t(
-                                "You have the latest version of Mister Download Manager ({version}).",
+                                "You have the latest version of Rakib Download Manager ({version}).",
                             ),
                             &[("version", VERSION)],
                         );
@@ -391,7 +391,7 @@ impl Updates {
                     Some(Ok(Found::Newer(rel))) => {
                         let line = crate::i18n::fmt(
                             crate::i18n::t(
-                                "Mister Download Manager {version} is available (released {date}).",
+                                "Rakib Download Manager {version} is available (released {date}).",
                             ),
                             &[("version", &rel.version), ("date", &rel.date)],
                         );
@@ -713,7 +713,7 @@ impl About {
         window(
             ctx,
             "about",
-            "About Mister Download Manager",
+            "About Rakib Download Manager",
             [420.0, 236.0 + extra],
             false,
             winui::BG(),
@@ -729,7 +729,7 @@ impl About {
                     &p,
                     o.x + 80.0,
                     o.y + 28.0,
-                    crate::i18n::t("Mister Download Manager"),
+                    crate::i18n::t("Rakib Download Manager"),
                     ink,
                 );
                 let version = crate::i18n::fmt(
@@ -790,7 +790,7 @@ impl About {
                     &p,
                     o.x + 80.0,
                     y,
-                    "Support MDM on GitHub Sponsors",
+                    "Rakib Download Manager on GitHub",
                     "support",
                 ) {
                     support();
@@ -948,9 +948,9 @@ impl TellFriend {
     fn message() -> String {
         crate::i18n::fmt(
             crate::i18n::t(
-                "I download with Mister Download Manager: fast, free, and it looks like the download manager you already know. {link}",
+                "I download with Rakib Download Manager: fast, free, and it looks like the download manager you already know. {link}",
             ),
-            &[("link", SITE)],
+            &[("link", REPO)],
         )
     }
 
