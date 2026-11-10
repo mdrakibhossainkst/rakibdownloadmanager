@@ -305,7 +305,7 @@ jobs:
             Set-Content -Encoding ascii $key $env:RAKIB_RELEASE_KEY
             gpg --batch --quiet --import $key
             Remove-Item $key
-            gpg --batch --yes --detach-sign --local-user 5826D399249DE856EA087D802E293C28E8A69D74 `
+            gpg --batch --yes --detach-sign --local-user FB1E9144C6FC782CC6CE61DFE6852D874F11BDFB `
               --output dist/SHA256SUMS.txt.sig dist/SHA256SUMS.txt
             if ($LASTEXITCODE) { throw "signing SHA256SUMS.txt failed" }
             gpg --batch --verify dist/SHA256SUMS.txt.sig dist/SHA256SUMS.txt
