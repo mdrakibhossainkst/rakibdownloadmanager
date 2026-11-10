@@ -15,10 +15,9 @@ pub const LEGACY_STORE_ID: &str = "ejoleppdfgjdndddcjoehopknmlglojp";
 /// Its IDs in Microsoft Edge Add-ons and Opera add-ons, which give their own; placeholders until
 /// listed there, never served then (`valid_id`).
 pub const OTHER_STORE_IDS: [&str; 2] = ["EDGE_ADDONS_ID_PENDING", "OPERA_ADDONS_ID_PENDING"];
-/// The Firefox add-on's page on addons.mozilla.org (listed: Firefox installs and updates it from
-/// there).
+/// The Rakib Firefox installation guide: the add-on is not yet listed on addons.mozilla.org.
 pub const FIREFOX_PAGE: &str =
-    "https://github.com/mdrakibhossainkst/rakibdownloadmanager/tree/main/docs";
+    "https://github.com/mdrakibhossainkst/rakibdownloadmanager/blob/rakib/phase-01-macos-audit/docs/guide-catch-browser-downloads.md";
 /// The Firefox add-on's ID (extension/manifest.firefox.json).
 pub const FIREFOX_ID: &str = "rakib-download-manager@mdrakibhossainkst.github.io";
 /// The previous add-on ID remains accepted for installations made before the fork was re-identified.
