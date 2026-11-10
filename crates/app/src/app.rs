@@ -6720,16 +6720,19 @@ impl App {
             None => {}
         }
 
+        let dashboard_active = self.items.iter().filter(|item| item.live.is_some()).count();
+        let dashboard_complete = self.items.iter().filter(|item| item.status == Status::Complete).count();
+        let dashboard_errors = self.items.iter().filter(|item| item.status == Status::Error).count();
+        let dashboard_speed: f64 = self.items.iter().filter(|item| item.live.is_some()).map(|item| item.rate()).sum();
         chrome::dashboard_header(
             ui,
             o,
             w,
             self.items.len(),
-            self.items.iter().filter(|item| item.live.is_some()).count(),
-            self.items
-                .iter()
-                .filter(|item| item.status == Status::Complete)
-                .count(),
+            dashboard_active,
+            dashboard_complete,
+            dashboard_errors,
+            dashboard_speed,
         );
 
         // Categories pane.
