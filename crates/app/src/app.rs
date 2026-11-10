@@ -999,7 +999,25 @@ impl App {
                 crate::win32::update_run_at_startup();
             }
         }
-        #[cfg(unix)]
+        #[cfg(target_os = "macos")]
+        {
+            // Rakib Download Manager starts in the menu bar by default on macOS.
+            // Honour the saved preference: a user who disables login launch must stay opted out.
+            if mdm_ipc::portable_dir().is_none()
+                && settings.launch_on_startup
+                && !crate::unix::run_at_startup()
+            {
+                crate::unix::set_run_at_startup(true);
+            }
+            settings.launch_on_startup = crate::unix::run_at_startup();
+            if settings.launch_on_startup && mdm_ipc::portable_dir().is_none() {
+                crate::unix::update_run_at_startup();
+            }
+            if mdm_ipc::portable_dir().is_none() && !crate::offscreen() {
+                crate::unix::register_browsers();
+            }
+        }
+        #[cfg(all(unix, not(target_os = "macos")))]
         {
             settings.launch_on_startup = crate::unix::run_at_startup();
             if settings.launch_on_startup && mdm_ipc::portable_dir().is_none() {
@@ -6701,6 +6719,36 @@ impl App {
             },
             None => {}
         }
+
+        let dashboard_active = self.items.iter().filter(|item| item.live.is_some()).count();
+        let dashboard_complete = self
+            .items
+            .iter()
+            .filter(|item| item.status == Status::Complete)
+            .count();
+        let dashboard_errors = self
+            .items
+            .iter()
+            .filter(|item| item.status == Status::Error)
+            .count();
+        let dashboard_speed: f64 = self
+            .items
+            .iter()
+            .filter(|item| item.live.is_some())
+            .map(|item| item.rate())
+            .sum();
+        chrome::dashboard_header(
+            ui,
+            o,
+            w,
+            chrome::DashboardStats {
+                total: self.items.len(),
+                active: dashboard_active,
+                complete: dashboard_complete,
+                errors: dashboard_errors,
+                speed: dashboard_speed,
+            },
+        );
 
         // Categories pane.
         let list_left = if self.show_categories {

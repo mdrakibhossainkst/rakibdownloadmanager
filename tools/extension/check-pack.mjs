@@ -5,7 +5,7 @@
 // copy has no key; Firefox's has its add-on ID; Safari's (a folder, tools/safari builds it into the
 // app) asks for nothing Safari lacks.
 import { createHash } from "node:crypto";
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import assert from "node:assert/strict";
 
 const root = new URL("../../", import.meta.url);
@@ -35,6 +35,17 @@ for (const kind of ["chromium", "chrome-store", "firefox", "safari"]) {
   ].filter(Boolean);
   for (const f of files) assert.ok(existsSync(new URL(f, dir)), `${kind}: ${f} is there`);
   assert.ok(existsSync(new URL("_locales/en/messages.json", dir)), `${kind}: English texts`);
+  for (const locale of readdirSync(new URL("_locales/", dir), { withFileTypes: true })) {
+    if (!locale.isDirectory()) continue;
+    const messages = JSON.parse(
+      readFileSync(new URL(`_locales/${locale.name}/messages.json`, dir), "utf8"),
+    );
+    assert.equal(messages.name.message, "Rakib Download Manager", `${kind}/${locale.name}: branded name`);
+    assert.ok(
+      !messages.description.message.includes("Mister Download Manager"),
+      `${kind}/${locale.name}: no upstream product name in manifest description`,
+    );
+  }
   if (kind === "chromium") assert.equal(idOf(m.key), unpackedId, "the key gives the ID the host serves");
   if (kind === "chrome-store") {
     assert.equal(m.key, undefined, "the store signs it with its own key");
@@ -51,7 +62,7 @@ for (const kind of ["chromium", "chrome-store", "firefox", "safari"]) {
     assert.ok(m.permissions.includes("nativeMessaging"), "Safari: the app extension is reached by native messaging");
   }
 }
-for (const zip of ["mdm-chromium.zip", "mdm-firefox.xpi", "mdm-chrome-store.zip"]) {
+for (const zip of ["rakib-chromium.zip", "rakib-firefox.xpi", "rakib-chrome-store.zip"]) {
   assert.ok(existsSync(new URL(zip, out)), zip);
 }
 console.log(`packages ok (version ${version}, unpacked ID ${unpackedId})`);

@@ -12,11 +12,11 @@ use crate::dialogs::{Outcome, window};
 use crate::winui::{self, ButtonKind, r};
 
 /// The repository: problem reports, releases, source, licences.
-pub const REPO: &str = "https://github.com/anefzaoui/misterdownloadmanager";
-/// The creator's GitHub Sponsors page: Help → Support MDM, About's last line. The website, the
-/// extension's popup and the repository's Sponsor button (.github/FUNDING.yml) point there too.
-pub const SPONSORS: &str = "https://github.com/sponsors/anefzaoui";
-const LATEST: &str = "https://api.github.com/repos/anefzaoui/misterdownloadmanager/releases/latest";
+pub const REPO: &str = "https://github.com/mdrakibhossainkst/rakibdownloadmanager";
+/// The Rakib Download Manager project page shown from Help and About.
+pub const SPONSORS: &str = REPO;
+const LATEST: &str =
+    "https://api.github.com/repos/mdrakibhossainkst/rakibdownloadmanager/releases/latest";
 pub const VERSION: &str = env!("CARGO_PKG_VERSION");
 pub const COMMIT: &str = env!("MDM_COMMIT");
 /// While MDM runs, the automatic check comes again this often (it also checks at every start).
@@ -184,7 +184,7 @@ async fn latest() -> Result<Found, String> {
     // The chosen DNS and network adapter, as downloads have them (#36, #35).
     let client = mdm_engine::net::client_builder(&net.dns, &net.route, &feed)
         .map_err(|e| e.to_string())?
-        .user_agent(concat!("MisterDownloadManager/", env!("CARGO_PKG_VERSION")))
+        .user_agent(concat!("RakibDownloadManager/", env!("CARGO_PKG_VERSION")))
         .timeout(Duration::from_secs(20))
         .build()
         .map_err(|e| e.to_string())?;
@@ -704,6 +704,21 @@ fn link_texts(line: &str) -> String {
 // ---------------------------------------------------------------------------------------------
 // About
 
+fn about_icon(ctx: &egui::Context) -> egui::TextureHandle {
+    let id = egui::Id::unique("rakib-about-icon");
+    if let Some(texture) = ctx.data(|d| d.get_temp::<egui::TextureHandle>(id)) {
+        return texture;
+    }
+    let icon = crate::app_icon();
+    let image = egui::ColorImage::from_rgba_unmultiplied(
+        [icon.width as usize, icon.height as usize],
+        &icon.rgba,
+    );
+    let texture = ctx.load_texture("rakib-about-icon", image, egui::TextureOptions::LINEAR);
+    ctx.data_mut(|d| d.insert_temp(id, texture.clone()));
+    texture
+}
+
 pub struct About;
 
 impl About {
@@ -713,18 +728,16 @@ impl About {
         window(
             ctx,
             "about",
-            "About Mister Download Manager",
+            "About Rakib Download Manager",
             [420.0, 236.0 + extra],
             false,
             winui::BG(),
             |ui, o| {
                 let p = ui.painter().clone();
                 let ink = winui::TEXT();
-                egui::Image::from_bytes(
-                    "bytes://mdm-48.png",
-                    include_bytes!("../assets/icons/app/mdm-48.png"),
-                )
-                .paint_at(ui, winui::r(o, 16.0, 16.0, 48.0, 48.0));
+                let icon = about_icon(ctx);
+                egui::Image::new((icon.id(), vec2(48.0, 48.0)))
+                    .paint_at(ui, winui::r(o, 16.0, 16.0, 48.0, 48.0));
                 winui::text(
                     &p,
                     o.x + 80.0,
@@ -950,7 +963,7 @@ impl TellFriend {
             crate::i18n::t(
                 "I download with Mister Download Manager: fast, free, and it looks like the download manager you already know. {link}",
             ),
-            &[("link", SITE)],
+            &[("link", REPO)],
         )
     }
 
@@ -1067,7 +1080,7 @@ impl TellFriend {
                             .collect::<String>()
                             .replace('+', "%20")
                     };
-                    let subject = crate::i18n::t("Mister Download Manager");
+                    let subject = crate::i18n::t("Rakib Download Manager");
                     let opened = open::that_detached(format!(
                         "mailto:?subject={}&body={}",
                         enc(subject),

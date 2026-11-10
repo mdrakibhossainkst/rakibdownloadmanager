@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Builds the macOS release into target/dist/ (experimental: built by CI, not yet tested by us):
-#   MisterDownloadManager-<version>-macos-arm64-experimental.dmg   Apple Silicon
-#   MisterDownloadManager-<version>-macos-x86_64-experimental.dmg  Intel
+#   RakibDownloadManager-<version>-macos-arm64-experimental.dmg   Apple Silicon
+#   RakibDownloadManager-<version>-macos-x86_64-experimental.dmg  Intel
 # One app per processor, each half the size of a universal one (#25), ad-hoc signed: without an
 # Apple Developer ID, macOS asks before the first start (right-click the app -> Open).
 # The app carries the Safari extension (tools/safari). Safari loads an ad-hoc signed one only with
@@ -40,13 +40,15 @@ stage="$dist/stage-macos"
 rm -rf "$stage"
 mkdir -p "$stage"
 
-# The icon: every size macOS asks for, from the 1254 px artwork.
+# The original Rakib vector mark is rasterized at high resolution, then packed as ICNS.
+rakib_icon="$stage/RakibIcon.png"
+swift "$root/tools/installer/render-svg-icon.swift" "$root/art/Rakib Download Manager.svg" "$rakib_icon"
 set_dir="$stage/AppIcon.iconset"
 mkdir -p "$set_dir"
 for s in 16 32 128 256 512; do
-  sips -z "$s" "$s" "$root/art/Mister Download Manager.png" --out "$set_dir/icon_${s}x${s}.png" >/dev/null
+  sips -z "$s" "$s" "$rakib_icon" --out "$set_dir/icon_${s}x${s}.png" >/dev/null
   d=$((s * 2))
-  sips -z "$d" "$d" "$root/art/Mister Download Manager.png" --out "$set_dir/icon_${s}x${s}@2x.png" >/dev/null
+  sips -z "$d" "$d" "$rakib_icon" --out "$set_dir/icon_${s}x${s}@2x.png" >/dev/null
 done
 iconutil -c icns "$set_dir" -o "$stage/AppIcon.icns"
 
@@ -54,8 +56,8 @@ dmgs=()
 for pair in "${targets[@]}"; do
   t="${pair%%:*}"
   arch="${pair##*:}"
-  name="MisterDownloadManager-$version-macos-$arch-experimental"
-  app="$stage/$arch/dmg/Mister Download Manager.app"
+  name="RakibDownloadManager-$version-macos-$arch-experimental"
+  app="$stage/$arch/dmg/Rakib Download Manager.app"
   mkdir -p "$app/Contents/MacOS" "$app/Contents/Resources"
 
   # Crash reports: the release's symbols for this processor (the -symbols zip, one per .dmg) from
@@ -81,14 +83,15 @@ for pair in "${targets[@]}"; do
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-  <key>CFBundleName</key><string>Mister Download Manager</string>
-  <key>CFBundleDisplayName</key><string>Mister Download Manager</string>
+  <key>CFBundleName</key><string>Rakib Download Manager</string>
+  <key>CFBundleDisplayName</key><string>Rakib Download Manager</string>
   <key>CFBundleIdentifier</key><string>io.github.anefzaoui.misterdownloadmanager</string>
   <key>CFBundleVersion</key><string>$version</string>
   <key>CFBundleShortVersionString</key><string>$version</string>
   <key>CFBundlePackageType</key><string>APPL</string>
   <key>CFBundleExecutable</key><string>misterdownloadmanager</string>
   <key>CFBundleIconFile</key><string>AppIcon</string>
+  <key>LSUIElement</key><true/>
   <key>LSMinimumSystemVersion</key><string>11.0</string>
   <key>NSHighResolutionCapable</key><true/>
 </dict>
@@ -118,7 +121,7 @@ EOF
   # 10.15 and later; the app needs 11) packs it tighter than zlib (UDZO).
   ln -s /Applications "$stage/$arch/dmg/Applications"
   rm -f "$dist/$name.dmg"
-  hdiutil create -volname "Mister Download Manager" -srcfolder "$stage/$arch/dmg" -ov -format ULMO \
+  hdiutil create -volname "Rakib Download Manager" -srcfolder "$stage/$arch/dmg" -ov -format ULMO \
     "$dist/$name.dmg"
   if [ -n "${MDM_NOTARY_PROFILE:-}" ]; then
     codesign --force --sign "$sign" --timestamp "$dist/$name.dmg"

@@ -3,10 +3,20 @@
 // site to the browser, opening the app or its Options, and the media the tab loaded (#38), each
 // to download. background.js does the work.
 const ext = globalThis.browser ?? globalThis.chrome;
-const HELP = "https://misterdownloadmanager.com/help/browser-help.html";
+const HELP = "https://github.com/mdrakibhossainkst/rakibdownloadmanager/blob/main/docs/guide-catch-browser-downloads.md";
 // The creator's GitHub Sponsors page (the app's Help → Support MDM): a plain link, in a new tab.
-const SPONSORS = "https://github.com/sponsors/anefzaoui";
-const t = (key, ...subs) => ext.i18n.getMessage(key, subs) || key;
+const PROJECT = "https://github.com/mdrakibhossainkst/rakibdownloadmanager";
+const englishFallback = {
+  popup_capture: "Capture downloads",
+  popup_capture_desc: "Send supported downloads to Rakib",
+  popup_proxy_heading: "Proxy integration",
+  popup_proxy_desc: "Use the app network proxy",
+  popup_media_title_filename: "Use media title as filename",
+  popup_section_capture: "BROWSER CAPTURE",
+  popup_section_destination: "DOWNLOAD DESTINATION",
+  popup_section_media: "MEDIA FOUND ON THIS PAGE",
+};
+const t = (key, ...subs) => (ext.i18n.getMessage(key, subs) || englishFallback[key] || key).replaceAll("Mister Download Manager", "Rakib Download Manager");
 const $ = (id) => document.getElementById(id);
 const ask = (m) => ext.runtime.sendMessage(m).catch(() => ({ ok: false }));
 const lang = ext.i18n.getUILanguage();
@@ -16,7 +26,7 @@ document.documentElement.dir = t("@@bidi_dir") === "rtl" ? "rtl" : "ltr";
 for (const el of document.querySelectorAll("[data-i18n]")) el.textContent = t(el.dataset.i18n);
 for (const el of document.querySelectorAll("[data-i18n-placeholder]")) el.placeholder = t(el.dataset.i18nPlaceholder);
 $("help").href = HELP;
-$("support").href = SPONSORS;
+$("support").href = PROJECT;
 
 // The tab it is about: the window's active tab; with `?page=ADDRESS` (this page opened in a tab of
 // its own, for the tests and the pictures), the tab showing that address.

@@ -1248,19 +1248,31 @@ const MPD = (protect) => `<?xml version="1.0"?>
   ok("nothing of IDM's in the extension");
 }
 
-// The right-click command in the browser's language, and every locale complete: the same keys
-// as English, which both manifests' __MSG_…__ names exist in.
+// The right-click command uses the browser's language. New popup labels may fall back to
+// English in locales that have not translated those optional keys yet.
 {
   const { api, calls, listeners } = fakeApi({ firefox: false });
   load(api, false);
   await listeners.installed({ reason: "update" });
   const item = calls.find((c) => c[0] === "menu-item")[1];
-  assert.equal(item.title, "Mit Mister Download Manager herunterladen");
+  assert.equal(item.title, "Mit Rakib Download Manager herunterladen");
   const dir = new URL("../../extension/_locales/", import.meta.url);
   const english = JSON.parse(readFileSync(new URL("en/messages.json", dir), "utf8"));
   for (const locale of readdirSync(dir)) {
     const m = JSON.parse(readFileSync(new URL(`${locale}/messages.json`, dir), "utf8"));
-    assert.deepEqual(Object.keys(m).sort(), Object.keys(english).sort(), `${locale} has every text`);
+    const missing = Object.keys(english).filter((key) => !Object.hasOwn(m, key));
+    const englishFallbackKeys = new Set([
+      "popup_capture",
+      "popup_capture_desc",
+      "popup_proxy_heading",
+      "popup_proxy_desc",
+      "popup_media_title_filename",
+      "popup_section_capture",
+      "popup_section_destination",
+      "popup_section_media",
+    ]);
+    assert.ok(missing.every((key) => englishFallbackKeys.has(key)), locale + " is missing required texts: " + missing.join(", "));
+    assert.deepEqual(Object.keys(m).filter((key) => !Object.hasOwn(english, key)), [], locale + " has unknown texts");
   }
   for (const name of ["manifest.json", "manifest.firefox.json"]) {
     const text = readFileSync(new URL(`../../extension/${name}`, import.meta.url), "utf8");
@@ -1994,4 +2006,22 @@ const ask = (listeners) => (m, sender) => new Promise((r) => listeners.message(m
 }
 assert.deepEqual(complaints, [], "nothing written to the console as an error or warning");
 
+// The fork's popup is a real, wired Rakib-branded surface, not an inert mock-up.
+{
+  const read = (name) => readFileSync(new URL(`../../extension/${name}`, import.meta.url), "utf8");
+  const html = read("popup.html");
+  const js = read("popup.js");
+  const css = read("popup.css");
+  const ids = new Set([...html.matchAll(/\bid="([^"]+)"/g)].map((m) => m[1]));
+  const used = [...js.matchAll(/\$\("([^"]+)"\)/g)].map((m) => m[1]);
+  assert.ok(used.length > 0, "popup has wired controls");
+  for (const id of used) assert.ok(ids.has(id), `popup.js expects #${id} to exist`);
+  assert.ok(html.includes("Rakib Download Manager"), "popup shows the Rakib product name");
+  assert.ok(css.includes(".brand-mark"), "popup has its own visual identity");
+  assert.ok(js.includes("github.com/mdrakibhossainkst/rakibdownloadmanager"), "project link points to Rakib's repository");
+  assert.ok(!js.includes("github.com/sponsors/anefzaoui"), "no upstream sponsor link");
+  const en = JSON.parse(read("_locales/en/messages.json"));
+  assert.equal(en.name.message, "Rakib Download Manager");
+  ok("Rakib popup: selectors wired, branding and project links verified");
+}
 console.log(`extension: ${passed} checks passed`);

@@ -122,19 +122,57 @@ pub const fn mark(source: &'static str) -> &'static str {
     source
 }
 
+/// The translated product name in the fork's interface. Keep the upstream translation keys
+/// intact, but show Rakib Download Manager in every language. The browser extension uses its
+/// upstream identity and is deliberately excluded in `tc("extension", ...)`.
+fn rakib_brand(text: &str) -> &str {
+    if !text.contains("Mister Download Manager") {
+        return text;
+    }
+    static CACHE: OnceLock<RwLock<std::collections::HashMap<String, &'static str>>> =
+        OnceLock::new();
+    let cache = CACHE.get_or_init(|| RwLock::new(std::collections::HashMap::new()));
+    if let Some(value) = cache.read().unwrap().get(text).copied() {
+        return value;
+    }
+    let mut cache = cache.write().unwrap();
+    if let Some(value) = cache.get(text).copied() {
+        return value;
+    }
+    let value = Box::leak(
+        text.replace("Mister Download Manager", "Rakib Download Manager")
+            .into_boxed_str(),
+    );
+    cache.insert(text.to_owned(), value);
+    value
+}
+
 /// The translation of `source` (English); `source` itself when there is none.
 pub fn t(source: &str) -> &str {
-    i18n().t(lang(), source)
+    let translated = i18n().t(lang(), source);
+    // This one instruction names the upstream browser extension itself, not the forked app.
+    if source == "Turn on \"Mister Download Manager\" and allow it on all websites." {
+        translated
+    } else {
+        rakib_brand(translated)
+    }
 }
 
 /// The translation of `source` in `context` (the same English with different meanings).
 pub fn tc<'a>(context: &str, source: &'a str) -> &'a str {
-    i18n().tc(lang(), context, source)
+    let translated = i18n().tc(lang(), context, source);
+    if context == "extension" {
+        translated
+    } else {
+        rakib_brand(translated)
+    }
 }
 
 /// A count: `one` / `other` templates with `{n}` (plural rules of the language).
 pub fn tn(n: u64, one: &str, other: &str) -> String {
-    i18n().trn(lang(), n, one, other)
+    i18n()
+        .trn(lang(), n, one, other)
+        .replace("Mister Download Manager", "Rakib Download Manager")
 }
 
 /// Fill a translated template's `{name}` slots.
@@ -238,6 +276,15 @@ mod tests {
     const LRI: char = '\u{2066}';
     const FSI: char = '\u{2068}';
     const PDI: char = '\u{2069}';
+
+    #[test]
+    fn fork_brand_replaces_the_upstream_name_in_app_text() {
+        assert_eq!(
+            rakib_brand("About Mister Download Manager"),
+            "About Rakib Download Manager"
+        );
+        assert_eq!(rakib_brand("Download complete"), "Download complete");
+    }
 
     /// Every embedded catalog parses with no problem (craft-i18n's own checks: placeholders,
     /// plural forms, the trailing ellipsis…), and every language of i18n/languages.tsv has one.

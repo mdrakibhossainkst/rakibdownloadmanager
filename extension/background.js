@@ -13,7 +13,7 @@
 const ext = globalThis.browser ?? globalThis.chrome;
 const HOST = "com.misterdownloadmanager.host";
 const VERSION = ext.runtime.getManifest().version;
-const HELP = "https://misterdownloadmanager.com/help/browser-help.html";
+const HELP = "https://github.com/mdrakibhossainkst/rakibdownloadmanager/blob/main/docs/browser-help.md";
 const action = ext.action ?? ext.browserAction;
 // Safari has no downloads API at all (nor proxy): it can't take a download from the browser, so
 // the links clicked in a page are handed over instead (`link`, below; page.js).
@@ -28,7 +28,7 @@ const APP_NAME = ext.runtime.getBrowserInfo
   ? ext.runtime.getBrowserInfo().then((i) => (i && i.name) || null, () => null)
   : Promise.resolve(null);
 
-const t = (key, ...subs) => ext.i18n.getMessage(key, subs) || key;
+const t = (key, ...subs) => (ext.i18n.getMessage(key, subs) || key).replaceAll("Mister Download Manager", "Rakib Download Manager");
 
 // ---- the native host ---------------------------------------------------------------------
 

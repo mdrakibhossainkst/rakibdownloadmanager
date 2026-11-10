@@ -1,69 +1,71 @@
-# Tutorial: catch downloads from your browser
+# Rakib Download Manager: browser integration
 
 [← Back to docs index](README.md)
 
-Set up the extension once, and every download link you click in Firefox, Chrome, Edge, Brave, Opera or Vivaldi goes to MDM.
+Install the Rakib browser extension to send supported browser downloads to Rakib Download Manager. The extension has its own Rakib branding, Chromium ID and Firefox add-on ID. It is not published in the Chrome Web Store or Mozilla Add-ons yet, so use the manually installed package described below. Do not install the upstream Mister Download Manager extension for this fork.
 
-## Before you start
+## 1. Install and open the desktop app
 
-On Windows, MDM must be installed with the setup, with **Set up browser integration (Chrome, Edge, Brave, Firefox)** ticked. It is ticked by default. If you're not sure, run the setup again. A portable copy can't do this. On Linux and macOS, start MDM once: it sets browser integration up itself.
+Install Rakib Download Manager, launch it once, and leave it running for the first connection test.
 
-MDM's **Add Mister Download Manager to your browser** window, which opens at each start until a browser's extension has reached MDM, does the steps below for you: **Add the extension** opens the store's page in that browser.
+- Windows: use the installer with **Set up browser integration** enabled.
+- macOS and Linux: launch the app once; it registers its native messaging host for supported browsers.
+- If you built from source, build the browser packages with `./tools/extension/pack.ps1` (PowerShell 7) after installing the Python Pillow dependency. The output is in `target/extension/`.
 
-Once it is set up, a download link goes like this:
+## 2. Get the Rakib extension package
 
-<!-- steps -->
+From GitHub, open the [CI workflow](https://github.com/mdrakibhossainkst/rakibdownloadmanager/actions/workflows/ci.yml), choose the latest successful run for the `rakib/phase-01-macos-audit` branch, and download the **rakib-browser-extensions** artifact. Extract it.
 
-1. ![Download File Info in MDM for a file clicked in the browser](images/help/catch-file-info.webp)
-   *Click a download link in the browser: Download File Info opens in MDM.*
-2. ![The progress window of a download coming in over several connections](images/help/catch-progress.webp)
-   *Start Download: the progress window shows it coming in.*
-3. ![Download complete, with Open, Open with..., Open folder and Close](images/help/catch-complete.webp)
-   *Download complete: Open the file, or Open folder.*
+The artifact contains:
+- `RakibDownloadManager-<version>-extension-chromium.zip` — Chrome, Edge, Brave, Opera and Vivaldi.
+- `RakibDownloadManager-<version>-extension-firefox.xpi` — Firefox-compatible package (unsigned; temporary installation only).
+- `RakibDownloadManager-<version>-chrome-web-store.zip` — store-upload package reserved for a future Rakib listing; it is not an installable store release.
 
-## In Firefox
+## 3. Install in Chrome, Edge, Brave, Opera or Vivaldi
 
-1. Open the add-on's page on addons.mozilla.org, [Mister Download Manager](https://addons.mozilla.org/firefox/addon/mister-download-manager/), and click **Add to Firefox**. Zen and LibreWolf use the same page.
-2. Firefox asks to confirm: click **Add**. Firefox keeps the add-on up to date.
-3. Go to a web page and click a download link, for example a ZIP or an EXE: MDM opens **Download File Info**. Click **Start Download**.
+1. Extract the Chromium ZIP to a permanent folder. Do not move or delete that folder after installation.
+2. Open the browser's extensions page: `chrome://extensions`, `edge://extensions`, `brave://extensions`, `opera://extensions` or `vivaldi://extensions`.
+3. Turn on **Developer mode**.
+4. Click **Load unpacked** and select the extracted `chromium` folder.
+5. Confirm that **Rakib Download Manager** appears and is enabled.
+6. Open the extension popup; it should report that the desktop app is connected.
 
-## In Chrome, Edge, Brave, Opera or Vivaldi
+To update the extension, download and extract the newer package to a permanent folder, remove the old unpacked extension, then load the new folder. Store-based automatic updates will be available after a Rakib listing is published.
 
-1. Open the extension's page in the Chrome Web Store, [Mister Download Manager](https://chromewebstore.google.com/detail/mister-download-manager/ejoleppdfgjdndddcjoehopknmlglojp), and click **Add to Chrome**. In Edge the button is **Get**, and Edge first asks to **Allow extensions from other stores**: click **Allow**.
-2. The browser asks to confirm: click **Add extension**. It keeps the extension up to date.
-3. Go to a web page and click a download link, for example a ZIP or an EXE: MDM opens **Download File Info**. Click **Start Download**.
+## 4. Install in Firefox
 
-## Without the store
+Firefox requires a signed add-on for permanent installation. Until the Rakib add-on is listed and signed by Mozilla, use temporary installation for testing:
 
-When a browser can't use its store (a computer managed by an organization, or a build of your own), add the extension by hand:
+1. Extract the Firefox package.
+2. Open `about:debugging#/runtime/this-firefox`.
+3. Click **Load Temporary Add-on…**.
+4. Select `manifest.json` inside the extracted `firefox` folder.
+5. Confirm the add-on is enabled, then test a supported download.
 
-1. Open your browser's extensions page: type `chrome://extensions`, `edge://extensions` or `brave://extensions` in the address bar.
-2. Turn on **Developer mode**.
-3. Click **Load unpacked**.
-4. Choose the `extension\chromium` folder inside MDM's folder. If you installed MDM for yourself, that is `%LOCALAPPDATA%\Programs\Mister Download Manager\extension\chromium`; you can paste that path into the folder box.
-5. **Mister Download Manager** appears. Make sure it is turned on.
-6. Go to a web page and click a download link, for example a ZIP or an EXE.
-7. MDM opens **Download File Info** instead of the browser downloading the file. Click **Start Download**.
+Firefox removes temporary add-ons when the browser closes. A permanent signed Rakib Firefox release is a separate publishing step and is not claimed to be available yet.
 
-You don't need to start MDM first: if it isn't running, it starts by itself.
+## 5. Test the connection
+
+1. Keep Rakib Download Manager open.
+2. Open the extension popup and check the connection indicator.
+3. Visit a direct downloadable file link (for example, a ZIP file) and click it.
+4. The desktop app should receive the download and open its Download File Info window. Choose **Start Download**.
+
+If the browser downloads the file itself, first confirm the extension is enabled and the desktop app was launched once. Then see [browser troubleshooting](browser-help.md) and [browser integration details](browser-integration.md).
 
 ## Choose what MDM takes
 
-- **Which file types:** **Options → File types → Automatically start downloading the following file types**. Add or remove types, separated by spaces.
-- **Sites to leave alone:** **Options → File types → Don't start downloading automatically from the following sites**. Add the site's name, for example `downloads.example.com` or `*.example.com`.
-- **One browser only:** **Options → General → Capture downloads from the following browsers**. Untick the ones MDM should leave alone.
+- **File types:** configure **Options → File types** in the desktop app.
+- **Excluded sites:** add a site under **Options → File types** to leave its downloads in the browser.
+- **Per-browser capture:** use **Options → General → Capture downloads from the following browsers**.
+- **One-off download:** right-click a link and choose **Download with Rakib Download Manager**.
 
 ![Options, File types: the file types MDM takes from the browser, and the sites it leaves alone](images/help/catch-file-types.webp)
 *1 the file types MDM takes, 2 the sites it leaves to the browser.*
 
-Everything MDM doesn't take stays with the browser.
-
-## Download a link the browser would open
-
-Links to a PDF or a video file, which the browser would open itself, go to MDM too when their type is listed. To leave one to the browser, hold **Alt** while clicking it (Firefox opens it; Chrome and Edge download it themselves). Any other link: right-click it and choose **Download with Mister Download Manager**, which takes any type.
+Downloads the app does not capture remain with the browser.
 
 ## Next steps
 
-- [Browser integration in detail (Firefox, private windows, what is sent) →](browser-integration.md)
-- [If the browser doesn't hand downloads over →](troubleshooting.md#the-browser-doesnt-send-downloads-to-mdm)
-- [Download overnight →](guide-download-overnight.md)
+- [Browser integration details](browser-integration.md)
+- [Troubleshooting when the browser does not hand downloads over](browser-help.md)

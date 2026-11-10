@@ -12,13 +12,13 @@ use crate::theme::themed;
 // first column at the right in a right-to-left interface).
 use crate::winui::{self, fill_l as fill, text_font};
 
-/// The column headers' height (the theme's size; 24 in the classic look).
+/// Spacious dashboard table header.
 pub fn header_h() -> f32 {
     crate::theme::metrics().list_header
 }
-/// A row's height (the theme's size; 17 in the classic look).
+/// Spacious dashboard table row: room for legible metadata and file icons.
 pub fn row_h() -> f32 {
-    crate::theme::metrics().list_row
+    crate::theme::metrics().list_row + 6.0
 }
 
 // The active theme's colours (crate::palette, #45).
@@ -32,9 +32,6 @@ themed! {
     /// Sort indicator (an addition: IDM's header shows none).
     SORTED_BG => sorted;
     SORT_ARROW => sort_arrow;
-    /// Light: the one grid colour, 1 px lines (light-main.md).
-    GRID_H => list_grid;
-    GRID_V_RIGHT => list_grid;
     /// Selected row (list focused): Windows' accent, as every list's (one blue across MDM), with
     /// white text and a dotted focus outline in its inverse, #ff9933.
     SELECTED => selection;
@@ -651,7 +648,17 @@ pub fn show(
     let cols = spans(st);
     let p_all = p.clone();
     let p = p.with_clip_rect(screen(header));
-    fill(&p, cl, ct, rr, ct + header_h() - 1.0, HEADER_BG());
+    let header_face = screen(Rect::from_min_max(
+        pos2(cl + 3.0, ct + 3.0),
+        pos2(rr - 2.0, ct + header_h() - 3.0),
+    ));
+    p.rect_filled(header_face, 7.0, HEADER_BG());
+    p.rect_stroke(
+        header_face,
+        7.0,
+        egui::Stroke::new(1.0, crate::theme::colors().group_line),
+        egui::StrokeKind::Inside,
+    );
     for (c, x0, x1) in &cols {
         let hovered = hresp
             .hover_pos()
@@ -736,7 +743,7 @@ pub fn show(
             *x0..=*x1,
             ct..=ct + header_h(),
         )));
-        text_font(&clip, font.clone(), x0 + 6.0, ct + 15.0, &label, TEXT());
+        text_font(&clip, font.clone(), x0 + 6.0, ct + 22.0, &label, TEXT());
     }
 
     // ---- body ------------------------------------------------------------------------------
@@ -863,42 +870,61 @@ pub fn show(
         if let Some(row) = rows.get(idx) {
             let picked = selected.get(idx).copied().unwrap_or(false);
             expose_row(idx, row, picked);
+            let hovered_row = resp
+                .hover_pos()
+                .map(english)
+                .is_some_and(|h| body.contains(h) && h.y >= top && h.y < top + row_h());
+            let row_face = screen(Rect::from_min_max(
+                pos2(cl + 4.0, top + 2.0),
+                pos2(last_right - 4.0, top + row_h() - 2.0),
+            ));
             let sel = picked && st.focused;
+            if sel {
+                bp.rect_filled(row_face, 7.0, SELECTED());
+            } else if picked {
+                bp.rect_filled(row_face, 7.0, winui::SELECTED_INACTIVE());
+            } else {
+                bp.rect_filled(row_face, 7.0, crate::theme::colors().tab_page);
+                bp.rect_stroke(
+                    row_face,
+                    7.0,
+                    egui::Stroke::new(1.0, crate::theme::colors().group_line.gamma_multiply(0.55)),
+                    egui::StrokeKind::Inside,
+                );
+                if hovered_row {
+                    bp.rect_filled(
+                        row_face,
+                        7.0,
+                        crate::theme::colors().field.gamma_multiply(0.42),
+                    );
+                }
+            }
             // The focused row's dotted outline only once the keyboard is in use, as every
             // control's focus (winui::keyboard_in_use).
             let has_focus = focus == Some(idx) && st.focused && keys_in_use;
             if sel || has_focus {
-                // The row above its grid line; the focused row has a dotted outline (every other
-                // pixel), in the fill's inverse on a selected row. Both modes alike.
-                let (right, bottom) = (last_right - 1.0, top + row_h() - 2.0);
-                if sel {
-                    fill(&bp, cl, top, right, bottom, SELECTED());
-                }
+                // The focused card has a dotted outline (every other pixel), in the fill's
+                // inverse on a selected row. Both modes alike.
+                let (left, right, row_top, bottom) =
+                    (cl + 4.0, last_right - 4.0, top + 2.0, top + row_h() - 2.0);
                 if has_focus {
                     let dot = if sel {
                         crate::theme::colors().selection_focus
                     } else {
                         TEXT()
                     };
-                    dotted(&bp, cl, top, right, bottom, dot);
+                    dotted(&bp, left, row_top, right, bottom, dot);
                 }
-            } else if picked {
-                // Unfocused (Find, Properties, a menu has the keys): still shown, in the inactive
-                // selection grey, as Explorer shows it, so what a command acts on stays visible.
-                let bottom = top + row_h() - 2.0;
-                fill(
-                    &bp,
-                    cl,
-                    top,
-                    last_right - 1.0,
-                    bottom,
-                    winui::SELECTED_INACTIVE(),
-                );
             }
             for (c, x0, x1) in &cols {
                 // The file-type icon sits in the File Name column, wherever it is.
                 let tx = if *c == 0 {
-                    icons.paint_in(ui, &bp, row.icon.clone(), pos2(x0 + 4.0, top));
+                    icons.paint_in(
+                        ui,
+                        &bp,
+                        row.icon.clone(),
+                        pos2(x0 + 4.0, top + (row_h() - 16.0) / 2.0),
+                    );
                     x0 + 22.0
                 } else {
                     x0 + 6.0
@@ -908,7 +934,7 @@ pub fn show(
                         ui,
                         &bp,
                         IconKey::Silk("page_white_stack"),
-                        pos2(x0 + 2.0, top),
+                        pos2(x0 + 2.0, top + (row_h() - 16.0) / 2.0),
                     );
                 }
                 let cell = Rect::from_min_max(pos2(*x0, top), pos2(*x1 - 1.0, top + row_h()));
@@ -959,16 +985,10 @@ pub fn show(
                 } else {
                     TEXT()
                 };
-                text_font(&clip, font.clone(), tx, top + 12.0, &s, ink);
+                text_font(&clip, font.clone(), tx, top + 18.0, &s, ink);
             }
         }
-        // The grid line is the item's own last row (top + 16), so icons are not clipped; in
-        // both modes (dark changes only colours).
-        let gy = top + row_h() - 1.0;
-        // An empty list has no grid (the empty state stands alone).
-        if !rows.is_empty() {
-            fill(&bp, cl, gy, rr, gy, GRID_H());
-        }
+        // The gap between rounded download cards replaces the old continuous table grid.
     }
     expose_out_of_view(reach.start.max(first + visible)..reach.end);
     if let Some(full) = cut_under_pointer {
@@ -977,10 +997,7 @@ pub fn show(
         resp.clone().on_hover_text_at_pointer(full);
     }
     filter_box(ui, st);
-    for (_, _, x1) in cols.iter().filter(|_| !rows.is_empty()) {
-        // One line at col.right + 1.
-        fill(&bp, x1 + 1.0, body_top, x1 + 1.0, rb, GRID_V_RIGHT());
-    }
+    // Column dividers are intentionally omitted: the rounded row cards group each download.
     // While a column is dragged: a translucent copy of its header follows the pointer, and a
     // 2 px mark shows where it will land.
     if let (Some(HeaderDrag::Move { col, grab }), Some(pp)) = (st.drag, pointer) {
@@ -995,7 +1012,7 @@ pub fn show(
             &top,
             font.clone(),
             ghost.left() + 6.0,
-            ct + 15.0,
+            ct + 22.0,
             crate::i18n::tc("column", TITLES[col]),
             TEXT(),
         );
@@ -1237,19 +1254,19 @@ fn chip(
     };
     // The cell holds the English key (filters match on it); the chip shows it translated.
     let full = crate::i18n::t(label);
-    // Room: the pill starts 5 px in, pads its text 6 px each side, and ends 3 px before the cell.
+    // Room: the pill starts 5 px in, pads its text 6 px each side, and stays vertically centred.
     let label = &winui::ellipsize(p, font, full, (x1 - x0 - 5.0 - 12.0 - 3.0).max(0.0));
     let w = winui::text_width_font(p, font.clone(), label).round();
     let pill = Rect::from_min_size(
-        pos2(x0 + 5.0, top + 2.0),
-        egui::vec2(w + 12.0, row_h() - 4.0),
+        pos2(x0 + 5.0, top + 4.0),
+        egui::vec2(w + 12.0, row_h() - 8.0),
     );
-    p.rect_filled(winui::rect(pill), (row_h() - 4.0) / 2.0, fill);
+    p.rect_filled(winui::rect(pill), (row_h() - 8.0) / 2.0, fill);
     text_font(
         p,
         font.clone(),
         pill.left() + 6.0,
-        top + 12.0,
+        top + 18.0,
         label,
         crate::theme::colors().chip_text,
     );
@@ -1261,7 +1278,7 @@ fn funnel_rect(st: &ListState, col: usize, x0: f32, x1: f32, ct: f32) -> Rect {
     let sorted = st.sort.is_some_and(|(sc, _)| sc == col);
     let right = x1 - if sorted { 18.0 } else { 4.0 };
     let left = (right - 12.0).max(x0 + 2.0);
-    Rect::from_min_max(pos2(left, ct + 6.0), pos2(right, ct + header_h() - 6.0))
+    Rect::from_min_max(pos2(left, ct + 9.0), pos2(right, ct + header_h() - 9.0))
 }
 
 /// A small funnel: a triangle over a stem, in English rect `rc`.

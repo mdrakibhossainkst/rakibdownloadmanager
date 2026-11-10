@@ -11,7 +11,7 @@
 #. never shown for a single download
 #. {n} = a number (keep the braces as they are)
 #, machine
-@plural	Are you sure you want to delete {n} download from Mister Download Manager list of downloads?|Are you sure you want to delete these {n} downloads from Mister Download Manager list of downloads?	আপনি কি নিশ্চিত যে আপনি Mister Download Manager ডাউনলোড তালিকা থেকে {n} ডাউনলোড মুছে ফেলতে চান?|আপনি কি নিশ্চিত যে আপনি Mister Download Manager ডাউনলোড তালিকা থেকে এই {n} ডাউনলোডগুলি মুছে ফেলতে চান?
+@plural	Are you sure you want to delete {n} download from Mister Download Manager list of downloads?|Are you sure you want to delete these {n} downloads from Mister Download Manager list of downloads?	আপনি কি নিশ্চিত যে আপনি Rakib Download Manager ডাউনলোড তালিকা থেকে {n} ডাউনলোড মুছে ফেলতে চান?|আপনি কি নিশ্চিত যে আপনি Rakib Download Manager ডাউনলোড তালিকা থেকে এই {n} ডাউনলোডগুলি মুছে ফেলতে চান?
 #. count in the Add torrent window
 #. while a magnet link's file list is fetched; {n} = peers that answered
 #. {n} = a number (keep the braces as they are)
@@ -226,7 +226,7 @@
 	a volume of it is missing	এর একটি ভলিউম অনুপস্থিত
 #. window title in the Help menu's windows (About, updates, shortcuts, Tell a friend)
 #, machine
-	About Mister Download Manager	Mister Download Manager সম্পর্কে
+	About Mister Download Manager	Rakib Download Manager সম্পর্কে
 #. text in whereis.rs
 #. a download's server's round trip: {ms} a number of milliseconds, {reach} near, medium or far
 #, machine
@@ -280,7 +280,7 @@
 #. window title in extension.rs
 #. title of the window that offers the browser extension
 #, machine
-	Add Mister Download Manager to your browser	আপনার ব্রাউজারে Mister Download Manager যোগ করুন
+	Add Mister Download Manager to your browser	আপনার ব্রাউজারে Rakib Download Manager যোগ করুন
 #. message or event log entry in the main window; text in the tray icon's menu
 #. link in the empty download list: opens Add URL
 #, machine
@@ -447,7 +447,7 @@
 	Always into a folder named after it	সবসময় এর নামে একটি ফোল্ডারে
 #. checkbox in a dialog box
 #, machine
-	Always turn on Speed Limiter on Mister Download Manager startup	Mister Download Manager চালু হলে সর্বদা স্পিড লিমিটার চালু করুন
+	Always turn on Speed Limiter on Mister Download Manager startup	Rakib Download Manager চালু হলে সর্বদা স্পিড লিমিটার চালু করুন
 #. text in regional.rs; text in the Scheduler window
 #. before noon, after a time of day (12-hour clock). Its pair is "PM": write both the same way (this language's own short marks, or both kept as AM and PM)
 #, machine
@@ -513,7 +513,7 @@
 #. text in a dialog box
 #. {name} = a file name (keep the braces as they are)
 #, machine
-	Are you sure you want to delete "{name}" from Mister Download Manager list of downloads?	আপনি কি নিশ্চিত যে আপনি Mister Download Manager ডাউনলোড তালিকা থেকে "{name}" মুছে ফেলতে চান?
+	Are you sure you want to delete "{name}" from Mister Download Manager list of downloads?	আপনি কি নিশ্চিত যে আপনি Rakib Download Manager ডাউনলোড তালিকা থেকে "{name}" মুছে ফেলতে চান?
 #. text in countries.rs
 #. a country's name (where a download's server is)
 #, machine
@@ -682,7 +682,7 @@
 	Browse...	ব্রাউজ করুন...
 #. text in extension.rs
 #, machine
-	Browser integration isn't set up on this computer, so no browser can reach Mister Download Manager yet.	এই কম্পিউটারে ব্রাউজার ইন্টিগ্রেশন সেট আপ করা হয়নি, তাই কোনো ব্রাউজার এখনও Mister Download Manager-এ পৌঁছাতে পারবে না।
+	Browser integration isn't set up on this computer, so no browser can reach Mister Download Manager yet.	এই কম্পিউটারে ব্রাউজার ইন্টিগ্রেশন সেট আপ করা হয়নি, তাই কোনো ব্রাউজার এখনও Rakib Download Manager-এ পৌঁছাতে পারবে না।
 #. page title in the Options window
 #, machine
 	Browser/System Integration	ব্রাউজার/সিস্টেম ইন্টিগ্রেশন
@@ -882,7 +882,7 @@
 	Choose a language	একটি ভাষা চয়ন করুন
 #. text in langpick.rs
 #, machine
-	Choose the language Mister Download Manager shows its windows in:	ভাষা নির্বাচন করুন Mister Download Manager যে ভাষায় তার উইন্ডোগুলি দেখায়:
+	Choose the language Mister Download Manager shows its windows in:	ভাষা নির্বাচন করুন Rakib Download Manager যে ভাষায় তার উইন্ডোগুলি দেখায়:
 #. text in the Options window
 #. Options → Sites Logins → Cookies for video sites: the title of the window, and the tooltip of the button, that pick a browser profile's folder
 #, machine
@@ -1452,7 +1452,7 @@
 #. a country's name (where a download's server is)
 #, machine
 	Eritrea	ইরিত্রিয়া
-#. text in a dialog box; item in the Categories tree in the download list; value in a column's filter list in the download list; text in the download list (sizes, speeds, status); text in remote.rs
+#. text in the main window (menus, toolbar, Categories pane); text in a dialog box; item in the Categories tree in the download list; value in a column's filter list in the download list; text in the download list (sizes, speeds, status); text in remote.rs
 #. in Download File Info, where the size goes: the address didn't answer
 #. a download's status (state it is in, not a command)
 #. a download's status (state it is in, not a command): it failed
@@ -1502,7 +1502,7 @@
 	Exit	প্রস্থান করুন
 #. checkbox in a download's progress window; checkbox in the Scheduler window
 #, machine
-	Exit Mister Download Manager when done	কাজ শেষ হলে Mister Download Manager বন্ধ করুন
+	Exit Mister Download Manager when done	কাজ শেষ হলে Rakib Download Manager বন্ধ করুন
 #. text in the Checksum window
 #, machine
 	Expected checksum (MD5, SHA-1, SHA-256, SHA-512 or CRC32):	প্রত্যাশিত চেকসাম (MD5, SHA-1, SHA-256, SHA-512 অথবা CRC32):
@@ -1938,7 +1938,7 @@
 	Hide web pages	ওয়েব পেজ লুকান
 #. text in the Options window
 #, machine
-	Hold Alt while clicking a link to let the browser download it instead of Mister Download Manager.	Mister Download Manager-এর পরিবর্তে ব্রাউজারকে ডাউনলোড করতে দিতে একটি লিঙ্কে ক্লিক করার সময় Alt ধরে রাখুন।
+	Hold Alt while clicking a link to let the browser download it instead of Mister Download Manager.	Rakib Download Manager-এর পরিবর্তে ব্রাউজারকে ডাউনলোড করতে দিতে একটি লিঙ্কে ক্লিক করার সময় Alt ধরে রাখুন।
 #. link (opens a web page) in the Help menu's windows (About, updates, shortcuts, Tell a friend)
 #, machine
 	Home page	হোম পেজ
@@ -1974,7 +1974,7 @@
 	Hungary	হাঙ্গেরি
 #. text in the Help menu's windows (About, updates, shortcuts, Tell a friend)
 #, machine
-	I download with Mister Download Manager: fast, free, and it looks like the download manager you already know. {link}	আমি Mister Download Manager দিয়ে ডাউনলোড করি: দ্রুত, বিনামূল্যে, এবং এটি আপনার পরিচিত ডাউনলোড ম্যানেজারের মতোই দেখায়। {link}
+	I download with Mister Download Manager: fast, free, and it looks like the download manager you already know. {link}	আমি Rakib Download Manager দিয়ে ডাউনলোড করি: দ্রুত, বিনামূল্যে, এবং এটি আপনার পরিচিত ডাউনলোড ম্যানেজারের মতোই দেখায়। {link}
 #. text in countries.rs
 #. a country's name (where a download's server is)
 #, machine
@@ -2249,7 +2249,7 @@
 	Latvia	লাটভিয়া
 #. text in the Options window
 #, machine
-	Launch Mister Download Manager on startup	স্টার্টআপে Mister Download Manager চালু করুন
+	Launch Mister Download Manager on startup	স্টার্টআপে Rakib Download Manager চালু করুন
 #. text in countries.rs
 #. a country's name (where a download's server is)
 #, machine
@@ -2536,54 +2536,54 @@
 	Missing	হারিয়ে গেছে
 #. message or event log entry in the main window; window title in a dialog box; text in the Help menu's windows (About, updates, shortcuts, Tell a friend)
 #, machine
-	Mister Download Manager	Mister Download Manager
+	Mister Download Manager	Rakib Download Manager
 #. text in unix.rs
 #. Linux, at start, on the terminal and in a message box: a library the window needs isn't installed; {libraries} = its file names (libxkbcommon-x11.so.0…), left as they are
 #, machine
-	Mister Download Manager can't open its window: this system lacks {libraries}.	Mister Download Manager তার উইন্ডো খুলতে পারছে না: এই সিস্টেমে {libraries} নেই।
+	Mister Download Manager can't open its window: this system lacks {libraries}.	Rakib Download Manager তার উইন্ডো খুলতে পারছে না: এই সিস্টেমে {libraries} নেই।
 #. text in crashui.rs
 #. crash report window heading: MDM crashed and is gone
 #, machine
-	Mister Download Manager closed unexpectedly	Mister Download Manager অপ্রত্যাশিতভাবে বন্ধ হয়ে গেছে
+	Mister Download Manager closed unexpectedly	Rakib Download Manager অপ্রত্যাশিতভাবে বন্ধ হয়ে গেছে
 #. window title in the Options window
 #, machine
-	Mister Download Manager Configuration	Mister Download Manager কনফিগারেশন
+	Mister Download Manager Configuration	Rakib Download Manager কনফিগারেশন
 #. text in crashui.rs
 #, machine
-	Mister Download Manager crash report	Mister Download Manager ক্র্যাশ রিপোর্ট
+	Mister Download Manager crash report	Rakib Download Manager ক্র্যাশ রিপোর্ট
 #. text in crashui.rs
 #. crash report window heading: an internal error, MDM still running
 #, machine
-	Mister Download Manager hit an internal error	Mister Download Manager একটি অভ্যন্তরীণ ত্রুটির সম্মুখীন হয়েছে
+	Mister Download Manager hit an internal error	Rakib Download Manager একটি অভ্যন্তরীণ ত্রুটির সম্মুখীন হয়েছে
 #. text in wake.rs
 #. why the computer isn't going to sleep, in the system's list of programs that keep it awake; {queue} = the queue's name
 #. {queue} = a queue name such as "Main queue" (keep the braces as they are)
 #, machine
-	Mister Download Manager is running the queue "{queue}"	Mister Download Manager "{queue}" কিউ চালাচ্ছে
+	Mister Download Manager is running the queue "{queue}"	Rakib Download Manager "{queue}" কিউ চালাচ্ছে
 #. text in crashui.rs
 #. crash report window heading: MDM's window doesn't answer (frozen)
 #, machine
-	Mister Download Manager stopped responding	Mister Download Manager সাড়া দেওয়া বন্ধ করে দিয়েছে
+	Mister Download Manager stopped responding	Rakib Download Manager সাড়া দেওয়া বন্ধ করে দিয়েছে
 #. text in crashui.rs
 #, machine
-	Mister Download Manager stopped responding for a while	Mister Download Manager কিছুক্ষণ ধরে সাড়া দিচ্ছে না
+	Mister Download Manager stopped responding for a while	Rakib Download Manager কিছুক্ষণ ধরে সাড়া দিচ্ছে না
 #. text in the Options window
 #. \\n starts a new line: break lines where they fit the translation
 #, machine
-	Mister Download Manager writes every connection straight into the final\nfile (a sparse part file next to it), so no temporary directory and no\nassembling step are needed.	Mister Download Manager প্রতিটি সংযোগ সরাসরি চূড়ান্ত\nফাইলে (এর পাশে একটি স্পার্স পার্ট ফাইল) লেখে, তাই কোনো অস্থায়ী ডিরেক্টরি এবং কোনো\nঅ্যাসেম্বলিং ধাপের প্রয়োজন হয় না।
+	Mister Download Manager writes every connection straight into the final\nfile (a sparse part file next to it), so no temporary directory and no\nassembling step are needed.	Rakib Download Manager প্রতিটি সংযোগ সরাসরি চূড়ান্ত\nফাইলে (এর পাশে একটি স্পার্স পার্ট ফাইল) লেখে, তাই কোনো অস্থায়ী ডিরেক্টরি এবং কোনো\nঅ্যাসেম্বলিং ধাপের প্রয়োজন হয় না।
 #. text in the Help menu's windows (About, updates, shortcuts, Tell a friend)
 #. {version} = a version number (keep the braces as they are)
 #, machine
-	Mister Download Manager {version} is available (released {date}).	Mister Download Manager {version} উপলব্ধ (প্রকাশিত হয়েছে {date})।
+	Mister Download Manager {version} is available (released {date}).	Rakib Download Manager {version} উপলব্ধ (প্রকাশিত হয়েছে {date})।
 #. text in helpers.rs
 #. Video helpers: {version} = the version of MDM's own copy
 #. {version} = a version number (keep the braces as they are)
 #, machine
-	Mister Download Manager's own copy, version {version}	Mister Download Manager-এর নিজস্ব কপি, সংস্করণ {version}
+	Mister Download Manager's own copy, version {version}	Rakib Download Manager-এর নিজস্ব কপি, সংস্করণ {version}
 #. text in unix.rs
 #. Linux, at start, on the terminal: the libraries an X11 window needs aren't installed, so the window opens through Wayland instead, where menus can't be placed under what was clicked; {libraries} = their file names, left as they are
 #, machine
-	Mister Download Manager's X11 window needs {libraries}, which this system lacks: it opens on Wayland instead, where its menus may open away from their titles.	Mister Download Manager-এর X11 উইন্ডোর জন্য {libraries} প্রয়োজন, যা এই সিস্টেমে নেই: এটি Wayland-এ খুলবে, যেখানে এর মেনুগুলি তাদের শিরোনাম থেকে দূরে খুলতে পারে।
+	Mister Download Manager's X11 window needs {libraries}, which this system lacks: it opens on Wayland instead, where its menus may open away from their titles.	Rakib Download Manager-এর X11 উইন্ডোর জন্য {libraries} প্রয়োজন, যা এই সিস্টেমে নেই: এটি Wayland-এ খুলবে, যেখানে এর মেনুগুলি তাদের শিরোনাম থেকে দূরে খুলতে পারে।
 #. text in the Scheduler window
 #. Monday, as short as a calendar's column head (two letters in English)
 #, machine
@@ -3089,10 +3089,10 @@
 	Open folder	ফোল্ডার খুলুন
 #. checkbox in the Add torrent window
 #, machine
-	Open magnet links and .torrent files with Mister Download Manager	Mister Download Manager দিয়ে ম্যাগনেট লিঙ্ক এবং .torrent ফাইল খুলুন
+	Open magnet links and .torrent files with Mister Download Manager	Rakib Download Manager দিয়ে ম্যাগনেট লিঙ্ক এবং .torrent ফাইল খুলুন
 #. text in the tray icon's menu
 #, machine
-	Open Mister Download Manager	Mister Download Manager খুলুন
+	Open Mister Download Manager	Rakib Download Manager খুলুন
 #. text in extension.rs
 #. step 2 of turning on the Safari extension; Cmd is the Command key
 #, machine
@@ -3163,7 +3163,7 @@
 #. text in remote.rs
 #. remote control page (on a phone): title of the pairing screen
 #, machine
-	Pair with Mister Download Manager	Mister Download Manager এর সাথে যুক্ত করুন
+	Pair with Mister Download Manager	Rakib Download Manager এর সাথে যুক্ত করুন
 #. text in the Options window
 #. column title: when the device was paired
 #, machine
@@ -3649,7 +3649,7 @@
 	Select or unselect the download with the dotted outline	ডটেড আউটলাইন সহ ডাউনলোডটি নির্বাচন বা অনির্বাচন করুন
 #. group box title in the Options window
 #, machine
-	Select sounds for Mister Download Manager events	Mister Download Manager ইভেন্টের জন্য শব্দ নির্বাচন করুন
+	Select sounds for Mister Download Manager events	Rakib Download Manager ইভেন্টের জন্য শব্দ নির্বাচন করুন
 #. what a keyboard shortcut does in the Help menu's windows (About, updates, shortcuts, Tell a friend)
 #, machine
 	Select the downloads in the box	বক্সের ডাউনলোডগুলি নির্বাচন করুন
@@ -3975,7 +3975,7 @@
 	Start download at	ডাউনলোড শুরু করুন
 #. checkbox in the Scheduler window
 #, machine
-	Start download on Mister Download Manager startup	Mister Download Manager চালু হলে ডাউনলোড শুরু করুন
+	Start download on Mister Download Manager startup	Rakib Download Manager চালু হলে ডাউনলোড শুরু করুন
 #. checkbox in the Options window
 #, machine
 	Start downloading immediately while displaying "Download File Info" dialog	"ফাইল তথ্য ডাউনলোড করুন" ডায়ালগ দেখানোর সময় অবিলম্বে ডাউনলোড শুরু করুন
@@ -4231,7 +4231,7 @@
 #. text in extension.rs
 #. a check of Test browser integration: the browsers find MDM's helper program
 #, machine
-	The browsers can find Mister Download Manager	ব্রাউজারগুলি Mister Download Manager খুঁজে পেতে পারে
+	The browsers can find Mister Download Manager	ব্রাউজারগুলি Rakib Download Manager খুঁজে পেতে পারে
 #. text in the Options window
 #. Options → Remote → Status: the settings were changed; they apply on OK
 #, machine
@@ -4255,7 +4255,7 @@
 #. text in the Scheduler window
 #. tooltip on the Scheduler's "Wake the computer to run this queue"
 #, machine
-	The computer is woken a minute before the start time and kept awake while the queue runs. Mister Download Manager has to be running (it can wait in the notification area).	কম্পিউটার শুরু হওয়ার এক মিনিট আগে জাগানো হয় এবং কিউ চলার সময় সজাগ রাখা হয়। Mister Download Manager চালু থাকতে হবে (এটি নোটিফিকেশন এলাকায় অপেক্ষা করতে পারে)।
+	The computer is woken a minute before the start time and kept awake while the queue runs. Mister Download Manager has to be running (it can wait in the notification area).	কম্পিউটার শুরু হওয়ার এক মিনিট আগে জাগানো হয় এবং কিউ চলার সময় সজাগ রাখা হয়। Rakib Download Manager চালু থাকতে হবে (এটি নোটিফিকেশন এলাকায় অপেক্ষা করতে পারে)।
 #. text in the Scheduler window
 #. the Scheduler, under "Wake the computer to run this queue": when it will happen; {date} = e.g. 06/11/2026, {time} = e.g. 22:59:00
 #. {time} = a time of day (keep the braces as they are)
@@ -4426,7 +4426,7 @@
 #. text in a dialog box
 #. \\n starts a new line: break lines where they fit the translation
 #, machine
-	The selected download is not complete. Are you sure you want to delete\nit from Mister Download Manager list of downloads?	নির্বাচিত ডাউনলোডটি সম্পূর্ণ হয়নি। আপনি কি নিশ্চিত যে আপনি এটি Mister Download Manager-এর ডাউনলোড তালিকা থেকে মুছে ফেলতে চান?
+	The selected download is not complete. Are you sure you want to delete\nit from Mister Download Manager list of downloads?	নির্বাচিত ডাউনলোডটি সম্পূর্ণ হয়নি। আপনি কি নিশ্চিত যে আপনি এটি Rakib Download Manager-এর ডাউনলোড তালিকা থেকে মুছে ফেলতে চান?
 #. text in errors.rs
 #, machine
 	the server answered {status}	সার্ভার {status} উত্তর দিয়েছে
@@ -4790,7 +4790,7 @@
 #. text in extension.rs
 #. step 8 of turning on the Safari extension
 #, machine
-	Turn on "Mister Download Manager" and allow it on all websites.	“Mister Download Manager” চালু করুন এবং সব ওয়েবসাইটে এটি অনুমোদন করুন।
+	Turn on "Mister Download Manager" and allow it on all websites.	“Rakib Download Manager” চালু করুন এবং সব ওয়েবসাইটে এটি অনুমোদন করুন।
 #. text in extension.rs
 #. step 4 of turning on the Safari extension; the quoted switch name is what Safari's settings show in this language: use Apple's own words for it, or keep the English name when unsure
 #, machine
@@ -5203,7 +5203,7 @@
 #. text in the Help menu's windows (About, updates, shortcuts, Tell a friend)
 #. {version} = a version number (keep the braces as they are)
 #, machine
-	You have the latest version of Mister Download Manager ({version}).	আপনার কাছে Mister Download Manager ({version}) এর সর্বশেষ সংস্করণ রয়েছে।
+	You have the latest version of Mister Download Manager ({version}).	আপনার কাছে Rakib Download Manager ({version}) এর সর্বশেষ সংস্করণ রয়েছে।
 #. text in the Help menu's windows (About, updates, shortcuts, Tell a friend)
 #. Check for updates, under the new version's line, when MDM was installed by the Linux system's package manager (pacman, ...), which MDM can't update itself
 #. {version} = a version number (keep the braces as they are)
@@ -5592,7 +5592,11 @@ column	Transfer rate	স্থানান্তর হার
 #. text in the browser extension
 #. choice under Send downloads to: an MDM running on another computer of the network, such as a home server; keep the name Mister Download Manager as it is
 #, machine
-extension	Another Mister Download Manager (a server)	অন্য একটি Mister Download Manager (একটি সার্ভার)
+extension	Another Rakib Download Manager (a server)	অন্য একটি Rakib Download Manager (একটি সার্ভার)
+#. text in the browser extension
+#. section label above the browser capture settings in the Rakib extension popup
+#, machine
+extension	BROWSER CAPTURE	ব্রাউজার ক্যাপচার
 #. text in the browser extension
 #. the name this browser gets in the other MDM's list of paired devices
 #, machine
@@ -5607,14 +5611,18 @@ extension	Button settings...	বোতামের সেটিংস...
 #, machine
 extension	Can't tell which video this is: open its own page and try there	এটি কোন ভিডিও তা বোঝা যাচ্ছে না: ভিডিওটির নিজের পৃষ্ঠা খুলে সেখানে চেষ্টা করুন
 #. text in the browser extension
+#. heading for the capture switch in Rakib's browser extension popup
+#, machine
+extension	Capture downloads	ডাউনলোড গ্রহণ করুন
+#. text in the browser extension
 #. the toolbar button's status when the browser reaches the app; keep the name Mister Download Manager as it is
 #, machine
-extension	Connected to Mister Download Manager	Mister Download Manager-এর সাথে সংযুক্ত
+extension	Connected to Rakib Download Manager	Rakib Download Manager-এর সাথে সংযুক্ত
 #. text in the browser extension
 #. the toolbar button's status when the browser reaches the app, with the app's version number; keep the name Mister Download Manager as it is
 #. {version} = a version number (keep the braces as they are)
 #, machine
-extension	Connected to Mister Download Manager {version}	Mister Download Manager {version}-এর সাথে সংযুক্ত
+extension	Connected to Rakib Download Manager {version}	Rakib Download Manager {version}-এর সাথে সংযুক্ত
 #. text in the browser extension
 #. button beside a video, sound or stream in the toolbar button's popup: download it with the app; verb; short
 #, machine
@@ -5622,11 +5630,15 @@ extension	Download	ডাউনলোড করুন
 #. text in the browser extension
 #. command in the browser's right-click menu on a page: download the links of the whole page; keep the name Mister Download Manager as it is
 #, machine
-extension	Download all links with Mister Download Manager	Mister Download Manager দিয়ে সমস্ত লিঙ্ক ডাউনলোড করুন
+extension	Download all links with Rakib Download Manager	Rakib Download Manager দিয়ে সমস্ত লিঙ্ক ডাউনলোড করুন
+#. text in the browser extension
+#. section label above the local or remote download destination choices
+#, machine
+extension	DOWNLOAD DESTINATION	ডাউনলোডের গন্তব্য
 #. text in the browser extension
 #. command in the browser's right-click menu on selected text: download the links in the selection; keep the name Mister Download Manager as it is
 #, machine
-extension	Download selected links with Mister Download Manager	Mister Download Manager দিয়ে নির্বাচিত লিঙ্কগুলি ডাউনলোড করুন
+extension	Download selected links with Rakib Download Manager	Rakib Download Manager দিয়ে নির্বাচিত লিঙ্কগুলি ডাউনলোড করুন
 #. text in the browser extension
 #. the button over a video on a web page that downloads it; verb; short (it sits on the video)
 #, machine
@@ -5634,7 +5646,7 @@ extension	Download video	ভিডিও ডাউনলোড করুন
 #. text in the browser extension
 #. command in the browser's right-click menu on a link, picture, video or sound; keep the name Mister Download Manager as it is
 #, machine
-extension	Download with Mister Download Manager	Mister Download Manager দিয়ে ডাউনলোড করুন
+extension	Download with Rakib Download Manager	Rakib Download Manager দিয়ে ডাউনলোড করুন
 #. text in the browser extension
 #. shown in the toolbar button's popup after the site was excluded
 #. {site} = a web site's name such as "example.com" (keep the braces as they are)
@@ -5655,7 +5667,7 @@ extension	Enter its https:// address.	এর https:// ঠিকানা লি�
 #. text in the browser extension
 #. the extension's description in the browser's list of extensions; keep the name Mister Download Manager as it is
 #, machine
-extension	Hands downloads from the browser to Mister Download Manager.	ব্রাউজার থেকে Mister Download Manager-এ ডাউনলোড হস্তান্তর করে।
+extension	Hands downloads from the browser to Rakib Download Manager.	ব্রাউজার থেকে Rakib Download Manager-এ ডাউনলোড হস্তান্তর করে।
 #. text in the browser extension
 #. link in the toolbar button's popup to the help page
 #, machine
@@ -5706,37 +5718,41 @@ extension	Left to the browser: {name}	ব্রাউজারে ছেড়�
 #, machine
 extension	Live	লাইভ
 #. text in the browser extension
+#. section label above media detected on the current browser page
+#, machine
+extension	MEDIA FOUND ON THIS PAGE	এই পৃষ্ঠায় পাওয়া মিডিয়া
+#. text in the browser extension
 #. heading in the toolbar button's popup over the list of the videos, sounds and streams the current web page has loaded
 #, machine
 extension	Media on this page	এই পৃষ্ঠার মিডিয়া
 #. text in the browser extension
 #. the extension's name in the browser's list of extensions and on its toolbar button; keep the name Mister Download Manager as it is
 #, machine
-extension	Mister Download Manager	Mister Download Manager
+extension	Rakib Download Manager	Rakib Download Manager
 #. text in the browser extension
 #. status when the app was started for a download but didn't answer in time; keep the name Mister Download Manager as it is
 #, machine
-extension	Mister Download Manager didn't start in time	Mister Download Manager সময়মতো চালু হয়নি
+extension	Rakib Download Manager didn't start in time	Rakib Download Manager সময়মতো চালু হয়নি
 #. text in the browser extension
 #. status when the app refuses this copy of the extension (another copy is installed, or it came from another store); keep the name Mister Download Manager as it is
 #, machine
-extension	Mister Download Manager doesn't accept this copy of the extension	Mister Download Manager এক্সটেনশনের এই কপি গ্রহণ করে না
+extension	Rakib Download Manager doesn't accept this copy of the extension	Rakib Download Manager এক্সটেনশনের এই কপি গ্রহণ করে না
 #. text in the browser extension
 #. shown briefly on the download button when the app could not be reached; keep the name Mister Download Manager as it is
 #, machine
-extension	Mister Download Manager isn't installed or didn't start	Mister Download Manager ইনস্টল করা নেই বা চালু হয়নি
+extension	Rakib Download Manager isn't installed or didn't start	Rakib Download Manager ইনস্টল করা নেই বা চালু হয়নি
 #. text in the browser extension
 #. status when the browser can't find the app's connection; keep the name Mister Download Manager as it is
 #, machine
-extension	Mister Download Manager isn't installed, or its browser integration isn't set up	Mister Download Manager ইনস্টল করা নেই, অথবা এর ব্রাউজার ইন্টিগ্রেশন সেট আপ করা নেই
+extension	Rakib Download Manager isn't installed, or its browser integration isn't set up	Rakib Download Manager ইনস্টল করা নেই, অথবা এর ব্রাউজার ইন্টিগ্রেশন সেট আপ করা নেই
 #. text in the browser extension
 #. tooltip of the switch Send downloads through this browser's proxy or VPN extension; keep the name Mister Download Manager as it is
 #, machine
-extension	Mister Download Manager then downloads through the same proxy as this browser. The browser asks you once to allow it; turning this off takes that back.	Mister Download Manager তারপর এই ব্রাউজারের মতো একই প্রক্সির মাধ্যমে ডাউনলোড করে। ব্রাউজার আপনাকে একবার এটি অনুমতি দিতে বলবে; এটি বন্ধ করলে সেই অনুমতি বাতিল হয়ে যাবে।
+extension	Rakib Download Manager then downloads through the same proxy as this browser. The browser asks you once to allow it; turning this off takes that back.	Rakib Download Manager তারপর এই ব্রাউজারের মতো একই প্রক্সির মাধ্যমে ডাউনলোড করে। ব্রাউজার আপনাকে একবার এটি অনুমতি দিতে বলবে; এটি বন্ধ করলে সেই অনুমতি বাতিল হয়ে যাবে।
 #. text in the browser extension
 #. tooltip of the switch Send downloads through this browser's proxy or VPN extension in Chrome, Edge and the other Chromium browsers (they ask for no permission at the switch); keep the name Mister Download Manager as it is
 #, machine
-extension	Mister Download Manager then downloads through the same proxy as this browser. While this is off, the extension doesn't read the browser's proxy.	Mister Download Manager এই ব্রাউজারের মতো একই প্রক্সির মাধ্যমে ডাউনলোড করে। এটি বন্ধ থাকলে, এক্সটেনশনটি ব্রাউজারের প্রক্সি পড়ে না।
+extension	Rakib Download Manager then downloads through the same proxy as this browser. While this is off, the extension doesn't read the browser's proxy.	Rakib Download Manager এই ব্রাউজারের মতো একই প্রক্সির মাধ্যমে ডাউনলোড করে। এটি বন্ধ থাকলে, এক্সটেনশনটি ব্রাউজারের প্রক্সি পড়ে না।
 #. text in the browser extension
 #. the small arrow next to the Download video button that opens its menu (read aloud by screen readers)
 #, machine
@@ -5770,7 +5786,7 @@ extension	Open its address once and accept its certificate, then enter a code fr
 #. text in the browser extension
 #. button in the toolbar button's popup; keep the name Mister Download Manager as it is
 #, machine
-extension	Open Mister Download Manager	Mister Download Manager খুলুন
+extension	Open Rakib Download Manager	Rakib Download Manager খুলুন
 #. text in the browser extension
 #. button in the toolbar button's popup: open the app's Options
 #. the trailing ... means it is still going on: keep it
@@ -5793,6 +5809,11 @@ extension	Paused: downloads stay with the browser	বিরত আছে: ডা
 #, machine
 extension	Prefix media file names with the page title	মিডিয়া ফাইলের নামের আগে পৃষ্ঠার শিরোনাম যোগ করুন
 #. text in the browser extension
+#. link at the foot of the toolbar button's popup to the Rakib Download Manager project repository
+#, machine
+extension	Project	প্রকল্প
+
+#. text in the browser extension
 #. shown instead of the Download button beside a copy-protected (DRM) stream in the toolbar button's popup: it can't be downloaded; short
 #, machine
 extension	Protected	সুরক্ষিত
@@ -5800,6 +5821,11 @@ extension	Protected	সুরক্ষিত
 #. shown briefly on the download button when the video is copy-protected (DRM) and no tool can download it
 #, machine
 extension	Protected video: it can't be saved	সুরক্ষিত ভিডিও: এটি সংরক্ষণ করা যাবে না
+#. text in the browser extension
+#. heading for the browser proxy switch in the extension popup
+#, machine
+extension	Proxy integration	প্রক্সি ইন্টিগ্রেশন
+
 #. text in the browser extension
 #. switch in the toolbar button's popup: on, the app downloads through the same proxy the browser uses (one a VPN or proxy extension sets); the browser then asks once to allow reading it
 #, machine
@@ -5809,13 +5835,13 @@ extension	Send downloads through this browser's proxy or VPN extension	এই �
 #, machine
 extension	Send downloads to	ডাউনলোডগুলি এখানে পাঠান
 #. text in the browser extension
+#. short explanation below the capture switch in the browser extension popup
+#, machine
+extension	Send supported downloads to Rakib	সমর্থিত ডাউনলোড Rakib-এ পাঠান
+#. text in the browser extension
 #. shown briefly on the download button after it was clicked; keep the name Mister Download Manager as it is
 #, machine
-extension	Sent to Mister Download Manager	Mister Download Manager-এ পাঠানো হয়েছে
-#. text in the browser extension
-#. link at the foot of the toolbar button's popup to the creator's GitHub Sponsors page (MDM is free; this is an optional donation)
-#, machine
-extension	Support MDM	MDM-কে সহায়তা করুন
+extension	Sent to Rakib Download Manager	Rakib Download Manager-এ পাঠানো হয়েছে
 #. text in the browser extension
 #. check box in the toolbar button's popup: on, downloads go to the app; off, the browser keeps them
 #, machine
@@ -5827,7 +5853,7 @@ extension	The Chrome Web Store's rules keep this copy of the add-on away from th
 #. text in the browser extension
 #. status when the connection to the app broke off (often security software blocking it); keep the name Mister Download Manager as it is
 #, machine
-extension	The connection to Mister Download Manager failed	Mister Download Manager-এর সঙ্গে সংযোগ ব্যর্থ হয়েছে
+extension	The connection to Rakib Download Manager failed	Rakib Download Manager-এর সঙ্গে সংযোগ ব্যর্থ হয়েছে
 #. text in the browser extension
 #. shown briefly on the download button over a video when the app's settings keep the button off on this web site
 #, machine
@@ -5859,11 +5885,19 @@ extension	This page's player streams its video in pieces, so there's no file to 
 #. text in the browser extension
 #. status when the app is older than the extension; keep the name Mister Download Manager as it is
 #, machine
-extension	Update Mister Download Manager to use everything this extension offers	এই এক্সটেনশনের সব সুবিধা ব্যবহার করতে Mister Download Manager আপডেট করুন
+extension	Update Rakib Download Manager to use everything this extension offers	এই এক্সটেনশনের সব সুবিধা ব্যবহার করতে Rakib Download Manager আপডেট করুন
 #. text in the browser extension
 #. why a download stayed with the browser: the app's setting 'Use advanced browser integration' is off; keep the setting's name as the app shows it
 #, machine
 extension	Use advanced browser integration is off in Options → General.	বিকল্প → সাধারণে উন্নত ব্রাউজার ইন্টিগ্রেশন ব্যবহার করুন বন্ধ আছে।
+#. text in the browser extension
+#. checkbox in the browser extension popup: prefix a downloaded media file with its page title
+#, machine
+extension	Use media title as filename	মিডিয়ার শিরোনাম ফাইলের নামে ব্যবহার করুন
+#. text in the browser extension
+#. short explanation below the proxy switch in the extension popup
+#, machine
+extension	Use the app network proxy	অ্যাপের নেটওয়ার্ক প্রক্সি ব্যবহার করুন
 #. text in the browser extension
 #. pairing failed: codes tried too fast
 #, machine
@@ -5975,7 +6009,7 @@ key	Up / Down	Up / Down
 #. menu command in the main window
 #. & marks the keyboard shortcut letter: keep one & before a letter of the translation
 #, machine
-menu	&About Mister Download Manager	Mister Download Manager স&ম্পর্কে
+menu	&About Mister Download Manager	Rakib Download Manager স&ম্পর্কে
 #. menu command in the main window
 #. & marks the keyboard shortcut letter: keep one & before a letter of the translation
 #, machine
@@ -6337,7 +6371,7 @@ menu	Metro	মেট্রো
 #. menu command in the main window
 #. & marks the keyboard shortcut letter: keep one & before a letter of the translation
 #, machine
-menu	Mister Download Manager &Home Page	Mister Download Manager &হোম পেজ
+menu	Mister Download Manager &Home Page	Rakib Download Manager &হোম পেজ
 #. menu command in the main window
 #, machine
 menu	Move/Rename (Ctrl-M)	সরান/পুনঃনামকরণ করুন (Ctrl-M)
@@ -6450,7 +6484,7 @@ menu	Select &all	সব &নির্বাচন করুন
 menu	Show &drop target	ড্রপ টার্গেট দেখান(&d)
 #. menu command in the main window
 #, machine
-menu	Show Mister Download Manager	Mister Download Manager দেখান
+menu	Show Mister Download Manager	Rakib Download Manager দেখান
 #. menu command in the main window
 #. & marks the keyboard shortcut letter: keep one & before a letter of the translation
 #, machine

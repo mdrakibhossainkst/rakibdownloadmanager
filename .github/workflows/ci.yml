@@ -1,5 +1,5 @@
-# Build, lint and test main and every pull request: Windows and Linux, which must pass, and the
-# experimental macOS build (its failures are reported but don't fail the run).
+# Build, lint and test main and every pull request on Windows, Linux and Intel macOS. Apple Silicon
+# macOS remains experimental because the target release machine is an older Intel Mac.
 name: CI
 
 # Pushes to main only: a pull request's branch is tested once as the pull request (a bare push:
@@ -7,6 +7,7 @@ name: CI
 # A change to the website or the docs alone builds nothing here (the app embeds none of it; the
 # Website workflow builds the site). The app's own catalogs, i18n/*.tsv, still run everything.
 on:
+  workflow_dispatch:
   push:
     branches: [main]
     paths-ignore:
@@ -45,6 +46,9 @@ jobs:
           - os: ubuntu-latest
           - os: macos-latest
             experimental: true
+          # Required x86_64 compile/test coverage for the target Intel Mac. Hosted macOS 15 is
+          # newer than Ventura, so this proves architecture compatibility, not the full GUI lifecycle.
+          - os: macos-15-intel
     runs-on: ${{ matrix.os }}
     continue-on-error: ${{ matrix.experimental == true }}
     # A cold build takes about 10 minutes; a hung runner (apt-get once hung for hours) is cut off
@@ -86,11 +90,37 @@ jobs:
           python tools/i18n/extract.py
           git diff --exit-code -- i18n/en.tsv
 
+      - name: Release signing identity matches the pinned public key
+        if: runner.os == 'Linux'
+        run: |
+          fingerprint="$(gpg --show-keys --with-colons crates/tools/keys/rakib-release.asc | awk -F: '$1 == "fpr" { print $10; exit }')"
+          test "$fingerprint" = "FB1E9144C6FC782CC6CE61DFE6852D874F11BDFB"
+          grep -Fq 'RAKIB_RELEASE_KEY:' .github/workflows/release.yml
+          grep -Fq 'Set-Content -Encoding ascii $key $env:RAKIB_RELEASE_KEY' .github/workflows/release.yml
+          grep -Fq -- '--local-user FB1E9144C6FC782CC6CE61DFE6852D874F11BDFB' .github/workflows/release.yml
+
       - name: Clippy
         run: cargo clippy --workspace --all-targets -- -D warnings
 
       - name: Tests
         run: cargo test --workspace
+
+      # The app bundle's custom SVG icon must rasterize and pack on both Intel and Apple Silicon.
+      - name: Rakib app icon renders and packs as ICNS
+        if: runner.os == 'macOS'
+        run: |
+          tmp="$(mktemp -d)"
+          swift tools/installer/render-svg-icon.swift "art/Rakib Download Manager.svg" "$tmp/RakibIcon.png"
+          sips -g pixelWidth -g pixelHeight "$tmp/RakibIcon.png"
+          mkdir "$tmp/AppIcon.iconset"
+          for size in 16 32 128 256 512; do
+            sips -z "$size" "$size" "$tmp/RakibIcon.png" --out "$tmp/AppIcon.iconset/icon_${size}x${size}.png" >/dev/null
+            double=$((size * 2))
+            sips -z "$double" "$double" "$tmp/RakibIcon.png" --out "$tmp/AppIcon.iconset/icon_${size}x${size}@2x.png" >/dev/null
+          done
+          iconutil -c icns "$tmp/AppIcon.iconset" -o "$tmp/RakibAppIcon.icns"
+          test -s "$tmp/RakibAppIcon.icns"
+          rm -rf "$tmp"
 
       # Safari's extension (macOS): its native half relays to the helper from inside the
       # sandbox Safari makes it run in. Safari itself isn't needed.
@@ -121,11 +151,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Prepare Pillow for original extension icons
+        run: python -m pip install Pillow
+
       - name: Logic against fake Firefox and Chrome APIs
         run: node tools/extension/test.mjs
 
-      # Chrome, Edge, Brave, Opera, Vivaldi (mdm-chromium.zip), Firefox (mdm-firefox.xpi) and
-      # the Chrome Web Store's copy (mdm-chrome-store.zip).
+      # Chrome, Edge, Brave, Opera, Vivaldi (rakib-chromium.zip), Firefox (rakib-firefox.xpi) and
+      # the Chrome Web Store's copy (rakib-chrome-store.zip).
       - name: Pack for every browser
         shell: pwsh
         run: ./tools/extension/pack.ps1
@@ -133,10 +166,16 @@ jobs:
       - name: Check the packages
         run: node tools/extension/check-pack.mjs
 
+      - name: Name versioned Rakib extension downloads
+        shell: pwsh
+        run: |
+          $v = [regex]::Match((Get-Content Cargo.toml -Raw), '(?m)^version\s*=\s*"([^"]+)"').Groups[1].Value
+          New-Item -ItemType Directory -Force target/dist | Out-Null
+          Copy-Item target/extension/rakib-chromium.zip "target/dist/RakibDownloadManager-$v-extension-chromium.zip"
+          Copy-Item target/extension/rakib-firefox.xpi "target/dist/RakibDownloadManager-$v-extension-firefox.xpi"
+          Copy-Item target/extension/rakib-chrome-store.zip "target/dist/RakibDownloadManager-$v-chrome-web-store.zip"
+
       - uses: actions/upload-artifact@v4
         with:
-          name: extension
-          path: |
-            target/extension/mdm-chromium.zip
-            target/extension/mdm-firefox.xpi
-            target/extension/mdm-chrome-store.zip
+          name: rakib-browser-extensions
+          path: target/dist/*

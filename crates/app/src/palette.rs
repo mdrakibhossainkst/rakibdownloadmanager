@@ -150,7 +150,7 @@ palette! {
     text_disabled: "text.disabled", "Disabled text, the one grey of every greyed control and label" = grey(0x8a), grey(0x8a);
     // Dark: #ababab, 4.5:1 on the dark tab page (#a0a0a0 was 4.0:1 there, 4.4:1 on the window).
     muted: "text.muted", "Secondary text: notes, sizes, versions" = grey(0xab), grey(0x6d);
-    link: "link", "Text that opens something" = rgb(0x99, 0xc8, 0xff), rgb(0x00, 0x66, 0xcc);
+    link: "link", "Text that opens something" = rgb(0x54, 0xe4, 0xd0), rgb(0x00, 0x79, 0x6f);
     // Dark: #ff9999, 5:1 on the dark tab page (#ff8080 was 4.3:1 there).
     error: "error", "Error text" = rgb(0xff, 0x99, 0x99), rgb(0xc4, 0x2b, 0x1c);
     // Dark: the error colour (light mode's #c42b1c was 2:1 on the dark dialog).
@@ -161,10 +161,10 @@ palette! {
     reach_medium: "reach.medium", "A server at a medium round trip (60 to 150 ms)" = rgb(0xf7, 0xb0, 0x40), rgb(0x9d, 0x5d, 0x00);
     reach_far: "reach.far", "A server far by its round trip (over 150 ms)" = rgb(0xff, 0x99, 0xa4), rgb(0xc4, 0x2b, 0x1c);
     flag_edge: "flag.edge", "The thin edge around a country's flag" = rgba(0x00, 0x00, 0x00, 40), rgba(0x00, 0x00, 0x00, 40);
-    accent: "accent", "The accent: focus lines, open and default controls, filters, links' focus" = rgb(0x60, 0xcd, 0xff), rgb(0x00, 0x78, 0xd4);
+    accent: "accent", "The accent: focus lines, open and default controls, filters, links' focus" = rgb(0x54, 0xe4, 0xd0), rgb(0x00, 0x79, 0x6f);
     focus_ring: "focus.ring", "The dotted keyboard focus rectangle" = grey(0xcc), grey(0x0d);
     // ---- selection ----
-    selection: "selection", "A selection's fill: rows, a chosen day, selected text" = rgb(0x00, 0x78, 0xd4), rgb(0x00, 0x78, 0xd4);
+    selection: "selection", "A selection's fill: rows, a chosen day, selected text" = rgb(0x00, 0x85, 0x7b), rgb(0x00, 0x79, 0x6f);
     selection_text: "selection.text", "Text on the selection" = grey(0xff), grey(0xff);
     selection_muted: "selection.muted", "Secondary text on the selection" = grey(0xe0), grey(0xe0);
     selection_inactive: "selection.inactive", "A selected row in a list without the focus" = grey(0x4a), grey(0xd9);
@@ -181,8 +181,8 @@ palette! {
     // ---- parts without a face of their own ----
     subtle_hot: "subtle.hot", "A part with no face of its own (an arrow, a column header) under the pointer" = grey(0x45), grey(0xf3);
     subtle_pressed: "subtle.pressed", "Such a part pressed or open" = grey(0x26), grey(0xe8);
-    highlight_hot: "highlight.hot", "A calendar's day or arrow under the pointer, a drop target" = rgb(0x2d, 0x4a, 0x60), rgb(0xe5, 0xf1, 0xfb);
-    highlight_pressed: "highlight.pressed", "A calendar's day or arrow pressed" = rgb(0x23, 0x3d, 0x52), rgb(0xcc, 0xe4, 0xf7);
+    highlight_hot: "highlight.hot", "A calendar's day or arrow under the pointer, a drop target" = rgb(0x1d, 0x4b, 0x48), rgb(0xe5, 0xf5, 0xf2);
+    highlight_pressed: "highlight.pressed", "A calendar's day or arrow pressed" = rgb(0x18, 0x3d, 0x3a), rgb(0xcc, 0xe8, 0xe3);
     // ---- text boxes ----
     field: "field", "A text box's or a list's inside" = grey(0x2b), grey(0xff);
     field_border: "field.border", "A text box's border" = grey(0x4b), grey(0xe5);
@@ -203,16 +203,16 @@ palette! {
     button_bottom: "button.bottom", "A button's bottom edge" = grey(0x4b), grey(0xba);
     button_text: "button.text", "A button's text" = grey(0xff), grey(0x00);
     button_text_pressed: "button.text.pressed", "A button's text pressed" = grey(0xc8), grey(0x5d);
-    button_default_border: "button.default.border", "The default button's border" = rgb(0x60, 0xcd, 0xff), rgb(0x00, 0x78, 0xd4);
-    button_default_bottom: "button.default.bottom", "The default button's bottom edge" = rgb(0x4f, 0xb5, 0xe4), rgb(0x00, 0x6b, 0xbe);
+    button_default_border: "button.default.border", "The default button's border" = rgb(0x54, 0xe4, 0xd0), rgb(0x00, 0x79, 0x6f);
+    button_default_bottom: "button.default.bottom", "The default button's bottom edge" = rgb(0x00, 0xaf, 0xa8), rgb(0x00, 0x5a, 0x54);
     button_disabled: "button.disabled", "A greyed button's face" = grey(0x3d), grey(0xf9);
     button_disabled_border: "button.disabled.border", "A greyed button's border" = grey(0x46), grey(0xe9);
-    button_accent: "button.accent", "An accent button's face" = rgb(0x60, 0xcd, 0xff), rgb(0x00, 0x78, 0xd4);
-    button_accent_hot: "button.accent.hot", "An accent button's face under the pointer" = rgb(0x5a, 0xb9, 0xe5), rgb(0x1a, 0x86, 0xd9);
-    button_accent_pressed: "button.accent.pressed", "An accent button's face pressed" = rgb(0x52, 0xa6, 0xd0), rgb(0x00, 0x6c, 0xbe);
-    button_accent_bottom: "button.accent.bottom", "An accent button's bottom edge" = rgb(0x4f, 0xb5, 0xe4), rgb(0x00, 0x5a, 0x9e);
-    button_accent_text: "button.accent.text", "An accent button's text" = grey(0x00), grey(0xff);
-    button_accent_text_pressed: "button.accent.text.pressed", "An accent button's text pressed" = grey(0x1a), rgb(0xe6, 0xf0, 0xfa);
+    button_accent: "button.accent", "An accent button's face" = rgb(0x54, 0xe4, 0xd0), rgb(0x00, 0x79, 0x6f);
+    button_accent_hot: "button.accent.hot", "An accent button's face under the pointer" = rgb(0x6c, 0xea, 0xd9), rgb(0x00, 0x8a, 0x80);
+    button_accent_pressed: "button.accent.pressed", "An accent button's face pressed" = rgb(0x42, 0xc8, 0xb5), rgb(0x00, 0x6d, 0x66);
+    button_accent_bottom: "button.accent.bottom", "An accent button's bottom edge" = rgb(0x00, 0xaf, 0xa8), rgb(0x00, 0x5a, 0x54);
+    button_accent_text: "button.accent.text", "An accent button's text" = rgb(0x07, 0x11, 0x1f), grey(0xff);
+    button_accent_text_pressed: "button.accent.text.pressed", "An accent button's text pressed" = rgb(0x07, 0x11, 0x1f), rgb(0xe6, 0xf0, 0xfa);
     button_glow: "button.glow", "The glow inside a button under the pointer, where the style draws one (Luna; transparent: none)" = Color32::TRANSPARENT, Color32::TRANSPARENT;
     gloss: "gloss", "The shine glossy parts blend toward at their top: buttons, boxes, bars and title bars (Luna, Aero, Aqua)" = grey(0xff), grey(0xff);
     // ---- check boxes and radios ----
@@ -223,14 +223,14 @@ palette! {
     check_border_hot: "check.border.hot", "Its border under the pointer" = grey(0xa0), grey(0x62);
     check_border_pressed: "check.border.pressed", "Its border pressed" = grey(0x70), grey(0x9a);
     check_border_disabled: "check.border.disabled", "A greyed unchecked box's border" = grey(0x5a), grey(0xc3);
-    check_on: "check.on", "A checked box's or radio's accent" = rgb(0x60, 0xcd, 0xff), rgb(0x00, 0x78, 0xd4);
-    check_on_hot: "check.on.hot", "The checked accent under the pointer" = rgb(0x5a, 0xbc, 0xe8), rgb(0x1a, 0x86, 0xd9);
-    check_on_pressed: "check.on.pressed", "The checked accent pressed" = rgb(0x52, 0xa6, 0xcc), rgb(0x33, 0x92, 0xdc);
+    check_on: "check.on", "A checked box's or radio's accent" = rgb(0x54, 0xe4, 0xd0), rgb(0x00, 0x79, 0x6f);
+    check_on_hot: "check.on.hot", "The checked accent under the pointer" = rgb(0x6c, 0xea, 0xd9), rgb(0x00, 0x8a, 0x80);
+    check_on_pressed: "check.on.pressed", "The checked accent pressed" = rgb(0x42, 0xc8, 0xb5), rgb(0x00, 0x6d, 0x66);
     check_on_disabled: "check.on.disabled", "A greyed checked box's fill" = grey(0x5a), grey(0xc3);
     check_mark: "check.mark", "The tick or dot on the checked accent" = grey(0x00), grey(0xff);
     // ---- progress and meters ----
     progress_track: "progress.track", "A progress bar's track" = grey(0x9a), grey(0x86);
-    progress_bar: "progress.bar", "A progress bar's fill" = rgb(0x60, 0xcd, 0xff), rgb(0x00, 0x78, 0xd4);
+    progress_bar: "progress.bar", "A progress bar's fill" = rgb(0x54, 0xe4, 0xd0), rgb(0x00, 0x79, 0x6f);
     meter_track: "meter.track", "A meter's track (a download's part done)" = grey(0x2b), grey(0xe6);
     meter_edge: "meter.edge", "A meter's edge" = grey(0x4b), grey(0xbc);
     meter_fill: "meter.fill", "A meter's fill" = rgb(0x0f, 0x7b, 0x0f), rgb(0x0f, 0x7b, 0x0f);
@@ -250,8 +250,8 @@ palette! {
     chip_torrent: "chip.torrent", "The download list's Torrent chip" = rgb(0x7e, 0x4f, 0xd0), rgb(0x7e, 0x4f, 0xd0);
     chip_text: "chip.text", "Text on a chip" = grey(0xff), grey(0xff);
     drag_ghost: "list.drag-ghost", "A column header being dragged" = rgba(0x60, 0x60, 0x60, 160), rgba(0x60, 0x60, 0x60, 160);
-    marquee: "list.marquee", "The rubber band that selects rows" = rgba(0x33, 0x99, 0xff, 0x40), rgba(0x33, 0x99, 0xff, 0x40);
-    marquee_border: "list.marquee.border", "The rubber band's edge" = rgb(0x33, 0x99, 0xff), rgb(0x33, 0x99, 0xff);
+    marquee: "list.marquee", "The rubber band that selects rows" = rgba(0x54, 0xe4, 0xd0, 0x40), rgba(0x00, 0x79, 0x6f, 0x28);
+    marquee_border: "list.marquee.border", "The rubber band's edge" = rgb(0x54, 0xe4, 0xd0), rgb(0x00, 0x79, 0x6f);
     // ---- scroll bars ----
     scroll_track: "scroll.track", "A scroll bar's track" = grey(0x17), grey(0xf0);
     scroll_corner: "scroll.corner", "Where two scroll bars meet" = grey(0x38), grey(0xf0);
@@ -381,8 +381,8 @@ metrics! {
     font_small: "font.small", "egui's small text" = 11.0;
     font_body: "font.body", "egui's body text: tooltips, multi-line boxes" = 12.0;
     font_heading: "font.heading", "egui's headings" = 16.0;
-    list_row: "list.row", "Height of a row in the download list" = 17.0;
-    list_header: "list.header", "Height of the download list's column headers" = 24.0;
+    list_row: "list.row", "Height of a row in the download list" = 28.0;
+    list_header: "list.header", "Height of the download list's column headers" = 34.0;
     tooltip_width: "tooltip.width", "Where a tooltip's text wraps" = 320.0;
     tooltip_margin_x: "tooltip.margin-x", "A tooltip's left and right padding" = 9.0;
     tooltip_margin_top: "tooltip.margin-top", "A tooltip's top padding" = 6.0;

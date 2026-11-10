@@ -3,11 +3,11 @@
 #   target/extension/firefox/   - manifest.firefox.json as manifest.json
 #   target/extension/safari/    - manifest.safari.json as manifest.json (a folder only: tools/safari
 #                                 builds it into the app as Safari's extension, macOS)
-#   target/extension/mdm-chromium.zip - the chromium folder, zipped (a release download: unzip it
+#   target/extension/rakib-chromium.zip - the chromium folder, zipped (a release download: unzip it
 #                                       and load the folder unpacked)
-#   target/extension/mdm-firefox.xpi  - the firefox folder, zipped (Firefox needs it signed by AMO
+#   target/extension/rakib-firefox.xpi  - the firefox folder, zipped (Firefox needs it signed by AMO
 #                                       to install for good; about:debugging loads it unsigned)
-#   target/extension/mdm-chrome-store.zip - what is uploaded to the Chrome Web Store (see below)
+#   target/extension/rakib-chrome-store.zip - what is uploaded to the Chrome Web Store (see below)
 # Both manifests get the app's version (Cargo.toml), so an extension and its app always match.
 $ErrorActionPreference = "Stop"
 $root = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
@@ -15,6 +15,9 @@ $src = Join-Path $root "extension"
 # Joined part by part: .NET (the zips below) takes a backslash literally on Linux and macOS.
 $out = Join-Path (Join-Path $root "target") "extension"
 $cargo = Get-Content (Join-Path $root "Cargo.toml") -Raw
+# Rasterise the fork's own vector-drawn icon before copying extension assets.
+python (Join-Path $root "tools/extension/build_icons.py")
+if ($LASTEXITCODE -ne 0) { throw "browser icon generation failed (install Pillow with: python -m pip install Pillow)" }
 $version = [regex]::Match($cargo, '(?m)^version\s*=\s*"([^"]+)"').Groups[1].Value
 if (-not $version) { throw "no version in Cargo.toml" }
 # The stores take one to four dot-separated numbers only (no "-rc.1").
@@ -35,6 +38,9 @@ foreach ($kind in "chromium", "firefox", "safari") {
   if ($kind -eq "firefox" -and (Test-Path (Join-Path $dir "_locales/no"))) {
     Copy-Item (Join-Path $dir "_locales/no") (Join-Path $dir "_locales/nb") -Recurse
   }
+  # Manifest names are resolved by the browser itself, before extension JavaScript runs.
+  python (Join-Path $root "tools/extension/brand_locales.py") (Join-Path $dir "_locales")
+  if ($LASTEXITCODE -ne 0) { throw "could not brand browser locale messages for $kind" }
   $manifest = switch ($kind) { "firefox" { "manifest.firefox.json" } "safari" { "manifest.safari.json" } default { "manifest.json" } }
   $json = Get-Content (Join-Path $src $manifest) -Raw
   # The first "version" only (the manifest's own).
@@ -53,7 +59,7 @@ $json = $manifest | ConvertTo-Json -Depth 10
 Add-Type -AssemblyName System.IO.Compression, System.IO.Compression.FileSystem
 # The zips have manifest.json at their root. Entries are named with "/" as zip requires
 # (Windows PowerShell's CreateFromDirectory writes "\", which Firefox rejects).
-foreach ($pair in @(@("chromium", "mdm-chromium.zip"), @("firefox", "mdm-firefox.xpi"), @("chrome-store", "mdm-chrome-store.zip"))) {
+foreach ($pair in @(@("chromium", "rakib-chromium.zip"), @("firefox", "rakib-firefox.xpi"), @("chrome-store", "rakib-chrome-store.zip"))) {
   $dir = (Resolve-Path (Join-Path $out $pair[0])).Path
   $zip = Join-Path $out $pair[1]
   if (Test-Path $zip) { Remove-Item -LiteralPath $zip -Force }
@@ -65,4 +71,4 @@ foreach ($pair in @(@("chromium", "mdm-chromium.zip"), @("firefox", "mdm-firefox
     }
   } finally { $archive.Dispose() }
 }
-"built $out (chromium, firefox, safari, chrome-store, mdm-chromium.zip, mdm-firefox.xpi, mdm-chrome-store.zip; version $version)"
+"built $out (chromium, firefox, safari, chrome-store, rakib-chromium.zip, rakib-firefox.xpi, rakib-chrome-store.zip; version $version)"
