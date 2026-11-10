@@ -28,7 +28,7 @@ const APP_NAME = ext.runtime.getBrowserInfo
   ? ext.runtime.getBrowserInfo().then((i) => (i && i.name) || null, () => null)
   : Promise.resolve(null);
 
-const t = (key, ...subs) => ext.i18n.getMessage(key, subs) || key;
+const t = (key, ...subs) => (ext.i18n.getMessage(key, subs) || key).replaceAll("Mister Download Manager", "Rakib Download Manager");
 
 // ---- the native host ---------------------------------------------------------------------
 
