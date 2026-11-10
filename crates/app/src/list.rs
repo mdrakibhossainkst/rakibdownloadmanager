@@ -32,9 +32,6 @@ themed! {
     /// Sort indicator (an addition: IDM's header shows none).
     SORTED_BG => sorted;
     SORT_ARROW => sort_arrow;
-    /// Light: the one grid colour, 1 px lines (light-main.md).
-    GRID_H => list_grid;
-    GRID_V_RIGHT => list_grid;
     /// Selected row (list focused): Windows' accent, as every list's (one blue across MDM), with
     /// white text and a dotted focus outline in its inverse, #ff9933.
     SELECTED => selection;
