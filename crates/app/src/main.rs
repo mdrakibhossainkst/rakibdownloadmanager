@@ -74,9 +74,8 @@ mod xdgicons;
 /// The main window's title (dialogs find their owner by it).
 pub const MAIN_TITLE: &str = concat!("Rakib Download Manager ", env!("CARGO_PKG_VERSION"));
 
-/// The app icon (art/, made with ChatGPT; sizes by tools/icon/build_icon.py), for windows that
-/// Rakib Download Manager's compact download-arrow mark. Drawing it here keeps the
-/// notification-area icon available on macOS as well as Windows and Linux.
+/// A compact Rakib download-arrow mark for the app and notification-area icon. Drawing it here
+/// keeps the menu-bar icon available on macOS as well as Windows and Linux.
 pub fn app_icon() -> std::sync::Arc<egui::IconData> {
     static ICON: std::sync::OnceLock<std::sync::Arc<egui::IconData>> = std::sync::OnceLock::new();
     ICON.get_or_init(|| {
@@ -94,7 +93,9 @@ pub fn app_icon() -> std::sync::Arc<egui::IconData> {
         for y in 0..N {
             for x in 0..N {
                 let (px, py) = (x as f32 + 0.5, y as f32 + 0.5);
-                if !inside_round(px, py) { continue; }
+                if !inside_round(px, py) {
+                    continue;
+                }
                 let mut color = [13_u8, 23, 43, 255];
                 let dx = px - 128.0;
                 let dy = py - 126.0;
@@ -114,7 +115,11 @@ pub fn app_icon() -> std::sync::Arc<egui::IconData> {
                 rgba[i..i + 4].copy_from_slice(&color);
             }
         }
-        std::sync::Arc::new(egui::IconData { rgba, width: N as u32, height: N as u32 })
+        std::sync::Arc::new(egui::IconData {
+            rgba,
+            width: N as u32,
+            height: N as u32,
+        })
     }).clone()
 }
 
