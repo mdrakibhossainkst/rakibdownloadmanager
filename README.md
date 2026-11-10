@@ -23,7 +23,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/mdrakibhossainkst/rakibdownloadmanager/stargazers"><img src="https://img.shields.io/github/stars/mdrakibhossainkst/rakibdownloadmanager?style=social&label=Star%20MDM" alt="Star Mister Download Manager on GitHub" height="28"></a><br>
+  <a href="https://github.com/mdrakibhossainkst/rakibdownloadmanager/stargazers"><img src="https://img.shields.io/github/stars/mdrakibhossainkst/rakibdownloadmanager?style=social&label=Star%20Rakib" alt="Star Rakib Download Manager on GitHub" height="28"></a><br>
   <sub>⭐ <b>Like it? Give it a star.</b> MDM has no ads and no marketing budget: stars are how people find it.</sub>
 </p>
 
