@@ -59,7 +59,7 @@ $json = $manifest | ConvertTo-Json -Depth 10
 Add-Type -AssemblyName System.IO.Compression, System.IO.Compression.FileSystem
 # The zips have manifest.json at their root. Entries are named with "/" as zip requires
 # (Windows PowerShell's CreateFromDirectory writes "\", which Firefox rejects).
-foreach ($pair in @(@("chromium", "mdm-chromium.zip"), @("firefox", "mdm-firefox.xpi"), @("chrome-store", "mdm-chrome-store.zip"))) {
+foreach ($pair in @(@("chromium", "rakib-chromium.zip"), @("firefox", "rakib-firefox.xpi"), @("chrome-store", "rakib-chrome-store.zip"))) {
   $dir = (Resolve-Path (Join-Path $out $pair[0])).Path
   $zip = Join-Path $out $pair[1]
   if (Test-Path $zip) { Remove-Item -LiteralPath $zip -Force }
@@ -71,4 +71,4 @@ foreach ($pair in @(@("chromium", "mdm-chromium.zip"), @("firefox", "mdm-firefox
     }
   } finally { $archive.Dispose() }
 }
-"built $out (chromium, firefox, safari, chrome-store, mdm-chromium.zip, mdm-firefox.xpi, mdm-chrome-store.zip; version $version)"
+"built $out (chromium, firefox, safari, chrome-store, rakib-chromium.zip, rakib-firefox.xpi, rakib-chrome-store.zip; version $version)"
