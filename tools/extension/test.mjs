@@ -1994,4 +1994,22 @@ const ask = (listeners) => (m, sender) => new Promise((r) => listeners.message(m
 }
 assert.deepEqual(complaints, [], "nothing written to the console as an error or warning");
 
+// The fork's popup is a real, wired Rakib-branded surface, not an inert mock-up.
+{
+  const read = (name) => readFileSync(new URL(`../../extension/${name}`, import.meta.url), "utf8");
+  const html = read("popup.html");
+  const js = read("popup.js");
+  const css = read("popup.css");
+  const ids = new Set([...html.matchAll(/\\bid="([^"]+)"/g)].map((m) => m[1]));
+  const used = [...js.matchAll(/\\$\\("([^"]+)"\\)/g)].map((m) => m[1]);
+  assert.ok(used.length > 0, "popup has wired controls");
+  for (const id of used) assert.ok(ids.has(id), `popup.js expects #${id} to exist`);
+  assert.ok(html.includes("Rakib Download Manager"), "popup shows the Rakib product name");
+  assert.ok(css.includes(".brand-mark"), "popup has its own visual identity");
+  assert.ok(js.includes("github.com/mdrakibhossainkst/rakibdownloadmanager"), "project link points to Rakib's repository");
+  assert.ok(!js.includes("github.com/sponsors/anefzaoui"), "no upstream sponsor link");
+  const en = JSON.parse(read("_locales/en/messages.json"));
+  assert.equal(en.name.message, "Rakib Download Manager");
+  ok("Rakib popup: selectors wired, branding and project links verified");
+}
 console.log(`extension: ${passed} checks passed`);
