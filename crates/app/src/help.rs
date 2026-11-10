@@ -15,7 +15,8 @@ use crate::winui::{self, ButtonKind, r};
 pub const REPO: &str = "https://github.com/mdrakibhossainkst/rakibdownloadmanager";
 /// The Rakib Download Manager project page shown from Help and About.
 pub const SPONSORS: &str = REPO;
-const LATEST: &str = "https://api.github.com/repos/mdrakibhossainkst/rakibdownloadmanager/releases/latest";
+const LATEST: &str =
+    "https://api.github.com/repos/mdrakibhossainkst/rakibdownloadmanager/releases/latest";
 pub const VERSION: &str = env!("CARGO_PKG_VERSION");
 pub const COMMIT: &str = env!("MDM_COMMIT");
 /// While MDM runs, the automatic check comes again this often (it also checks at every start).
