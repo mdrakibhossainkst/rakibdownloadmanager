@@ -1428,7 +1428,7 @@ pub fn dashboard_header(ui: &Ui, o: Pos2, width: f32, total: usize, active: usiz
 
     let stats = [
         (crate::i18n::t("Downloads"), total, c.accent),
-        (crate::i18n::t("Running"), active, c.reach_near),
+        (crate::i18n::t("Downloading"), active, c.reach_near),
         (crate::i18n::t("Complete"), complete, c.success),
     ];
     let card_w = 104.0;
