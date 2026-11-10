@@ -903,12 +903,9 @@ pub fn show(
             // control's focus (winui::keyboard_in_use).
             let has_focus = focus == Some(idx) && st.focused && keys_in_use;
             if sel || has_focus {
-                // The row above its grid line; the focused row has a dotted outline (every other
-                // pixel), in the fill's inverse on a selected row. Both modes alike.
+                // The focused card has a dotted outline (every other pixel), in the fill's
+                // inverse on a selected row. Both modes alike.
                 let (right, bottom) = (last_right - 5.0, top + row_h() - 3.0);
-                if sel {
-                    bp.rect_filled(row_face, 7.0, SELECTED());
-                }
                 if has_focus {
                     let dot = if sel {
                         crate::theme::colors().selection_focus
@@ -917,10 +914,6 @@ pub fn show(
                     };
                     dotted(&bp, cl, top, right, bottom, dot);
                 }
-            } else if picked {
-                // Unfocused (Find, Properties, a menu has the keys): still shown, in the inactive
-                // selection grey, as Explorer shows it, so what a command acts on stays visible.
-                bp.rect_filled(row_face, 7.0, winui::SELECTED_INACTIVE());
             }
             for (c, x0, x1) in &cols {
                 // The file-type icon sits in the File Name column, wherever it is.
