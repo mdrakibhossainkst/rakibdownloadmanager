@@ -1,3 +1,5 @@
+#![allow(clippy::vec_init_then_push, clippy::drop_non_drop)]
+
 //! A theme's icon set (#45): files named by what MDM needs them for (`tb-add-url`, `cat-music`,
 //! `ft-pdf`…, the list in [`NEEDS`]), at 16 pixels and at 24 (drawn at 24 and up), pictures at
 //! 32 and 48 too (a screen at 150 % to 300 %, [`SIZES`]). A theme that
