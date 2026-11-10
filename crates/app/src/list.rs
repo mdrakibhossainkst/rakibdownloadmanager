@@ -882,7 +882,11 @@ pub fn show(
                 // pixel), in the fill's inverse on a selected row. Both modes alike.
                 let (right, bottom) = (last_right - 1.0, top + row_h() - 2.0);
                 if sel {
-                    fill(&bp, cl, top, right, bottom, SELECTED());
+                    bp.rect_filled(
+                        screen(Rect::from_min_max(pos2(cl, top), pos2(right + 1.0, bottom + 1.0))),
+                        6.0,
+                        SELECTED(),
+                    );
                 }
                 if has_focus {
                     let dot = if sel {
@@ -896,12 +900,12 @@ pub fn show(
                 // Unfocused (Find, Properties, a menu has the keys): still shown, in the inactive
                 // selection grey, as Explorer shows it, so what a command acts on stays visible.
                 let bottom = top + row_h() - 2.0;
-                fill(
-                    &bp,
-                    cl,
-                    top,
-                    last_right - 1.0,
-                    bottom,
+                bp.rect_filled(
+                    screen(Rect::from_min_max(
+                        pos2(cl, top),
+                        pos2(last_right, bottom + 1.0),
+                    )),
+                    6.0,
                     winui::SELECTED_INACTIVE(),
                 );
             }
