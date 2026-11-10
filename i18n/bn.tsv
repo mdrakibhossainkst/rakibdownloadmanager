@@ -6628,3 +6628,15 @@ unit	{n} MB	{n} এমবি
 #. {n} = a number (keep the braces as they are)
 #, machine
 unit	{n} MB/sec	{n} এমবি/সেকেন্ড
+#. text in the browser extension
+#. section label above the browser capture settings in the Rakib extension popup
+#, machine
+extension	BROWSER CAPTURE	ব্রাউজার ক্যাপচার
+#. text in the browser extension
+#. section label above the local or remote download destination choices
+#, machine
+extension	DOWNLOAD DESTINATION	ডাউনলোডের গন্তব্য
+#. text in the browser extension
+#. section label above media detected on the current browser page
+#, machine
+extension	MEDIA FOUND ON THIS PAGE	এই পৃষ্ঠায় পাওয়া মিডিয়া
