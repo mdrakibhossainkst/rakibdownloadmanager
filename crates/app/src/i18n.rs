@@ -149,7 +149,13 @@ fn rakib_brand(text: &str) -> &str {
 
 /// The translation of `source` (English); `source` itself when there is none.
 pub fn t(source: &str) -> &str {
-    rakib_brand(i18n().t(lang(), source))
+    let translated = i18n().t(lang(), source);
+    // This one instruction names the upstream browser extension itself, not the forked app.
+    if source == "Turn on \"Mister Download Manager\" and allow it on all websites." {
+        translated
+    } else {
+        rakib_brand(translated)
+    }
 }
 
 /// The translation of `source` in `context` (the same English with different meanings).
