@@ -4930,3 +4930,8 @@ unit	{n} MB	{n} MB
 #. unit after a number in the download list (sizes, speeds, status)
 #. {n} = a number (keep the braces as they are)
 unit	{n} MB/sec	{n} MB/sec
+extension	Capture downloads	Capture downloads
+extension	Proxy integration	Proxy integration
+extension	Send supported downloads to Rakib	Send supported downloads to Rakib
+extension	Use the app network proxy	Use the app network proxy
+extension	Use media title as filename	Use media title as filename
