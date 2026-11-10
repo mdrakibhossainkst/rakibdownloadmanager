@@ -183,7 +183,7 @@ async fn latest() -> Result<Found, String> {
     // The chosen DNS and network adapter, as downloads have them (#36, #35).
     let client = mdm_engine::net::client_builder(&net.dns, &net.route, &feed)
         .map_err(|e| e.to_string())?
-        .user_agent(concat!("MisterDownloadManager/", env!("CARGO_PKG_VERSION")))
+        .user_agent(concat!("RakibDownloadManager/", env!("CARGO_PKG_VERSION")))
         .timeout(Duration::from_secs(20))
         .build()
         .map_err(|e| e.to_string())?;
