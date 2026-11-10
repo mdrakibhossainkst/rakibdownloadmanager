@@ -15,6 +15,9 @@ $src = Join-Path $root "extension"
 # Joined part by part: .NET (the zips below) takes a backslash literally on Linux and macOS.
 $out = Join-Path (Join-Path $root "target") "extension"
 $cargo = Get-Content (Join-Path $root "Cargo.toml") -Raw
+# Rasterise the fork's own vector-drawn icon before copying extension assets.
+python (Join-Path $root "tools/extension/build_icons.py")
+if ($LASTEXITCODE -ne 0) { throw "browser icon generation failed (install Pillow with: python -m pip install Pillow)" }
 $version = [regex]::Match($cargo, '(?m)^version\s*=\s*"([^"]+)"').Groups[1].Value
 if (-not $version) { throw "no version in Cargo.toml" }
 # The stores take one to four dot-separated numbers only (no "-rc.1").
