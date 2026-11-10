@@ -104,7 +104,8 @@ pub fn app_icon() -> std::sync::Arc<egui::IconData> {
                 }
                 // White download shaft and arrow head.
                 let shaft = (116.0..140.0).contains(&px) && (72.0..151.0).contains(&py);
-                let head = (132.0..=183.0).contains(&py) && (px - 128.0).abs() <= (py - 132.0) * 0.82;
+                let head =
+                    (132.0..=183.0).contains(&py) && (px - 128.0).abs() <= (py - 132.0) * 0.82;
                 // The receiving tray: a rounded horizontal slot.
                 let tray = ((82.0..=174.0).contains(&px) && (174.0..=188.0).contains(&py))
                     && (py <= 181.0 || (91.0..=165.0).contains(&px));
