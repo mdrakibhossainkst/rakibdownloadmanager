@@ -4926,3 +4926,14 @@ unit	{n} MB	{n} MB
 #. unit after a number in the download list (sizes, speeds, status)
 #. {n} = a number (keep the braces as they are)
 unit	{n} MB/sec	{n} MB/sec
+
+# Rakib Download Manager desktop branding
+	About Rakib Download Manager	About Rakib Download Manager
+	Always turn on Speed Limiter on Rakib Download Manager startup	Always turn on Speed Limiter on Rakib Download Manager startup
+	Are you sure you want to delete "{name}" from Rakib Download Manager list of downloads?	Are you sure you want to delete "{name}" from Rakib Download Manager list of downloads?
+@plural	Are you sure you want to delete {n} download from Rakib Download Manager list of downloads?|Are you sure you want to delete these {n} downloads from Rakib Download Manager list of downloads?	Are you sure you want to delete {n} download from Rakib Download Manager list of downloads?|Are you sure you want to delete these {n} downloads from Rakib Download Manager list of downloads?
+	I download with Rakib Download Manager: fast, free, and it looks like the download manager you already know. {link}	I download with Rakib Download Manager: fast, free, and it looks like the download manager you already know. {link}
+	Open Rakib Download Manager	Open Rakib Download Manager
+	Rakib Download Manager	Rakib Download Manager
+	Rakib Download Manager {version} is available (released {date}).	Rakib Download Manager {version} is available (released {date}).
+	You have the latest version of Rakib Download Manager ({version}).	You have the latest version of Rakib Download Manager ({version}).
