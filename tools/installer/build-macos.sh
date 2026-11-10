@@ -44,9 +44,9 @@ mkdir -p "$stage"
 set_dir="$stage/AppIcon.iconset"
 mkdir -p "$set_dir"
 for s in 16 32 128 256 512; do
-  sips -z "$s" "$s" "$root/art/Rakib Download Manager.png" --out "$set_dir/icon_${s}x${s}.png" >/dev/null
+  sips -z "$s" "$s" "$root/art/Mister Download Manager.png" --out "$set_dir/icon_${s}x${s}.png" >/dev/null
   d=$((s * 2))
-  sips -z "$d" "$d" "$root/art/Rakib Download Manager.png" --out "$set_dir/icon_${s}x${s}@2x.png" >/dev/null
+  sips -z "$d" "$d" "$root/art/Mister Download Manager.png" --out "$set_dir/icon_${s}x${s}@2x.png" >/dev/null
 done
 iconutil -c icns "$set_dir" -o "$stage/AppIcon.icns"
 
