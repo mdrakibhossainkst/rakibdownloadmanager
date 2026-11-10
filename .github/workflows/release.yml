@@ -302,7 +302,7 @@ jobs:
           # (crates/tools/src/update.rs; the public key is crates/tools/keys/rakib-release.asc).
           if ($env:RAKIB_RELEASE_KEY) {
             $key = Join-Path $env:RUNNER_TEMP "mdm-release.asc"
-            Set-Content -Encoding ascii $key $env:MDM_RELEASE_KEY
+            Set-Content -Encoding ascii $key $env:RAKIB_RELEASE_KEY
             gpg --batch --quiet --import $key
             Remove-Item $key
             gpg --batch --yes --detach-sign --local-user 5826D399249DE856EA087D802E293C28E8A69D74 `
