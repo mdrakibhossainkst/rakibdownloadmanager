@@ -169,8 +169,8 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: extension
+          name: rakib-browser-extensions
           path: |
-            target/extension/mdm-chromium.zip
-            target/extension/mdm-firefox.xpi
-            target/extension/mdm-chrome-store.zip
+            target/extension/rakib-chromium.zip
+            target/extension/rakib-firefox.xpi
+            target/extension/rakib-chrome-store.zip
