@@ -17,7 +17,7 @@ pub const LEGACY_STORE_ID: &str = "ejoleppdfgjdndddcjoehopknmlglojp";
 pub const OTHER_STORE_IDS: [&str; 2] = ["EDGE_ADDONS_ID_PENDING", "OPERA_ADDONS_ID_PENDING"];
 /// The Firefox add-on's page on addons.mozilla.org (listed: Firefox installs and updates it from
 /// there).
-pub const FIREFOX_PAGE: &str = "https://github.com/mdrakibhossainkst/rakibdownloadmanager/tree/rakib/phase-01-macos-audit/docs";
+pub const FIREFOX_PAGE: &str = "https://github.com/mdrakibhossainkst/rakibdownloadmanager/tree/main/docs";
 /// The Firefox add-on's ID (extension/manifest.firefox.json).
 pub const FIREFOX_ID: &str = "rakib-download-manager@mdrakibhossainkst.github.io";
 /// The previous add-on ID remains accepted for installations made before the fork was re-identified.
