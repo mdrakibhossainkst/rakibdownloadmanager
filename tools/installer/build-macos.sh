@@ -40,11 +40,13 @@ stage="$dist/stage-macos"
 rm -rf "$stage"
 mkdir -p "$stage"
 
-# The icon: every size macOS asks for, from the 1254 px artwork.
+# The original Rakib vector mark is rasterized at high resolution, then packed as ICNS.
+rakib_icon="$stage/RakibIcon.png"
+swift "$root/tools/installer/render-svg-icon.swift" "$root/art/Rakib Download Manager.svg" "$rakib_icon"
 set_dir="$stage/AppIcon.iconset"
 mkdir -p "$set_dir"
 for s in 16 32 128 256 512; do
-  sips -z "$s" "$s" "$root/art/Mister Download Manager.png" --out "$set_dir/icon_${s}x${s}.png" >/dev/null
+  sips -z "$s" "$s" "$rakib_icon" --out "$set_dir/icon_${s}x${s}.png" >/dev/null
   d=$((s * 2))
   sips -z "$d" "$d" "$root/art/Mister Download Manager.png" --out "$set_dir/icon_${s}x${s}@2x.png" >/dev/null
 done
