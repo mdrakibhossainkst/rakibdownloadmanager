@@ -863,15 +863,20 @@ pub fn show(
         if let Some(row) = rows.get(idx) {
             let picked = selected.get(idx).copied().unwrap_or(false);
             expose_row(idx, row, picked);
-            let hovered_row = resp.hover_pos().map(english).is_some_and(|h| {
-                body.contains(h) && h.y >= top && h.y < top + row_h()
-            });
+            let hovered_row = resp
+                .hover_pos()
+                .map(english)
+                .is_some_and(|h| body.contains(h) && h.y >= top && h.y < top + row_h());
             if hovered_row && !picked {
                 let hover = screen(Rect::from_min_size(
                     pos2(cl + 2.0, top + 1.0),
                     egui::vec2((last_right - cl - 4.0).max(0.0), row_h() - 2.0),
                 ));
-                bp.rect_filled(hover, 5.0, crate::theme::colors().field.gamma_multiply(0.48));
+                bp.rect_filled(
+                    hover,
+                    5.0,
+                    crate::theme::colors().field.gamma_multiply(0.48),
+                );
             }
             let sel = picked && st.focused;
             // The focused row's dotted outline only once the keyboard is in use, as every
@@ -883,7 +888,10 @@ pub fn show(
                 let (right, bottom) = (last_right - 1.0, top + row_h() - 2.0);
                 if sel {
                     bp.rect_filled(
-                        screen(Rect::from_min_max(pos2(cl, top), pos2(right + 1.0, bottom + 1.0))),
+                        screen(Rect::from_min_max(
+                            pos2(cl, top),
+                            pos2(right + 1.0, bottom + 1.0),
+                        )),
                         6.0,
                         SELECTED(),
                     );
@@ -912,7 +920,12 @@ pub fn show(
             for (c, x0, x1) in &cols {
                 // The file-type icon sits in the File Name column, wherever it is.
                 let tx = if *c == 0 {
-                    icons.paint_in(ui, &bp, row.icon.clone(), pos2(x0 + 4.0, top + (row_h() - 16.0) / 2.0));
+                    icons.paint_in(
+                        ui,
+                        &bp,
+                        row.icon.clone(),
+                        pos2(x0 + 4.0, top + (row_h() - 16.0) / 2.0),
+                    );
                     x0 + 22.0
                 } else {
                     x0 + 6.0
