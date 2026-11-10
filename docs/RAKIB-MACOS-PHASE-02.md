@@ -23,7 +23,7 @@ The upstream app already provides:
 - Added an original editable SVG icon source at `art/Rakib Download Manager.svg`; the macOS installer rasterizes it at 1024 px and packages all required ICNS sizes. The app's runtime icon is drawn in Rust so the menu-bar icon is available on macOS too.
 - The internal bundle identifier, LaunchAgent label, executable names, browser native-messaging identifiers and data directory remain unchanged. These are coupled; changing only the visible bundle identifier would risk duplicate startup entries, broken browser integration, or lost access to existing download history/settings.
 - Help, issue reporting and latest-release discovery now point to the user's GitHub repository. The upstream user-guide website remains the documentation source for now.
-- No release DMG is claimed as built or tested yet. The in-app updater also needs a fork-owned OpenPGP signing key: update `crates/tools/keys/mdm-release.asc` with the public key and configure the matching private key as the repository Actions secret `MDM_RELEASE_KEY` before publishing self-updating releases.
+- No release DMG is claimed as built or tested yet. The in-app updater also needs a fork-owned OpenPGP signing key: the public key is pinned at `crates/tools/keys/rakib-release.asc` and the matching private key must be configured as the repository Actions secret `RAKIB_RELEASE_KEY` (fingerprint `FB1E9144C6FC782CC6CE61DFE6852D874F11BDFB`) before publishing self-updating releases.
 
 ## Validation status
 
