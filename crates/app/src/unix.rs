@@ -1436,7 +1436,7 @@ pub fn missing_text(libs: &[&WindowLib], opening: bool) -> String {
 pub fn tell_window_failed(text: &str) {
     eprintln!("{text}");
     tracing::error!("{text}");
-    let title = "Mister Download Manager";
+    let title = "Rakib Download Manager";
     let boxes: [(&str, Vec<&str>); 2] = [
         (
             "zenity",
