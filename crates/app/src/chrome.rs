@@ -1407,8 +1407,8 @@ pub enum ToolbarEvent {
 /// Paint the etch (y 20, 21) and the toolbar band (y 22–91).
 /// Client y where the panes (Categories, list) start: below the toolbar band, in both modes.
 pub fn pane_top() -> f32 {
-    // Menu (20) + toolbar (70) + the Rakib dashboard summary band (54).
-    124.0
+    // Menu (20) + action dock (70) + Rakib workspace header (66).
+    136.0
 }
 
 /// The compact summary band below the action toolbar.
@@ -1425,105 +1425,48 @@ pub fn dashboard_header(
     let top = o.y + MENU_H + 72.0;
     let panel = winui::rect(Rect::from_min_max(
         pos2(o.x + 7.0, top),
-        pos2(o.x + width - 8.0, top + 46.0),
+        pos2(o.x + width - 8.0, top + 58.0),
     ));
-    p.rect_filled(panel, 9.0, c.tab_page);
-    p.rect_stroke(
-        panel,
-        9.0,
-        egui::Stroke::new(1.0, c.group_line),
-        egui::StrokeKind::Inside,
-    );
+    p.rect_filled(panel, 11.0, c.tab_page);
+    p.rect_stroke(panel, 11.0, egui::Stroke::new(1.0, c.group_line), egui::StrokeKind::Inside);
+    let accent = winui::rect(Rect::from_min_size(
+        pos2(panel.left() + 1.0, panel.top() + 10.0),
+        vec2(3.0, panel.height() - 20.0),
+    ));
+    p.rect_filled(accent, 2.0, c.accent);
 
     let rtl = winui::rtl();
-    let brand_x = winui::mx(if rtl {
-        panel.right() - 18.0
-    } else {
-        panel.left() + 18.0
-    });
-    let brand_align = if rtl {
-        egui::Align2::RIGHT_CENTER
-    } else {
-        egui::Align2::LEFT_CENTER
-    };
-    p.text(
-        pos2(brand_x, panel.center().y - 6.0),
-        brand_align,
-        "RAKIB DOWNLOAD MANAGER",
-        egui::FontId::proportional(12.0),
-        c.text,
-    );
-    p.text(
-        pos2(brand_x, panel.center().y + 10.0),
-        brand_align,
-        crate::i18n::t("Download workspace"),
-        egui::FontId::proportional(9.0),
-        c.muted,
-    );
+    let brand_x = winui::mx(if rtl { panel.right() - 18.0 } else { panel.left() + 18.0 });
+    let brand_align = if rtl { egui::Align2::RIGHT_CENTER } else { egui::Align2::LEFT_CENTER };
+    p.text(pos2(brand_x, panel.center().y - 7.0), brand_align,
+        "RAKIB DOWNLOAD MANAGER", egui::FontId::proportional(12.5), c.text);
+    p.text(pos2(brand_x, panel.center().y + 10.0), brand_align,
+        crate::i18n::t("Your downloads, in one place"), egui::FontId::proportional(9.0), c.muted);
 
+    let stats_width = (panel.width() - 190.0).clamp(210.0, 300.0);
+    let card_gap = 6.0;
+    let card_w = ((stats_width - 2.0 * card_gap) / 3.0).clamp(62.0, 96.0);
+    let card_h = 40.0;
     let stats = [
         (crate::i18n::t("Downloads"), total, c.accent),
         (crate::i18n::t("Downloading"), active, c.reach_near),
         (crate::i18n::t("Complete"), complete, c.success),
     ];
-    let card_w = 104.0;
-    let card_h = 32.0;
-    let gap = 7.0;
-    let mut x = if rtl {
-        panel.left() + 14.0
-    } else {
-        panel.right() - 14.0 - card_w
-    };
+    let mut x = if rtl { panel.left() + 12.0 } else { panel.right() - 12.0 - card_w };
     for (label, value, ink) in stats {
-        let logical = Rect::from_min_size(
-            pos2(x, panel.center().y - card_h / 2.0),
-            vec2(card_w, card_h),
-        );
+        let logical = Rect::from_min_size(pos2(x, panel.center().y - card_h / 2.0), vec2(card_w, card_h));
         let rect = winui::rect(logical);
-        p.rect_filled(rect, 7.0, c.field);
-        p.rect_stroke(
-            rect,
-            7.0,
-            egui::Stroke::new(1.0, c.group_line),
-            egui::StrokeKind::Inside,
-        );
-        let label_x = winui::mx(if rtl {
-            logical.right() - 9.0
-        } else {
-            logical.left() + 9.0
-        });
-        p.text(
-            pos2(label_x, rect.center().y - 6.0),
-            if rtl {
-                egui::Align2::RIGHT_CENTER
-            } else {
-                egui::Align2::LEFT_CENTER
-            },
-            label,
-            egui::FontId::proportional(8.5),
-            c.muted,
-        );
-        let value_x = winui::mx(if rtl {
-            logical.left() + 9.0
-        } else {
-            logical.right() - 9.0
-        });
-        p.text(
-            pos2(value_x, rect.center().y + 5.0),
-            if rtl {
-                egui::Align2::LEFT_CENTER
-            } else {
-                egui::Align2::RIGHT_CENTER
-            },
-            crate::i18n::integer(value as u64),
-            egui::FontId::proportional(12.0),
-            ink,
-        );
-        x += if rtl {
-            card_w + gap
-        } else {
-            -(card_w + gap)
-        };
+        p.rect_filled(rect, 8.0, c.field);
+        p.rect_stroke(rect, 8.0, egui::Stroke::new(1.0, c.group_line), egui::StrokeKind::Inside);
+        let lx = winui::mx(if rtl { logical.right() - 8.0 } else { logical.left() + 8.0 });
+        p.text(pos2(lx, rect.center().y - 7.0),
+            if rtl { egui::Align2::RIGHT_CENTER } else { egui::Align2::LEFT_CENTER },
+            label, egui::FontId::proportional(8.0), c.muted);
+        let vx = winui::mx(if rtl { logical.left() + 8.0 } else { logical.right() - 8.0 });
+        p.text(pos2(vx, rect.center().y + 8.0),
+            if rtl { egui::Align2::LEFT_CENTER } else { egui::Align2::RIGHT_CENTER },
+            crate::i18n::integer(value as u64), egui::FontId::proportional(13.0), ink);
+        x += if rtl { card_w + card_gap } else { -(card_w + card_gap) };
     }
 }
 
@@ -1774,9 +1717,10 @@ pub fn categories(
         pos2(o.x + 6.0, y0),
         pos2(right, bottom - 5.0),
     ));
+    p.rect_filled(frame, 11.0, crate::theme::colors().tab_page);
     p.rect_stroke(
         frame,
-        0.0,
+        11.0,
         Stroke::new(1.0, CAT_FRAME()),
         egui::StrokeKind::Inside,
     );
@@ -1946,15 +1890,16 @@ pub fn categories(
         let text_x = o.x + if r.level == 0 { 51.0 } else { 70.0 };
         let ext = text_width_font(&p, winui::tahoma(), crate::i18n::t(&r.label));
         if r.selected {
-            // The inactive selection grey behind the label, in both modes (#f0f0f0 on the white
-            // tree could not be seen).
-            winui::fill_l(
-                &tp,
-                text_x - 2.0,
-                top,
-                text_x + ext + 1.0,
-                top + 15.0,
-                winui::SELECTED_INACTIVE(),
+            // Full-width rounded selection row: a calmer dashboard navigation treatment.
+            let selected = winui::rect(
+                Rect::from_min_size(pos2(area.left() + 4.0, top), vec2(area.width() - 8.0, 16.0))
+                    .intersect(area),
+            );
+            tp.rect_filled(selected, 5.0, crate::theme::colors().field);
+            tp.rect_filled(
+                winui::rect(Rect::from_min_size(pos2(selected.left() + 1.0, selected.top() + 3.0), vec2(3.0, 10.0))),
+                2.0,
+                crate::theme::colors().accent,
             );
         }
         if let Some(open) = r.expander {
