@@ -119,8 +119,7 @@ pub struct Settings {
     pub limits_warn: bool,
 
     // ---- Options (notes/ui-spec/options-dialog.md; IDM 6.42 defaults unless noted) ----
-    /// General: start with Windows. IDM's default is on; ours is off until the user asks
-    /// (a download manager shouldn't register itself silently).
+    /// General: launch at login. Enabled by default for Rakib Download Manager; users can opt out in Options.
     pub launch_on_startup: bool,
     /// View → Language: a catalog's code (`ar`, `pt-br`…); `None` follows Windows.
     pub language: Option<String>,
@@ -373,7 +372,7 @@ impl Default for Settings {
             limits_mb: 200,
             limits_hours: 5,
             limits_warn: true,
-            launch_on_startup: false,
+            launch_on_startup: true,
             language: None,
             language_asked: false,
             helpers_asked: false,
