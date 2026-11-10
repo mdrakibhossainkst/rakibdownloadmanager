@@ -1007,6 +1007,7 @@
 #. text in the download list; text in the Options window
 #. tab title: download settings
 	Downloads	Downloads
+	Download workspace	Download workspace
 #. text in the tray icon's menu
 #. tray menu: a submenu of the downloads now running; choosing one shows its progress window
 	Downloads in progress	Downloads in progress
