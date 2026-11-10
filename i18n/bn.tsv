@@ -6606,3 +6606,8 @@ unit	{n} MB	{n} এমবি
 #. {n} = a number (keep the braces as they are)
 #, machine
 unit	{n} MB/sec	{n} এমবি/সেকেন্ড
+extension	Capture downloads	ডাউনলোড গ্রহণ করুন
+extension	Proxy integration	প্রক্সি ইন্টিগ্রেশন
+extension	Send supported downloads to Rakib	সমর্থিত ডাউনলোড Rakib-এ পাঠান
+extension	Use the app network proxy	অ্যাপের নেটওয়ার্ক প্রক্সি ব্যবহার করুন
+extension	Use media title as filename	মিডিয়ার শিরোনাম ফাইলের নামে ব্যবহার করুন
