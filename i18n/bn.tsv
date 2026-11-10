@@ -5607,6 +5607,9 @@ extension	Button settings...	বোতামের সেটিংস...
 #, machine
 extension	Can't tell which video this is: open its own page and try there	এটি কোন ভিডিও তা বোঝা যাচ্ছে না: ভিডিওটির নিজের পৃষ্ঠা খুলে সেখানে চেষ্টা করুন
 #. text in the browser extension
+#. heading for the capture switch in Rakib's browser extension popup
+extension	Capture downloads	ডাউনলোড গ্রহণ করুন
+#. text in the browser extension
 #. the toolbar button's status when the browser reaches the app; keep the name Mister Download Manager as it is
 #, machine
 extension	Connected to Mister Download Manager	Mister Download Manager-এর সাথে সংযুক্ত
@@ -5809,13 +5812,19 @@ extension	Send downloads through this browser's proxy or VPN extension	এই �
 #, machine
 extension	Send downloads to	ডাউনলোডগুলি এখানে পাঠান
 #. text in the browser extension
+#. short explanation below the capture switch in the browser extension popup
+extension	Send supported downloads to Rakib	সমর্থিত ডাউনলোড Rakib-এ পাঠান
+#. text in the browser extension
 #. shown briefly on the download button after it was clicked; keep the name Mister Download Manager as it is
 #, machine
 extension	Sent to Mister Download Manager	Mister Download Manager-এ পাঠানো হয়েছে
 #. text in the browser extension
 #. link at the foot of the toolbar button's popup to the creator's GitHub Sponsors page (MDM is free; this is an optional donation)
 #, machine
-extension	Support MDM	MDM-কে সহায়তা করুন
+extension	Project	প্রকল্প
+#. text in the browser extension
+#. heading for the browser proxy switch in the extension popup
+extension	Proxy integration	প্রক্সি ইন্টিগ্রেশন
 #. text in the browser extension
 #. check box in the toolbar button's popup: on, downloads go to the app; off, the browser keeps them
 #, machine
@@ -5864,6 +5873,12 @@ extension	Update Mister Download Manager to use everything this extension offers
 #. why a download stayed with the browser: the app's setting 'Use advanced browser integration' is off; keep the setting's name as the app shows it
 #, machine
 extension	Use advanced browser integration is off in Options → General.	বিকল্প → সাধারণে উন্নত ব্রাউজার ইন্টিগ্রেশন ব্যবহার করুন বন্ধ আছে।
+#. text in the browser extension
+#. checkbox in the browser extension popup: prefix a downloaded media file with its page title
+extension	Use media title as filename	মিডিয়ার শিরোনাম ফাইলের নামে ব্যবহার করুন
+#. text in the browser extension
+#. short explanation below the proxy switch in the extension popup
+extension	Use the app network proxy	অ্যাপের নেটওয়ার্ক প্রক্সি ব্যবহার করুন
 #. text in the browser extension
 #. pairing failed: codes tried too fast
 #, machine
@@ -6606,8 +6621,3 @@ unit	{n} MB	{n} এমবি
 #. {n} = a number (keep the braces as they are)
 #, machine
 unit	{n} MB/sec	{n} এমবি/সেকেন্ড
-extension	Capture downloads	ডাউনলোড গ্রহণ করুন
-extension	Proxy integration	প্রক্সি ইন্টিগ্রেশন
-extension	Send supported downloads to Rakib	সমর্থিত ডাউনলোড Rakib-এ পাঠান
-extension	Use the app network proxy	অ্যাপের নেটওয়ার্ক প্রক্সি ব্যবহার করুন
-extension	Use media title as filename	মিডিয়ার শিরোনাম ফাইলের নামে ব্যবহার করুন
