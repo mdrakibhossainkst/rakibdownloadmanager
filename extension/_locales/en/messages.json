@@ -330,5 +330,17 @@
   "popup_media_title_name": {
     "message": "Prefix media file names with the page title",
     "description": "Option in the browser extension media list: put the page title before the original file name when downloading a detected media file"
+  },
+  "popup_section_capture": {
+    "message": "BROWSER CAPTURE",
+    "description": "section label above the browser capture settings in the Rakib extension popup"
+  },
+  "popup_section_destination": {
+    "message": "DOWNLOAD DESTINATION",
+    "description": "section label above the local or remote download destination choices"
+  },
+  "popup_section_media": {
+    "message": "MEDIA FOUND ON THIS PAGE",
+    "description": "section label above media detected on the current browser page"
   }
 }
