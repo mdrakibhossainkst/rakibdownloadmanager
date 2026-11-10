@@ -1423,10 +1423,8 @@ pub fn dashboard_header(
     let p = ui.painter();
     let c = crate::theme::colors();
     let top = o.y + MENU_H + 72.0;
-    let logical_panel = Rect::from_min_max(
-        pos2(o.x + 7.0, top),
-        pos2(o.x + width - 8.0, top + 58.0),
-    );
+    let logical_panel =
+        Rect::from_min_max(pos2(o.x + 7.0, top), pos2(o.x + width - 8.0, top + 58.0));
     let panel = winui::rect(logical_panel);
     p.rect_filled(panel, 11.0, c.tab_page);
     p.rect_stroke(
@@ -1950,10 +1948,7 @@ pub fn categories(
                 selected.left() + 1.0
             };
             tp.rect_filled(
-                Rect::from_min_size(
-                    pos2(stripe_x, selected.top() + 3.0),
-                    vec2(3.0, 10.0),
-                ),
+                Rect::from_min_size(pos2(stripe_x, selected.top() + 3.0), vec2(3.0, 10.0)),
                 2.0,
                 crate::theme::colors().accent,
             );
