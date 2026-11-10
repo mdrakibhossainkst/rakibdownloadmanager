@@ -7,6 +7,26 @@
     "message": "Hands downloads from the browser to Rakib Download Manager.",
     "description": "the extension's description in the browser's list of extensions; keep the name Rakib Download Manager as it is"
   },
+  "popup_capture": {
+    "message": "Capture downloads",
+    "description": "heading for the capture switch in Rakib's browser extension popup"
+  },
+  "popup_capture_desc": {
+    "message": "Send supported downloads to Rakib",
+    "description": "short explanation below the capture switch in the browser extension popup"
+  },
+  "popup_proxy_heading": {
+    "message": "Proxy integration",
+    "description": "heading for the browser proxy switch in the extension popup"
+  },
+  "popup_proxy_desc": {
+    "message": "Use the app network proxy",
+    "description": "short explanation below the proxy switch in the extension popup"
+  },
+  "popup_media_title_filename": {
+    "message": "Use media title as filename",
+    "description": "checkbox in the browser extension popup: prefix a downloaded media file with its page title"
+  },
   "menu": {
     "message": "Download with Rakib Download Manager",
     "description": "command in the browser's right-click menu on a link, picture, video or sound; keep the name Rakib Download Manager as it is"
