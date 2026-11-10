@@ -155,9 +155,6 @@ jobs:
       - name: Prepare Pillow for original extension icons
         run: python -m pip install Pillow
 
-      - name: Generate Rakib extension icons
-        run: python tools/extension/build_icons.py
-
       - name: Logic against fake Firefox and Chrome APIs
         run: node tools/extension/test.mjs
 
