@@ -484,11 +484,12 @@ a free download manager. [Star it on GitHub](https://github.com/mdrakibhossainks
   </picture>
 </a>
 
-## Support MDM
+## Support the upstream project
 
-MDM is free and always will be. If it saves you time, you can support its creator on
-[GitHub Sponsors](https://github.com/sponsors/anefzaoui). It's optional: nothing in the app
-changes or unlocks, and there is no paid edition.
+Rakib Download Manager is a community fork of [Mister Download Manager](https://github.com/anefzaoui/misterdownloadmanager),
+and remains free under the GPL. If you would like to support the original upstream maintainer,
+you can do so through [GitHub Sponsors](https://github.com/sponsors/anefzaoui). This is optional;
+it does not unlock features in this fork.
 
 ## Licence and credits
 
