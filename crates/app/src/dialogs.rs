@@ -1817,7 +1817,7 @@ impl SpeedSettings {
                     ui,
                     o + vec2(11.0, 86.0),
                     &mut self.on_startup,
-                    "Always turn on Speed Limiter on Rakib Download Manager startup",
+                    "Always turn on Speed Limiter on Mister Download Manager startup",
                     true,
                 );
                 // Beyond IDM: a limit for all downloads together.
@@ -2085,7 +2085,7 @@ impl TurnOffCountdown {
         question(
             ctx,
             "turn-off",
-            "Rakib Download Manager",
+            "Mister Download Manager",
             [374.0, 100.0],
             false,
             winui::LIGHT_BG(),
@@ -2252,7 +2252,7 @@ impl ConfirmDelete {
                 let text = if n == 1 && self.unfinished {
                     crate::i18n::t(
                         "The selected download is not complete. Are you sure you want to delete
-it from Rakib Download Manager list of downloads?",
+it from Mister Download Manager list of downloads?",
                     )
                     .to_owned()
                 } else if n == 1 {
