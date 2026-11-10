@@ -9,7 +9,7 @@
 #. count in a dialog box
 #. never shown for a single download
 #. {n} = a number (keep the braces as they are)
-@plural	Are you sure you want to delete {n} download from Mister Download Manager list of downloads?|Are you sure you want to delete these {n} downloads from Mister Download Manager list of downloads?	Are you sure you want to delete {n} download from Rakib Download Manager list of downloads?|Are you sure you want to delete these {n} downloads from Rakib Download Manager list of downloads?
+@plural	Are you sure you want to delete {n} download from Rakib Download Manager list of downloads?|Are you sure you want to delete these {n} downloads from Rakib Download Manager list of downloads?	Are you sure you want to delete {n} download from Rakib Download Manager list of downloads?|Are you sure you want to delete these {n} downloads from Rakib Download Manager list of downloads?
 #. count in the Add torrent window
 #. while a magnet link's file list is fetched; {n} = peers that answered
 #. {n} = a number (keep the braces as they are)
@@ -181,7 +181,7 @@
 #. why an archive wasn't extracted (after "Couldn't extract {name}: ")
 	a volume of it is missing	a volume of it is missing
 #. window title in the Help menu's windows (About, updates, shortcuts, Tell a friend)
-	About Mister Download Manager	About Rakib Download Manager
+	About Rakib Download Manager	About Rakib Download Manager
 #. text in whereis.rs
 #. a download's server's round trip: {ms} a number of milliseconds, {reach} near, medium or far
 	about {ms} ms ({reach})	about {ms} ms ({reach})
@@ -219,9 +219,6 @@
 #. text in playlistdlg.rs
 #. title of the question asked before a playlist adds many downloads
 	Add many downloads	Add many downloads
-#. window title in extension.rs
-#. title of the window that offers the browser extension
-	Add Mister Download Manager to your browser	Add Rakib Download Manager to your browser
 #. message or event log entry in the main window; text in the tray icon's menu
 #. link in the empty download list: opens Add URL
 	Add new download	Add new download
@@ -344,7 +341,7 @@
 #. Options → Archives: where extracted files go
 	Always into a folder named after it	Always into a folder named after it
 #. checkbox in a dialog box
-	Always turn on Speed Limiter on Mister Download Manager startup	Always turn on Speed Limiter on Rakib Download Manager startup
+	Always turn on Speed Limiter on Mister Download Manager startup	Always turn on Speed Limiter on Mister Download Manager startup
 #. text in regional.rs; text in the Scheduler window
 #. before noon, after a time of day (12-hour clock). Its pair is "PM": write both the same way (this language's own short marks, or both kept as AM and PM)
 	AM	AM
@@ -394,7 +391,7 @@
 	Archives and Link grabber	Archives and Link grabber
 #. text in a dialog box
 #. {name} = a file name (keep the braces as they are)
-	Are you sure you want to delete "{name}" from Mister Download Manager list of downloads?	Are you sure you want to delete "{name}" from Rakib Download Manager list of downloads?
+	Are you sure you want to delete "{name}" from Rakib Download Manager list of downloads?	Are you sure you want to delete "{name}" from Rakib Download Manager list of downloads?
 #. text in countries.rs
 #. a country's name (where a download's server is)
 	Argentina	Argentina
@@ -518,8 +515,11 @@
 #. button in categories.rs; button in the Options window
 #. the trailing ... means it opens a window: keep it
 	Browse...	Browse...
+#. window title in extension.rs
+#. title of the window that offers the browser extension
+	Browser integration	Browser integration
 #. text in extension.rs
-	Browser integration isn't set up on this computer, so no browser can reach Mister Download Manager yet.	Browser integration isn't set up on this computer, so no browser can reach Rakib Download Manager yet.
+	Browser integration isn't set up on this computer, so no browser can reach Mister Download Manager yet.	Browser integration isn't set up on this computer, so no browser can reach Mister Download Manager yet.
 #. page title in the Options window
 	Browser/System Integration	Browser/System Integration
 #. text in countries.rs
@@ -667,7 +667,7 @@
 #. text in langpick.rs
 	Choose a language	Choose a language
 #. text in langpick.rs
-	Choose the language Mister Download Manager shows its windows in:	Choose the language Rakib Download Manager shows its windows in:
+	Choose the language Mister Download Manager shows its windows in:	Choose the language Mister Download Manager shows its windows in:
 #. text in the Options window
 #. Options → Sites Logins → Cookies for video sites: the title of the window, and the tooltip of the button, that pick a browser profile's folder
 	Choose the profile's folder	Choose the profile's folder
@@ -710,7 +710,7 @@
 #. text in countries.rs
 #. a country's name (where a download's server is)
 	Comoros	Comoros
-#. item in the Categories tree in the download list; value in a column's filter list in the download list; text in the download list (sizes, speeds, status); text in a download's progress window; text in remote.rs
+#. text in the main window (menus, toolbar, Categories pane); item in the Categories tree in the download list; value in a column's filter list in the download list; text in the download list (sizes, speeds, status); text in a download's progress window; text in remote.rs
 #. a download's status (state it is in, not a command)
 #. a download's status (state it is in, not a command): finished
 	Complete	Complete
@@ -963,6 +963,8 @@
 #. text in helpers.rs
 #. the headline of the first start's helpers window
 	Download videos from YouTube and 1,000+ sites	Download videos from YouTube and 1,000+ sites
+#. text in the main window (menus, toolbar, Categories pane)
+	Download workspace	Download workspace
 #. text in the Scheduler window
 #. {files} is a number box (with up/down arrows), drawn where it stands in the translation
 	Download {files} files at the same time	Download {files} files at the same time
@@ -979,7 +981,7 @@
 #. text in a dialog box
 #. {size} = a file size such as "4.2 MB"; {bytes} = a number of bytes (keep the braces as they are)
 	Downloaded {size} ({bytes} Bytes)	Downloaded {size} ({bytes} Bytes)
-#. item in the Categories tree in the download list; value in a column's filter list in the download list; text in remote.rs
+#. text in the main window (menus, toolbar, Categories pane); item in the Categories tree in the download list; value in a column's filter list in the download list; text in remote.rs
 #. a download's status (state it is in, not a command)
 	Downloading	Downloading
 #. message or event log entry in the main window
@@ -1004,10 +1006,9 @@
 #. {name} = yt-dlp or ffmpeg; {n} of {total} = which helper of how many; {percent} = how far, e.g. 45%
 #. {name} = a file name; {n} = a number (keep the braces as they are)
 	Downloading {name} ({n} of {total})... {percent}	Downloading {name} ({n} of {total})... {percent}
-#. text in the download list; text in the Options window
+#. text in the main window (menus, toolbar, Categories pane); text in the download list; text in the Options window
 #. tab title: download settings
 	Downloads	Downloads
-	Download workspace	Download workspace
 #. text in the tray icon's menu
 #. tray menu: a submenu of the downloads now running; choosing one shows its progress window
 	Downloads in progress	Downloads in progress
@@ -1127,7 +1128,7 @@
 #. verb: quit the app
 	Exit	Exit
 #. checkbox in a download's progress window; checkbox in the Scheduler window
-	Exit Mister Download Manager when done	Exit Rakib Download Manager when done
+	Exit Mister Download Manager when done	Exit Mister Download Manager when done
 #. text in the Checksum window
 	Expected checksum (MD5, SHA-1, SHA-256, SHA-512 or CRC32):	Expected checksum (MD5, SHA-1, SHA-256, SHA-512 or CRC32):
 #. message or event log entry in the main window
@@ -1450,7 +1451,7 @@
 #. Link grabber check box (IDM's "Hide HTML files"): links to web pages are not shown
 	Hide web pages	Hide web pages
 #. text in the Options window
-	Hold Alt while clicking a link to let the browser download it instead of Mister Download Manager.	Hold Alt while clicking a link to let the browser download it instead of Rakib Download Manager.
+	Hold Alt while clicking a link to let the browser download it instead of Mister Download Manager.	Hold Alt while clicking a link to let the browser download it instead of Mister Download Manager.
 #. link (opens a web page) in the Help menu's windows (About, updates, shortcuts, Tell a friend)
 	Home page	Home page
 #. text in countries.rs
@@ -1476,7 +1477,7 @@
 #. a country's name (where a download's server is)
 	Hungary	Hungary
 #. text in the Help menu's windows (About, updates, shortcuts, Tell a friend)
-	I download with Mister Download Manager: fast, free, and it looks like the download manager you already know. {link}	I download with Rakib Download Manager: fast, free, and it looks like the download manager you already know. {link}
+	I download with Mister Download Manager: fast, free, and it looks like the download manager you already know. {link}	I download with Mister Download Manager: fast, free, and it looks like the download manager you already know. {link}
 #. text in countries.rs
 #. a country's name (where a download's server is)
 	Iceland	Iceland
@@ -1682,7 +1683,7 @@
 #. a country's name (where a download's server is)
 	Latvia	Latvia
 #. text in the Options window
-	Launch Mister Download Manager on startup	Launch Rakib Download Manager on startup
+	Launch Mister Download Manager on startup	Launch Mister Download Manager on startup
 #. text in countries.rs
 #. a country's name (where a download's server is)
 	Lebanon	Lebanon
@@ -1895,43 +1896,43 @@
 #. text in a download's progress window
 #. legend: pieces not downloaded yet
 	Missing	Missing
-#. message or event log entry in the main window; window title in a dialog box; text in the Help menu's windows (About, updates, shortcuts, Tell a friend)
-	Mister Download Manager	Rakib Download Manager
+#. message or event log entry in the main window; text in the Help menu's windows (About, updates, shortcuts, Tell a friend)
+	Mister Download Manager	Mister Download Manager
 #. text in unix.rs
 #. Linux, at start, on the terminal and in a message box: a library the window needs isn't installed; {libraries} = its file names (libxkbcommon-x11.so.0…), left as they are
-	Mister Download Manager can't open its window: this system lacks {libraries}.	Rakib Download Manager can't open its window: this system lacks {libraries}.
+	Mister Download Manager can't open its window: this system lacks {libraries}.	Mister Download Manager can't open its window: this system lacks {libraries}.
 #. text in crashui.rs
 #. crash report window heading: MDM crashed and is gone
-	Mister Download Manager closed unexpectedly	Rakib Download Manager closed unexpectedly
+	Mister Download Manager closed unexpectedly	Mister Download Manager closed unexpectedly
 #. window title in the Options window
-	Mister Download Manager Configuration	Rakib Download Manager Configuration
+	Mister Download Manager Configuration	Mister Download Manager Configuration
 #. text in crashui.rs
-	Mister Download Manager crash report	Rakib Download Manager crash report
+	Mister Download Manager crash report	Mister Download Manager crash report
 #. text in crashui.rs
 #. crash report window heading: an internal error, MDM still running
-	Mister Download Manager hit an internal error	Rakib Download Manager hit an internal error
+	Mister Download Manager hit an internal error	Mister Download Manager hit an internal error
 #. text in wake.rs
 #. why the computer isn't going to sleep, in the system's list of programs that keep it awake; {queue} = the queue's name
 #. {queue} = a queue name such as "Main queue" (keep the braces as they are)
-	Mister Download Manager is running the queue "{queue}"	Rakib Download Manager is running the queue "{queue}"
+	Mister Download Manager is running the queue "{queue}"	Mister Download Manager is running the queue "{queue}"
 #. text in crashui.rs
 #. crash report window heading: MDM's window doesn't answer (frozen)
-	Mister Download Manager stopped responding	Rakib Download Manager stopped responding
+	Mister Download Manager stopped responding	Mister Download Manager stopped responding
 #. text in crashui.rs
-	Mister Download Manager stopped responding for a while	Rakib Download Manager stopped responding for a while
+	Mister Download Manager stopped responding for a while	Mister Download Manager stopped responding for a while
 #. text in the Options window
 #. \\n starts a new line: break lines where they fit the translation
-	Mister Download Manager writes every connection straight into the final\nfile (a sparse part file next to it), so no temporary directory and no\nassembling step are needed.	Rakib Download Manager writes every connection straight into the final\nfile (a sparse part file next to it), so no temporary directory and no\nassembling step are needed.
+	Mister Download Manager writes every connection straight into the final\nfile (a sparse part file next to it), so no temporary directory and no\nassembling step are needed.	Mister Download Manager writes every connection straight into the final\nfile (a sparse part file next to it), so no temporary directory and no\nassembling step are needed.
 #. text in the Help menu's windows (About, updates, shortcuts, Tell a friend)
 #. {version} = a version number (keep the braces as they are)
-	Mister Download Manager {version} is available (released {date}).	Rakib Download Manager {version} is available (released {date}).
+	Mister Download Manager {version} is available (released {date}).	Mister Download Manager {version} is available (released {date}).
 #. text in helpers.rs
 #. Video helpers: {version} = the version of MDM's own copy
 #. {version} = a version number (keep the braces as they are)
-	Mister Download Manager's own copy, version {version}	Rakib Download Manager's own copy, version {version}
+	Mister Download Manager's own copy, version {version}	Mister Download Manager's own copy, version {version}
 #. text in unix.rs
 #. Linux, at start, on the terminal: the libraries an X11 window needs aren't installed, so the window opens through Wayland instead, where menus can't be placed under what was clicked; {libraries} = their file names, left as they are
-	Mister Download Manager's X11 window needs {libraries}, which this system lacks: it opens on Wayland instead, where its menus may open away from their titles.	Rakib Download Manager's X11 window needs {libraries}, which this system lacks: it opens on Wayland instead, where its menus may open away from their titles.
+	Mister Download Manager's X11 window needs {libraries}, which this system lacks: it opens on Wayland instead, where its menus may open away from their titles.	Mister Download Manager's X11 window needs {libraries}, which this system lacks: it opens on Wayland instead, where its menus may open away from their titles.
 #. text in the Scheduler window
 #. Monday, as short as a calendar's column head (two letters in English)
 	Mo	Mo
@@ -2299,9 +2300,9 @@
 #. button that opens the torrent's containing folder in the file manager
 	Open folder	Open folder
 #. checkbox in the Add torrent window
-	Open magnet links and .torrent files with Mister Download Manager	Open magnet links and .torrent files with Rakib Download Manager
+	Open magnet links and .torrent files with Mister Download Manager	Open magnet links and .torrent files with Mister Download Manager
 #. text in the tray icon's menu
-	Open Mister Download Manager	Open Rakib Download Manager
+	Open Mister Download Manager	Open Mister Download Manager
 #. text in extension.rs
 #. step 2 of turning on the Safari extension; Cmd is the Command key
 	Open Safari's settings (Cmd+,).	Open Safari's settings (Cmd+,).
@@ -2353,7 +2354,7 @@
 	Pair a device...	Pair a device...
 #. text in remote.rs
 #. remote control page (on a phone): title of the pairing screen
-	Pair with Mister Download Manager	Pair with Rakib Download Manager
+	Pair with Mister Download Manager	Pair with Mister Download Manager
 #. text in the Options window
 #. column title: when the device was paired
 	Paired	Paired
@@ -2513,6 +2514,8 @@
 #. item in the Categories tree in the main window; text in the Scheduler window
 #. plural noun: the download queues
 	Queues	Queues
+#. window title in a dialog box; text in the Help menu's windows (About, updates, shortcuts, Tell a friend)
+	Rakib Download Manager	Rakib Download Manager
 #. text in the Options window
 #. Options → Sites Logins → Cookies for video sites: a note under the choices
 	Read on this computer only, and sent only to the video's site.	Read on this computer only, and sent only to the video's site.
@@ -2714,7 +2717,7 @@
 #. what a keyboard shortcut does in the Help menu's windows (About, updates, shortcuts, Tell a friend)
 	Select or unselect the download with the dotted outline	Select or unselect the download with the dotted outline
 #. group box title in the Options window
-	Select sounds for Mister Download Manager events	Select sounds for Rakib Download Manager events
+	Select sounds for Mister Download Manager events	Select sounds for Mister Download Manager events
 #. what a keyboard shortcut does in the Help menu's windows (About, updates, shortcuts, Tell a friend)
 	Select the downloads in the box	Select the downloads in the box
 #. what a keyboard shortcut does in the Help menu's windows (About, updates, shortcuts, Tell a friend)
@@ -2953,7 +2956,7 @@
 #. text in the Scheduler window; checkbox in the Scheduler window
 	Start download at	Start download at
 #. checkbox in the Scheduler window
-	Start download on Mister Download Manager startup	Start download on Rakib Download Manager startup
+	Start download on Mister Download Manager startup	Start download on Mister Download Manager startup
 #. checkbox in the Options window
 	Start downloading immediately while displaying "Download File Info" dialog	Start downloading immediately while displaying "Download File Info" dialog
 #. text in the tray icon's menu
@@ -3056,7 +3059,7 @@
 #. text in the Options window; text in the Scheduler window
 	Sunday	Sunday
 #. link (opens a web page) in the Help menu's windows (About, updates, shortcuts, Tell a friend)
-	Support MDM on GitHub Sponsors	Rakib Download Manager on GitHub
+	Support MDM on GitHub Sponsors	Support MDM on GitHub Sponsors
 #. text in countries.rs
 #. a country's name (where a download's server is)
 	Suriname	Suriname
@@ -3142,7 +3145,7 @@
 	the browser's proxy (a VPN or proxy extension) asks for a login only that extension has: use the VPN's own app, or choose its network adapter in Options → Proxy / Socks	the browser's proxy (a VPN or proxy extension) asks for a login only that extension has: use the VPN's own app, or choose its network adapter in Options → Proxy / Socks
 #. text in extension.rs
 #. a check of Test browser integration: the browsers find MDM's helper program
-	The browsers can find Mister Download Manager	The browsers can find Rakib Download Manager
+	The browsers can find Mister Download Manager	The browsers can find Mister Download Manager
 #. text in the Options window
 #. Options → Remote → Status: the settings were changed; they apply on OK
 	The changes apply when you click OK.	The changes apply when you click OK.
@@ -3160,7 +3163,7 @@
 	The computer could not be turned off: {error}	The computer could not be turned off: {error}
 #. text in the Scheduler window
 #. tooltip on the Scheduler's "Wake the computer to run this queue"
-	The computer is woken a minute before the start time and kept awake while the queue runs. Mister Download Manager has to be running (it can wait in the notification area).	The computer is woken a minute before the start time and kept awake while the queue runs. Rakib Download Manager has to be running (it can wait in the notification area).
+	The computer is woken a minute before the start time and kept awake while the queue runs. Mister Download Manager has to be running (it can wait in the notification area).	The computer is woken a minute before the start time and kept awake while the queue runs. Mister Download Manager has to be running (it can wait in the notification area).
 #. text in the Scheduler window
 #. the Scheduler, under "Wake the computer to run this queue": when it will happen; {date} = e.g. 06/11/2026, {time} = e.g. 22:59:00
 #. {time} = a time of day (keep the braces as they are)
@@ -3284,7 +3287,7 @@
 	the secure connection failed	the secure connection failed
 #. text in a dialog box
 #. \\n starts a new line: break lines where they fit the translation
-	The selected download is not complete. Are you sure you want to delete\nit from Mister Download Manager list of downloads?	The selected download is not complete. Are you sure you want to delete\nit from Rakib Download Manager list of downloads?
+	The selected download is not complete. Are you sure you want to delete\nit from Mister Download Manager list of downloads?	The selected download is not complete. Are you sure you want to delete\nit from Mister Download Manager list of downloads?
 #. text in errors.rs
 	the server answered {status}	the server answered {status}
 #. text in errors.rs
@@ -3869,7 +3872,7 @@
 	Yes, download them (recommended)	Yes, download them (recommended)
 #. text in the Help menu's windows (About, updates, shortcuts, Tell a friend)
 #. {version} = a version number (keep the braces as they are)
-	You have the latest version of Mister Download Manager ({version}).	You have the latest version of Rakib Download Manager ({version}).
+	You have the latest version of Mister Download Manager ({version}).	You have the latest version of Mister Download Manager ({version}).
 #. text in the Help menu's windows (About, updates, shortcuts, Tell a friend)
 #. Check for updates, under the new version's line, when MDM was installed by the Linux system's package manager (pacman, ...), which MDM can't update itself
 #. {version} = a version number (keep the braces as they are)
@@ -4162,40 +4165,40 @@ column	Time left	Time left
 #. column title in the download list in the download list
 column	Transfer rate	Transfer rate
 #. text in the browser extension
-#. choice under Send downloads to: an MDM running on another computer of the network, such as a home server; keep the name Mister Download Manager as it is
-extension	Another Mister Download Manager (a server)	Another Mister Download Manager (a server)
+#. choice under Send downloads to: an MDM running on another computer of the network, such as a home server; keep the name Rakib Download Manager as it is
+extension	Another Rakib Download Manager (a server)	Another Rakib Download Manager (a server)
 #. text in the browser extension
 #. the name this browser gets in the other MDM's list of paired devices
 extension	Browser extension	Browser extension
 #. text in the browser extension
-#. menu command of the download button over a video: opens its settings in Mister Download Manager
+#. menu command of the download button over a video: opens its settings in Rakib Download Manager
 #. the trailing ... means it is still going on: keep it
 extension	Button settings...	Button settings...
 #. text in the browser extension
 #. shown briefly on the download button when nothing on the page says which video the player is playing, so nothing was sent
 extension	Can't tell which video this is: open its own page and try there	Can't tell which video this is: open its own page and try there
 #. text in the browser extension
-#. the toolbar button's status when the browser reaches the app; keep the name Mister Download Manager as it is
-extension	Connected to Mister Download Manager	Connected to Mister Download Manager
+#. the toolbar button's status when the browser reaches the app; keep the name Rakib Download Manager as it is
+extension	Connected to Rakib Download Manager	Connected to Rakib Download Manager
 #. text in the browser extension
-#. the toolbar button's status when the browser reaches the app, with the app's version number; keep the name Mister Download Manager as it is
+#. the toolbar button's status when the browser reaches the app, with the app's version number; keep the name Rakib Download Manager as it is
 #. {version} = a version number (keep the braces as they are)
-extension	Connected to Mister Download Manager {version}	Connected to Mister Download Manager {version}
+extension	Connected to Rakib Download Manager {version}	Connected to Rakib Download Manager {version}
 #. text in the browser extension
 #. button beside a video, sound or stream in the toolbar button's popup: download it with the app; verb; short
 extension	Download	Download
 #. text in the browser extension
-#. command in the browser's right-click menu on a page: download the links of the whole page; keep the name Mister Download Manager as it is
-extension	Download all links with Mister Download Manager	Download all links with Mister Download Manager
+#. command in the browser's right-click menu on a page: download the links of the whole page; keep the name Rakib Download Manager as it is
+extension	Download all links with Rakib Download Manager	Download all links with Rakib Download Manager
 #. text in the browser extension
-#. command in the browser's right-click menu on selected text: download the links in the selection; keep the name Mister Download Manager as it is
-extension	Download selected links with Mister Download Manager	Download selected links with Mister Download Manager
+#. command in the browser's right-click menu on selected text: download the links in the selection; keep the name Rakib Download Manager as it is
+extension	Download selected links with Rakib Download Manager	Download selected links with Rakib Download Manager
 #. text in the browser extension
 #. the button over a video on a web page that downloads it; verb; short (it sits on the video)
 extension	Download video	Download video
 #. text in the browser extension
-#. command in the browser's right-click menu on a link, picture, video or sound; keep the name Mister Download Manager as it is
-extension	Download with Mister Download Manager	Download with Mister Download Manager
+#. command in the browser's right-click menu on a link, picture, video or sound; keep the name Rakib Download Manager as it is
+extension	Download with Rakib Download Manager	Download with Rakib Download Manager
 #. text in the browser extension
 #. shown in the toolbar button's popup after the site was excluded
 #. {site} = a web site's name such as "example.com" (keep the braces as they are)
@@ -4210,8 +4213,8 @@ extension	Drag to move it along the video's edge	Drag to move it along the video
 #. the address typed isn't an https:// address
 extension	Enter its https:// address.	Enter its https:// address.
 #. text in the browser extension
-#. the extension's description in the browser's list of extensions; keep the name Mister Download Manager as it is
-extension	Hands downloads from the browser to Mister Download Manager.	Hands downloads from the browser to Mister Download Manager.
+#. the extension's description in the browser's list of extensions; keep the name Rakib Download Manager as it is
+extension	Hands downloads from the browser to Rakib Download Manager.	Hands downloads from the browser to Rakib Download Manager.
 #. text in the browser extension
 #. link in the toolbar button's popup to the help page
 extension	Help	Help
@@ -4253,27 +4256,6 @@ extension	Live	Live
 #. heading in the toolbar button's popup over the list of the videos, sounds and streams the current web page has loaded
 extension	Media on this page	Media on this page
 #. text in the browser extension
-#. the extension's name in the browser's list of extensions and on its toolbar button; keep the name Mister Download Manager as it is
-extension	Mister Download Manager	Mister Download Manager
-#. text in the browser extension
-#. status when the app was started for a download but didn't answer in time; keep the name Mister Download Manager as it is
-extension	Mister Download Manager didn't start in time	Mister Download Manager didn't start in time
-#. text in the browser extension
-#. status when the app refuses this copy of the extension (another copy is installed, or it came from another store); keep the name Mister Download Manager as it is
-extension	Mister Download Manager doesn't accept this copy of the extension	Mister Download Manager doesn't accept this copy of the extension
-#. text in the browser extension
-#. shown briefly on the download button when the app could not be reached; keep the name Mister Download Manager as it is
-extension	Mister Download Manager isn't installed or didn't start	Mister Download Manager isn't installed or didn't start
-#. text in the browser extension
-#. status when the browser can't find the app's connection; keep the name Mister Download Manager as it is
-extension	Mister Download Manager isn't installed, or its browser integration isn't set up	Mister Download Manager isn't installed, or its browser integration isn't set up
-#. text in the browser extension
-#. tooltip of the switch Send downloads through this browser's proxy or VPN extension; keep the name Mister Download Manager as it is
-extension	Mister Download Manager then downloads through the same proxy as this browser. The browser asks you once to allow it; turning this off takes that back.	Mister Download Manager then downloads through the same proxy as this browser. The browser asks you once to allow it; turning this off takes that back.
-#. text in the browser extension
-#. tooltip of the switch Send downloads through this browser's proxy or VPN extension in Chrome, Edge and the other Chromium browsers (they ask for no permission at the switch); keep the name Mister Download Manager as it is
-extension	Mister Download Manager then downloads through the same proxy as this browser. While this is off, the extension doesn't read the browser's proxy.	Mister Download Manager then downloads through the same proxy as this browser. While this is off, the extension doesn't read the browser's proxy.
-#. text in the browser extension
 #. the small arrow next to the Download video button that opens its menu (read aloud by screen readers)
 extension	More options	More options
 #. text in the browser extension
@@ -4297,8 +4279,8 @@ extension	Open it	Open it
 #. help under the pairing boxes; Options, Remote and Pair a device are the app's window, tab and button; keep misterdownloadmanager-cli pair as it is
 extension	Open its address once and accept its certificate, then enter a code from its Options, Remote, Pair a device (or misterdownloadmanager-cli pair).	Open its address once and accept its certificate, then enter a code from its Options, Remote, Pair a device (or misterdownloadmanager-cli pair).
 #. text in the browser extension
-#. button in the toolbar button's popup; keep the name Mister Download Manager as it is
-extension	Open Mister Download Manager	Open Mister Download Manager
+#. button in the toolbar button's popup; keep the name Rakib Download Manager as it is
+extension	Open Rakib Download Manager	Open Rakib Download Manager
 #. text in the browser extension
 #. button in the toolbar button's popup: open the app's Options
 #. the trailing ... means it is still going on: keep it
@@ -4316,11 +4298,35 @@ extension	Paused: downloads stay with the browser	Paused: downloads stay with th
 #. Option in the browser extension media list: put the page title before the original file name when downloading a detected media file
 extension	Prefix media file names with the page title	Prefix media file names with the page title
 #. text in the browser extension
+#. link at the foot of the toolbar button's popup to the Rakib Download Manager project repository
+extension	Project	Project
+#. text in the browser extension
 #. shown instead of the Download button beside a copy-protected (DRM) stream in the toolbar button's popup: it can't be downloaded; short
 extension	Protected	Protected
 #. text in the browser extension
 #. shown briefly on the download button when the video is copy-protected (DRM) and no tool can download it
 extension	Protected video: it can't be saved	Protected video: it can't be saved
+#. text in the browser extension
+#. the extension's name in the browser's list of extensions and on its toolbar button; keep the name Rakib Download Manager as it is
+extension	Rakib Download Manager	Rakib Download Manager
+#. text in the browser extension
+#. status when the app was started for a download but didn't answer in time; keep the name Rakib Download Manager as it is
+extension	Rakib Download Manager didn't start in time	Rakib Download Manager didn't start in time
+#. text in the browser extension
+#. status when the app refuses this copy of the extension (another copy is installed, or it came from another store); keep the name Rakib Download Manager as it is
+extension	Rakib Download Manager doesn't accept this copy of the extension	Rakib Download Manager doesn't accept this copy of the extension
+#. text in the browser extension
+#. shown briefly on the download button when the app could not be reached; keep the name Rakib Download Manager as it is
+extension	Rakib Download Manager isn't installed or didn't start	Rakib Download Manager isn't installed or didn't start
+#. text in the browser extension
+#. status when the browser can't find the app's connection; keep the name Rakib Download Manager as it is
+extension	Rakib Download Manager isn't installed, or its browser integration isn't set up	Rakib Download Manager isn't installed, or its browser integration isn't set up
+#. text in the browser extension
+#. tooltip of the switch Send downloads through this browser's proxy or VPN extension; keep the name Rakib Download Manager as it is
+extension	Rakib Download Manager then downloads through the same proxy as this browser. The browser asks you once to allow it; turning this off takes that back.	Rakib Download Manager then downloads through the same proxy as this browser. The browser asks you once to allow it; turning this off takes that back.
+#. text in the browser extension
+#. tooltip of the switch Send downloads through this browser's proxy or VPN extension in Chrome, Edge and the other Chromium browsers (they ask for no permission at the switch); keep the name Rakib Download Manager as it is
+extension	Rakib Download Manager then downloads through the same proxy as this browser. While this is off, the extension doesn't read the browser's proxy.	Rakib Download Manager then downloads through the same proxy as this browser. While this is off, the extension doesn't read the browser's proxy.
 #. text in the browser extension
 #. switch in the toolbar button's popup: on, the app downloads through the same proxy the browser uses (one a VPN or proxy extension sets); the browser then asks once to allow reading it
 extension	Send downloads through this browser's proxy or VPN extension	Send downloads through this browser's proxy or VPN extension
@@ -4328,11 +4334,8 @@ extension	Send downloads through this browser's proxy or VPN extension	Send down
 #. heading in the toolbar button's popup, above the choice of where downloads go
 extension	Send downloads to	Send downloads to
 #. text in the browser extension
-#. shown briefly on the download button after it was clicked; keep the name Mister Download Manager as it is
-extension	Sent to Mister Download Manager	Sent to Mister Download Manager
-#. text in the browser extension
-#. link at the foot of the toolbar button's popup to the creator's GitHub Sponsors page (MDM is free; this is an optional donation)
-extension	Support MDM	Support MDM
+#. shown briefly on the download button after it was clicked; keep the name Rakib Download Manager as it is
+extension	Sent to Rakib Download Manager	Sent to Rakib Download Manager
 #. text in the browser extension
 #. check box in the toolbar button's popup: on, downloads go to the app; off, the browser keeps them
 extension	Take downloads from this browser	Take downloads from this browser
@@ -4340,8 +4343,8 @@ extension	Take downloads from this browser	Take downloads from this browser
 #. in the toolbar button's popup, on a site where the Chrome Web Store's copy of the extension shows no download button; Help is the link at the bottom of the popup
 extension	The Chrome Web Store's rules keep this copy of the add-on away from this site's videos. Help says what you can do.	The Chrome Web Store's rules keep this copy of the add-on away from this site's videos. Help says what you can do.
 #. text in the browser extension
-#. status when the connection to the app broke off (often security software blocking it); keep the name Mister Download Manager as it is
-extension	The connection to Mister Download Manager failed	The connection to Mister Download Manager failed
+#. status when the connection to the app broke off (often security software blocking it); keep the name Rakib Download Manager as it is
+extension	The connection to Rakib Download Manager failed	The connection to Rakib Download Manager failed
 #. text in the browser extension
 #. shown briefly on the download button over a video when the app's settings keep the button off on this web site
 extension	The download button is off on this site	The download button is off on this site
@@ -4355,7 +4358,7 @@ extension	The last download was left to the browser.	The last download was left 
 #. why a download stayed with the browser: the app's Options don't capture downloads from this browser (its box is unticked in the list of browsers)
 extension	This browser isn't ticked in Options → General.	This browser isn't ticked in Options → General.
 #. text in the browser extension
-#. choice under Send downloads to: the Mister Download Manager on this computer
+#. choice under Send downloads to: the Rakib Download Manager on this computer
 extension	This computer	This computer
 #. text in the browser extension
 #. status when a download carried too much data (very large cookies) to give to the app
@@ -4364,8 +4367,8 @@ extension	This download's details were too large to hand over	This download's de
 #. in the toolbar button's popup, when the page's player plays from a stream built in the page (a blob:): the list of the page's media has nothing to show; Download video is the name of the button over videos
 extension	This page's player streams its video in pieces, so there's no file to list. Point at the video and use its Download video button.	This page's player streams its video in pieces, so there's no file to list. Point at the video and use its Download video button.
 #. text in the browser extension
-#. status when the app is older than the extension; keep the name Mister Download Manager as it is
-extension	Update Mister Download Manager to use everything this extension offers	Update Mister Download Manager to use everything this extension offers
+#. status when the app is older than the extension; keep the name Rakib Download Manager as it is
+extension	Update Rakib Download Manager to use everything this extension offers	Update Rakib Download Manager to use everything this extension offers
 #. text in the browser extension
 #. why a download stayed with the browser: the app's setting 'Use advanced browser integration' is off; keep the setting's name as the app shows it
 extension	Use advanced browser integration is off in Options → General.	Use advanced browser integration is off in Options → General.
@@ -4452,7 +4455,7 @@ key	Type a name	Type a name
 key	Up / Down	Up / Down
 #. menu command in the main window
 #. & marks the keyboard shortcut letter: keep one & before a letter of the translation
-menu	&About Mister Download Manager	&About Rakib Download Manager
+menu	&About Mister Download Manager	&About Mister Download Manager
 #. menu command in the main window
 #. & marks the keyboard shortcut letter: keep one & before a letter of the translation
 menu	&Add new download	&Add new download
@@ -4726,7 +4729,7 @@ menu	Metal didn't start here: OpenGL draws	Metal didn't start here: OpenGL draws
 menu	Metro	Metro
 #. menu command in the main window
 #. & marks the keyboard shortcut letter: keep one & before a letter of the translation
-menu	Mister Download Manager &Home Page	Rakib Download Manager &Home Page
+menu	Mister Download Manager &Home Page	Mister Download Manager &Home Page
 #. menu command in the main window
 menu	Move/Rename (Ctrl-M)	Move/Rename (Ctrl-M)
 #. menu command in the main window
@@ -4811,7 +4814,7 @@ menu	Select &all	Select &all
 #. & marks the keyboard shortcut letter: keep one & before a letter of the translation
 menu	Show &drop target	Show &drop target
 #. menu command in the main window
-menu	Show Mister Download Manager	Show Rakib Download Manager
+menu	Show Mister Download Manager	Show Mister Download Manager
 #. menu command in the main window
 #. & marks the keyboard shortcut letter: keep one & before a letter of the translation
 menu	Speed &Limiter	Speed &Limiter
