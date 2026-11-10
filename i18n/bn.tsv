@@ -5594,6 +5594,10 @@ column	Transfer rate	স্থানান্তর হার
 #, machine
 extension	Another Rakib Download Manager (a server)	অন্য একটি Rakib Download Manager (একটি সার্ভার)
 #. text in the browser extension
+#. section label above the browser capture settings in the Rakib extension popup
+#, machine
+extension	BROWSER CAPTURE	ব্রাউজার ক্যাপচার
+#. text in the browser extension
 #. the name this browser gets in the other MDM's list of paired devices
 #, machine
 extension	Browser extension	ব্রাউজার এক্সটেনশন
@@ -5627,6 +5631,10 @@ extension	Download	ডাউনলোড করুন
 #. command in the browser's right-click menu on a page: download the links of the whole page; keep the name Mister Download Manager as it is
 #, machine
 extension	Download all links with Rakib Download Manager	Rakib Download Manager দিয়ে সমস্ত লিঙ্ক ডাউনলোড করুন
+#. text in the browser extension
+#. section label above the local or remote download destination choices
+#, machine
+extension	DOWNLOAD DESTINATION	ডাউনলোডের গন্তব্য
 #. text in the browser extension
 #. command in the browser's right-click menu on selected text: download the links in the selection; keep the name Mister Download Manager as it is
 #, machine
@@ -5709,6 +5717,10 @@ extension	Left to the browser: {name}	ব্রাউজারে ছেড়�
 #. beside a stream in the toolbar button's popup: it is a live broadcast (no fixed length); short
 #, machine
 extension	Live	লাইভ
+#. text in the browser extension
+#. section label above media detected on the current browser page
+#, machine
+extension	MEDIA FOUND ON THIS PAGE	এই পৃষ্ঠায় পাওয়া মিডিয়া
 #. text in the browser extension
 #. heading in the toolbar button's popup over the list of the videos, sounds and streams the current web page has loaded
 #, machine
@@ -6628,15 +6640,3 @@ unit	{n} MB	{n} এমবি
 #. {n} = a number (keep the braces as they are)
 #, machine
 unit	{n} MB/sec	{n} এমবি/সেকেন্ড
-#. text in the browser extension
-#. section label above the browser capture settings in the Rakib extension popup
-#, machine
-extension	BROWSER CAPTURE	ব্রাউজার ক্যাপচার
-#. text in the browser extension
-#. section label above the local or remote download destination choices
-#, machine
-extension	DOWNLOAD DESTINATION	ডাউনলোডের গন্তব্য
-#. text in the browser extension
-#. section label above media detected on the current browser page
-#, machine
-extension	MEDIA FOUND ON THIS PAGE	এই পৃষ্ঠায় পাওয়া মিডিয়া
