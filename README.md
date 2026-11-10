@@ -96,10 +96,11 @@ one:
 
 | File | Choose it when |
 | --- | --- |
-| **`...-setup.exe`** | **Not sure? Take this one.** It installs MDM, connects it to your browser and asks your language. |
-| `...-portable.zip` | You want MDM on a USB stick or without installing: unzip and run. Everything stays in its folder. |
+| **`...-setup.exe`** | **Not sure? Take this one.** It installs Rakib Download Manager, connects it to your browser and asks your language. |
+| `...-portable.zip` | You want Rakib Download Manager on a USB stick or without installing: unzip and run. Everything stays in its folder. |
 | `...-x64.zip` | You want the plain programs without an installer. |
-| `RakibDownloadManager-...-extension-chromium.zip` | You want to install the Rakib browser extension manually (Chrome, Edge, Brave, Opera, Vivaldi). Firefox has a temporary `.xpi` for testing until its signed listing is published. [Installation guide](docs/guide-catch-browser-downloads.md). |
+| `RakibDownloadManager-...-extension-chromium.zip` | Install the Rakib browser extension manually in Chrome, Edge, Brave, Opera or Vivaldi. [Installation guide](docs/guide-catch-browser-downloads.md). |
+| `RakibDownloadManager-...-extension-firefox.xpi` | Firefox testing package; temporary installation only until the Rakib add-on is signed and listed. See the same [installation guide](docs/guide-catch-browser-downloads.md). |
 
 > [!NOTE]
 > Windows may say *"Windows protected your PC"* the first time, because this early version isn't
@@ -107,7 +108,7 @@ one:
 
 ### On Linux
 
-MDM runs on Linux too, tested on Ubuntu 24.04, Debian 12 and Fedora with GNOME, KDE Plasma, Xfce
+Rakib Download Manager runs on Linux too, tested on Ubuntu 24.04, Debian 12 and Fedora with GNOME, KDE Plasma, Xfce
 and Cinnamon, on X11 and in Wayland sessions: the tray, dark mode, browser integration (Ubuntu's
 Snap Firefox included) and the packages' installs. Not there yet: screen readers (Orca) don't
 read its windows, and Flatpak browsers can't reach it ([more](docs/getting-started.md#on-linux)).
