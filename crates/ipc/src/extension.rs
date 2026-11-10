@@ -3,19 +3,25 @@
 //! install it until one has).
 
 /// The extension's ID loaded unpacked (the public key in extension/manifest.json).
-pub const UNPACKED_ID: &str = "oogbclbbninliongijffeeggalppliok";
+pub const UNPACKED_ID: &str = "eblepmieneaadcepbdgbihioeklhcifc";
+/// The previous upstream fork ID remains accepted so an already-installed extension can connect.
+pub const LEGACY_UNPACKED_ID: &str = "oogbclbbninliongijffeeggalppliok";
 /// Its ID in the Chrome Web Store, which signs it with the store's own key
 /// (tools/extension/pack.ps1 leaves the manifest's key out of the store's copy). [`store_id`] is
 /// `None` while this is not a valid ID (a placeholder), and then nothing names it.
-pub const STORE_ID: &str = "ejoleppdfgjdndddcjoehopknmlglojp";
+pub const STORE_ID: &str = "RAKIB_CHROME_STORE_ID_PENDING";
+/// The former upstream store extension remains accepted by the host, but is no longer offered.
+pub const LEGACY_STORE_ID: &str = "ejoleppdfgjdndddcjoehopknmlglojp";
 /// Its IDs in Microsoft Edge Add-ons and Opera add-ons, which give their own; placeholders until
 /// listed there, never served then (`valid_id`).
 pub const OTHER_STORE_IDS: [&str; 2] = ["EDGE_ADDONS_ID_PENDING", "OPERA_ADDONS_ID_PENDING"];
 /// The Firefox add-on's page on addons.mozilla.org (listed: Firefox installs and updates it from
 /// there).
-pub const FIREFOX_PAGE: &str = "https://addons.mozilla.org/firefox/addon/mister-download-manager/";
+pub const FIREFOX_PAGE: &str = "https://github.com/mdrakibhossainkst/rakibdownloadmanager/tree/rakib/phase-01-macos-audit/docs";
 /// The Firefox add-on's ID (extension/manifest.firefox.json).
-pub const FIREFOX_ID: &str = "integration@misterdownloadmanager.com";
+pub const FIREFOX_ID: &str = "rakib-download-manager@mdrakibhossainkst.github.io";
+/// The previous add-on ID remains accepted for installations made before the fork was re-identified.
+pub const LEGACY_FIREFOX_ID: &str = "integration@misterdownloadmanager.com";
 /// Chrome's update service: an external-install entry naming it makes Chrome offer the store's
 /// extension at its next start (developer.chrome.com, "Alternative extension distribution
 /// options").
@@ -34,7 +40,9 @@ pub fn store_id() -> Option<&'static str> {
 /// The Chromium extensions the native host serves: unpacked, and each store's once listed.
 pub fn chromium_ids() -> Vec<&'static str> {
     std::iter::once(UNPACKED_ID)
+        .chain(std::iter::once(LEGACY_UNPACKED_ID))
         .chain(store_id())
+        .chain(std::iter::once(LEGACY_STORE_ID))
         .chain(OTHER_STORE_IDS.into_iter().filter(|id| valid_id(id)))
         .collect()
 }
@@ -125,19 +133,16 @@ mod tests {
     /// allowed_origins and the host's own caller check are this list.
     #[test]
     fn store_and_unpacked_both_served() {
-        assert_eq!(STORE_ID, "ejoleppdfgjdndddcjoehopknmlglojp");
-        assert_eq!(UNPACKED_ID, "oogbclbbninliongijffeeggalppliok");
+        assert_eq!(STORE_ID, "RAKIB_CHROME_STORE_ID_PENDING");
+        assert_eq!(UNPACKED_ID, "eblepmieneaadcepbdgbihioeklhcifc");
+        assert_eq!(LEGACY_UNPACKED_ID, "oogbclbbninliongijffeeggalppliok");
+        assert_eq!(LEGACY_STORE_ID, "ejoleppdfgjdndddcjoehopknmlglojp");
         let ids = chromium_ids();
         assert!(
             ids.contains(&UNPACKED_ID) && ids.contains(&STORE_ID),
             "{ids:?}"
         );
-        assert_eq!(
-            store_page().as_deref(),
-            Some(
-                "https://chromewebstore.google.com/detail/mister-download-manager/ejoleppdfgjdndddcjoehopknmlglojp"
-            )
-        );
+        assert_eq!(store_page(), None);
     }
 
     #[test]
