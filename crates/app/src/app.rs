@@ -999,7 +999,23 @@ impl App {
                 crate::win32::update_run_at_startup();
             }
         }
-        #[cfg(unix)]
+        #[cfg(target_os = "macos")]
+        {
+            // Rakib Download Manager is designed to stay available from the menu bar.
+            // Register a LaunchAgent on first launch of an installed (non-portable) copy.
+            // The user can turn this off later in Options → General.
+            if mdm_ipc::portable_dir().is_none() && !crate::unix::run_at_startup() {
+                crate::unix::set_run_at_startup(true);
+            }
+            settings.launch_on_startup = crate::unix::run_at_startup();
+            if settings.launch_on_startup && mdm_ipc::portable_dir().is_none() {
+                crate::unix::update_run_at_startup();
+            }
+            if mdm_ipc::portable_dir().is_none() && !crate::offscreen() {
+                crate::unix::register_browsers();
+            }
+        }
+        #[cfg(all(unix, not(target_os = "macos")))]
         {
             settings.launch_on_startup = crate::unix::run_at_startup();
             if settings.launch_on_startup && mdm_ipc::portable_dir().is_none() {
