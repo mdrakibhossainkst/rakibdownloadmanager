@@ -127,7 +127,7 @@ impl Extension {
             ctx,
             "extension",
             // i18n: title of the window that offers the browser extension
-            "Add Mister Download Manager to your browser",
+            "Browser integration",
             [W, h + extra],
             false,
             winui::BG(),
