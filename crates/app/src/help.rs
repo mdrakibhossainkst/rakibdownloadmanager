@@ -705,7 +705,7 @@ fn link_texts(line: &str) -> String {
 // About
 
 fn about_icon(ctx: &egui::Context) -> egui::TextureHandle {
-    let id = egui::Id::new("rakib-about-icon");
+    let id = egui::Id::unique("rakib-about-icon");
     if let Some(texture) = ctx.data(|d| d.get_temp::<egui::TextureHandle>(id)) {
         return texture;
     }
