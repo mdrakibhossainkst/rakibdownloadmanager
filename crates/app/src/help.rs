@@ -370,7 +370,7 @@ impl Updates {
                     Some(Ok(Found::Latest)) => {
                         let line = crate::i18n::fmt(
                             crate::i18n::t(
-                                "You have the latest version of Rakib Download Manager ({version}).",
+                                "You have the latest version of Mister Download Manager ({version}).",
                             ),
                             &[("version", VERSION)],
                         );
@@ -390,7 +390,7 @@ impl Updates {
                     Some(Ok(Found::Newer(rel))) => {
                         let line = crate::i18n::fmt(
                             crate::i18n::t(
-                                "Rakib Download Manager {version} is available (released {date}).",
+                                "Mister Download Manager {version} is available (released {date}).",
                             ),
                             &[("version", &rel.version), ("date", &rel.date)],
                         );
@@ -712,7 +712,7 @@ impl About {
         window(
             ctx,
             "about",
-            "About Rakib Download Manager",
+            "About Mister Download Manager",
             [420.0, 236.0 + extra],
             false,
             winui::BG(),
@@ -728,7 +728,7 @@ impl About {
                     &p,
                     o.x + 80.0,
                     o.y + 28.0,
-                    crate::i18n::t("Rakib Download Manager"),
+                    crate::i18n::t("Mister Download Manager"),
                     ink,
                 );
                 let version = crate::i18n::fmt(
@@ -789,7 +789,7 @@ impl About {
                     &p,
                     o.x + 80.0,
                     y,
-                    "Rakib Download Manager on GitHub",
+                    "Support MDM on GitHub Sponsors",
                     "support",
                 ) {
                     support();
@@ -947,7 +947,7 @@ impl TellFriend {
     fn message() -> String {
         crate::i18n::fmt(
             crate::i18n::t(
-                "I download with Rakib Download Manager: fast, free, and it looks like the download manager you already know. {link}",
+                "I download with Mister Download Manager: fast, free, and it looks like the download manager you already know. {link}",
             ),
             &[("link", REPO)],
         )
