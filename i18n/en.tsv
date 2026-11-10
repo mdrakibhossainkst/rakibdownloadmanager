@@ -4178,6 +4178,9 @@ extension	Button settings...	Button settings...
 #. shown briefly on the download button when nothing on the page says which video the player is playing, so nothing was sent
 extension	Can't tell which video this is: open its own page and try there	Can't tell which video this is: open its own page and try there
 #. text in the browser extension
+#. heading for the capture switch in Rakib's browser extension popup
+extension	Capture downloads	Capture downloads
+#. text in the browser extension
 #. the toolbar button's status when the browser reaches the app; keep the name Rakib Download Manager as it is
 extension	Connected to Rakib Download Manager	Connected to Rakib Download Manager
 #. text in the browser extension
@@ -4301,6 +4304,9 @@ extension	Prefix media file names with the page title	Prefix media file names wi
 #. link at the foot of the toolbar button's popup to the Rakib Download Manager project repository
 extension	Project	Project
 #. text in the browser extension
+#. heading for the browser proxy switch in the extension popup
+extension	Proxy integration	Proxy integration
+#. text in the browser extension
 #. shown instead of the Download button beside a copy-protected (DRM) stream in the toolbar button's popup: it can't be downloaded; short
 extension	Protected	Protected
 #. text in the browser extension
@@ -4333,6 +4339,9 @@ extension	Send downloads through this browser's proxy or VPN extension	Send down
 #. text in the browser extension
 #. heading in the toolbar button's popup, above the choice of where downloads go
 extension	Send downloads to	Send downloads to
+#. text in the browser extension
+#. short explanation below the capture switch in the browser extension popup
+extension	Send supported downloads to Rakib	Send supported downloads to Rakib
 #. text in the browser extension
 #. shown briefly on the download button after it was clicked; keep the name Rakib Download Manager as it is
 extension	Sent to Rakib Download Manager	Sent to Rakib Download Manager
@@ -4372,6 +4381,12 @@ extension	Update Rakib Download Manager to use everything this extension offers	
 #. text in the browser extension
 #. why a download stayed with the browser: the app's setting 'Use advanced browser integration' is off; keep the setting's name as the app shows it
 extension	Use advanced browser integration is off in Options → General.	Use advanced browser integration is off in Options → General.
+#. text in the browser extension
+#. checkbox in the browser extension popup: prefix a downloaded media file with its page title
+extension	Use media title as filename	Use media title as filename
+#. text in the browser extension
+#. short explanation below the proxy switch in the extension popup
+extension	Use the app network proxy	Use the app network proxy
 #. text in the browser extension
 #. pairing failed: codes tried too fast
 extension	Wait a moment, then try again.	Wait a moment, then try again.
@@ -4930,8 +4945,3 @@ unit	{n} MB	{n} MB
 #. unit after a number in the download list (sizes, speeds, status)
 #. {n} = a number (keep the braces as they are)
 unit	{n} MB/sec	{n} MB/sec
-extension	Capture downloads	Capture downloads
-extension	Proxy integration	Proxy integration
-extension	Send supported downloads to Rakib	Send supported downloads to Rakib
-extension	Use the app network proxy	Use the app network proxy
-extension	Use media title as filename	Use media title as filename
