@@ -5831,9 +5831,6 @@ extension	Send supported downloads to Rakib	সমর্থিত ডাউন�
 #, machine
 extension	Sent to Mister Download Manager	Mister Download Manager-এ পাঠানো হয়েছে
 #. text in the browser extension
-#. heading for the browser proxy switch in the extension popup
-extension	Proxy integration	প্রক্সি ইন্টিগ্রেশন
-#. text in the browser extension
 #. check box in the toolbar button's popup: on, downloads go to the app; off, the browser keeps them
 #, machine
 extension	Take downloads from this browser	এই ব্রাউজার থেকে ডাউনলোড নিন
