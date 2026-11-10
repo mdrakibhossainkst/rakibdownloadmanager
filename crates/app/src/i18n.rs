@@ -271,6 +271,15 @@ mod tests {
     const FSI: char = '\u{2068}';
     const PDI: char = '\u{2069}';
 
+    #[test]
+    fn fork_brand_replaces_the_upstream_name_in_app_text() {
+        assert_eq!(
+            rakib_brand("About Mister Download Manager"),
+            "About Rakib Download Manager"
+        );
+        assert_eq!(rakib_brand("Download complete"), "Download complete");
+    }
+
     /// Every embedded catalog parses with no problem (craft-i18n's own checks: placeholders,
     /// plural forms, the trailing ellipsis…), and every language of i18n/languages.tsv has one.
     #[test]
