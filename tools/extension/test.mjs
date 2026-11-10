@@ -1255,7 +1255,7 @@ const MPD = (protect) => `<?xml version="1.0"?>
   load(api, false);
   await listeners.installed({ reason: "update" });
   const item = calls.find((c) => c[0] === "menu-item")[1];
-  assert.equal(item.title, "Mit Mister Download Manager herunterladen");
+  assert.equal(item.title, "Mit Rakib Download Manager herunterladen");
   const dir = new URL("../../extension/_locales/", import.meta.url);
   const english = JSON.parse(readFileSync(new URL("en/messages.json", dir), "utf8"));
   for (const locale of readdirSync(dir)) {
