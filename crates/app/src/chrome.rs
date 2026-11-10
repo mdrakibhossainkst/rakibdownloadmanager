@@ -1444,7 +1444,7 @@ pub fn dashboard_header(ui: &Ui, o: Pos2, width: f32, total: usize, active: usiz
         p.text(pos2(label_x, rect.center().y - 6.0), if rtl { egui::Align2::RIGHT_CENTER } else { egui::Align2::LEFT_CENTER }, label, egui::FontId::proportional(8.5), c.muted);
         let value_x = winui::mx(if rtl { logical.left() + 9.0 } else { logical.right() - 9.0 });
         p.text(pos2(value_x, rect.center().y + 5.0), if rtl { egui::Align2::LEFT_CENTER } else { egui::Align2::RIGHT_CENTER }, crate::i18n::integer(value as u64), egui::FontId::proportional(12.0), ink);
-        x += card_w + gap;
+        x += if rtl { card_w + gap } else { -(card_w + gap) };
     }
 }
 
