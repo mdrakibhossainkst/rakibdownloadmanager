@@ -744,7 +744,7 @@ fn chromium_manifest(program: &std::path::Path) -> serde_json::Value {
 fn firefox_manifest(program: &std::path::Path) -> serde_json::Value {
     serde_json::json!({
         "name": HOST_NAME,
-        "description": "Mister Download Manager",
+        "description": "Rakib Download Manager",
         "path": program,
         "type": "stdio",
         "allowed_extensions": [FIREFOX_ID, LEGACY_FIREFOX_ID],
