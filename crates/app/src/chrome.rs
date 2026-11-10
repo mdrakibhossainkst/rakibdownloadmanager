@@ -1441,7 +1441,7 @@ pub fn dashboard_header(
     p.text(pos2(brand_x, panel.center().y - 7.0), brand_align,
         "RAKIB DOWNLOAD MANAGER", egui::FontId::proportional(12.5), c.text);
     p.text(pos2(brand_x, panel.center().y + 10.0), brand_align,
-        crate::i18n::t("Your downloads, in one place"), egui::FontId::proportional(9.0), c.muted);
+        crate::i18n::t("Download workspace"), egui::FontId::proportional(9.0), c.muted);
 
     let stats_width = (panel.width() - 190.0).clamp(210.0, 300.0);
     let card_gap = 6.0;
