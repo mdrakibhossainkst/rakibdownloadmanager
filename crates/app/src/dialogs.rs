@@ -2085,7 +2085,7 @@ impl TurnOffCountdown {
         question(
             ctx,
             "turn-off",
-            "Mister Download Manager",
+            "Rakib Download Manager",
             [374.0, 100.0],
             false,
             winui::LIGHT_BG(),
