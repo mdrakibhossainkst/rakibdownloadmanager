@@ -905,14 +905,15 @@ pub fn show(
             if sel || has_focus {
                 // The focused card has a dotted outline (every other pixel), in the fill's
                 // inverse on a selected row. Both modes alike.
-                let (right, bottom) = (last_right - 5.0, top + row_h() - 3.0);
+                let (left, right, row_top, bottom) =
+                    (cl + 4.0, last_right - 4.0, top + 2.0, top + row_h() - 2.0);
                 if has_focus {
                     let dot = if sel {
                         crate::theme::colors().selection_focus
                     } else {
                         TEXT()
                     };
-                    dotted(&bp, cl, top, right, bottom, dot);
+                    dotted(&bp, left, row_top, right, bottom, dot);
                 }
             }
             for (c, x0, x1) in &cols {
