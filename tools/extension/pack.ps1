@@ -3,11 +3,11 @@
 #   target/extension/firefox/   - manifest.firefox.json as manifest.json
 #   target/extension/safari/    - manifest.safari.json as manifest.json (a folder only: tools/safari
 #                                 builds it into the app as Safari's extension, macOS)
-#   target/extension/mdm-chromium.zip - the chromium folder, zipped (a release download: unzip it
+#   target/extension/rakib-chromium.zip - the chromium folder, zipped (a release download: unzip it
 #                                       and load the folder unpacked)
-#   target/extension/mdm-firefox.xpi  - the firefox folder, zipped (Firefox needs it signed by AMO
+#   target/extension/rakib-firefox.xpi  - the firefox folder, zipped (Firefox needs it signed by AMO
 #                                       to install for good; about:debugging loads it unsigned)
-#   target/extension/mdm-chrome-store.zip - what is uploaded to the Chrome Web Store (see below)
+#   target/extension/rakib-chrome-store.zip - what is uploaded to the Chrome Web Store (see below)
 # Both manifests get the app's version (Cargo.toml), so an extension and its app always match.
 $ErrorActionPreference = "Stop"
 $root = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
