@@ -727,7 +727,7 @@ impl About {
         window(
             ctx,
             "about",
-            "About Mister Download Manager",
+            "About Rakib Download Manager",
             [420.0, 236.0 + extra],
             false,
             winui::BG(),
