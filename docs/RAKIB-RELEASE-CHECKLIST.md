@@ -20,7 +20,7 @@ This checklist distinguishes repository work from checks that require a real mac
 - [ ] Run the Release workflow manually and inspect both DMG artifacts
 - [ ] Test the Intel DMG on macOS Ventura: first launch, menu-bar visibility, dashboard open/close, active downloads, progress windows, pause/resume, history, restart/login launch, and clean uninstall/reinstall
 - [ ] Verify the app bundle's custom icon, Gatekeeper behavior, and Safari/browser integration
-- [ ] Configure a fork-owned OpenPGP release key: replace the bundled public key in `crates/tools/keys/mdm-release.asc` and add the matching private key as the GitHub Actions secret `MDM_RELEASE_KEY`
+- [ ] Configure a fork-owned OpenPGP release key: the public key is pinned in `crates/tools/keys/rakib-release.asc` (fingerprint `FB1E9144C6FC782CC6CE61DFE6852D874F11BDFB`); add the matching private key as the GitHub Actions secret `RAKIB_RELEASE_KEY`
 - [ ] Publish a signed release tag only after the signing key and artifacts are verified
 
 ## Security and compatibility notes
