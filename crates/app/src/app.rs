@@ -6721,9 +6721,22 @@ impl App {
         }
 
         let dashboard_active = self.items.iter().filter(|item| item.live.is_some()).count();
-        let dashboard_complete = self.items.iter().filter(|item| item.status == Status::Complete).count();
-        let dashboard_errors = self.items.iter().filter(|item| item.status == Status::Error).count();
-        let dashboard_speed: f64 = self.items.iter().filter(|item| item.live.is_some()).map(|item| item.rate()).sum();
+        let dashboard_complete = self
+            .items
+            .iter()
+            .filter(|item| item.status == Status::Complete)
+            .count();
+        let dashboard_errors = self
+            .items
+            .iter()
+            .filter(|item| item.status == Status::Error)
+            .count();
+        let dashboard_speed: f64 = self
+            .items
+            .iter()
+            .filter(|item| item.live.is_some())
+            .map(|item| item.rate())
+            .sum();
         chrome::dashboard_header(
             ui,
             o,
