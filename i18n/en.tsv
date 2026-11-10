@@ -4945,3 +4945,12 @@ unit	{n} MB	{n} MB
 #. unit after a number in the download list (sizes, speeds, status)
 #. {n} = a number (keep the braces as they are)
 unit	{n} MB/sec	{n} MB/sec
+#. text in the browser extension
+#. section label above the browser capture settings in the Rakib extension popup
+extension	BROWSER CAPTURE	BROWSER CAPTURE
+#. text in the browser extension
+#. section label above the local or remote download destination choices
+extension	DOWNLOAD DESTINATION	DOWNLOAD DESTINATION
+#. text in the browser extension
+#. section label above media detected on the current browser page
+extension	MEDIA FOUND ON THIS PAGE	MEDIA FOUND ON THIS PAGE
