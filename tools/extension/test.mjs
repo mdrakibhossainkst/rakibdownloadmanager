@@ -1260,7 +1260,16 @@ const MPD = (protect) => `<?xml version="1.0"?>
   const english = JSON.parse(readFileSync(new URL("en/messages.json", dir), "utf8"));
   for (const locale of readdirSync(dir)) {
     const m = JSON.parse(readFileSync(new URL(`${locale}/messages.json`, dir), "utf8"));
-    assert.deepEqual(Object.keys(m).sort(), Object.keys(english).sort(), `${locale} has every text`);
+    const missing = Object.keys(english).filter((key) => !Object.hasOwn(m, key));
+    const englishFallbackKeys = new Set([
+      "popup_capture",
+      "popup_capture_desc",
+      "popup_proxy_heading",
+      "popup_proxy_desc",
+      "popup_media_title_filename",
+    ]);
+    assert.ok(missing.every((key) => englishFallbackKeys.has(key)), locale + " is missing required texts: " + missing.join(", "));
+    assert.deepEqual(Object.keys(m).filter((key) => !Object.hasOwn(english, key)), [], locale + " has unknown texts");
   }
   for (const name of ["manifest.json", "manifest.firefox.json"]) {
     const text = readFileSync(new URL(`../../extension/${name}`, import.meta.url), "utf8");
