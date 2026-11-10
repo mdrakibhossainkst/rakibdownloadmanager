@@ -140,7 +140,9 @@ mod tests {
         assert_eq!(LEGACY_STORE_ID, "ejoleppdfgjdndddcjoehopknmlglojp");
         let ids = chromium_ids();
         assert!(
-            ids.contains(&UNPACKED_ID) && ids.contains(&LEGACY_UNPACKED_ID) && ids.contains(&LEGACY_STORE_ID),
+            ids.contains(&UNPACKED_ID)
+                && ids.contains(&LEGACY_UNPACKED_ID)
+                && ids.contains(&LEGACY_STORE_ID),
             "{ids:?}"
         );
         assert_eq!(store_page(), None);
