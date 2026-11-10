@@ -16,7 +16,9 @@ Browser integration has two parts: a small helper program that the browser talks
 2. Install the matching Rakib extension package manually using [the browser installation guide](guide-catch-browser-downloads.md). Rakib's Chrome Web Store and Mozilla Add-ons listings are not published yet; do not install the upstream Mister Download Manager add-on for this fork.
 
 ![Add Mister Download Manager to your browser: each browser found, with a button to its store page](images/help/browser-offer.webp)
-*The app's browser integration helper identifies supported browsers; install the Rakib extension from the package described in the guide.*
+*MDM's own window opens each browser's store page for you.*
+
+*This is a legacy screenshot of the upstream integration flow; Rakib's browser packages are installed manually as described above.*
 
 ### Firefox
 
