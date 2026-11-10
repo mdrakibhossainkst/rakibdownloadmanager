@@ -3563,7 +3563,7 @@
 	Turn on "Allow unsigned extensions".	Turn on "Allow unsigned extensions".
 #. text in extension.rs
 #. step 8 of turning on the Safari extension
-	Turn on "Mister Download Manager" and allow it on all websites.	Turn on "Rakib Download Manager" and allow it on all websites.
+	Turn on "Mister Download Manager" and allow it on all websites.	Turn on "Mister Download Manager" and allow it on all websites.
 #. text in extension.rs
 #. step 4 of turning on the Safari extension; the quoted switch name is what Safari's settings show in this language: use Apple's own words for it, or keep the English name when unsure
 	Turn on "Show features for web developers".	Turn on "Show features for web developers".
