@@ -14,11 +14,11 @@ use crate::winui::{self, fill_l as fill, text_font};
 
 /// Spacious dashboard table header.
 pub fn header_h() -> f32 {
-    34.0
+    crate::theme::metrics().list_header
 }
 /// Spacious dashboard table row: room for legible metadata and file icons.
 pub fn row_h() -> f32 {
-    28.0
+    crate::theme::metrics().list_row
 }
 
 // The active theme's colours (crate::palette, #45).
