@@ -12,13 +12,13 @@ use crate::theme::themed;
 // first column at the right in a right-to-left interface).
 use crate::winui::{self, fill_l as fill, text_font};
 
-/// The column headers' height (the theme's size; 24 in the classic look).
+/// Spacious dashboard table header.
 pub fn header_h() -> f32 {
-    crate::theme::metrics().list_header
+    34.0
 }
-/// A row's height (the theme's size; 17 in the classic look).
+/// Spacious dashboard table row: room for legible metadata and file icons.
 pub fn row_h() -> f32 {
-    crate::theme::metrics().list_row
+    28.0
 }
 
 // The active theme's colours (crate::palette, #45).
@@ -736,7 +736,7 @@ pub fn show(
             *x0..=*x1,
             ct..=ct + header_h(),
         )));
-        text_font(&clip, font.clone(), x0 + 6.0, ct + 15.0, &label, TEXT());
+        text_font(&clip, font.clone(), x0 + 6.0, ct + 22.0, &label, TEXT());
     }
 
     // ---- body ------------------------------------------------------------------------------
@@ -863,6 +863,16 @@ pub fn show(
         if let Some(row) = rows.get(idx) {
             let picked = selected.get(idx).copied().unwrap_or(false);
             expose_row(idx, row, picked);
+            let hovered_row = resp.hover_pos().map(english).is_some_and(|h| {
+                body.contains(h) && h.y >= top && h.y < top + row_h()
+            });
+            if hovered_row && !picked {
+                let hover = screen(Rect::from_min_size(
+                    pos2(cl + 2.0, top + 1.0),
+                    egui::vec2((last_right - cl - 4.0).max(0.0), row_h() - 2.0),
+                ));
+                bp.rect_filled(hover, 5.0, crate::theme::colors().field.gamma_multiply(0.48));
+            }
             let sel = picked && st.focused;
             // The focused row's dotted outline only once the keyboard is in use, as every
             // control's focus (winui::keyboard_in_use).
@@ -898,7 +908,7 @@ pub fn show(
             for (c, x0, x1) in &cols {
                 // The file-type icon sits in the File Name column, wherever it is.
                 let tx = if *c == 0 {
-                    icons.paint_in(ui, &bp, row.icon.clone(), pos2(x0 + 4.0, top));
+                    icons.paint_in(ui, &bp, row.icon.clone(), pos2(x0 + 4.0, top + (row_h() - 16.0) / 2.0));
                     x0 + 22.0
                 } else {
                     x0 + 6.0
@@ -908,7 +918,7 @@ pub fn show(
                         ui,
                         &bp,
                         IconKey::Silk("page_white_stack"),
-                        pos2(x0 + 2.0, top),
+                        pos2(x0 + 2.0, top + (row_h() - 16.0) / 2.0),
                     );
                 }
                 let cell = Rect::from_min_max(pos2(*x0, top), pos2(*x1 - 1.0, top + row_h()));
@@ -959,7 +969,7 @@ pub fn show(
                 } else {
                     TEXT()
                 };
-                text_font(&clip, font.clone(), tx, top + 12.0, &s, ink);
+                text_font(&clip, font.clone(), tx, top + 18.0, &s, ink);
             }
         }
         // The grid line is the item's own last row (top + 16), so icons are not clipped; in
@@ -995,7 +1005,7 @@ pub fn show(
             &top,
             font.clone(),
             ghost.left() + 6.0,
-            ct + 15.0,
+            ct + 22.0,
             crate::i18n::tc("column", TITLES[col]),
             TEXT(),
         );
@@ -1244,7 +1254,7 @@ fn chip(
         pos2(x0 + 5.0, top + 2.0),
         egui::vec2(w + 12.0, row_h() - 4.0),
     );
-    p.rect_filled(winui::rect(pill), (row_h() - 4.0) / 2.0, fill);
+    p.rect_filled(winui::rect(pill), (row_h() - 8.0) / 2.0, fill);
     text_font(
         p,
         font.clone(),
@@ -1261,7 +1271,7 @@ fn funnel_rect(st: &ListState, col: usize, x0: f32, x1: f32, ct: f32) -> Rect {
     let sorted = st.sort.is_some_and(|(sc, _)| sc == col);
     let right = x1 - if sorted { 18.0 } else { 4.0 };
     let left = (right - 12.0).max(x0 + 2.0);
-    Rect::from_min_max(pos2(left, ct + 6.0), pos2(right, ct + header_h() - 6.0))
+    Rect::from_min_max(pos2(left, ct + 9.0), pos2(right, ct + header_h() - 9.0))
 }
 
 /// A small funnel: a triangle over a stem, in English rect `rc`.
