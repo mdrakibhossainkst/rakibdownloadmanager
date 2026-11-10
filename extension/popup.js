@@ -3,7 +3,7 @@
 // site to the browser, opening the app or its Options, and the media the tab loaded (#38), each
 // to download. background.js does the work.
 const ext = globalThis.browser ?? globalThis.chrome;
-const HELP = "https://github.com/mdrakibhossainkst/rakibdownloadmanager/tree/main/docs";
+const HELP = "https://github.com/mdrakibhossainkst/rakibdownloadmanager/blob/rakib/phase-01-macos-audit/docs/guide-catch-browser-downloads.md";
 // The creator's GitHub Sponsors page (the app's Help → Support MDM): a plain link, in a new tab.
 const PROJECT = "https://github.com/mdrakibhossainkst/rakibdownloadmanager";
 const t = (key, ...subs) => (ext.i18n.getMessage(key, subs) || key).replaceAll("Mister Download Manager", "Rakib Download Manager");
