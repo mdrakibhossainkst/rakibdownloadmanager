@@ -703,6 +703,21 @@ fn link_texts(line: &str) -> String {
 // ---------------------------------------------------------------------------------------------
 // About
 
+fn about_icon(ctx: &egui::Context) -> egui::TextureHandle {
+    let id = egui::Id::new("rakib-about-icon");
+    if let Some(texture) = ctx.data(|d| d.get_temp::<egui::TextureHandle>(id)) {
+        return texture;
+    }
+    let icon = crate::app_icon();
+    let image = egui::ColorImage::from_rgba_unmultiplied(
+        [icon.width as usize, icon.height as usize],
+        &icon.rgba,
+    );
+    let texture = ctx.load_texture("rakib-about-icon", image, egui::TextureOptions::LINEAR);
+    ctx.data_mut(|d| d.insert_temp(id, texture.clone()));
+    texture
+}
+
 pub struct About;
 
 impl About {
@@ -719,11 +734,9 @@ impl About {
             |ui, o| {
                 let p = ui.painter().clone();
                 let ink = winui::TEXT();
-                egui::Image::from_bytes(
-                    "bytes://mdm-48.png",
-                    include_bytes!("../assets/icons/app/mdm-48.png"),
-                )
-                .paint_at(ui, winui::r(o, 16.0, 16.0, 48.0, 48.0));
+                let icon = about_icon(ctx);
+                egui::Image::new((icon.id(), vec2(48.0, 48.0)))
+                    .paint_at(ui, winui::r(o, 16.0, 16.0, 48.0, 48.0));
                 winui::text(
                     &p,
                     o.x + 80.0,
