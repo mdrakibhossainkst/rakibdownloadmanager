@@ -91,6 +91,15 @@ jobs:
           python tools/i18n/extract.py
           git diff --exit-code -- i18n/en.tsv
 
+      - name: Release signing identity matches the pinned public key
+        if: runner.os == 'Linux'
+        run: |
+          fingerprint="$(gpg --show-keys --with-colons crates/tools/keys/rakib-release.asc | awk -F: '$1 == "fpr" { print $10; exit }')"
+          test "$fingerprint" = "FB1E9144C6FC782CC6CE61DFE6852D874F11BDFB"
+          grep -Fq 'RAKIB_RELEASE_KEY: ${{ secrets.RAKIB_RELEASE_KEY }}' .github/workflows/release.yml
+          grep -Fq 'Set-Content -Encoding ascii $key $env:RAKIB_RELEASE_KEY' .github/workflows/release.yml
+          grep -Fq -- '--local-user FB1E9144C6FC782CC6CE61DFE6852D874F11BDFB' .github/workflows/release.yml
+
       - name: Clippy
         run: cargo clippy --workspace --all-targets -- -D warnings
 
