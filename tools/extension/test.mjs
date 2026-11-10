@@ -1267,6 +1267,9 @@ const MPD = (protect) => `<?xml version="1.0"?>
       "popup_proxy_heading",
       "popup_proxy_desc",
       "popup_media_title_filename",
+      "popup_section_capture",
+      "popup_section_destination",
+      "popup_section_media",
     ]);
     assert.ok(missing.every((key) => englishFallbackKeys.has(key)), locale + " is missing required texts: " + missing.join(", "));
     assert.deepEqual(Object.keys(m).filter((key) => !Object.hasOwn(english, key)), [], locale + " has unknown texts");
