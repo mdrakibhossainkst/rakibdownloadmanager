@@ -42,9 +42,7 @@ themed! {
     /// Bullets and submenu arrows (light: dark cores #1a1a1a / #282828).
     GLYPH => menu_glyph;
     TEXT_DISABLED_MENU => menu_text_disabled;
-    TB_DISABLED => toolbar_text_disabled;
     /// A drop-down's arrow (dark: light on the dark band, where #282828 could not be seen).
-    TB_ARROW => toolbar_arrow;
     CAT_FRAME => tree_frame;
     TREE_BG => tree;
     TREE_LINES => tree_lines;
@@ -1412,16 +1410,22 @@ pub fn pane_top() -> f32 {
 }
 
 /// The compact summary band below the action toolbar.
-pub fn dashboard_header(
-    ui: &Ui,
-    o: Pos2,
-    width: f32,
-    total: usize,
-    active: usize,
-    complete: usize,
-    errors: usize,
-    speed: f64,
-) {
+pub struct DashboardStats {
+    pub total: usize,
+    pub active: usize,
+    pub complete: usize,
+    pub errors: usize,
+    pub speed: f64,
+}
+
+pub fn dashboard_header(ui: &Ui, o: Pos2, width: f32, stats: DashboardStats) {
+    let DashboardStats {
+        total,
+        active,
+        complete,
+        errors,
+        speed,
+    } = stats;
     let p = ui.painter();
     let c = crate::theme::colors();
     let top = o.y + MENU_H + 72.0;
