@@ -6741,11 +6741,13 @@ impl App {
             ui,
             o,
             w,
-            self.items.len(),
-            dashboard_active,
-            dashboard_complete,
-            dashboard_errors,
-            dashboard_speed,
+            chrome::DashboardStats {
+                total: self.items.len(),
+                active: dashboard_active,
+                complete: dashboard_complete,
+                errors: dashboard_errors,
+                speed: dashboard_speed,
+            },
         );
 
         // Categories pane.
