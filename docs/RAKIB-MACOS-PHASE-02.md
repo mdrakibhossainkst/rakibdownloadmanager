@@ -5,6 +5,7 @@
 - The main window title now reads **Rakib Download Manager**.
 - The menu-bar item's primary action now reads **Open Rakib Download Manager**.
 - The macOS app bundle display name, Finder app name, DMG volume name, and DMG filename use Rakib Download Manager.
+- The macOS app bundle is configured as an agent app (`LSUIElement`), so it stays out of the Dock while its menu-bar icon remains the primary entry point.
 - New macOS settings enable login launch by default. The LaunchAgent starts the app using the existing session-start argument, so the Dashboard stays hidden while the menu-bar app remains available.
 - A saved opt-out is respected: disabling login launch in Options removes the LaunchAgent and the next manual launch does not silently re-enable it.
 - The existing Dashboard layout, tray event loop, download engine, and independent per-download progress view are preserved.
