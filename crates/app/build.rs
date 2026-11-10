@@ -85,7 +85,10 @@ fn catalogs() {
                     } else if let Some((source, translation)) = line.rsplit_once('\t') {
                         format!(
                             "{source}\t{}",
-                            translation.replace("Mister Download Manager", "Rakib Download Manager")
+                            translation.replace(
+                                "Mister Download Manager",
+                                "Rakib Download Manager",
+                            )
                         )
                     } else {
                         line.to_owned()
