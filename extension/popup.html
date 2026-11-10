@@ -2,12 +2,14 @@
 <html>
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-  <header>
-    <img src="icons/icon-32.png" width="20" height="20" alt="">
-    <span>Mister Download Manager</span>
+  <header class="brand">
+    <div class="brand-mark" aria-hidden="true"><span></span></div>
+    <div class="brand-copy"><strong>Rakib Download Manager</strong><small>DOWNLOAD CONTROL CENTER</small></div>
+    <span class="brand-version" id="version"></span>
   </header>
   <section id="status" class="status" role="status">
     <span class="dot" aria-hidden="true"></span>
@@ -15,16 +17,21 @@
   </section>
   <a id="fix" class="link" hidden data-i18n="popup_fix" target="_blank" rel="noopener"></a>
   <p id="declined" class="declined" hidden><span id="declined-what"></span><span id="declined-why"></span></p>
-  <label class="switch">
-    <input id="take" type="checkbox">
-    <span data-i18n="popup_take"></span>
-  </label>
-  <label class="switch" id="proxy-row" hidden>
-    <input id="proxy" type="checkbox">
-    <span data-i18n="popup_proxy"></span>
-  </label>
+  <section class="capture-panel">
+    <div class="section-kicker">BROWSER CAPTURE</div>
+    <label class="switch">
+      <span class="switch-copy"><strong>Capture downloads</strong><small>Send supported downloads to Rakib</small></span>
+      <input id="take" type="checkbox">
+      <span class="toggle" aria-hidden="true"></span>
+    </label>
+    <label class="switch" id="proxy-row" hidden>
+      <span class="switch-copy"><strong>Proxy integration</strong><small>Use the app network proxy</small></span>
+      <input id="proxy" type="checkbox">
+      <span class="toggle" aria-hidden="true"></span>
+    </label>
+  </section>
   <section id="send" class="send">
-    <h2 data-i18n="popup_send_to"></h2>
+    <div class="section-kicker">DOWNLOAD DESTINATION</div>
     <label class="choice"><input type="radio" name="to" id="to-here"> <span data-i18n="popup_send_here"></span></label>
     <label class="choice"><input type="radio" name="to" id="to-remote"> <span data-i18n="popup_send_remote"></span></label>
     <div id="remote-form" hidden>
@@ -38,29 +45,25 @@
       <p id="remote-said" class="note bad" role="status" hidden></p>
     </div>
   </section>
-  <button id="exclude" class="row" hidden></button>
-  <p id="excluded" class="note" hidden></p>
-  <div class="actions">
-    <button id="open" class="accent" data-i18n="popup_open"></button>
-    <button id="options" data-i18n="popup_options"></button>
-  </div>
   <section id="media" class="media" hidden>
-    <h2 data-i18n="popup_media"></h2>
-    <label class="switch">
-      <input id="media-title-name" type="checkbox">
-      <span data-i18n="popup_media_title_name"></span>
-    </label>
+    <div class="section-kicker">MEDIA FOUND ON THIS PAGE</div>
     <ul id="media-list"></ul>
     <p id="media-none" class="note" data-i18n="popup_media_none" hidden></p>
     <p id="media-said" class="note" role="status" hidden></p>
   </section>
-  <p class="note" data-i18n="popup_alt"></p>
+  <button id="exclude" class="row" hidden></button>
+  <p id="excluded" class="note" hidden></p>
+  <div class="actions primary-actions">
+    <button id="open" class="accent" data-i18n="popup_open"></button>
+    <button id="options" data-i18n="popup_options"></button>
+  </div>
+  <p class="note footer-note" data-i18n="popup_alt"></p>
   <footer>
     <span class="footer-links">
       <a id="help" class="link" data-i18n="popup_help" target="_blank" rel="noopener"></a>
       <a id="support" class="link" data-i18n="popup_support" target="_blank" rel="noopener"></a>
     </span>
-    <span id="version"></span>
+    <span class="footer-mark">RAKIB · DM</span>
   </footer>
   <script src="popup.js"></script>
 </body>
