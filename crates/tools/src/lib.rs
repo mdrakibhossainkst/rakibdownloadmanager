@@ -28,10 +28,11 @@ use sha2::{Digest, Sha256};
 
 /// yt-dlp's release signing key, from its repository (`public.key`).
 const YTDLP_KEY: &str = include_str!("../keys/yt-dlp.asc");
-/// Mister Download Manager's release signing key (Ed25519, fingerprint
-/// 5826D399249DE856EA087D802E293C28E8A69D74): release.yml signs each release's SHA256SUMS.txt
-/// with it (the MDM_RELEASE_KEY secret), and MDM updates itself only from a list it signed.
-const MDM_KEY: &str = include_str!("../keys/mdm-release.asc");
+/// Legacy upstream signing key, retained to verify the existing regression fixture.
+const LEGACY_MDM_KEY: &str = include_str!("../keys/mdm-release.asc");
+/// Rakib Download Manager's release signing key (Ed25519,
+/// fingerprint FB1E9144C6FC782CC6CE61DFE6852D874F11BDFB).
+const RAKIB_KEY: &str = include_str!("../keys/rakib-release.asc");
 /// Where releases come from.
 const RELEASES: &str = "https://api.github.com/repos/yt-dlp/yt-dlp/releases/latest";
 
@@ -107,10 +108,10 @@ pub fn signed_by_ytdlp(sums: &[u8], sig: &[u8]) -> bool {
     signed_by(YTDLP_KEY, sums, sig)
 }
 
-/// Whether `sums` (a release's SHA256SUMS.txt) carries a valid signature `sig` by Mister
-/// Download Manager's release key.
+/// Whether `sums` (a release's SHA256SUMS.txt) carries a valid signature `sig` by Rakib's
+/// pinned release key. The legacy upstream key remains accepted for old signed fixtures/releases.
 pub fn signed_by_mdm(sums: &[u8], sig: &[u8]) -> bool {
-    if signed_by(MDM_KEY, sums, sig) {
+    if signed_by(RAKIB_KEY, sums, sig) || signed_by(LEGACY_MDM_KEY, sums, sig) {
         return true;
     }
     // Update now's end-to-end tests (feature `test-update`, never in a release): a fake
@@ -433,6 +434,16 @@ mod tests {
     #[test]
     fn a_real_release_checksum_list_is_signed_by_the_pinned_key() {
         assert!(signed_by_ytdlp(SUMS, SIG));
+    }
+
+    #[test]
+    fn rakib_releases_are_checked_against_the_fork_owned_key() {
+        let sums = include_bytes!("../tests/fixtures/mdm-SHA256SUMS.txt");
+        let sig = include_bytes!("../tests/fixtures/rakib-release-SHA256SUMS.txt.sig.asc");
+        assert!(signed_by_mdm(sums, sig));
+        let mut forged = sums.to_vec();
+        forged[0] = if forged[0] == b'0' { b'1' } else { b'0' };
+        assert!(!signed_by_mdm(&forged, sig));
     }
 
     #[test]
