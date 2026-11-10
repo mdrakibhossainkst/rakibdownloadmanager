@@ -51,7 +51,7 @@ pub fn chromium_ids() -> Vec<&'static str> {
 /// install from it), once it is listed: the listing's own address, its name then its ID.
 pub fn store_page() -> Option<String> {
     store_id()
-        .map(|id| format!("https://chromewebstore.google.com/detail/mister-download-manager/{id}"))
+        .map(|id| format!("https://chromewebstore.google.com/detail/rakib-download-manager/{id}"))
 }
 
 /// The tutorial that adds the extension: from the stores, and by hand (a build of its own, or
