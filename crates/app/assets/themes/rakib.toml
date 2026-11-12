@@ -43,7 +43,7 @@ warning = "#f3c66a"
 success = "#72d6a3"
 
 [light]
-"focus.ring" = "#246bfd"
+"focus.ring" = "#1d4ed8"
 "toolbar.hot" = "#e8f0ff"
 "toolbar.hot.faint" = "#f3f7ff"
 "toolbar.hot.edge" = "#8bb3ff"
