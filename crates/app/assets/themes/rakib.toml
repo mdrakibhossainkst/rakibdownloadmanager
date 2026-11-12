@@ -1,0 +1,75 @@
+# Rakib: a calm, premium desktop palette designed for the Rakib Download Manager identity.
+# The layout and download engine remain unchanged; this theme establishes the visual foundation
+# for the full interface redesign. Both variants are derived from the same semantic colour roles.
+
+name = "Rakib"
+icons = "mono"
+
+[controls]
+field-focus = "ring"
+check = "adwaita"
+focus = "ring"
+caption = "adwaita"
+
+[sizes]
+radius = 8
+"radius.part" = 5
+"radius.check" = 4
+"radius.flyout" = 12
+"radius.menu-item" = 6
+"radius.popup" = 8
+"radius.egui" = 6
+
+[seeds.light]
+background = "#f3f6fc"
+surface = "#ffffff"
+header = "#eaf0f9"
+text = "#172b4d"
+accent = "#246bfd"
+selection = "#dce9ff"
+error = "#b42318"
+warning = "#8a4b08"
+success = "#176b45"
+
+[seeds.dark]
+background = "#0e1726"
+surface = "#152238"
+header = "#1c2d47"
+text = "#eaf2ff"
+accent = "#6ba6ff"
+selection = "#24446d"
+error = "#ff8c82"
+warning = "#f3c66a"
+success = "#72d6a3"
+
+[light]
+"focus.ring" = "#246bfd"
+"toolbar.hot" = "#e8f0ff"
+"toolbar.hot.faint" = "#f3f7ff"
+"toolbar.hot.edge" = "#8bb3ff"
+"toolbar.hot.border" = "#8bb3ff"
+"toolbar.pressed" = "#dce9ff"
+"caption" = "#eaf0f9"
+"caption.text" = "#172b4d"
+"caption.text.inactive" = "#65758f"
+"caption.button" = "#172b4d1a"
+"caption.hot" = "#172b4d26"
+"caption.pressed" = "#172b4d40"
+"caption.close" = "#d92d20"
+"caption.close.text" = "#ffffff"
+
+[dark]
+"focus.ring" = "#6ba6ff"
+"toolbar.hot" = "#203654"
+"toolbar.hot.faint" = "#192c45"
+"toolbar.hot.edge" = "#6ba6ff"
+"toolbar.hot.border" = "#6ba6ff"
+"toolbar.pressed" = "#24446d"
+"caption" = "#1c2d47"
+"caption.text" = "#eaf2ff"
+"caption.text.inactive" = "#9aabc3"
+"caption.button" = "#eaf2ff1a"
+"caption.hot" = "#eaf2ff26"
+"caption.pressed" = "#eaf2ff40"
+"caption.close" = "#d92d20"
+"caption.close.text" = "#ffffff"
