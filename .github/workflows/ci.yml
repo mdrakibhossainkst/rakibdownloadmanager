@@ -97,6 +97,22 @@ jobs:
           cargo build --release -p mdm-nmhost
           tools/safari/selftest.sh target/release/misterdownloadmanager-nmhost
 
+      # Package both CPU architectures as a real DMG, not just compile the app's Rust tests.
+      - name: Build Intel and Apple Silicon DMGs
+        if: runner.os == 'macOS'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: bash tools/installer/build-macos.sh
+
+      - name: Upload macOS test installers
+        if: runner.os == 'macOS'
+        uses: actions/upload-artifact@v4
+        with:
+          name: rakib-macos-test-builds
+          path: target/dist/*.dmg
+          if-no-files-found: error
+          retention-days: 7
+
   # A translator's reviewed rows (no "#, machine" line) must survive every pull request: no
   # tool or merge may drop them or hand them back to machine translation.
   translations:
