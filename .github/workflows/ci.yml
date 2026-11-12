@@ -40,10 +40,10 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - os: macos-latest
+          # Match the user's Intel x86_64 Mac target; macos-latest now selects Apple Silicon.
+          - os: macos-15-intel
     runs-on: ${{ matrix.os }}
-    # A cold build takes about 10 minutes; a hung runner (apt-get once hung for hours) is cut off
-    # instead of running to GitHub's 6 hours.
+    # A cold build takes about 10 minutes; a hung runner is cut off instead of running to GitHub's 6 hours.
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
