@@ -6528,13 +6528,15 @@ impl App {
         let surface = crate::winui::BG();
         let accent = crate::winui::accent();
         let muted = crate::winui::MUTED();
-        let heading = if nav == "active" { "Active Downloads" }
-            else if nav == "queued" { "Queued Downloads" }
-            else if nav == "completed" { "Completed Downloads" }
-            else if nav == "failed" { "Failed Downloads" }
-            else if nav == "category" { self.view_title() }
-            else if nav == "queue" { self.view_title() }
-            else { "All Downloads" };
+        let heading = match nav.as_str() {
+            "active" => "Active Downloads".to_owned(),
+            "queued" => "Queued Downloads".to_owned(),
+            "completed" => "Completed Downloads".to_owned(),
+            "failed" => "Failed Downloads".to_owned(),
+            "category" => match self.view { View::Cat(c) => c.label().to_owned(), _ => "Category".to_owned() },
+            "queue" => match self.view { View::Queue(q) => self.queues.get(q).map(|q| q.name.clone()).unwrap_or_else(|| "Queue".to_owned()), _ => "Queue".to_owned() },
+            _ => "All Downloads".to_owned(),
+        };
 
         ui.visuals_mut().widgets.noninteractive.bg_fill = bg;
         ui.visuals_mut().panel_fill = bg;
@@ -6614,9 +6616,6 @@ impl App {
                             ui.add_space(10.0);
                             if ui.button("◷ Scheduler").clicked() {
                                 command = Some((Cmd::Scheduler, None));
-                            }
-                            if ui.button("Browser Integration").clicked() {
-                                command = Some((Cmd::Extension, None));
                             }
                         });
                     },
@@ -6759,7 +6758,7 @@ impl App {
                                     self.open_item(id);
                                 }
                                 if ui.button("Reveal in Finder").clicked() {
-                                    crate::launch::reveal(&item.dest);
+                                    dialogs::show_in_folder(&item.dest);
                                 }
                                 if ui.button("Remove from List").clicked() {
                                     command = Some((Cmd::Remove, Some(id)));
