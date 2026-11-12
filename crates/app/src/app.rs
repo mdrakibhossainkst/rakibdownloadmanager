@@ -6513,11 +6513,11 @@ impl App {
     /// Rakib's Mac-first dashboard. The download engine and commands remain shared with the
     /// established application; this is a presentation layer, not a second download engine.
     fn paint_rakib(&mut self, ui: &mut Ui) {
-        use egui::{Align, Layout, RichText, ScrollArea, Stroke, Vec2};
+        use egui::{Align, Layout, RichText, ScrollArea, Vec2};
 
         let ctx = ui.ctx().clone();
-        let nav_id = egui::Id::new("rakib-dashboard-nav");
-        let search_id = egui::Id::new("rakib-dashboard-search");
+        let nav_id = egui::Id::unique("rakib-dashboard-nav");
+        let search_id = egui::Id::unique("rakib-dashboard-search");
         let mut nav = ctx.data(|d| d.get_temp::<String>(nav_id).unwrap_or_else(|| "all".to_owned()));
         let mut search = ctx.data(|d| d.get_temp::<String>(search_id).unwrap_or_default());
         let mut nav_change: Option<(String, View)> = None;
