@@ -6525,7 +6525,6 @@ impl App {
         let mut command: Option<(Cmd, Option<u64>)> = None;
 
         let bg = crate::chrome::WINDOW_BG();
-        let surface = crate::winui::BG();
         let accent = crate::winui::accent();
         let muted = crate::winui::MUTED();
         let heading = match nav.as_str() {
