@@ -653,7 +653,6 @@ pub fn builtins() -> [&'static Theme; 9] {
     });
     [
         &CLASSIC,
-        &RAKIB,
         &HIGH_CONTRAST,
         &METRO,
         &ADWAITA,
@@ -661,6 +660,7 @@ pub fn builtins() -> [&'static Theme; 9] {
         &LUNA,
         &AERO,
         &AQUA,
+        &RAKIB,
     ]
 }
 
@@ -863,6 +863,7 @@ mod tests {
             ("luna", "Luna", include_str!("../assets/themes/luna.toml")),
             ("aero", "Aero", include_str!("../assets/themes/aero.toml")),
             ("aqua", "Aqua", include_str!("../assets/themes/aqua.toml")),
+            ("rakib", "Rakib", include_str!("../assets/themes/rakib.toml")),
         ] {
             let v: serde_json::Value = toml::from_str(text).unwrap();
             let l = crate::themefile::parse(id, &v, |_| {
