@@ -33,10 +33,10 @@ The current application is an `egui/eframe` desktop app, not a native SwiftUI ap
 
 ## 3. Compatibility risks for the target Mac
 
-1. **Safari extension:** current build script targets `arm64-apple-macos14.0` / `x86_64-apple-macos14.0`. Ventura 13 cannot run this extension as currently built. Keep Chrome/Firefox integration available and decide whether a Ventura-compatible Safari extension target is technically possible.
+1. **Safari extension:** the build script now targets macOS 13.0 for both Intel and Apple Silicon. CI must prove the extension compiles against that deployment target, then Safari must be tested on Ventura 13.7.8.
 2. **Graphics:** macOS builds support Metal, but the default is OpenGL because the project has not certified Metal on real Mac GPUs. Test OpenGL first, then Metal, and retain automatic fallback. OCLP does not guarantee that every graphics path will work.
 3. **Build environment:** the upstream workspace currently declares Rust 1.98. The Rakib fork's root `Cargo.toml` declares Rust 1.95, while the user's installed local Rust was previously reported as 1.97.1. This metadata drift must be reconciled with the lockfile and current dependencies before promising a local build.
-4. **CI confidence:** `.github/workflows/ci.yml` now treats macOS failures as real CI failures. `.github/workflows/release.yml` still labels Mac DMGs experimental until Intel and Apple Silicon runtime testing is completed.
+4. **CI confidence:** `.github/workflows/ci.yml` now treats macOS failures as real CI failures and builds both Intel and Apple Silicon DMGs as short-lived PR artifacts. `.github/workflows/release.yml` still labels Mac DMGs experimental until real-hardware runtime testing is completed.
 5. **Distribution identity:** the app display name, DMG name/volume and Safari extension display/package name are now branded Rakib. The inherited bundle identifier, executable names, LaunchAgent label, browser native-messaging IDs, data directory and updater identity are intentionally unchanged for this first safe packaging pass. The installer still uses the upstream artwork until a Rakib icon asset is added.
 
 ## 4. Feature work to investigate and implement
@@ -46,13 +46,13 @@ The current application is an `egui/eframe` desktop app, not a native SwiftUI ap
 - [x] Rebrand visible macOS installer and Safari extension labels without changing legacy runtime identifiers.
 - [x] Set Safari extension deployment target to macOS 13.0 for Ventura compatibility.
 - [x] Make macOS CI failures fail the workflow.
-- [ ] Confirm the branch's GitHub Actions CI and full Intel DMG build.
+- [ ] Confirm the branch's GitHub Actions CI and inspect the uploaded Intel DMG artifact.
 - [ ] Replace inherited icon artwork with approved Rakib branding.
 - Test segmented HTTP/HTTPS downloads, resume after quit/relaunch, pause/resume, retry, checksum, large files, disk-full and network interruption.
 - Verify menu-bar icon lifecycle, close-to-background, reopen, explicit Quit and auto-start.
 - Verify data/settings/history survive app updates and app moves.
 - Validate browser host registration/unregistration and duplicate-install handling.
-- Give the app a unique bundle identifier, data directory, LaunchAgent label and browser native-messaging identity.
+- Plan a separate identity migration (bundle identifier, data directory, LaunchAgent label and browser native-messaging identity) only after backup, migration and rollback behavior are implemented; do not change these identifiers in the current compatibility pass.
 
 ### P1 — Mac-focused experience
 - Design a new Rakib visual system: typography, spacing, surfaces, iconography, colors, elevation, motion and component states.
@@ -74,7 +74,7 @@ The current application is an `egui/eframe` desktop app, not a native SwiftUI ap
 The redesign should be a coherent product redesign, not a superficial theme swap.
 
 - **Product name:** Rakib Download Manager.
-- **Packaging milestone (2026-11-12):** app bundle display name, DMG filename/volume label and Safari extension name updated; Safari build target set to macOS 13.0; macOS CI made blocking. These are source changes only until CI and hardware tests pass.
+- **Packaging milestone (2026-11-12):** app bundle display name, DMG filename/volume label, Safari extension display name and app-facing labels updated; Safari build target set to macOS 13.0; macOS CI made blocking and configured to upload test DMGs. These are source changes only until CI and hardware tests pass.
 - **Visual character:** premium, restrained, modern Mac desktop software; clear hierarchy and purposeful color.
 - **Layout:** compact sidebar + content workspace + contextual inspector/details where useful.
 - **Themes:** carefully tuned Light and Dark modes; no washed-out all-white surfaces. A new built-in **Rakib** palette now establishes the product's blue/slate visual direction and is the default for fresh installations; the original Classic theme remains available.
@@ -87,7 +87,7 @@ Keep the Rust engine and current `egui` application architecture for the first r
 
 1. **Audit baseline:** inspect current platform code, packaging, app identity, renderer and workflow; record runtime test results.
 2. **Identity separation:** replace inherited product metadata safely, preserve required GPL notices and upstream attribution.
-3. **Mac reliability milestone:** fix only verified Ventura/Intel blockers and make the macOS CI job informative rather than silently non-blocking.
+3. **Mac reliability milestone:** fix verified Ventura/Intel blockers, make macOS CI blocking, and package Intel/Apple Silicon DMG artifacts for review.
 4. **Design system:** establish tokens, typography, icons, components and responsive layout rules.
 5. **Screen redesign:** implement the complete application UI in coherent sections.
 6. **Mac integrations:** improve menu bar, background lifecycle, notifications, browser integration and startup.
