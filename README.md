@@ -20,13 +20,8 @@
 </p>
 
 <p align="center">
-  🧩 <b>Browser extension:</b><br>
-  <a href="https://addons.mozilla.org/firefox/addon/mister-download-manager/"><img src="https://img.shields.io/badge/Add%20to-Firefox-2a78d6?style=flat-square&logo=firefoxbrowser&logoColor=white" alt="Add to Firefox" height="34"></a>
-  <a href="https://chromewebstore.google.com/detail/mister-download-manager/ejoleppdfgjdndddcjoehopknmlglojp"><img src="https://img.shields.io/badge/Add%20to-Chrome-2a78d6?style=flat-square&logo=googlechrome&logoColor=white" alt="Add to Chrome" height="34"></a><br>
-  <sub>The Chrome Web Store's is for
-  <img src="docs/images/browsers/edge.png" width="16" height="16" alt=""> Edge,
-  <img src="docs/images/browsers/brave.png" width="16" height="16" alt=""> Brave,
-  <img src="docs/images/browsers/opera.png" width="16" height="16" alt=""> Opera and Vivaldi too (<a href="docs/browser-integration.md">how</a>).</sub>
+  🧩 <b>Browser integration:</b> inherited Chromium and Firefox extension support is being adapted for Rakib.<br>
+  <sub>Rakib-specific browser packages are not published yet; the upstream store links are intentionally omitted.</sub>
 </p>
 
 <p align="center">
@@ -60,17 +55,15 @@
   <a href="https://github.com/mdrakibhossainkst/rakibdownloadmanager/releases"><img src="https://img.shields.io/github/downloads/mdrakibhossainkst/rakibdownloadmanager/total?logo=github" alt="Downloads"></a>
   <a href="https://github.com/mdrakibhossainkst/rakibdownloadmanager/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/mdrakibhossainkst/rakibdownloadmanager/ci.yml?logo=github&label=ci" alt="CI"></a>
   <a href="https://github.com/mdrakibhossainkst/rakibdownloadmanager/stargazers"><img src="https://img.shields.io/github/stars/mdrakibhossainkst/rakibdownloadmanager?logo=github" alt="GitHub stars"></a>
-  <a href="https://addons.mozilla.org/firefox/addon/mister-download-manager/"><img src="https://img.shields.io/amo/v/mister-download-manager?logo=firefoxbrowser&label=Firefox%20add-on" alt="Firefox add-on"></a>
-  <a href="https://chromewebstore.google.com/detail/mister-download-manager/ejoleppdfgjdndddcjoehopknmlglojp"><img src="https://img.shields.io/chrome-web-store/v/ejoleppdfgjdndddcjoehopknmlglojp?logo=googlechrome&label=Chrome%20Web%20Store" alt="Chrome Web Store"></a>
   <a href="LICENSE"><img src="https://img.shields.io/github/license/mdrakibhossainkst/rakibdownloadmanager" alt="GPL-3.0 license"></a>
 </p>
 
 | 🚀 [Download](#download) | ⚡ [Why switch](#why-switch-from-idm) | 🖼️ [Screenshots](#screenshots) | ✨ [Getting started](docs/getting-started.md) | 📜 [Help and tutorials](docs/README.md) |
 | --- | --- | --- | --- | --- |
 
-## Why switch from IDM?
+## Download engine baseline
 
-**Same window you know. Your downloads finish sooner. And it costs nothing.**
+**The download engine is inherited from the upstream project; Rakib's own interface and release builds are being developed here.**
 
 <p align="center">
   <picture>
@@ -80,7 +73,8 @@
 </p>
 
 <!-- compare:start -->
-| | Mister Download Manager | IDM 6.42 |
+> The following benchmark results belong to the upstream Mister Download Manager project. They have not been independently re-measured for this Rakib fork.
+| | Upstream MDM benchmark | IDM 6.42 |
 | --- | --- | --- |
 | Download a big file (1 GB) | **1 second** | 5.5 seconds |
 | Download a small file | **instantly** | 3.1 seconds |
