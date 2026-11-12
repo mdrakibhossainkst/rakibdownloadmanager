@@ -17,7 +17,7 @@ here="$(cd "$(dirname "$0")" && pwd)"
 app="$1" target="$2" ext="$3" helper="$4" version="$5" identity="${6:--}"
 min_macos="${target##*macos}"
 bundle_id="io.github.anefzaoui.misterdownloadmanager.safari"
-appex="$app/Contents/PlugIns/Mister Download Manager.appex"
+appex="$app/Contents/PlugIns/Rakib Download Manager.appex"
 
 # A real identity: the hardened runtime and Apple's timestamp, which notarization asks for.
 opts=()
