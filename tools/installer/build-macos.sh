@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Builds the macOS release into target/dist/ (experimental: built by CI, not yet tested by us):
-#   RakibDownloadManager-<version>-macos-arm64.dmg   Apple Silicon
-#   RakibDownloadManager-<version>-macos-x86_64.dmg  Intel
+#   RakibDownloadManager-<version>-macos-arm64-experimental.dmg   Apple Silicon
+#   RakibDownloadManager-<version>-macos-x86_64-experimental.dmg  Intel
 # One app per processor, each half the size of a universal one (#25), ad-hoc signed: without an
 # Apple Developer ID, macOS asks before the first start (right-click the app -> Open).
 # The app carries the Safari extension (tools/safari). Safari loads an ad-hoc signed one only with
@@ -54,7 +54,7 @@ dmgs=()
 for pair in "${targets[@]}"; do
   t="${pair%%:*}"
   arch="${pair##*:}"
-  name="RakibDownloadManager-$version-macos-$arch"
+  name="RakibDownloadManager-$version-macos-$arch-experimental"
   app="$stage/$arch/dmg/Rakib Download Manager.app"
   mkdir -p "$app/Contents/MacOS" "$app/Contents/Resources"
 
@@ -95,7 +95,7 @@ for pair in "${targets[@]}"; do
 </plist>
 EOF
   # The Safari extension (it carries its own copy of the helper, signed for its sandbox).
-  "$root/tools/safari/build-appex.sh" "$app" "$arch-apple-macos14.0" "$root/target/extension/safari" \
+  "$root/tools/safari/build-appex.sh" "$app" "$arch-apple-macos13.0" "$root/target/extension/safari" \
     "$app/Contents/MacOS/misterdownloadmanager-nmhost" "$version" "$sign"
   # The helper programs, then the app, which signs its own program (not --deep: that would sign
   # the extension again, without the entitlements it was given). Signing the app's own program
