@@ -1449,7 +1449,7 @@
 #. Link grabber check box (IDM's "Hide HTML files"): links to web pages are not shown
 	Hide web pages	Hide web pages
 #. text in the Options window
-	Hold Alt while clicking a link to let the browser download it instead of Mister Download Manager.	Hold Alt while clicking a link to let the browser download it instead of Mister Download Manager.
+	Hold Alt while clicking a link to let the browser download it instead of Rakib Download Manager.	Hold Alt while clicking a link to let the browser download it instead of Rakib Download Manager.
 #. link (opens a web page) in the Help menu's windows (About, updates, shortcuts, Tell a friend)
 	Home page	Home page
 #. text in countries.rs
@@ -1681,7 +1681,7 @@
 #. a country's name (where a download's server is)
 	Latvia	Latvia
 #. text in the Options window
-	Launch Mister Download Manager on startup	Launch Mister Download Manager on startup
+	Launch Rakib Download Manager on startup	Launch Rakib Download Manager on startup
 #. text in countries.rs
 #. a country's name (where a download's server is)
 	Lebanon	Lebanon
@@ -1895,7 +1895,7 @@
 #. legend: pieces not downloaded yet
 	Missing	Missing
 #. message or event log entry in the main window; window title in a dialog box; text in the Help menu's windows (About, updates, shortcuts, Tell a friend)
-	Mister Download Manager	Mister Download Manager
+	Rakib Download Manager	Rakib Download Manager
 #. text in unix.rs
 #. Linux, at start, on the terminal and in a message box: a library the window needs isn't installed; {libraries} = its file names (libxkbcommon-x11.so.0…), left as they are
 	Mister Download Manager can't open its window: this system lacks {libraries}.	Mister Download Manager can't open its window: this system lacks {libraries}.
@@ -1903,7 +1903,7 @@
 #. crash report window heading: MDM crashed and is gone
 	Mister Download Manager closed unexpectedly	Mister Download Manager closed unexpectedly
 #. window title in the Options window
-	Mister Download Manager Configuration	Mister Download Manager Configuration
+	Rakib Download Manager Configuration	Rakib Download Manager Configuration
 #. text in crashui.rs
 	Mister Download Manager crash report	Mister Download Manager crash report
 #. text in crashui.rs
@@ -1927,7 +1927,7 @@
 #. text in helpers.rs
 #. Video helpers: {version} = the version of MDM's own copy
 #. {version} = a version number (keep the braces as they are)
-	Mister Download Manager's own copy, version {version}	Mister Download Manager's own copy, version {version}
+	Rakib Download Manager's own copy, version {version}	Rakib Download Manager's own copy, version {version}
 #. text in unix.rs
 #. Linux, at start, on the terminal: the libraries an X11 window needs aren't installed, so the window opens through Wayland instead, where menus can't be placed under what was clicked; {libraries} = their file names, left as they are
 	Mister Download Manager's X11 window needs {libraries}, which this system lacks: it opens on Wayland instead, where its menus may open away from their titles.	Mister Download Manager's X11 window needs {libraries}, which this system lacks: it opens on Wayland instead, where its menus may open away from their titles.
@@ -2300,7 +2300,7 @@
 #. checkbox in the Add torrent window
 	Open magnet links and .torrent files with Mister Download Manager	Open magnet links and .torrent files with Mister Download Manager
 #. text in the tray icon's menu
-	Open Mister Download Manager	Open Mister Download Manager
+	Open Rakib Download Manager	Open Rakib Download Manager
 #. text in extension.rs
 #. step 2 of turning on the Safari extension; Cmd is the Command key
 	Open Safari's settings (Cmd+,).	Open Safari's settings (Cmd+,).
@@ -2713,7 +2713,7 @@
 #. what a keyboard shortcut does in the Help menu's windows (About, updates, shortcuts, Tell a friend)
 	Select or unselect the download with the dotted outline	Select or unselect the download with the dotted outline
 #. group box title in the Options window
-	Select sounds for Mister Download Manager events	Select sounds for Mister Download Manager events
+	Select sounds for Rakib Download Manager events	Select sounds for Rakib Download Manager events
 #. what a keyboard shortcut does in the Help menu's windows (About, updates, shortcuts, Tell a friend)
 	Select the downloads in the box	Select the downloads in the box
 #. what a keyboard shortcut does in the Help menu's windows (About, updates, shortcuts, Tell a friend)
@@ -4451,7 +4451,7 @@ key	Type a name	Type a name
 key	Up / Down	Up / Down
 #. menu command in the main window
 #. & marks the keyboard shortcut letter: keep one & before a letter of the translation
-menu	&About Mister Download Manager	&About Mister Download Manager
+menu	&About Rakib Download Manager	&About Rakib Download Manager
 #. menu command in the main window
 #. & marks the keyboard shortcut letter: keep one & before a letter of the translation
 menu	&Add new download	&Add new download
@@ -4725,7 +4725,7 @@ menu	Metal didn't start here: OpenGL draws	Metal didn't start here: OpenGL draws
 menu	Metro	Metro
 #. menu command in the main window
 #. & marks the keyboard shortcut letter: keep one & before a letter of the translation
-menu	Mister Download Manager &Home Page	Mister Download Manager &Home Page
+menu	Upstream Project &Home Page	Upstream Project &Home Page
 #. menu command in the main window
 menu	Move/Rename (Ctrl-M)	Move/Rename (Ctrl-M)
 #. menu command in the main window
@@ -4810,7 +4810,7 @@ menu	Select &all	Select &all
 #. & marks the keyboard shortcut letter: keep one & before a letter of the translation
 menu	Show &drop target	Show &drop target
 #. menu command in the main window
-menu	Show Mister Download Manager	Show Mister Download Manager
+menu	Show Rakib Download Manager	Show Rakib Download Manager
 #. menu command in the main window
 #. & marks the keyboard shortcut letter: keep one & before a letter of the translation
 menu	Speed &Limiter	Speed &Limiter
