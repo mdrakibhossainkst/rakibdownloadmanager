@@ -6533,7 +6533,7 @@ impl App {
             "queued" => "Queued Downloads".to_owned(),
             "completed" => "Completed Downloads".to_owned(),
             "failed" => "Failed Downloads".to_owned(),
-            "category" => match self.view { View::Cat(c) => c.label().to_owned(), _ => "Category".to_owned() },
+            "category" => match self.view { View::Cat(c) => c.label().into_owned(), _ => "Category".to_owned() },
             "queue" => match self.view { View::Queue(q) => self.queues.get(q).map(|q| q.name.clone()).unwrap_or_else(|| "Queue".to_owned()), _ => "Queue".to_owned() },
             _ => "All Downloads".to_owned(),
         };
