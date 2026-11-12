@@ -12,7 +12,7 @@ The repository already contains a substantial cross-platform Rust download manag
 
 The current application is an `egui/eframe` desktop app, not a native SwiftUI application. Its UI specification explicitly follows IDM 6.42's measured layout. This is a good functional baseline, but it does not yet represent the requested original Rakib visual identity.
 
-**Important:** this is a source-code audit, not a successful runtime certification. macOS CI builds are marked experimental and allowed to fail without failing the workflow. Real testing on Intel Ventura remains mandatory.
+**Important:** this is a source-code audit, not a successful runtime certification. The packaging and CI configuration have now been adjusted for Ventura, but GitHub Actions and real Intel Ventura runtime tests still need to pass before the Mac build can be called stable.
 
 ## 2. Existing macOS capability inventory
 
@@ -22,7 +22,7 @@ The current application is an `egui/eframe` desktop app, not a native SwiftUI ap
 | Keep running after closing the main window | App tray and close/minimize handling; progress windows can be hidden while downloads continue | Source support exists; test close, minimize, reopen, quit and active transfers |
 | Launch at login | `crates/app/src/unix.rs` writes a LaunchAgent under `~/Library/LaunchAgents` | Implemented; test enable/disable, moved app path, login and uninstall cleanup |
 | Browser native messaging | `crates/app/src/unix.rs`, native host and browser manifests | Implemented in source; test Chrome/Firefox/Chromium-family browsers on Ventura |
-| Safari Web Extension | `tools/safari/build-appex.sh` and packaged `.appex` | Build support exists, but its Swift target is explicitly `macos14.0`; not compatible with the Ventura 13.7.8 target as currently configured |
+| Safari Web Extension | `tools/safari/build-appex.sh` and packaged `.appex` | Build target lowered to `macos13.0`; Safari 14+ web extensions are supported on macOS 11+, but the new Ventura build still needs CI and real Safari testing |
 | Keychain | `crates/app/src/unix.rs` macOS keychain module uses Security framework generic-password operations | Implemented in source; test first-run prompts, locked keychain, read/write/delete and app identity changes |
 | Independent download progress windows | `crates/app/src/progress.rs` | Implemented; test multi-window focus, close/hide, persistence and display scaling |
 | Reveal downloaded file in Finder | `crates/app/src/unix.rs` | Implemented in source; runtime verification needed |
@@ -36,13 +36,18 @@ The current application is an `egui/eframe` desktop app, not a native SwiftUI ap
 1. **Safari extension:** current build script targets `arm64-apple-macos14.0` / `x86_64-apple-macos14.0`. Ventura 13 cannot run this extension as currently built. Keep Chrome/Firefox integration available and decide whether a Ventura-compatible Safari extension target is technically possible.
 2. **Graphics:** macOS builds support Metal, but the default is OpenGL because the project has not certified Metal on real Mac GPUs. Test OpenGL first, then Metal, and retain automatic fallback. OCLP does not guarantee that every graphics path will work.
 3. **Build environment:** the upstream workspace currently declares Rust 1.98. The Rakib fork's root `Cargo.toml` declares Rust 1.95, while the user's installed local Rust was previously reported as 1.97.1. This metadata drift must be reconciled with the lockfile and current dependencies before promising a local build.
-4. **CI confidence:** `.github/workflows/ci.yml` runs `macos-latest` with `continue-on-error`; it is a smoke/build signal, not a passing gate. `.github/workflows/release.yml` labels both Mac DMGs experimental.
-5. **Distribution identity:** the macOS packaging script currently embeds Mister Download Manager's bundle name, identifier and icon. These must be changed consistently for Rakib, including LaunchAgent label, native messaging identifiers/manifests, app paths and update metadata. Avoid partial renaming that breaks browser registration or leaves two apps sharing one data directory.
+4. **CI confidence:** `.github/workflows/ci.yml` now treats macOS failures as real CI failures. `.github/workflows/release.yml` still labels Mac DMGs experimental until Intel and Apple Silicon runtime testing is completed.
+5. **Distribution identity:** the app display name, DMG name/volume and Safari extension display/package name are now branded Rakib. The inherited bundle identifier, executable names, LaunchAgent label, browser native-messaging IDs, data directory and updater identity are intentionally unchanged for this first safe packaging pass. The installer still uses the upstream artwork until a Rakib icon asset is added.
 
 ## 4. Feature work to investigate and implement
 
 ### P0 — reliability and Mac compatibility
 - Verify Intel x86_64 Ventura build, launch, renderer fallback and repeated launches.
+- [x] Rebrand visible macOS installer and Safari extension labels without changing legacy runtime identifiers.
+- [x] Set Safari extension deployment target to macOS 13.0 for Ventura compatibility.
+- [x] Make macOS CI failures fail the workflow.
+- [ ] Confirm the branch's GitHub Actions CI and full Intel DMG build.
+- [ ] Replace inherited icon artwork with approved Rakib branding.
 - Test segmented HTTP/HTTPS downloads, resume after quit/relaunch, pause/resume, retry, checksum, large files, disk-full and network interruption.
 - Verify menu-bar icon lifecycle, close-to-background, reopen, explicit Quit and auto-start.
 - Verify data/settings/history survive app updates and app moves.
@@ -69,6 +74,7 @@ The current application is an `egui/eframe` desktop app, not a native SwiftUI ap
 The redesign should be a coherent product redesign, not a superficial theme swap.
 
 - **Product name:** Rakib Download Manager.
+- **Packaging milestone (2026-11-12):** app bundle display name, DMG filename/volume label and Safari extension name updated; Safari build target set to macOS 13.0; macOS CI made blocking. These are source changes only until CI and hardware tests pass.
 - **Visual character:** premium, restrained, modern Mac desktop software; clear hierarchy and purposeful color.
 - **Layout:** compact sidebar + content workspace + contextual inspector/details where useful.
 - **Themes:** carefully tuned Light and Dark modes; no washed-out all-white surfaces.
