@@ -8,8 +8,8 @@
 //!   sizes, row heights). Where a window puts its controls stays the window's layout.
 //! - [`IconStyle`]: how the toolbar's and Options' outline icons are inked.
 //!
-//! [`CLASSIC`] is MDM's own look (IDM's classic layout, Windows 11 controls, accent #0078D4),
-//! written out with the exact values the painters had before themes: the default, unchanged.
+//! [`CLASSIC`] preserves the original MDM look (IDM's classic layout, Windows 11 controls, accent #0078D4),
+//! written out with the exact values the painters had before themes: the compatibility baseline.
 
 use std::borrow::Cow;
 
@@ -606,7 +606,7 @@ impl Theme {
     }
 }
 
-/// The classic look, MDM's default.
+/// The original classic look, retained for compatibility.
 pub static CLASSIC: Theme = Theme {
     id: Cow::Borrowed("classic"),
     name: Cow::Borrowed("Classic"),
@@ -618,8 +618,8 @@ pub static CLASSIC: Theme = Theme {
     controls: Controls::CLASSIC,
 };
 
-/// The built-in themes that don't change by themselves, the default first: the classic look
-/// (written out above), then Rakib's own visual identity and the other styles shipped as theme
+/// The built-in themes that don't change by themselves: the original classic look
+/// (written out above), Rakib's own visual identity, then the other styles shipped as theme
 /// files (`assets/themes/`, in the format users write, so they double as examples). Native
 /// follows the system and is made when chosen (`crate::native`).
 pub fn builtins() -> [&'static Theme; 9] {
