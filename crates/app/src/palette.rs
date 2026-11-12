@@ -863,7 +863,11 @@ mod tests {
             ("luna", "Luna", include_str!("../assets/themes/luna.toml")),
             ("aero", "Aero", include_str!("../assets/themes/aero.toml")),
             ("aqua", "Aqua", include_str!("../assets/themes/aqua.toml")),
-            ("rakib", "Rakib", include_str!("../assets/themes/rakib.toml")),
+            (
+                "rakib",
+                "Rakib",
+                include_str!("../assets/themes/rakib.toml"),
+            ),
         ] {
             let v: serde_json::Value = toml::from_str(text).unwrap();
             let l = crate::themefile::parse(id, &v, |_| {
