@@ -37,7 +37,7 @@ jobs:
       matrix:
         include:
           # Match the user's Intel x86_64 Mac target; macos-latest selects Apple Silicon.
-          - os: macos-15-intel
+          - os: macos-26-intel
     runs-on: ${{ matrix.os }}
     timeout-minutes: 45
     steps:
