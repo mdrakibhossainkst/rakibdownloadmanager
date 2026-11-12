@@ -494,7 +494,7 @@ impl Settings {
             "proxy".into(),
             &|| {
                 format!(
-                    "Mister Download Manager: {} {}:{}",
+                    "Rakib Download Manager: {} {}:{}",
                     // i18n: the proxy's password in the system's keychain (Credential Manager, the keyring): its name there, followed by the proxy's address
                     crate::i18n::t("proxy server"),
                     self.proxy_host,
@@ -506,7 +506,7 @@ impl Settings {
         for (a, d) in self.debrid_accounts.iter().zip(&mut disk.debrid_accounts) {
             d.secret = kept(
                 format!("debrid/{}", a.id),
-                &|| format!("Mister Download Manager: {} ({})", a.service.name(), a.user),
+                &|| format!("Rakib Download Manager: {} ({})", a.service.name(), a.user),
                 &a.secret,
             );
         }
@@ -519,7 +519,7 @@ impl Settings {
 {user}"
                     ))
                 ),
-                &|| format!("Mister Download Manager: {site} ({user})"),
+                &|| format!("Rakib Download Manager: {site} ({user})"),
                 pw,
             );
         }
