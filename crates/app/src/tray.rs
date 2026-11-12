@@ -155,7 +155,6 @@ impl Tray {
         menu.append(&PredefinedMenuItem::separator()).ok();
         // i18n: verb: quit the app
         add(&menu, mark("Exit"), TrayCmd::Exit);
-        drop(add);
         items.push((limiter_on.id().clone(), TrayCmd::LimiterOn));
         items.push((limiter_off.id().clone(), TrayCmd::LimiterOff));
 
