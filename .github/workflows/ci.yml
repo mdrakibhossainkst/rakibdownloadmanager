@@ -1,4 +1,4 @@
-# Build, lint and test main and every pull request on Windows, Linux and macOS.
+# Mac-first validation for main and every pull request. DMG packaging is a final-delivery step.
 name: CI
 
 # Pushes to main only: a pull request's branch is tested once as the pull request (a bare push:
@@ -40,8 +40,6 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - os: windows-latest
-          - os: ubuntu-latest
           - os: macos-latest
     runs-on: ${{ matrix.os }}
     # A cold build takes about 10 minutes; a hung runner (apt-get once hung for hours) is cut off
@@ -63,22 +61,14 @@ jobs:
           key: ${{ runner.os }}-cargo-${{ hashFiles('Cargo.lock') }}
           restore-keys: ${{ runner.os }}-cargo-
 
-      - name: Linux libraries
-        if: runner.os == 'Linux'
-        timeout-minutes: 10
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libgtk-3-dev libxkbcommon-dev libwayland-dev libgl1-mesa-dev \
-            libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev
-
       - name: Format
-        if: runner.os == 'Windows'
+        if: runner.os == 'macOS'
         run: cargo fmt --all --check
 
       # A text added to the code without running tools/i18n/extract.py fails here; missing
       # translations don't (they show in English until tools/i18n/translate.py runs).
       - name: English catalog matches the code
-        if: runner.os == 'Windows'
+        if: runner.os == 'macOS'
         run: |
           python tools/i18n/extract.py
           git diff --exit-code -- i18n/en.tsv
@@ -97,24 +87,8 @@ jobs:
           cargo build --release -p mdm-nmhost
           tools/safari/selftest.sh target/release/misterdownloadmanager-nmhost
 
-      # Package both CPU architectures as a real DMG, not just compile the app's Rust tests.
-      - name: Build Intel and Apple Silicon DMGs
-        if: runner.os == 'macOS'
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: bash tools/installer/build-macos.sh
+      # DMG creation is intentionally deferred until the macOS product is complete.
 
-      - name: Upload macOS test installers
-        if: runner.os == 'macOS'
-        uses: actions/upload-artifact@v4
-        with:
-          name: rakib-macos-test-builds
-          path: target/dist/*.dmg
-          if-no-files-found: error
-          retention-days: 7
-
-  # A translator's reviewed rows (no "#, machine" line) must survive every pull request: no
-  # tool or merge may drop them or hand them back to machine translation.
   translations:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
