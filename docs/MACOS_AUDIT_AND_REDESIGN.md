@@ -77,7 +77,7 @@ The redesign should be a coherent product redesign, not a superficial theme swap
 - **Packaging milestone (2026-11-12):** app bundle display name, DMG filename/volume label and Safari extension name updated; Safari build target set to macOS 13.0; macOS CI made blocking. These are source changes only until CI and hardware tests pass.
 - **Visual character:** premium, restrained, modern Mac desktop software; clear hierarchy and purposeful color.
 - **Layout:** compact sidebar + content workspace + contextual inspector/details where useful.
-- **Themes:** carefully tuned Light and Dark modes; no washed-out all-white surfaces.
+- **Themes:** carefully tuned Light and Dark modes; no washed-out all-white surfaces. A new built-in **Rakib** palette now establishes the product's blue/slate visual direction and can be selected from View → Theme.
 - **Interaction:** predictable macOS window behavior, keyboard navigation, native file dialogs and context menus where feasible.
 - **Performance:** avoid heavy blur, excessive animation and expensive redraws; prioritize the Intel HD 4000 target.
 
