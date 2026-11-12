@@ -366,7 +366,7 @@ impl Default for Settings {
             view: None,
             dark_mode_support: true,
             always_dark: false,
-            theme: "classic".into(),
+            theme: "rakib".into(),
             renderer: None,
             interface_size: 100,
             limits_on: false,
