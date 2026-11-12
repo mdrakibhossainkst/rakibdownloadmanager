@@ -6755,7 +6755,7 @@ impl App {
                                     command = Some((Cmd::Stop, Some(id)));
                                 }
                                 if item.status == Status::Complete && ui.button("Open File").clicked() {
-                                    self.open_item(id);
+                                    command = Some((Cmd::Open, Some(id)));
                                 }
                                 if ui.button("Reveal in Finder").clicked() {
                                     dialogs::show_in_folder(&item.dest);
