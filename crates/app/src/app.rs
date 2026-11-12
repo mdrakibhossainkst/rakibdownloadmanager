@@ -5581,7 +5581,7 @@ impl App {
                 Err(e) => {
                     if self.save_failed.as_ref() != Some(&e) {
                         self.notice = Some((
-                            crate::i18n::mark("Mister Download Manager"),
+                            crate::i18n::mark("Rakib Download Manager"),
                             crate::i18n::fmt(
                                 crate::i18n::t(
                                     "The download list could not be saved: {error}. Changes are kept while MDM runs.",
@@ -5796,7 +5796,7 @@ impl App {
                 I("&Keyboard shortcuts", Cmd::Shortcuts, true, false),
                 Sep,
                 I(
-                    "Mister Download Manager &Home Page",
+                    "Upstream Project &Home Page",
                     Cmd::HelpPage(""),
                     true,
                     false,
@@ -5805,7 +5805,7 @@ impl App {
                 Sep,
                 I("Check for &updates...", Cmd::CheckUpdates, true, false),
                 Sep,
-                I("&About Mister Download Manager", Cmd::About, true, false),
+                I("&About Rakib Download Manager", Cmd::About, true, false),
                 I("Tell a &friend", Cmd::TellFriend, true, false),
                 // MDM's, not IDM's: the creator's GitHub Sponsors page, asked for only.
                 I("Support &MDM", Cmd::Support, true, false),
@@ -6960,7 +6960,7 @@ impl App {
                 Popup::Node(node) => (self.node_entries(node), None),
                 Popup::DropTarget => (
                     vec![
-                        MenuEntry::Item("Show Mister Download Manager", Cmd::ShowMain, true, false),
+                        MenuEntry::Item("Show Rakib Download Manager", Cmd::ShowMain, true, false),
                         MenuEntry::Item("&Add new download", Cmd::AddUrl, true, false),
                         MenuEntry::Sep,
                         MenuEntry::Item("Hide drop target", Cmd::ToggleDropTarget, true, false),
@@ -7441,7 +7441,7 @@ impl App {
             } else {
                 // A file MDM can't download or import (a picture, a program).
                 self.notice = Some((
-                    crate::i18n::mark("Mister Download Manager"),
+                    crate::i18n::mark("Rakib Download Manager"),
                     crate::i18n::fmt(
                         crate::i18n::t(
                             "Nothing to download in {item}: drop links, a .torrent file, or a list of addresses (.txt, .ef2).",
