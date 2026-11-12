@@ -2,7 +2,7 @@
 # Builds the Safari extension (an app extension, "appex") into a Mister Download Manager.app:
 #   tools/safari/build-appex.sh <app> <swift target> <extension folder> <helper> <version> [identity]
 #     <app>               the .app to put it in (Contents/PlugIns/)
-#     <swift target>      arm64-apple-macos14.0 or x86_64-apple-macos14.0
+#     <swift target>      arm64-apple-macos13.0 or x86_64-apple-macos13.0
 #     <extension folder>  target/extension/safari (tools/extension/pack.ps1): the web extension,
 #                         the same files as for the other browsers
 #     <helper>            the release misterdownloadmanager-nmhost for that processor: copied in
