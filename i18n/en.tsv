@@ -219,12 +219,12 @@
 #. text in playlistdlg.rs
 #. title of the question asked before a playlist adds many downloads
 	Add many downloads	Add many downloads
-#. window title in extension.rs
-#. title of the window that offers the browser extension
-	Add Rakib Download Manager to your browser	Add Rakib Download Manager to your browser
 #. message or event log entry in the main window; text in the tray icon's menu
 #. link in the empty download list: opens Add URL
 	Add new download	Add new download
+#. window title in extension.rs
+#. title of the window that offers the browser extension
+	Add Rakib Download Manager to your browser	Add Rakib Download Manager to your browser
 #. text in the Options window
 	Add the duplicate and overwrite the existing file	Add the duplicate and overwrite the existing file
 #. text in the Options window
@@ -1894,43 +1894,6 @@
 #. text in a download's progress window
 #. legend: pieces not downloaded yet
 	Missing	Missing
-#. message or event log entry in the main window; window title in a dialog box; text in the Help menu's windows (About, updates, shortcuts, Tell a friend)
-	Rakib Download Manager	Rakib Download Manager
-#. text in unix.rs
-#. Linux, at start, on the terminal and in a message box: a library the window needs isn't installed; {libraries} = its file names (libxkbcommon-x11.so.0…), left as they are
-	Rakib Download Manager can't open its window: this system lacks {libraries}.	Rakib Download Manager can't open its window: this system lacks {libraries}.
-#. text in crashui.rs
-#. crash report window heading: MDM crashed and is gone
-	Rakib Download Manager closed unexpectedly	Rakib Download Manager closed unexpectedly
-#. window title in the Options window
-	Rakib Download Manager Configuration	Rakib Download Manager Configuration
-#. text in crashui.rs
-	Rakib Download Manager crash report	Rakib Download Manager crash report
-#. text in crashui.rs
-#. crash report window heading: an internal error, MDM still running
-	Rakib Download Manager hit an internal error	Rakib Download Manager hit an internal error
-#. text in wake.rs
-#. why the computer isn't going to sleep, in the system's list of programs that keep it awake; {queue} = the queue's name
-#. {queue} = a queue name such as "Main queue" (keep the braces as they are)
-	Rakib Download Manager is running the queue "{queue}"	Rakib Download Manager is running the queue "{queue}"
-#. text in crashui.rs
-#. crash report window heading: MDM's window doesn't answer (frozen)
-	Rakib Download Manager stopped responding	Rakib Download Manager stopped responding
-#. text in crashui.rs
-	Rakib Download Manager stopped responding for a while	Rakib Download Manager stopped responding for a while
-#. text in the Options window
-#. \\n starts a new line: break lines where they fit the translation
-	Rakib Download Manager writes every connection straight into the final\nfile (a sparse part file next to it), so no temporary directory and no\nassembling step are needed.	Rakib Download Manager writes every connection straight into the final\nfile (a sparse part file next to it), so no temporary directory and no\nassembling step are needed.
-#. text in the Help menu's windows (About, updates, shortcuts, Tell a friend)
-#. {version} = a version number (keep the braces as they are)
-	Rakib Download Manager {version} is available (released {date}).	Rakib Download Manager {version} is available (released {date}).
-#. text in helpers.rs
-#. Video helpers: {version} = the version of MDM's own copy
-#. {version} = a version number (keep the braces as they are)
-	Rakib Download Manager's own copy, version {version}	Rakib Download Manager's own copy, version {version}
-#. text in unix.rs
-#. Linux, at start, on the terminal: the libraries an X11 window needs aren't installed, so the window opens through Wayland instead, where menus can't be placed under what was clicked; {libraries} = their file names, left as they are
-	Rakib Download Manager's X11 window needs {libraries}, which this system lacks: it opens on Wayland instead, where its menus may open away from their titles.	Rakib Download Manager's X11 window needs {libraries}, which this system lacks: it opens on Wayland instead, where its menus may open away from their titles.
 #. text in the Scheduler window
 #. Monday, as short as a calendar's column head (two letters in English)
 	Mo	Mo
@@ -2512,6 +2475,43 @@
 #. item in the Categories tree in the main window; text in the Scheduler window
 #. plural noun: the download queues
 	Queues	Queues
+#. message or event log entry in the main window; window title in a dialog box; text in the Help menu's windows (About, updates, shortcuts, Tell a friend)
+	Rakib Download Manager	Rakib Download Manager
+#. text in unix.rs
+#. Linux, at start, on the terminal and in a message box: a library the window needs isn't installed; {libraries} = its file names (libxkbcommon-x11.so.0…), left as they are
+	Rakib Download Manager can't open its window: this system lacks {libraries}.	Rakib Download Manager can't open its window: this system lacks {libraries}.
+#. text in crashui.rs
+#. crash report window heading: MDM crashed and is gone
+	Rakib Download Manager closed unexpectedly	Rakib Download Manager closed unexpectedly
+#. window title in the Options window
+	Rakib Download Manager Configuration	Rakib Download Manager Configuration
+#. text in crashui.rs
+	Rakib Download Manager crash report	Rakib Download Manager crash report
+#. text in crashui.rs
+#. crash report window heading: an internal error, MDM still running
+	Rakib Download Manager hit an internal error	Rakib Download Manager hit an internal error
+#. text in wake.rs
+#. why the computer isn't going to sleep, in the system's list of programs that keep it awake; {queue} = the queue's name
+#. {queue} = a queue name such as "Main queue" (keep the braces as they are)
+	Rakib Download Manager is running the queue "{queue}"	Rakib Download Manager is running the queue "{queue}"
+#. text in crashui.rs
+#. crash report window heading: MDM's window doesn't answer (frozen)
+	Rakib Download Manager stopped responding	Rakib Download Manager stopped responding
+#. text in crashui.rs
+	Rakib Download Manager stopped responding for a while	Rakib Download Manager stopped responding for a while
+#. text in the Options window
+#. \\n starts a new line: break lines where they fit the translation
+	Rakib Download Manager writes every connection straight into the final\nfile (a sparse part file next to it), so no temporary directory and no\nassembling step are needed.	Rakib Download Manager writes every connection straight into the final\nfile (a sparse part file next to it), so no temporary directory and no\nassembling step are needed.
+#. text in the Help menu's windows (About, updates, shortcuts, Tell a friend)
+#. {version} = a version number (keep the braces as they are)
+	Rakib Download Manager {version} is available (released {date}).	Rakib Download Manager {version} is available (released {date}).
+#. text in helpers.rs
+#. Video helpers: {version} = the version of MDM's own copy
+#. {version} = a version number (keep the braces as they are)
+	Rakib Download Manager's own copy, version {version}	Rakib Download Manager's own copy, version {version}
+#. text in unix.rs
+#. Linux, at start, on the terminal: the libraries an X11 window needs aren't installed, so the window opens through Wayland instead, where menus can't be placed under what was clicked; {libraries} = their file names, left as they are
+	Rakib Download Manager's X11 window needs {libraries}, which this system lacks: it opens on Wayland instead, where its menus may open away from their titles.	Rakib Download Manager's X11 window needs {libraries}, which this system lacks: it opens on Wayland instead, where its menus may open away from their titles.
 #. text in the Options window
 #. Options → Sites Logins → Cookies for video sites: a note under the choices
 	Read on this computer only, and sent only to the video's site.	Read on this computer only, and sent only to the video's site.
@@ -4724,9 +4724,6 @@ menu	Metal didn't start here: OpenGL draws	Metal didn't start here: OpenGL draws
 #. View → Theme: a style theme's name (Windows 8's flat look); keep "Metro" unless your language writes it otherwise
 menu	Metro	Metro
 #. menu command in the main window
-#. & marks the keyboard shortcut letter: keep one & before a letter of the translation
-menu	Upstream Project &Home Page	Upstream Project &Home Page
-#. menu command in the main window
 menu	Move/Rename (Ctrl-M)	Move/Rename (Ctrl-M)
 #. menu command in the main window
 #. View → Theme: the system's own colours (its accent colour, its high contrast)
@@ -4860,6 +4857,9 @@ menu	Turn o&n	Turn o&n
 #. menu command in the main window
 #. & marks the keyboard shortcut letter: keep one & before a letter of the translation
 menu	Turn of&f	Turn of&f
+#. menu command in the main window
+#. & marks the keyboard shortcut letter: keep one & before a letter of the translation
+menu	Upstream Project &Home Page	Upstream Project &Home Page
 #. menu command in the main window
 #. the trailing ... means it opens a window: keep it
 menu	Verify checksum...	Verify checksum...
