@@ -14,9 +14,8 @@
 > **Development build:** This fork is under active development. Do not use upstream release badges or browser-store links as Rakib releases; Rakib-specific installers and extension packages will be published here after validation.
 
 <p align="center">
-  <a href="https://github.com/mdrakibhossainkst/rakibdownloadmanager/releases/latest"><img src="https://img.shields.io/badge/Download%20for-Windows-2a78d6?style=flat-square&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0yIDMuNWw4LjUtMS4ydjguMkgyek0xMS41IDIuMkwyMiAuOHY5LjdIMTEuNXpNMiAxMS41aDguNXY4LjJMMiAxOC41ek0xMS41IDExLjVIMjJ2OS43bC0xMC41LTEuNHoiLz48L3N2Zz4%3D" alt="Download for Windows" height="34"></a>
-  <a href="https://github.com/mdrakibhossainkst/rakibdownloadmanager/releases/latest"><img src="https://img.shields.io/badge/Download%20for-macOS-2a78d6?style=flat-square&logo=apple&logoColor=white" alt="Download for macOS" height="34"></a>
-  <a href="https://github.com/mdrakibhossainkst/rakibdownloadmanager/releases/latest"><img src="https://img.shields.io/badge/Download%20for-Linux-2a78d6?style=flat-square&logo=linux&logoColor=white" alt="Download for Linux" height="34"></a>
+  <b>Release status: In development — no Rakib installer has been published yet.</b><br>
+  <a href="https://github.com/mdrakibhossainkst/rakibdownloadmanager/actions">View build and test status</a>
 </p>
 
 <p align="center">
@@ -25,8 +24,8 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/mdrakibhossainkst/rakibdownloadmanager/stargazers"><img src="https://img.shields.io/github/stars/mdrakibhossainkst/rakibdownloadmanager?style=social&label=Star%20MDM" alt="Star Mister Download Manager on GitHub" height="28"></a><br>
-  <sub>⭐ <b>Like it? Give it a star.</b> MDM has no ads and no marketing budget: stars are how people find it.</sub>
+  <a href="https://github.com/mdrakibhossainkst/rakibdownloadmanager/stargazers"><img src="https://img.shields.io/github/stars/mdrakibhossainkst/rakibdownloadmanager?style=social&label=Star%20Rakib" alt="Star Rakib Download Manager on GitHub" height="28"></a><br>
+  <sub>⭐ <b>Like it? Give it a star.</b> Rakib is a free, open-source project; stars help people discover it.</sub>
 </p>
 
 <p align="center">
@@ -58,7 +57,7 @@
   <a href="LICENSE"><img src="https://img.shields.io/github/license/mdrakibhossainkst/rakibdownloadmanager" alt="GPL-3.0 license"></a>
 </p>
 
-| 🚀 [Download](#download) | ⚡ [Why switch](#why-switch-from-idm) | 🖼️ [Screenshots](#screenshots) | ✨ [Getting started](docs/getting-started.md) | 📜 [Help and tutorials](docs/README.md) |
+| 🚀 [Releases](#releases) | ⚡ [Engine baseline](#download-engine-baseline) | 🖼️ [Screenshots](#screenshots) | ✨ [Getting started](docs/getting-started.md) | 📜 [Help and tutorials](docs/README.md) |
 | --- | --- | --- | --- | --- |
 
 ## Download engine baseline
@@ -89,42 +88,15 @@ Nothing new to learn: the toolbar, the categories, the list of downloads, the pr
 the browser button are where you expect them. Measured on the same computer, same files, both
 programs at their default settings ([how we measured](#the-benchmark-in-detail)).
 
-## Download
+## Releases
 
-<p align="center">
-  <a href="https://github.com/mdrakibhossainkst/rakibdownloadmanager/releases/latest"><img src="https://img.shields.io/badge/Download%20for-Windows-2a78d6?style=flat-square&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0yIDMuNWw4LjUtMS4ydjguMkgyek0xMS41IDIuMkwyMiAuOHY5LjdIMTEuNXpNMiAxMS41aDguNXY4LjJMMiAxOC41ek0xMS41IDExLjVIMjJ2OS43bC0xMC41LTEuNHoiLz48L3N2Zz4%3D" alt="Download for Windows" height="34"></a>
-  <a href="https://github.com/mdrakibhossainkst/rakibdownloadmanager/releases/latest"><img src="https://img.shields.io/badge/Download%20for-macOS-2a78d6?style=flat-square&logo=apple&logoColor=white" alt="Download for macOS" height="34"></a>
-  <a href="https://github.com/mdrakibhossainkst/rakibdownloadmanager/releases/latest"><img src="https://img.shields.io/badge/Download%20for-Linux-2a78d6?style=flat-square&logo=linux&logoColor=white" alt="Download for Linux" height="34"></a>
-</p>
+Rakib-specific installers are not published yet. The current work is focused on branding, macOS compatibility, and validating the inherited download engine on the target platforms.
 
-On the [download page](https://github.com/mdrakibhossainkst/rakibdownloadmanager/releases/latest), pick
-one:
+Once the CI matrix is green, the first test build will be published here. The immediate target is **Intel macOS 13 Ventura**; no installer should be treated as production-ready before it has been tested on real hardware.
 
-| File | Choose it when |
-| --- | --- |
-| **`...-setup.exe`** | **Not sure? Take this one.** It installs MDM, connects it to your browser and asks your language. |
-| `...-portable.zip` | You want MDM on a USB stick or without installing: unzip and run. Everything stays in its folder. |
-| `...-x64.zip` | You want the plain programs without an installer. |
-| `...-extension-chromium.zip` | You want to add the browser extension by hand (Chrome, Edge, Brave, Opera, Vivaldi). From the stores is easier: [Add to Chrome](https://chromewebstore.google.com/detail/mister-download-manager/ejoleppdfgjdndddcjoehopknmlglojp), [Add to Firefox](https://addons.mozilla.org/firefox/addon/mister-download-manager/). |
+### Linux
 
-> [!NOTE]
-> Windows may say *"Windows protected your PC"* the first time, because this early version isn't
-> code-signed yet. Click **More info**, then **Run anyway**.
-
-### On Linux
-
-MDM runs on Linux too, tested on Ubuntu 24.04, Debian 12 and Fedora with GNOME, KDE Plasma, Xfce
-and Cinnamon, on X11 and in Wayland sessions: the tray, dark mode, browser integration (Ubuntu's
-Snap Firefox included) and the packages' installs. Not there yet: screen readers (Orca) don't
-read its windows, and Flatpak browsers can't reach it ([more](docs/getting-started.md#on-linux)).
-Up to version 0.2.4, the files' names end in `-experimental`.
-
-| File | For |
-| --- | --- |
-| `...-linux-x86_64.deb` | Ubuntu, Debian, Mint, Pop!_OS: `sudo apt install ./<file>.deb`. |
-| `...-linux-x86_64.rpm` | Fedora, openSUSE, RHEL: `sudo dnf install ./<file>.rpm`. |
-| `...-linux-x86_64.AppImage` | Any Linux. Make it executable and run it. |
-| `...-linux-x86_64.tar.gz` | The plain programs, for any distribution. |
+The upstream engine supports Windows, Linux and macOS. Linux packaging and desktop integration are inherited from the upstream project; Rakib-specific Linux builds have not yet been independently validated.
 
 <p align="center">
   <picture>
@@ -133,17 +105,9 @@ Up to version 0.2.4, the files' names end in `-experimental`.
   </picture>
 </p>
 
-### On a Mac? Be the first to try it
+### macOS
 
-Fresh builds for **macOS** (Apple Silicon and Intel) are on the same download page, marked
-`-experimental`: we haven't tried them on a Mac ourselves yet. Give them a go and
-[tell us how it went](https://github.com/anefzaoui/misterdownloadmanager/issues/new/choose); you'll
-help make them as solid as the Windows and Linux versions.
-
-| File | For |
-| --- | --- |
-| `...-macos-arm64-experimental.dmg` | Mac with Apple Silicon (M1 or later). Open it and drag MDM to Applications. The first time, right-click the app and choose **Open**. |
-| `...-macos-x86_64-experimental.dmg` | Mac with an Intel processor, the same way. |
+The first target is Intel macOS 13 Ventura. The installer and Safari extension are being adjusted for this deployment target. Apple Silicon packaging remains part of the inherited project, but neither architecture is considered release-ready until its app bundle, browser integration, background downloads and renderer are tested on real hardware.
 
 ## 🌍 In your language
 
