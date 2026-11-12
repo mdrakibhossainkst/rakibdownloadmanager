@@ -1,11 +1,8 @@
 # Mac-first validation for main and every pull request. DMG packaging is a final-delivery step.
 name: CI
 
-# Pushes to main only: a pull request's branch is tested once as the pull request (a bare push:
-# ran everything twice), and a release tag's commit was already tested on main.
-# A change to the website or the docs alone builds nothing here (the app embeds none of it; the
-# Website workflow builds the site). The app's own catalogs, i18n/*.tsv, still run everything.
 on:
+  workflow_dispatch:
   push:
     branches: [main]
     paths-ignore:
@@ -22,7 +19,6 @@ on:
       - "docs/**"
       - "**/*.md"
 
-# A newer commit on a pull request makes its older run moot: cancel it (main runs to the end).
 concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
@@ -40,18 +36,14 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          # Match the user's Intel x86_64 Mac target; macos-latest now selects Apple Silicon.
+          # Match the user's Intel x86_64 Mac target; macos-latest selects Apple Silicon.
           - os: macos-15-intel
     runs-on: ${{ matrix.os }}
-    # A cold build takes about 10 minutes; a hung runner is cut off instead of running to GitHub's 6 hours.
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
-
-      # rust-toolchain.toml picks stable with rustfmt and clippy.
       - name: Toolchain
         run: rustup show active-toolchain || rustup toolchain install
-
       - uses: actions/cache@v4
         with:
           path: |
@@ -60,33 +52,23 @@ jobs:
             target
           key: ${{ runner.os }}-cargo-${{ hashFiles('Cargo.lock') }}
           restore-keys: ${{ runner.os }}-cargo-
-
       - name: Format
         if: runner.os == 'macOS'
         run: cargo fmt --all --check
-
-      # A text added to the code without running tools/i18n/extract.py fails here; missing
-      # translations don't (they show in English until tools/i18n/translate.py runs).
       - name: English catalog matches the code
         if: runner.os == 'macOS'
         run: |
           python tools/i18n/extract.py
           git diff --exit-code -- i18n/en.tsv
-
       - name: Clippy
         run: cargo clippy --workspace --all-targets -- -D warnings
-
       - name: Tests
         run: cargo test --workspace
-
-      # Safari's extension (macOS): its native half relays to the helper from inside the
-      # sandbox Safari makes it run in. Safari itself isn't needed.
       - name: Safari extension's relay and helper, sandboxed
         if: runner.os == 'macOS'
         run: |
           cargo build --release -p mdm-nmhost
           tools/safari/selftest.sh target/release/misterdownloadmanager-nmhost
-
       # DMG creation is intentionally deferred until the macOS product is complete.
 
   translations:
@@ -110,16 +92,11 @@ jobs:
           node-version: 22
       - name: Logic against fake Firefox and Chrome APIs
         run: node tools/extension/test.mjs
-
-      # Chrome, Edge, Brave, Opera, Vivaldi (mdm-chromium.zip), Firefox (mdm-firefox.xpi) and
-      # the Chrome Web Store's copy (mdm-chrome-store.zip).
       - name: Pack for every browser
         shell: pwsh
         run: ./tools/extension/pack.ps1
-
       - name: Check the packages
         run: node tools/extension/check-pack.mjs
-
       - uses: actions/upload-artifact@v4
         with:
           name: extension
