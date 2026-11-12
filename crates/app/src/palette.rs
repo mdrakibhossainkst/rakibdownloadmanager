@@ -619,10 +619,13 @@ pub static CLASSIC: Theme = Theme {
 };
 
 /// The built-in themes that don't change by themselves, the default first: the classic look
-/// (written out above), then the ones shipped as theme files (`assets/themes/`, in the format
-/// users write, so they double as examples). Native follows the system and is made when chosen
-/// (`crate::native`).
-pub fn builtins() -> [&'static Theme; 8] {
+/// (written out above), then Rakib's own visual identity and the other styles shipped as theme
+/// files (`assets/themes/`, in the format users write, so they double as examples). Native
+/// follows the system and is made when chosen (`crate::native`).
+pub fn builtins() -> [&'static Theme; 9] {
+    static RAKIB: std::sync::LazyLock<Theme> = std::sync::LazyLock::new(|| {
+        crate::themefile::builtin("rakib", include_str!("../assets/themes/rakib.toml"))
+    });
     static HIGH_CONTRAST: std::sync::LazyLock<Theme> = std::sync::LazyLock::new(|| {
         crate::themefile::builtin(
             "high-contrast",
@@ -650,6 +653,7 @@ pub fn builtins() -> [&'static Theme; 8] {
     });
     [
         &CLASSIC,
+        &RAKIB,
         &HIGH_CONTRAST,
         &METRO,
         &ADWAITA,
