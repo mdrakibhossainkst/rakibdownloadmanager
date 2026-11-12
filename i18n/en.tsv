@@ -4627,7 +4627,6 @@ menu	C&ustomize URL List...	C&ustomize URL List...
 #. the trailing ... means it opens a window: keep it
 menu	Check for &updates...	Check for &updates...
 #. menu command in the main window
-#. menu command in the main window
 #. View → Theme: Rakib's own visual identity; the default for new installations
 menu	Rakib	Rakib
 #. menu command in the main window
