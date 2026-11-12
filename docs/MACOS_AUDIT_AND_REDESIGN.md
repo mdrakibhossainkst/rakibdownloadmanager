@@ -71,7 +71,7 @@ The current application is an `egui/eframe` desktop app, not a native SwiftUI ap
 
 ## 5. UI/UX direction
 
-The redesign should be a coherent product redesign, not a superficial theme swap.
+The redesign should be a coherent product redesign, not a superficial theme swap. The detailed component, token, layout and acceptance specification is in [`RAKIB_UI_SYSTEM.md`](RAKIB_UI_SYSTEM.md).
 
 - **Product name:** Rakib Download Manager.
 - **Packaging milestone (2026-11-12):** app bundle display name, DMG filename/volume label, Safari extension display name and app-facing labels updated; Safari build target set to macOS 13.0; macOS CI made blocking and configured to upload test DMGs. These are source changes only until CI and hardware tests pass.
