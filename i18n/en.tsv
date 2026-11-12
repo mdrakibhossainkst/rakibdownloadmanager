@@ -4764,6 +4764,7 @@ menu	pywal	pywal
 #. verb: download the file again from the start
 #. & marks the keyboard shortcut letter: keep one & before a letter of the translation
 menu	R&edownload	R&edownload
+#. menu command in the main window
 #. View → Theme: Rakib's own visual identity; the default for new installations
 menu	Rakib	Rakib
 #. menu command in the main window
