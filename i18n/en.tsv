@@ -9,7 +9,7 @@
 #. count in a dialog box
 #. never shown for a single download
 #. {n} = a number (keep the braces as they are)
-@plural	Are you sure you want to delete {n} download from Mister Download Manager list of downloads?|Are you sure you want to delete these {n} downloads from Mister Download Manager list of downloads?	Are you sure you want to delete {n} download from Mister Download Manager list of downloads?|Are you sure you want to delete these {n} downloads from Mister Download Manager list of downloads?
+@plural	Are you sure you want to delete {n} download from Rakib Download Manager list of downloads?|Are you sure you want to delete these {n} downloads from Rakib Download Manager list of downloads?	Are you sure you want to delete {n} download from Rakib Download Manager list of downloads?|Are you sure you want to delete these {n} downloads from Rakib Download Manager list of downloads?
 #. count in the Add torrent window
 #. while a magnet link's file list is fetched; {n} = peers that answered
 #. {n} = a number (keep the braces as they are)
@@ -344,7 +344,7 @@
 #. Options → Archives: where extracted files go
 	Always into a folder named after it	Always into a folder named after it
 #. checkbox in a dialog box
-	Always turn on Speed Limiter on Mister Download Manager startup	Always turn on Speed Limiter on Mister Download Manager startup
+	Always turn on Speed Limiter on Rakib Download Manager startup	Always turn on Speed Limiter on Rakib Download Manager startup
 #. text in regional.rs; text in the Scheduler window
 #. before noon, after a time of day (12-hour clock). Its pair is "PM": write both the same way (this language's own short marks, or both kept as AM and PM)
 	AM	AM
@@ -394,7 +394,7 @@
 	Archives and Link grabber	Archives and Link grabber
 #. text in a dialog box
 #. {name} = a file name (keep the braces as they are)
-	Are you sure you want to delete "{name}" from Mister Download Manager list of downloads?	Are you sure you want to delete "{name}" from Mister Download Manager list of downloads?
+	Are you sure you want to delete "{name}" from Rakib Download Manager list of downloads?	Are you sure you want to delete "{name}" from Rakib Download Manager list of downloads?
 #. text in countries.rs
 #. a country's name (where a download's server is)
 	Argentina	Argentina
@@ -1898,7 +1898,7 @@
 	Rakib Download Manager	Rakib Download Manager
 #. text in unix.rs
 #. Linux, at start, on the terminal and in a message box: a library the window needs isn't installed; {libraries} = its file names (libxkbcommon-x11.so.0…), left as they are
-	Mister Download Manager can't open its window: this system lacks {libraries}.	Mister Download Manager can't open its window: this system lacks {libraries}.
+	Rakib Download Manager can't open its window: this system lacks {libraries}.	Rakib Download Manager can't open its window: this system lacks {libraries}.
 #. text in crashui.rs
 #. crash report window heading: MDM crashed and is gone
 	Rakib Download Manager closed unexpectedly	Rakib Download Manager closed unexpectedly
@@ -1912,7 +1912,7 @@
 #. text in wake.rs
 #. why the computer isn't going to sleep, in the system's list of programs that keep it awake; {queue} = the queue's name
 #. {queue} = a queue name such as "Main queue" (keep the braces as they are)
-	Mister Download Manager is running the queue "{queue}"	Mister Download Manager is running the queue "{queue}"
+	Rakib Download Manager is running the queue "{queue}"	Rakib Download Manager is running the queue "{queue}"
 #. text in crashui.rs
 #. crash report window heading: MDM's window doesn't answer (frozen)
 	Rakib Download Manager stopped responding	Rakib Download Manager stopped responding
@@ -1930,7 +1930,7 @@
 	Rakib Download Manager's own copy, version {version}	Rakib Download Manager's own copy, version {version}
 #. text in unix.rs
 #. Linux, at start, on the terminal: the libraries an X11 window needs aren't installed, so the window opens through Wayland instead, where menus can't be placed under what was clicked; {libraries} = their file names, left as they are
-	Mister Download Manager's X11 window needs {libraries}, which this system lacks: it opens on Wayland instead, where its menus may open away from their titles.	Mister Download Manager's X11 window needs {libraries}, which this system lacks: it opens on Wayland instead, where its menus may open away from their titles.
+	Rakib Download Manager's X11 window needs {libraries}, which this system lacks: it opens on Wayland instead, where its menus may open away from their titles.	Rakib Download Manager's X11 window needs {libraries}, which this system lacks: it opens on Wayland instead, where its menus may open away from their titles.
 #. text in the Scheduler window
 #. Monday, as short as a calendar's column head (two letters in English)
 	Mo	Mo
@@ -3283,7 +3283,7 @@
 	the secure connection failed	the secure connection failed
 #. text in a dialog box
 #. \\n starts a new line: break lines where they fit the translation
-	The selected download is not complete. Are you sure you want to delete\nit from Mister Download Manager list of downloads?	The selected download is not complete. Are you sure you want to delete\nit from Mister Download Manager list of downloads?
+	The selected download is not complete. Are you sure you want to delete\nit from Rakib Download Manager list of downloads?	The selected download is not complete. Are you sure you want to delete\nit from Rakib Download Manager list of downloads?
 #. text in errors.rs
 	the server answered {status}	the server answered {status}
 #. text in errors.rs
