@@ -1,4 +1,4 @@
-# Mister Download Manager: every English text of the interface (tools/i18n/extract.py).
+# Rakib Download Manager: every English text of the interface (tools/i18n/extract.py).
 # context	source	translation; a catalog for another language has the same rows.
 # A '#.' line is the translator note for the row under it.
 @id	language.name	English
@@ -667,7 +667,7 @@
 #. text in langpick.rs
 	Choose a language	Choose a language
 #. text in langpick.rs
-	Choose the language Mister Download Manager shows its windows in:	Choose the language Mister Download Manager shows its windows in:
+	Choose the language Rakib Download Manager shows its windows in:	Choose the language Rakib Download Manager shows its windows in:
 #. text in the Options window
 #. Options → Sites Logins → Cookies for video sites: the title of the window, and the tooltip of the button, that pick a browser profile's folder
 	Choose the profile's folder	Choose the profile's folder
@@ -1126,7 +1126,7 @@
 #. verb: quit the app
 	Exit	Exit
 #. checkbox in a download's progress window; checkbox in the Scheduler window
-	Exit Mister Download Manager when done	Exit Mister Download Manager when done
+	Exit Rakib Download Manager when done	Exit Rakib Download Manager when done
 #. text in the Checksum window
 	Expected checksum (MD5, SHA-1, SHA-256, SHA-512 or CRC32):	Expected checksum (MD5, SHA-1, SHA-256, SHA-512 or CRC32):
 #. message or event log entry in the main window
@@ -2261,7 +2261,7 @@
 #. button that opens the torrent's containing folder in the file manager
 	Open folder	Open folder
 #. checkbox in the Add torrent window
-	Open magnet links and .torrent files with Mister Download Manager	Open magnet links and .torrent files with Mister Download Manager
+	Open magnet links and .torrent files with Rakib Download Manager	Open magnet links and .torrent files with Rakib Download Manager
 #. text in the tray icon's menu
 	Open Rakib Download Manager	Open Rakib Download Manager
 #. text in extension.rs
@@ -2315,7 +2315,7 @@
 	Pair a device...	Pair a device...
 #. text in remote.rs
 #. remote control page (on a phone): title of the pairing screen
-	Pair with Mister Download Manager	Pair with Mister Download Manager
+	Pair with Rakib Download Manager	Pair with Rakib Download Manager
 #. text in the Options window
 #. column title: when the device was paired
 	Paired	Paired
@@ -2952,7 +2952,7 @@
 #. text in the Scheduler window; checkbox in the Scheduler window
 	Start download at	Start download at
 #. checkbox in the Scheduler window
-	Start download on Mister Download Manager startup	Start download on Mister Download Manager startup
+	Start download on Rakib Download Manager startup	Start download on Rakib Download Manager startup
 #. checkbox in the Options window
 	Start downloading immediately while displaying "Download File Info" dialog	Start downloading immediately while displaying "Download File Info" dialog
 #. text in the tray icon's menu
@@ -3159,7 +3159,7 @@
 	The computer could not be turned off: {error}	The computer could not be turned off: {error}
 #. text in the Scheduler window
 #. tooltip on the Scheduler's "Wake the computer to run this queue"
-	The computer is woken a minute before the start time and kept awake while the queue runs. Mister Download Manager has to be running (it can wait in the notification area).	The computer is woken a minute before the start time and kept awake while the queue runs. Mister Download Manager has to be running (it can wait in the notification area).
+	The computer is woken a minute before the start time and kept awake while the queue runs. Rakib Download Manager has to be running (it can wait in the notification area).	The computer is woken a minute before the start time and kept awake while the queue runs. Rakib Download Manager has to be running (it can wait in the notification area).
 #. text in the Scheduler window
 #. the Scheduler, under "Wake the computer to run this queue": when it will happen; {date} = e.g. 06/11/2026, {time} = e.g. 22:59:00
 #. {time} = a time of day (keep the braces as they are)
