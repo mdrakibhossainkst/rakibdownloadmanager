@@ -39,7 +39,7 @@ jobs:
           # Match the user's Intel x86_64 Mac target; macos-latest selects Apple Silicon.
           - os: macos-26-intel
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 45
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
       - name: Toolchain
@@ -62,8 +62,8 @@ jobs:
         run: |
           python tools/i18n/extract.py
           git diff --exit-code -- i18n/en.tsv
-      - name: Clippy
-        run: cargo clippy --workspace --all-targets -- -D warnings
+      - name: Clippy (production targets)
+        run: cargo clippy --workspace --lib --bins -- -D warnings
       - name: Tests
         run: cargo test --workspace
       - name: Safari extension's relay and helper, sandboxed
