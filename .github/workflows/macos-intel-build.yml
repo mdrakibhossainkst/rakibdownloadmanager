@@ -1,0 +1,59 @@
+name: macOS Intel Build
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: macos-intel-build-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    name: Intel x86_64 DMG
+    runs-on: macos-26-intel
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Toolchain
+        run: |
+          rustup show active-toolchain || rustup toolchain install
+          rustup target add x86_64-apple-darwin
+          command -v pwsh
+          command -v swiftc
+
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: macos-intel-cargo-${{ hashFiles('Cargo.lock') }}
+          restore-keys: macos-intel-cargo-
+
+      - name: Build Intel app and DMG
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: bash tools/installer/build-macos.sh --intel-only
+
+      - name: Verify Intel package
+        run: |
+          test -s target/dist/*-macos-x86_64-experimental.dmg
+          hdiutil verify target/dist/*-macos-x86_64-experimental.dmg
+          shasum -a 256 target/dist/*-macos-x86_64-experimental.dmg
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rakib-download-manager-macos-intel
+          path: |
+            target/dist/*-macos-x86_64-experimental.dmg
+            target/dist/*macos-x86_64*symbols*
+            target/dist/SHA256SUMS-macos.txt
+          if-no-files-found: error
+          retention-days: 14
