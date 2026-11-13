@@ -513,6 +513,13 @@ mod tests {
     /// desktop's theme on their CI runners, where one is installed). Every type at 16 and 32
     /// pixels, the sizes at 100 %; larger ones as the system has them (a CI runner's session,
     /// without a desktop, may lack the larger lists). What is missing is named.
+    // GitHub's macOS runner has no logged-in Finder desktop. NSWorkspace/AppKit icon lookup can
+    // block indefinitely in that headless session; keep this integration check opt-in there.
+    // On a logged-in Mac, run: cargo test -p mdm-app the_system_gives_its_icons_at_the_size_asked -- --ignored
+    #[cfg_attr(
+        target_os = "macos",
+        ignore = "requires an interactive Finder/AppKit session; run manually on a logged-in Mac"
+    )]
     #[test]
     fn the_system_gives_its_icons_at_the_size_asked() {
         let mut missing = Vec::new();

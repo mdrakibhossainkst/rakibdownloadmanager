@@ -8,8 +8,8 @@
 //!   sizes, row heights). Where a window puts its controls stays the window's layout.
 //! - [`IconStyle`]: how the toolbar's and Options' outline icons are inked.
 //!
-//! [`CLASSIC`] is MDM's own look (IDM's classic layout, Windows 11 controls, accent #0078D4),
-//! written out with the exact values the painters had before themes: the default, unchanged.
+//! [`CLASSIC`] preserves the original MDM look (IDM's classic layout, Windows 11 controls, accent #0078D4),
+//! written out with the exact values the painters had before themes: the compatibility baseline.
 
 use std::borrow::Cow;
 
@@ -606,7 +606,7 @@ impl Theme {
     }
 }
 
-/// The classic look, MDM's default.
+/// The original classic look, retained for compatibility.
 pub static CLASSIC: Theme = Theme {
     id: Cow::Borrowed("classic"),
     name: Cow::Borrowed("Classic"),
@@ -618,11 +618,14 @@ pub static CLASSIC: Theme = Theme {
     controls: Controls::CLASSIC,
 };
 
-/// The built-in themes that don't change by themselves, the default first: the classic look
-/// (written out above), then the ones shipped as theme files (`assets/themes/`, in the format
-/// users write, so they double as examples). Native follows the system and is made when chosen
-/// (`crate::native`).
-pub fn builtins() -> [&'static Theme; 8] {
+/// The built-in themes that don't change by themselves: the original classic look
+/// (written out above), Rakib's own visual identity, then the other styles shipped as theme
+/// files (`assets/themes/`, in the format users write, so they double as examples). Native
+/// follows the system and is made when chosen (`crate::native`).
+pub fn builtins() -> [&'static Theme; 9] {
+    static RAKIB: std::sync::LazyLock<Theme> = std::sync::LazyLock::new(|| {
+        crate::themefile::builtin("rakib", include_str!("../assets/themes/rakib.toml"))
+    });
     static HIGH_CONTRAST: std::sync::LazyLock<Theme> = std::sync::LazyLock::new(|| {
         crate::themefile::builtin(
             "high-contrast",
@@ -657,6 +660,7 @@ pub fn builtins() -> [&'static Theme; 8] {
         &LUNA,
         &AERO,
         &AQUA,
+        &RAKIB,
     ]
 }
 
@@ -859,6 +863,11 @@ mod tests {
             ("luna", "Luna", include_str!("../assets/themes/luna.toml")),
             ("aero", "Aero", include_str!("../assets/themes/aero.toml")),
             ("aqua", "Aqua", include_str!("../assets/themes/aqua.toml")),
+            (
+                "rakib",
+                "Rakib",
+                include_str!("../assets/themes/rakib.toml"),
+            ),
         ] {
             let v: serde_json::Value = toml::from_str(text).unwrap();
             let l = crate::themefile::parse(id, &v, |_| {

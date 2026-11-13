@@ -5581,7 +5581,7 @@ impl App {
                 Err(e) => {
                     if self.save_failed.as_ref() != Some(&e) {
                         self.notice = Some((
-                            crate::i18n::mark("Mister Download Manager"),
+                            crate::i18n::mark("Rakib Download Manager"),
                             crate::i18n::fmt(
                                 crate::i18n::t(
                                     "The download list could not be saved: {error}. Changes are kept while MDM runs.",
@@ -5796,7 +5796,7 @@ impl App {
                 I("&Keyboard shortcuts", Cmd::Shortcuts, true, false),
                 Sep,
                 I(
-                    "Mister Download Manager &Home Page",
+                    "Upstream Project &Home Page",
                     Cmd::HelpPage(""),
                     true,
                     false,
@@ -5805,7 +5805,7 @@ impl App {
                 Sep,
                 I("Check for &updates...", Cmd::CheckUpdates, true, false),
                 Sep,
-                I("&About Mister Download Manager", Cmd::About, true, false),
+                I("&About Rakib Download Manager", Cmd::About, true, false),
                 I("Tell a &friend", Cmd::TellFriend, true, false),
                 // MDM's, not IDM's: the creator's GitHub Sponsors page, asked for only.
                 I("Support &MDM", Cmd::Support, true, false),
@@ -5833,7 +5833,9 @@ impl App {
         let mut items = Vec::new();
         let mut files = false;
         let on = |id: &str| chosen == id;
-        // i18n: View → Theme: MDM's own look, the default (IDM's layout, Windows 11's controls)
+        // i18n: View → Theme: Rakib's own visual identity; the default for new installations
+        items.push(Radio("Rakib", Cmd::Theme("rakib"), true, on("rakib")));
+        // i18n: View → Theme: the original MDM look (IDM's layout, Windows 11's controls)
         items.push(Radio("Classic", Cmd::Theme("classic"), true, on("classic")));
         // i18n: View → Theme: the system's own colours (its accent colour, its high contrast)
         items.push(Radio("Native", Cmd::Theme("native"), true, on("native")));
@@ -6508,7 +6510,300 @@ impl App {
         }
     }
 
+    /// Rakib's Mac-first dashboard. The download engine and commands remain shared with the
+    /// established application; this is a presentation layer, not a second download engine.
+    fn paint_rakib(&mut self, ui: &mut Ui) {
+        use egui::{Align, Layout, RichText, ScrollArea, Vec2};
+
+        let ctx = ui.ctx().clone();
+        let nav_id = egui::Id::unique("rakib-dashboard-nav");
+        let search_id = egui::Id::unique("rakib-dashboard-search");
+        let mut nav = ctx.data(|d| d.get_temp::<String>(nav_id).unwrap_or_else(|| "all".to_owned()));
+        let mut search = ctx.data(|d| d.get_temp::<String>(search_id).unwrap_or_default());
+        let mut nav_change: Option<(String, View)> = None;
+        let mut selected_change = None;
+        let mut command: Option<(Cmd, Option<u64>)> = None;
+
+        let bg = crate::chrome::WINDOW_BG();
+        let accent = crate::winui::accent();
+        let muted = crate::winui::MUTED();
+        let heading = match nav.as_str() {
+            "active" => "Active Downloads".to_owned(),
+            "queued" => "Queued Downloads".to_owned(),
+            "completed" => "Completed Downloads".to_owned(),
+            "failed" => "Failed Downloads".to_owned(),
+            "category" => match self.view { View::Cat(c) => c.label().into_owned(), _ => "Category".to_owned() },
+            "queue" => match self.view { View::Queue(q) => self.queues.get(q).map(|q| q.name.clone()).unwrap_or_else(|| "Queue".to_owned()), _ => "Queue".to_owned() },
+            _ => "All Downloads".to_owned(),
+        };
+
+        ui.visuals_mut().widgets.noninteractive.bg_fill = bg;
+        ui.visuals_mut().panel_fill = bg;
+        ui.with_layout(Layout::top_down(Align::Min), |ui| {
+            ui.add_space(10.0);
+            ui.horizontal(|ui| {
+                ui.add_space(12.0);
+                ui.vertical(|ui| {
+                    ui.label(RichText::new("RAKIB").size(18.0).strong().color(accent));
+                    ui.label(RichText::new("DOWNLOAD MANAGER").size(9.0).strong().color(muted));
+                });
+                ui.with_layout(Layout::right_to_left(Align::Center), |ui| {
+                    if ui.button("⚙ Settings").clicked() {
+                        command = Some((Cmd::Options, None));
+                    }
+                    if ui.button("＋ Add URL").clicked() {
+                        command = Some((Cmd::AddUrl, None));
+                    }
+                    if ui.button("Add Torrent").clicked() {
+                        command = Some((Cmd::OpenTorrentFile, None));
+                    }
+                });
+                ui.add_space(12.0);
+            });
+            ui.add_space(8.0);
+            ui.separator();
+
+            ui.horizontal_top(|ui| {
+                ui.allocate_ui_with_layout(
+                    Vec2::new(218.0, ui.available_height()),
+                    Layout::top_down(Align::Min),
+                    |ui| {
+                        ui.add_space(12.0);
+                        ui.label(RichText::new("LIBRARY").size(10.0).strong().color(muted));
+                        ui.add_space(6.0);
+                        let nav_items = [
+                            ("all", "All Downloads", self.items.len()),
+                            ("active", "Downloading", self.items.iter().filter(|i| i.status == Status::Downloading).count()),
+                            ("queued", "Queued", self.items.iter().filter(|i| i.status == Status::Queued).count()),
+                            ("completed", "Completed", self.items.iter().filter(|i| i.status == Status::Complete).count()),
+                            ("failed", "Failed", self.items.iter().filter(|i| i.status == Status::Error).count()),
+                        ];
+                        for (key, label, count) in nav_items {
+                            let text = format!("{label}    {count}");
+                            if ui.selectable_label(nav == key, text).clicked() {
+                                let view = match key {
+                                    "completed" => View::Finished(None),
+                                    "active" | "queued" | "failed" => View::All,
+                                    _ => View::All,
+                                };
+                                nav_change = Some((key.to_owned(), view));
+                            }
+                        }
+                        ui.add_space(18.0);
+                        ui.label(RichText::new("CATEGORIES").size(10.0).strong().color(muted));
+                        ui.add_space(6.0);
+                        for category in Category::named() {
+                            if ui.selectable_label(
+                                nav == "category" && self.view == View::Cat(category),
+                                category.label(),
+                            ).clicked() {
+                                nav_change = Some(("category".to_owned(), View::Cat(category)));
+                            }
+                        }
+                        ui.add_space(18.0);
+                        ui.label(RichText::new("QUEUES").size(10.0).strong().color(muted));
+                        ui.add_space(6.0);
+                        for (index, queue) in self.queues.iter().enumerate() {
+                            if ui.selectable_label(
+                                nav == "queue" && self.view == View::Queue(index),
+                                queue.name.as_str(),
+                            ).clicked() {
+                                nav_change = Some(("queue".to_owned(), View::Queue(index)));
+                            }
+                        }
+                        ui.with_layout(Layout::bottom_up(Align::Min), |ui| {
+                            ui.add_space(10.0);
+                            if ui.button("◷ Scheduler").clicked() {
+                                command = Some((Cmd::Scheduler, None));
+                            }
+                        });
+                    },
+                );
+                ui.separator();
+
+                ui.vertical(|ui| {
+                    ui.add_space(12.0);
+                    ui.horizontal(|ui| {
+                        ui.vertical(|ui| {
+                            ui.label(RichText::new(heading).size(22.0).strong());
+                            ui.label(RichText::new(format!("{} items in this view", self.items.len())).size(11.0).color(muted));
+                        });
+                        ui.with_layout(Layout::right_to_left(Align::Center), |ui| {
+                            if ui.button("Delete Completed").clicked() {
+                                command = Some((Cmd::DeleteCompleted, None));
+                            }
+                            if ui.button("Stop All").clicked() {
+                                command = Some((Cmd::StopAll, None));
+                            }
+                        });
+                    });
+                    ui.add_space(10.0);
+                    ui.horizontal(|ui| {
+                        ui.add_sized(
+                            [ui.available_width(), 30.0],
+                            egui::TextEdit::singleline(&mut search).hint_text("Search downloads by file name or address…"),
+                        );
+                    });
+                    ui.add_space(8.0);
+
+                    let selected_filter = nav.clone();
+                    let query = search.trim().to_lowercase();
+                    let ids: Vec<u64> = self.view_items().into_iter()
+                        .filter(|item| match selected_filter.as_str() {
+                            "active" => item.status == Status::Downloading,
+                            "queued" => item.status == Status::Queued,
+                            "failed" => item.status == Status::Error,
+                            _ => true,
+                        })
+                        .filter(|item| query.is_empty()
+                            || item.file_name.to_lowercase().contains(&query)
+                            || item.url.as_str().to_lowercase().contains(&query))
+                        .map(|item| item.id)
+                        .collect();
+
+                    let selected = self.selection.ids().to_vec();
+                    let mut row_select = None;
+                    ScrollArea::vertical().auto_shrink([false, false]).show(ui, |ui| {
+                        if ids.is_empty() {
+                            ui.add_space(48.0);
+                            ui.vertical_centered(|ui| {
+                                ui.label(RichText::new("No downloads found").size(18.0).strong());
+                                ui.label(RichText::new("Add a URL or drop a file link here to get started.").color(muted));
+                                if ui.button("＋ Add a download").clicked() {
+                                    command = Some((Cmd::AddUrl, None));
+                                }
+                            });
+                        }
+                        for id in ids.iter().copied() {
+                            let Some(item) = self.items.iter().find(|i| i.id == id) else { continue };
+                            let is_selected = selected.contains(&id);
+                            let title = item.file_name.clone();
+                            let domain = item.url.host_str().unwrap_or("Local file").to_owned();
+                            let fraction = item.size.map_or(0.0, |size| {
+                                if size == 0 { 0.0 } else { (item.downloaded as f32 / size as f32).clamp(0.0, 1.0) }
+                            });
+                            let progress_text = match item.size {
+                                Some(size) => format!("{} of {}", model::size_list(item.downloaded), model::size_list(size)),
+                                None => format!("{} downloaded", model::size_list(item.downloaded)),
+                            };
+                            let state = item.status_text();
+                            let speed = if item.live.is_some() { model::rate(item.rate()) } else { String::new() };
+                            let mut clicked = false;
+                            egui::Frame::group(ui.style()).show(ui, |ui| {
+                                ui.set_width(ui.available_width());
+                                ui.horizontal(|ui| {
+                                    ui.vertical(|ui| {
+                                        ui.set_width(ui.available_width() - 8.0);
+                                        let response = ui.selectable_label(is_selected, RichText::new(&title).strong().size(13.0));
+                                        clicked = response.clicked();
+                                        ui.label(RichText::new(domain).size(10.0).color(muted));
+                                        ui.add_space(5.0);
+                                        ui.add(egui::ProgressBar::new(fraction).desired_height(5.0).show_percentage());
+                                        ui.horizontal(|ui| {
+                                            ui.label(RichText::new(progress_text).size(10.0).color(muted));
+                                            ui.with_layout(Layout::right_to_left(Align::Center), |ui| {
+                                                if !speed.is_empty() {
+                                                    ui.label(RichText::new(speed).size(10.0).color(accent));
+                                                }
+                                                ui.label(RichText::new(state).size(10.0).color(muted));
+                                            });
+                                        });
+                                    });
+                                });
+                            });
+                            if clicked {
+                                row_select = Some(id);
+                            }
+                            ui.add_space(5.0);
+                        }
+                    });
+                    if let Some(id) = row_select {
+                        selected_change = Some(id);
+                    }
+                });
+
+                let inspector_id = self.selection.one();
+                if let Some(id) = inspector_id {
+                    ui.separator();
+                    ui.allocate_ui_with_layout(
+                        Vec2::new(250.0, ui.available_height()),
+                        Layout::top_down(Align::Min),
+                        |ui| {
+                            ui.add_space(12.0);
+                            ui.label(RichText::new("DOWNLOAD DETAILS").size(10.0).strong().color(muted));
+                            if let Some(item) = self.items.iter().find(|i| i.id == id) {
+                                ui.add_space(12.0);
+                                ui.label(RichText::new(&item.file_name).size(15.0).strong());
+                                ui.add_space(8.0);
+                                ui.label(RichText::new("STATUS").size(9.0).color(muted));
+                                ui.label(item.status_text());
+                                ui.add_space(8.0);
+                                ui.label(RichText::new("SOURCE").size(9.0).color(muted));
+                                ui.label(item.url.host_str().unwrap_or("Local file"));
+                                ui.add_space(8.0);
+                                ui.label(RichText::new("LOCATION").size(9.0).color(muted));
+                                ui.label(item.dest.display().to_string());
+                                ui.add_space(8.0);
+                                ui.label(RichText::new("FILE SIZE").size(9.0).color(muted));
+                                ui.label(item.size.map_or("Unknown".to_owned(), model::size_list));
+                                ui.add_space(14.0);
+                                if item.can_start() && ui.button("▶ Resume").clicked() {
+                                    command = Some((Cmd::Resume, Some(id)));
+                                }
+                                if item.live.is_some() && ui.button("Ⅱ Pause").clicked() {
+                                    command = Some((Cmd::Stop, Some(id)));
+                                }
+                                if item.status == Status::Complete && ui.button("Open File").clicked() {
+                                    command = Some((Cmd::Open, Some(id)));
+                                }
+                                if ui.button("Reveal in Finder").clicked() {
+                                    dialogs::show_in_folder(&item.dest);
+                                }
+                                if ui.button("Remove from List").clicked() {
+                                    command = Some((Cmd::Remove, Some(id)));
+                                }
+                            }
+                        },
+                    );
+                }
+            });
+            ui.add_space(8.0);
+            ui.separator();
+            ui.horizontal(|ui| {
+                ui.add_space(12.0);
+                let running = self.items.iter().filter(|i| i.live.is_some()).count();
+                let speed: f64 = self.items.iter().filter(|i| i.live.is_some()).map(|i| i.rate()).sum();
+                ui.label(RichText::new(format!("{running} active")).size(10.0).color(muted));
+                ui.label(RichText::new(format!("↓ {}", model::rate(speed))).size(10.0).color(accent));
+                ui.with_layout(Layout::right_to_left(Align::Center), |ui| {
+                    ui.label(RichText::new(format!("{} total downloads", self.items.len())).size(10.0).color(muted));
+                });
+                ui.add_space(12.0);
+            });
+        });
+
+        ctx.data_mut(|d| {
+            d.insert_temp(nav_id, nav.clone());
+            d.insert_temp(search_id, search);
+        });
+        if let Some((new_nav, view)) = nav_change {
+            nav = new_nav;
+            self.view = view;
+            ctx.data_mut(|d| d.insert_temp(nav_id, nav));
+        }
+        if let Some(id) = selected_change {
+            self.selection.set(id);
+        }
+        if let Some((cmd, target)) = command {
+            self.run(cmd, target, &ctx);
+        }
+    }
+
     fn paint(&mut self, ui: &mut Ui) {
+        if cfg!(target_os = "macos") {
+            self.paint_rakib(ui);
+            return;
+        }
         let ctx = ui.ctx().clone();
         let full = ui.max_rect();
         // The client area, laid out from the right in a right-to-left interface (winui).
@@ -6960,7 +7255,7 @@ impl App {
                 Popup::Node(node) => (self.node_entries(node), None),
                 Popup::DropTarget => (
                     vec![
-                        MenuEntry::Item("Show Mister Download Manager", Cmd::ShowMain, true, false),
+                        MenuEntry::Item("Show Rakib Download Manager", Cmd::ShowMain, true, false),
                         MenuEntry::Item("&Add new download", Cmd::AddUrl, true, false),
                         MenuEntry::Sep,
                         MenuEntry::Item("Hide drop target", Cmd::ToggleDropTarget, true, false),
@@ -7441,7 +7736,7 @@ impl App {
             } else {
                 // A file MDM can't download or import (a picture, a program).
                 self.notice = Some((
-                    crate::i18n::mark("Mister Download Manager"),
+                    crate::i18n::mark("Rakib Download Manager"),
                     crate::i18n::fmt(
                         crate::i18n::t(
                             "Nothing to download in {item}: drop links, a .torrent file, or a list of addresses (.txt, .ef2).",

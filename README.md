@@ -1,30 +1,31 @@
-# Mister Download Manager
+# Rakib Download Manager
 
 <p align="center">
-  <img src="docs/images/logo.png" alt="Mister Download Manager's logo" width="160">
+  <img src="docs/images/logo.png" alt="Inherited upstream project logo; Rakib artwork is being prepared" width="160">
 </p>
 
-<h3 align="center">Downloads faster than IDM. Free, forever.</h3>
+<h3 align="center">A desktop download manager, rebuilt with Rakib's identity.</h3>
 
 <p align="center">
-  <a href="https://github.com/anefzaoui/misterdownloadmanager/releases/latest"><img src="https://img.shields.io/badge/Download%20for-Windows-2a78d6?style=flat-square&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0yIDMuNWw4LjUtMS4ydjguMkgyek0xMS41IDIuMkwyMiAuOHY5LjdIMTEuNXpNMiAxMS41aDguNXY4LjJMMiAxOC41ek0xMS41IDExLjVIMjJ2OS43bC0xMC41LTEuNHoiLz48L3N2Zz4%3D" alt="Download for Windows" height="34"></a>
-  <a href="https://github.com/anefzaoui/misterdownloadmanager/releases/latest"><img src="https://img.shields.io/badge/Download%20for-macOS-2a78d6?style=flat-square&logo=apple&logoColor=white" alt="Download for macOS" height="34"></a>
-  <a href="https://github.com/anefzaoui/misterdownloadmanager/releases/latest"><img src="https://img.shields.io/badge/Download%20for-Linux-2a78d6?style=flat-square&logo=linux&logoColor=white" alt="Download for Linux" height="34"></a>
+  <b>Rakib Download Manager is an independent customization of the GPL-3.0-or-later Mister Download Manager project.</b><br>
+  This repository preserves upstream attribution and license notices. The download engine and much of the current interface are inherited; Rakib branding, macOS compatibility work and the redesigned visual system are being developed here.
 </p>
 
+> **Development build:** This fork is under active development. Do not use upstream release badges or browser-store links as Rakib releases; Rakib-specific installers and extension packages will be published here after validation.
+
 <p align="center">
-  🧩 <b>Browser extension:</b><br>
-  <a href="https://addons.mozilla.org/firefox/addon/mister-download-manager/"><img src="https://img.shields.io/badge/Add%20to-Firefox-2a78d6?style=flat-square&logo=firefoxbrowser&logoColor=white" alt="Add to Firefox" height="34"></a>
-  <a href="https://chromewebstore.google.com/detail/mister-download-manager/ejoleppdfgjdndddcjoehopknmlglojp"><img src="https://img.shields.io/badge/Add%20to-Chrome-2a78d6?style=flat-square&logo=googlechrome&logoColor=white" alt="Add to Chrome" height="34"></a><br>
-  <sub>The Chrome Web Store's is for
-  <img src="docs/images/browsers/edge.png" width="16" height="16" alt=""> Edge,
-  <img src="docs/images/browsers/brave.png" width="16" height="16" alt=""> Brave,
-  <img src="docs/images/browsers/opera.png" width="16" height="16" alt=""> Opera and Vivaldi too (<a href="docs/browser-integration.md">how</a>).</sub>
+  <b>Release status: In development — no Rakib installer has been published yet.</b><br>
+  <a href="https://github.com/mdrakibhossainkst/rakibdownloadmanager/actions">View build and test status</a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/anefzaoui/misterdownloadmanager/stargazers"><img src="https://img.shields.io/github/stars/anefzaoui/misterdownloadmanager?style=social&label=Star%20MDM" alt="Star Mister Download Manager on GitHub" height="28"></a><br>
-  <sub>⭐ <b>Like it? Give it a star.</b> MDM has no ads and no marketing budget: stars are how people find it.</sub>
+  🧩 <b>Browser integration:</b> inherited Chromium and Firefox extension support is being adapted for Rakib.<br>
+  <sub>Rakib-specific browser packages are not published yet; the upstream store links are intentionally omitted.</sub>
+</p>
+
+<p align="center">
+  <a href="https://github.com/mdrakibhossainkst/rakibdownloadmanager/stargazers"><img src="https://img.shields.io/github/stars/mdrakibhossainkst/rakibdownloadmanager?style=social&label=Star%20Rakib" alt="Star Rakib Download Manager on GitHub" height="28"></a><br>
+  <sub>⭐ <b>Like it? Give it a star.</b> Rakib is a free, open-source project; stars help people discover it.</sub>
 </p>
 
 <p align="center">
@@ -44,26 +45,24 @@
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/images/main-dark.webp">
-    <img src="docs/images/main-light.webp" alt="Mister Download Manager's main window: categories, toolbar and a list of downloads" width="920">
+    <img src="docs/images/main-light.webp" alt="Inherited download manager interface, currently being redesigned for Rakib" width="920">
   </picture>
 </p>
 
 <p align="center">
-  <a href="https://github.com/anefzaoui/misterdownloadmanager/releases/latest"><img src="https://img.shields.io/github/v/release/anefzaoui/misterdownloadmanager?logo=github" alt="Latest release"></a>
-  <a href="https://github.com/anefzaoui/misterdownloadmanager/releases"><img src="https://img.shields.io/github/downloads/anefzaoui/misterdownloadmanager/total?logo=github" alt="Downloads"></a>
-  <a href="https://github.com/anefzaoui/misterdownloadmanager/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/anefzaoui/misterdownloadmanager/ci.yml?logo=github&label=ci" alt="CI"></a>
-  <a href="https://github.com/anefzaoui/misterdownloadmanager/stargazers"><img src="https://img.shields.io/github/stars/anefzaoui/misterdownloadmanager?logo=github" alt="GitHub stars"></a>
-  <a href="https://addons.mozilla.org/firefox/addon/mister-download-manager/"><img src="https://img.shields.io/amo/v/mister-download-manager?logo=firefoxbrowser&label=Firefox%20add-on" alt="Firefox add-on"></a>
-  <a href="https://chromewebstore.google.com/detail/mister-download-manager/ejoleppdfgjdndddcjoehopknmlglojp"><img src="https://img.shields.io/chrome-web-store/v/ejoleppdfgjdndddcjoehopknmlglojp?logo=googlechrome&label=Chrome%20Web%20Store" alt="Chrome Web Store"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/github/license/anefzaoui/misterdownloadmanager" alt="GPL-3.0 license"></a>
+  <a href="https://github.com/mdrakibhossainkst/rakibdownloadmanager/releases/latest"><img src="https://img.shields.io/github/v/release/mdrakibhossainkst/rakibdownloadmanager?logo=github" alt="Latest release"></a>
+  <a href="https://github.com/mdrakibhossainkst/rakibdownloadmanager/releases"><img src="https://img.shields.io/github/downloads/mdrakibhossainkst/rakibdownloadmanager/total?logo=github" alt="Downloads"></a>
+  <a href="https://github.com/mdrakibhossainkst/rakibdownloadmanager/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/mdrakibhossainkst/rakibdownloadmanager/ci.yml?logo=github&label=ci" alt="CI"></a>
+  <a href="https://github.com/mdrakibhossainkst/rakibdownloadmanager/stargazers"><img src="https://img.shields.io/github/stars/mdrakibhossainkst/rakibdownloadmanager?logo=github" alt="GitHub stars"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/mdrakibhossainkst/rakibdownloadmanager" alt="GPL-3.0 license"></a>
 </p>
 
-| 🚀 [Download](#download) | ⚡ [Why switch](#why-switch-from-idm) | 🖼️ [Screenshots](#screenshots) | ✨ [Getting started](docs/getting-started.md) | 📜 [Help and tutorials](docs/README.md) |
+| 🚀 [Releases](#releases) | ⚡ [Engine baseline](#download-engine-baseline) | 🖼️ [Screenshots](#screenshots) | ✨ [Getting started](docs/getting-started.md) | 📜 [Help and tutorials](docs/README.md) |
 | --- | --- | --- | --- | --- |
 
-## Why switch from IDM?
+## Download engine baseline
 
-**Same window you know. Your downloads finish sooner. And it costs nothing.**
+**The download engine is inherited from the upstream project; Rakib's own interface and release builds are being developed here.**
 
 <p align="center">
   <picture>
@@ -73,7 +72,8 @@
 </p>
 
 <!-- compare:start -->
-| | Mister Download Manager | IDM 6.42 |
+> The following benchmark results belong to the upstream Mister Download Manager project. They have not been independently re-measured for this Rakib fork.
+| | Upstream MDM benchmark | IDM 6.42 |
 | --- | --- | --- |
 | Download a big file (1 GB) | **1 second** | 5.5 seconds |
 | Download a small file | **instantly** | 3.1 seconds |
@@ -88,61 +88,26 @@ Nothing new to learn: the toolbar, the categories, the list of downloads, the pr
 the browser button are where you expect them. Measured on the same computer, same files, both
 programs at their default settings ([how we measured](#the-benchmark-in-detail)).
 
-## Download
+## Releases
 
-<p align="center">
-  <a href="https://github.com/anefzaoui/misterdownloadmanager/releases/latest"><img src="https://img.shields.io/badge/Download%20for-Windows-2a78d6?style=flat-square&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0yIDMuNWw4LjUtMS4ydjguMkgyek0xMS41IDIuMkwyMiAuOHY5LjdIMTEuNXpNMiAxMS41aDguNXY4LjJMMiAxOC41ek0xMS41IDExLjVIMjJ2OS43bC0xMC41LTEuNHoiLz48L3N2Zz4%3D" alt="Download for Windows" height="34"></a>
-  <a href="https://github.com/anefzaoui/misterdownloadmanager/releases/latest"><img src="https://img.shields.io/badge/Download%20for-macOS-2a78d6?style=flat-square&logo=apple&logoColor=white" alt="Download for macOS" height="34"></a>
-  <a href="https://github.com/anefzaoui/misterdownloadmanager/releases/latest"><img src="https://img.shields.io/badge/Download%20for-Linux-2a78d6?style=flat-square&logo=linux&logoColor=white" alt="Download for Linux" height="34"></a>
-</p>
+Rakib-specific installers are not published yet. The current work is focused on branding, macOS compatibility, and validating the inherited download engine on the target platforms.
 
-On the [download page](https://github.com/anefzaoui/misterdownloadmanager/releases/latest), pick
-one:
+Once the CI matrix is green, the first test build will be published here. The immediate target is **Intel macOS 13 Ventura**; no installer should be treated as production-ready before it has been tested on real hardware.
 
-| File | Choose it when |
-| --- | --- |
-| **`...-setup.exe`** | **Not sure? Take this one.** It installs MDM, connects it to your browser and asks your language. |
-| `...-portable.zip` | You want MDM on a USB stick or without installing: unzip and run. Everything stays in its folder. |
-| `...-x64.zip` | You want the plain programs without an installer. |
-| `...-extension-chromium.zip` | You want to add the browser extension by hand (Chrome, Edge, Brave, Opera, Vivaldi). From the stores is easier: [Add to Chrome](https://chromewebstore.google.com/detail/mister-download-manager/ejoleppdfgjdndddcjoehopknmlglojp), [Add to Firefox](https://addons.mozilla.org/firefox/addon/mister-download-manager/). |
+### Linux
 
-> [!NOTE]
-> Windows may say *"Windows protected your PC"* the first time, because this early version isn't
-> code-signed yet. Click **More info**, then **Run anyway**.
-
-### On Linux
-
-MDM runs on Linux too, tested on Ubuntu 24.04, Debian 12 and Fedora with GNOME, KDE Plasma, Xfce
-and Cinnamon, on X11 and in Wayland sessions: the tray, dark mode, browser integration (Ubuntu's
-Snap Firefox included) and the packages' installs. Not there yet: screen readers (Orca) don't
-read its windows, and Flatpak browsers can't reach it ([more](docs/getting-started.md#on-linux)).
-Up to version 0.2.4, the files' names end in `-experimental`.
-
-| File | For |
-| --- | --- |
-| `...-linux-x86_64.deb` | Ubuntu, Debian, Mint, Pop!_OS: `sudo apt install ./<file>.deb`. |
-| `...-linux-x86_64.rpm` | Fedora, openSUSE, RHEL: `sudo dnf install ./<file>.rpm`. |
-| `...-linux-x86_64.AppImage` | Any Linux. Make it executable and run it. |
-| `...-linux-x86_64.tar.gz` | The plain programs, for any distribution. |
+The upstream engine supports Windows, Linux and macOS. Linux packaging and desktop integration are inherited from the upstream project; Rakib-specific Linux builds have not yet been independently validated.
 
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/images/main-linux-dark.webp">
-    <img src="docs/images/main-linux.webp" alt="Mister Download Manager's main window on Ubuntu's GNOME desktop" width="620">
+    <img src="docs/images/main-linux.webp" alt="Inherited download manager interface on Ubuntu GNOME" width="620">
   </picture>
 </p>
 
-### On a Mac? Be the first to try it
+### macOS
 
-Fresh builds for **macOS** (Apple Silicon and Intel) are on the same download page, marked
-`-experimental`: we haven't tried them on a Mac ourselves yet. Give them a go and
-[tell us how it went](https://github.com/anefzaoui/misterdownloadmanager/issues/new/choose); you'll
-help make them as solid as the Windows and Linux versions.
-
-| File | For |
-| --- | --- |
-| `...-macos-arm64-experimental.dmg` | Mac with Apple Silicon (M1 or later). Open it and drag MDM to Applications. The first time, right-click the app and choose **Open**. |
-| `...-macos-x86_64-experimental.dmg` | Mac with an Intel processor, the same way. |
+The first target is Intel macOS 13 Ventura. The installer and Safari extension are being adjusted for this deployment target. Apple Silicon packaging remains part of the inherited project, but neither architecture is considered release-ready until its app bundle, browser integration, background downloads and renderer are tested on real hardware.
 
 ## 🌍 In your language
 
@@ -475,7 +440,7 @@ shows what each one did.
 ## ⭐ Star history
 
 If MDM saves you time, a star is the quickest way to say so, and it helps the next person find
-a free download manager. [Star it on GitHub](https://github.com/anefzaoui/misterdownloadmanager/stargazers).
+a free download manager. [Star it on GitHub](https://github.com/mdrakibhossainkst/rakibdownloadmanager/stargazers).
 
 <a href="https://star-history.com/#anefzaoui/misterdownloadmanager&Date">
   <picture>

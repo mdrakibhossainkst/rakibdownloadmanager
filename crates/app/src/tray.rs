@@ -119,7 +119,7 @@ impl Tray {
         };
         add(
             &menu,
-            crate::i18n::mark("Open Mister Download Manager"),
+            crate::i18n::mark("Open Rakib Download Manager"),
             TrayCmd::Show,
         );
         menu.append(&PredefinedMenuItem::separator()).ok();
@@ -155,7 +155,6 @@ impl Tray {
         menu.append(&PredefinedMenuItem::separator()).ok();
         // i18n: verb: quit the app
         add(&menu, mark("Exit"), TrayCmd::Exit);
-        drop(add);
         items.push((limiter_on.id().clone(), TrayCmd::LimiterOn));
         items.push((limiter_off.id().clone(), TrayCmd::LimiterOff));
 

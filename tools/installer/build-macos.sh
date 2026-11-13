@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Builds the macOS release into target/dist/ (experimental: built by CI, not yet tested by us):
-#   MisterDownloadManager-<version>-macos-arm64-experimental.dmg   Apple Silicon
-#   MisterDownloadManager-<version>-macos-x86_64-experimental.dmg  Intel
+#   RakibDownloadManager-<version>-macos-arm64-experimental.dmg   Apple Silicon
+#   RakibDownloadManager-<version>-macos-x86_64-experimental.dmg  Intel
 # One app per processor, each half the size of a universal one (#25), ad-hoc signed: without an
 # Apple Developer ID, macOS asks before the first start (right-click the app -> Open).
 # The app carries the Safari extension (tools/safari). Safari loads an ad-hoc signed one only with
@@ -10,7 +10,7 @@
 # MDM_NOTARY_PROFILE=<name> (a `xcrun notarytool store-credentials` profile) also has Apple notarize
 # the app and the .dmg: Safari ignores a Developer ID extension that isn't.
 # Needs: macOS with Xcode's command line tools (swiftc), rustup, pwsh (the extension).
-#   tools/installer/build-macos.sh [--no-build]
+#   tools/installer/build-macos.sh [--no-build|--intel-only]
 set -euo pipefail
 root="$(cd "$(dirname "$0")/../.." && pwd)"
 dist="$root/target/dist"
@@ -19,6 +19,9 @@ version="$(sed -n 's/^version *= *"\([^"]*\)".*/\1/p' "$root/Cargo.toml" | head 
 programs=(misterdownloadmanager misterdownloadmanager-nmhost misterdownloadmanager-cli misterdownloadmanager-mcp)
 # Rust's target and the processor's name in the release files (as macOS calls it), with ':'.
 targets=(aarch64-apple-darwin:arm64 x86_64-apple-darwin:x86_64)
+if [ "${1:-}" = "--intel-only" ]; then
+  targets=(x86_64-apple-darwin:x86_64)
+fi
 
 if [ "${1:-}" != "--no-build" ]; then
   for pair in "${targets[@]}"; do
@@ -54,8 +57,8 @@ dmgs=()
 for pair in "${targets[@]}"; do
   t="${pair%%:*}"
   arch="${pair##*:}"
-  name="MisterDownloadManager-$version-macos-$arch-experimental"
-  app="$stage/$arch/dmg/Mister Download Manager.app"
+  name="RakibDownloadManager-$version-macos-$arch-experimental"
+  app="$stage/$arch/dmg/Rakib Download Manager.app"
   mkdir -p "$app/Contents/MacOS" "$app/Contents/Resources"
 
   # Crash reports: the release's symbols for this processor (the -symbols zip, one per .dmg) from
@@ -81,8 +84,8 @@ for pair in "${targets[@]}"; do
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-  <key>CFBundleName</key><string>Mister Download Manager</string>
-  <key>CFBundleDisplayName</key><string>Mister Download Manager</string>
+  <key>CFBundleName</key><string>Rakib Download Manager</string>
+  <key>CFBundleDisplayName</key><string>Rakib Download Manager</string>
   <key>CFBundleIdentifier</key><string>io.github.anefzaoui.misterdownloadmanager</string>
   <key>CFBundleVersion</key><string>$version</string>
   <key>CFBundleShortVersionString</key><string>$version</string>
@@ -95,7 +98,7 @@ for pair in "${targets[@]}"; do
 </plist>
 EOF
   # The Safari extension (it carries its own copy of the helper, signed for its sandbox).
-  "$root/tools/safari/build-appex.sh" "$app" "$arch-apple-macos14.0" "$root/target/extension/safari" \
+  "$root/tools/safari/build-appex.sh" "$app" "$arch-apple-macos13.0" "$root/target/extension/safari" \
     "$app/Contents/MacOS/misterdownloadmanager-nmhost" "$version" "$sign"
   # The helper programs, then the app, which signs its own program (not --deep: that would sign
   # the extension again, without the entitlements it was given). Signing the app's own program
@@ -118,7 +121,7 @@ EOF
   # 10.15 and later; the app needs 11) packs it tighter than zlib (UDZO).
   ln -s /Applications "$stage/$arch/dmg/Applications"
   rm -f "$dist/$name.dmg"
-  hdiutil create -volname "Mister Download Manager" -srcfolder "$stage/$arch/dmg" -ov -format ULMO \
+  hdiutil create -volname "Rakib Download Manager" -srcfolder "$stage/$arch/dmg" -ov -format ULMO \
     "$dist/$name.dmg"
   if [ -n "${MDM_NOTARY_PROFILE:-}" ]; then
     codesign --force --sign "$sign" --timestamp "$dist/$name.dmg"

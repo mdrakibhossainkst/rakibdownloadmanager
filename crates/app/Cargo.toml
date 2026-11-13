@@ -1,6 +1,6 @@
 [package]
 name = "mdm-app"
-description = "Mister Download Manager, desktop app (egui)"
+description = "Rakib Download Manager, desktop app (egui), based on Mister Download Manager"
 version.workspace = true
 edition.workspace = true
 rust-version.workspace = true
