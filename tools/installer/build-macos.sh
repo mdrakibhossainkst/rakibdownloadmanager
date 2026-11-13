@@ -10,7 +10,7 @@
 # MDM_NOTARY_PROFILE=<name> (a `xcrun notarytool store-credentials` profile) also has Apple notarize
 # the app and the .dmg: Safari ignores a Developer ID extension that isn't.
 # Needs: macOS with Xcode's command line tools (swiftc), rustup, pwsh (the extension).
-#   tools/installer/build-macos.sh [--no-build]
+#   tools/installer/build-macos.sh [--no-build|--intel-only]
 set -euo pipefail
 root="$(cd "$(dirname "$0")/../.." && pwd)"
 dist="$root/target/dist"
@@ -19,6 +19,9 @@ version="$(sed -n 's/^version *= *"\([^"]*\)".*/\1/p' "$root/Cargo.toml" | head 
 programs=(misterdownloadmanager misterdownloadmanager-nmhost misterdownloadmanager-cli misterdownloadmanager-mcp)
 # Rust's target and the processor's name in the release files (as macOS calls it), with ':'.
 targets=(aarch64-apple-darwin:arm64 x86_64-apple-darwin:x86_64)
+if [ "${1:-}" = "--intel-only" ]; then
+  targets=(x86_64-apple-darwin:x86_64)
+fi
 
 if [ "${1:-}" != "--no-build" ]; then
   for pair in "${targets[@]}"; do
