@@ -2,6 +2,8 @@ name: macOS Intel Build
 
 on:
   workflow_dispatch:
+  push:
+    branches: [rakib/macos-audit-redesign]
 
 permissions:
   contents: read
@@ -53,7 +55,7 @@ jobs:
           name: rakib-download-manager-macos-intel
           path: |
             target/dist/*-macos-x86_64-experimental.dmg
-            target/dist/*macos-x86_64*symbols*
+            target/dist/*symbols-macos-x86_64.zip
             target/dist/SHA256SUMS-macos.txt
           if-no-files-found: error
           retention-days: 14
